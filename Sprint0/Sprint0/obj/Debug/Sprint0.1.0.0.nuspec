@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Sprint0</id>
+    <version>1.0.0</version>
+    <authors>Sprint0</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="MonoGame.Content.Builder.Task" version="3.8.1.303" exclude="Build,Analyzers" />
+        <dependency id="MonoGame.Framework.DesktopGL" version="3.8.1.303" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/Content/bin/DesktopGL/Content/Desc.xnb" buildAction="Content" />
+      <files include="any/net6.0/Content/bin/DesktopGL/Content/mysprite.xnb" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.runtimeconfig.json" target="lib\net6.0\Sprint0.runtimeconfig.json" />
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.dll" target="lib\net6.0\Sprint0.dll" />
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\Content\bin\DesktopGL\Content\Desc.xnb" target="content\Content\bin\DesktopGL\Content\Desc.xnb" />
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\Content\bin\DesktopGL\Content\Desc.xnb" target="contentFiles\any\net6.0\Content\bin\DesktopGL\Content\Desc.xnb" />
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\Content\bin\DesktopGL\Content\mysprite.xnb" target="content\Content\bin\DesktopGL\Content\mysprite.xnb" />
+    <file src="C:\Users\chris\source\repos\Sprint0\Sprint0\Content\bin\DesktopGL\Content\mysprite.xnb" target="contentFiles\any\net6.0\Content\bin\DesktopGL\Content\mysprite.xnb" />
+  </files>
+</package>
