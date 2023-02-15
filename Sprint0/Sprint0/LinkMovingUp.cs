@@ -14,8 +14,8 @@ namespace Sprint0
 
         private int currentFrame;
         private int totalFrames;
-        private int currentPos;
-        private bool down;
+        //private int currentPos;
+        //private bool down;
 
         public LinkMovingUp(Texture2D texture)
         {
@@ -24,8 +24,8 @@ namespace Sprint0
             currentFrame = 0;
             totalFrames = 30;
             //for movement
-            currentPos = 0;
-            down = false;
+            //currentPos = 0;
+            //down = false;
 
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
