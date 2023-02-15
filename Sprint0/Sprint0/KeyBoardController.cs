@@ -18,8 +18,6 @@ namespace Sprint0
         ISprite blockSprite;
         ISprite itemSprite;
         public Texture2D Texture { get; set; }
-        public Texture2D blocks { get; set; }
-        public Texture2D items { get; set; }
 
         private LinkMovingUp LinkUpSprite;
         private LinkMovingDown LinkDownSprite;
