@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using System.Security.Cryptography;
 
 namespace Sprint0
 {
@@ -14,6 +15,8 @@ namespace Sprint0
         //implement
         private Game1 game1;
         ISprite sprite;
+        ISprite blockSprite;
+        ISprite itemSprite;
         public Texture2D Texture { get; set; }
 
         private LinkMovingUp LinkUpSprite;
@@ -82,6 +85,11 @@ namespace Sprint0
             {
                 //Use 'e' to cause Link to become damaged.
                 sprite = DamagedSprite;
+            }
+            // block stuff
+            else if (Keyboard.GetState().IsKeyDown(Keys.Y))
+            {
+                // do stuff
             }
 
             else

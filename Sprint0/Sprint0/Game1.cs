@@ -36,9 +36,11 @@ namespace Sprint0
 
             // TODO: use this.Content to load your game content
             Texture2D atlas = Content.Load<Texture2D>("mysprite");
+            Texture2D blocks = Content.Load<Texture2D>("blockSet");
+            Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
 
             //set up controllers
-            Kcontroller = new KeyBoardController(this, atlas, _spriteBatch);
+            Kcontroller = new KeyBoardController(this, atlas, blocks, items, _spriteBatch);
             //Mcontroller = new MouseController(this, atlas, _spriteBatch);
 
         }
