@@ -24,14 +24,17 @@ namespace Sprint0
         private LinkMovingLeft LinkLeftSprite;
         private LinkDoingNothing StillSprite;
         private LinkMovingRight LinkRightSprite;
-        private SpriteBatch _spriteBatch;
         private LinkTakingDamage DamagedSprite;
+        private Block block;
+        // private Item item;
+        private SpriteBatch _spriteBatch;
+
         int xPos;
         int yPos;
 
         //private int gameState;
 
-        public KeyBoardController(Game1 game1, Texture2D atlas, SpriteBatch spriteBatch)
+        public KeyBoardController(Game1 game1, Texture2D atlas, Texture2D blocks, Texture2D items, SpriteBatch spriteBatch)
         {
             //need to change atlas and these calls
             this.game1 = game1;
@@ -41,6 +44,8 @@ namespace Sprint0
             LinkUpSprite = new LinkMovingUp(atlas);
             StillSprite = new LinkDoingNothing(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
+            block = new Block(blocks);
+            // item = new Item(items);
             xPos= 50; yPos = 100;
 
             _spriteBatch = spriteBatch;
