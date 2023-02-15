@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin FINAL_SPRITE_SHEET.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FINAL_SPRITE_SHEET.png;mysprite.png
+
 #begin mario-luigi.gif
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -23,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:mario-luigi.gif;mysprite.gif
+/build:mario-luigi.gif;mario.gif
 
 #begin SpriteFont1.spritefont
 /importer:FontDescriptionImporter

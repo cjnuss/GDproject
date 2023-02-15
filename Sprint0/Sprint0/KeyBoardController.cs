@@ -15,52 +15,84 @@ namespace Sprint0
         private Game1 game1;
         ISprite sprite;
         public Texture2D Texture { get; set; }
-        private NonmovingAnimated animatedSprite;
-        private NonmovingNonanimated nonanimatedSprite;
-        private MovingnonAnimatedVert vertSprite;
-        private MovingAnimatedHoriz horizSprite;
+
+        private LinkMovingUp LinkUpSprite;
+        private LinkMovingDown LinkDownSprite;
+        private LinkMovingLeft LinkLeftSprite;
+        private LinkDoingNothing StillSprite;
+        private LinkMovingRight LinkRightSprite;
         private SpriteBatch _spriteBatch;
-        private int gameState;
+        private LinkTakingDamage DamagedSprite;
+        int xPos;
+        int yPos;
+
+        //private int gameState;
 
         public KeyBoardController(Game1 game1, Texture2D atlas, SpriteBatch spriteBatch)
         {
+            //need to change atlas and these calls
             this.game1 = game1;
-            animatedSprite = new NonmovingAnimated(atlas);
-            nonanimatedSprite = new NonmovingNonanimated(atlas);
-            vertSprite = new MovingnonAnimatedVert(atlas);
-            horizSprite = new MovingAnimatedHoriz(atlas);
+            LinkRightSprite = new LinkMovingRight(atlas);
+            LinkDownSprite = new LinkMovingDown(atlas);
+            LinkLeftSprite = new LinkMovingLeft(atlas);
+            LinkUpSprite = new LinkMovingUp(atlas);
+            StillSprite = new LinkDoingNothing(atlas);
+            DamagedSprite = new LinkTakingDamage(atlas);
+            xPos= 50; yPos = 100;
+
             _spriteBatch = spriteBatch;
-            gameState = 1;
+            //gameState = 1;
         }
         public void Update()
         {
             //set game state so that once a key is pressed it will hold a state
-            if (Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0))
+            if (Keyboard.GetState().IsKeyDown(Keys.Q))
             {
                 //exit
                 game1.Exit();
-            }else if(Keyboard.GetState().IsKeyDown(Keys.D1) || Keyboard.GetState().IsKeyDown(Keys.NumPad1))
-            {
-                //Have a key (1) that has the program display a sprite with only one frame of animation and a fixed position.
-                gameState = 1;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D2) || Keyboard.GetState().IsKeyDown(Keys.NumPad2))
+            else if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                //that has the program display an animated sprite, but with a fixed position.
-                gameState = 2;
+                //w key is pressed link will move up
+                sprite = LinkUpSprite;
+                yPos--;
+
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D3) || Keyboard.GetState().IsKeyDown(Keys.NumPad3))
+            else if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                // a sprite with only one frame of animation, but moves the sprite up and down on screen.
-                gameState = 3;
+                //s key is press link will move down
+                sprite = LinkDownSprite;
+                yPos++;
+
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D4) || Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+            else if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                // a sprite with only one frame of animation, but moves the sprite up and down on screen.
-                gameState = 4;
+                //a key is press link will move left
+                sprite = LinkLeftSprite;
+                xPos--;
+
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                //d key is press link will move right
+                sprite = LinkRightSprite;
+                xPos++;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.E))
+            {
+                //Use 'e' to cause Link to become damaged.
+                sprite = DamagedSprite;
+            }
+
+            else
+            {
+                //default state for link
+                sprite = StillSprite;
+
             }
 
             //now set the sprite using the game state
+            /* should not need
             if(gameState == 1)
             {
                 sprite = nonanimatedSprite;
@@ -74,9 +106,9 @@ namespace Sprint0
             {
                 sprite = horizSprite;
             }
-
+            */
             sprite.Update();
-            sprite.Draw(_spriteBatch, new Vector2(390, 210));
+            sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
         }
 
     }

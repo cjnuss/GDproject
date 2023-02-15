@@ -79,3 +79,4 @@ C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sp
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CopyComplete
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\chris\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\mario.xnb

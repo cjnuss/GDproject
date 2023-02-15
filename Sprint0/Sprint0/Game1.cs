@@ -3,19 +3,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-//testing pt.732421
-// testing pt. 160000301205
 namespace Sprint0
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private SpriteFont font;
+        //private SpriteFont font;
         private bool key;
 
         private KeyBoardController Kcontroller;
-        private MouseController Mcontroller;
+        //private MouseController Mcontroller;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -36,12 +34,11 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content
-            font = Content.Load<SpriteFont>("Desc");
             Texture2D atlas = Content.Load<Texture2D>("mysprite");
 
             //set up controllers
             Kcontroller = new KeyBoardController(this, atlas, _spriteBatch);
-            Mcontroller = new MouseController(this, atlas, _spriteBatch);
+            //Mcontroller = new MouseController(this, atlas, _spriteBatch);
 
         }
 
@@ -52,11 +49,10 @@ namespace Sprint0
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.LightSlateGray);
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(font, "Credits:\nProgram Made By: Chris Rockich\nSprites from: http://www.mariouniverse.com/sprites/", new Vector2(150, 300), Color.White);
 
             //logic to see if key is pressed
             if(Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0) ||
@@ -73,10 +69,12 @@ namespace Sprint0
             if (key)
             {
                 Kcontroller.Update();
-            }else if (!key)
-            {
-                Mcontroller.Update();
             }
+            //NEED THIS FOR LATER HOME SCREEN
+            //else if (!key)
+            //{
+            //    Mcontroller.Update();
+            //}
 
             _spriteBatch.End();
             base.Draw(gameTime);
