@@ -26,7 +26,6 @@ namespace Sprint0
         int xPos;
         int yPos;
 
-        //private int gameState;
 
         public KeyBoardController(Game1 game1, Texture2D atlas, SpriteBatch spriteBatch)
         {
@@ -41,7 +40,6 @@ namespace Sprint0
             xPos= 50; yPos = 100;
 
             _spriteBatch = spriteBatch;
-            //gameState = 1;
         }
         public void Update()
         {
@@ -91,22 +89,6 @@ namespace Sprint0
 
             }
 
-            //now set the sprite using the game state
-            /* should not need
-            if(gameState == 1)
-            {
-                sprite = nonanimatedSprite;
-            }else if(gameState == 2)
-            {
-                sprite = animatedSprite;
-            }else if(gameState == 3)
-            {
-                sprite = vertSprite;
-            }else if (gameState == 4)
-            {
-                sprite = horizSprite;
-            }
-            */
             sprite.Update();
             sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
         }
