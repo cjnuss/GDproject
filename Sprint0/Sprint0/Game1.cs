@@ -34,13 +34,13 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content
+            // load in objects
             Texture2D atlas = Content.Load<Texture2D>("mysprite");
+            Texture2D blocks = Content.Load<Texture2D>("blockSet");
+            Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
 
-            //set up controllers
-            Kcontroller = new KeyBoardController(this, atlas, _spriteBatch);
-            //Mcontroller = new MouseController(this, atlas, _spriteBatch);
-
+            // keyboard controller
+            Kcontroller = new KeyBoardController(this, atlas, blocks, items, _spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -52,18 +52,14 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            //logic to see if key is pressed
-            if(Keyboard.GetState().IsKeyDown(Keys.D0) || Keyboard.GetState().IsKeyDown(Keys.NumPad0) ||
-               Keyboard.GetState().IsKeyDown(Keys.D1) || Keyboard.GetState().IsKeyDown(Keys.NumPad1) ||
-               Keyboard.GetState().IsKeyDown(Keys.D2) || Keyboard.GetState().IsKeyDown(Keys.NumPad2) ||
-               Keyboard.GetState().IsKeyDown(Keys.D3) || Keyboard.GetState().IsKeyDown(Keys.NumPad3) ||
-               Keyboard.GetState().IsKeyDown(Keys.D4) || Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+            // unless Q is pressed, keep updating
+            if(!Keyboard.GetState().IsKeyDown(Keys.Q))
             {
                 key = true;
-            }else if(Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) || Mouse.GetState().RightButton.Equals(ButtonState.Pressed))
+            }
+            else if(Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) || Mouse.GetState().RightButton.Equals(ButtonState.Pressed))
             {
                 key = false;
             }
