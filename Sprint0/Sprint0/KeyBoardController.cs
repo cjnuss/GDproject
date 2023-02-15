@@ -26,7 +26,7 @@ namespace Sprint0
         private LinkMovingRight LinkRightSprite;
         private LinkTakingDamage DamagedSprite;
         private Block block;
-        // private Item item;
+        private Item item;
         private SpriteBatch _spriteBatch;
 
         int xPos;
@@ -45,7 +45,7 @@ namespace Sprint0
             StillSprite = new LinkDoingNothing(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
             block = new Block(blocks);
-            // item = new Item(items);
+            item = new Item(items);
             xPos= 50; yPos = 100;
 
             _spriteBatch = spriteBatch;
@@ -91,12 +91,6 @@ namespace Sprint0
                 //Use 'e' to cause Link to become damaged.
                 sprite = DamagedSprite;
             }
-            // block stuff
-            else if (Keyboard.GetState().IsKeyDown(Keys.Y))
-            {
-                // do stuff
-            }
-
             else
             {
                 //default state for link
@@ -104,24 +98,16 @@ namespace Sprint0
 
             }
 
-            //now set the sprite using the game state
-            /* should not need
-            if(gameState == 1)
-            {
-                sprite = nonanimatedSprite;
-            }else if(gameState == 2)
-            {
-                sprite = animatedSprite;
-            }else if(gameState == 3)
-            {
-                sprite = vertSprite;
-            }else if (gameState == 4)
-            {
-                sprite = horizSprite;
-            }
-            */
+            // draw and update sprites
+            blockSprite = block;
+            itemSprite = item;
+            
             sprite.Update();
+            blockSprite.Update();
+            itemSprite.Update();
             sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
+            blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
+            itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
         }
 
     }
