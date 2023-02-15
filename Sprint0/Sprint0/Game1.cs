@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sprint0
 {
-    // jack finally working comment
+    // finally working comment
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
