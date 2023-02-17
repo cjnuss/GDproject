@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD
   <SourceFile>C:/Users/chris/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/FINAL_SPRITE_SHEET.png</SourceFile>
   <SourceTime>2023-02-17T12:45:30.4959746-05:00</SourceTime>
   <DestFile>C:/Users/chris/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/mysprite.xnb</DestFile>
   <DestTime>2023-02-17T12:52:53.619783-05:00</DestTime>
+=======
+  <SourceFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/FINAL_SPRITE_SHEET.png</SourceFile>
+  <SourceTime>2023-02-15T16:29:28.9944221-05:00</SourceTime>
+  <DestFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/mysprite.xnb</DestFile>
+  <DestTime>2023-02-17T12:55:27.0311236-05:00</DestTime>
+>>>>>>> 09b811dfbd2633967773cd27695b7ff4c2e46530
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
