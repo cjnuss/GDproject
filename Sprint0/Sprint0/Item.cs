@@ -36,10 +36,10 @@ namespace Sprint0
                               new Rectangle(144, 0, 8, 16), new Rectangle(154, 0, 5, 16), // bow & arrow
                               new Rectangle(72, 0, 8, 16), new Rectangle(72, 16, 8, 16), // rupee (2)
                               new Rectangle(40, 0, 8, 16), new Rectangle(48, 0, 8, 16), // fairy (2)
-                              new Rectangle(136, 0, 8, 16) }; // bomb
+                              new Rectangle(136, 0, 8, 16), new Rectangle(25, 1, 13, 13) }; // bomb & heart container
 
-        int[] itemWidth = { 7, 7, 11, 11, 10, 10, 8, 8, 8, 5, 8, 8, 8, 8, 8 };
-        int[] itemHeight = { 8, 8, 16, 12, 10, 10, 16, 16, 16, 16, 16, 16, 16, 16, 16 };
+        int[] itemWidth = { 7, 7, 11, 11, 10, 10, 8, 8, 8, 5, 8, 8, 8, 8, 8, 13 };
+        int[] itemHeight = { 8, 8, 16, 12, 10, 10, 16, 16, 16, 16, 16, 16, 16, 16, 16, 13 };
 
         // keys for which indicate we need frame adjustments
         int[] animKeys = { 0, 4, 10, 12 };
@@ -78,7 +78,7 @@ namespace Sprint0
             if (Keyboard.GetState().IsKeyDown(Keys.I))
             {
                 currentFrame = 0; // reset frames
-                if (itemIdx <= 13) // maxIdx - 1
+                if (itemIdx <= 14) // maxIdx - 1
                     if (animKeys.Contains(itemIdx)) // if we are animating
                         itemIdx += 2; // skip over other animated half of sprite
                     else
@@ -96,7 +96,7 @@ namespace Sprint0
                     else
                         itemIdx--;
                 else
-                    itemIdx = 14; // maxIdx
+                    itemIdx = 15; // maxIdx
             }
 
             // reset back to original state
