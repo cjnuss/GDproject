@@ -51,67 +51,65 @@ namespace Sprint0
         }
         public void Update()
         {
-            //set game state so that once a key is pressed it will hold a state
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            // until the game is reset, do actions
+            if (!Keyboard.GetState().IsKeyDown(Keys.R))
             {
-                //exit
-                game1.Exit();
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
-                //w key is pressed link will move up
-                sprite = LinkUpSprite;
-                yPos--;
+                //set game state so that once a key is pressed it will hold a state
+                if (Keyboard.GetState().IsKeyDown(Keys.Q))
+                {
+                    //exit
+                    game1.Exit();
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    //w key is pressed link will move up
+                    sprite = LinkUpSprite;
+                    yPos--;
 
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                //s key is press link will move down
-                sprite = LinkDownSprite;
-                yPos++;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.S))
+                {
+                    //s key is press link will move down
+                    sprite = LinkDownSprite;
+                    yPos++;
 
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                //a key is press link will move left
-                sprite = LinkLeftSprite;
-                xPos--;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.A))
+                {
+                    //a key is press link will move left
+                    sprite = LinkLeftSprite;
+                    xPos--;
 
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                {
+                    //d key is press link will move right
+                    sprite = LinkRightSprite;
+                    xPos++;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.E))
+                {
+                    //Use 'e' to cause Link to become damaged.
+                    sprite = DamagedSprite;
+                }
+                else
+                {
+                    //default state for link
+                    sprite = StillSprite;
+
+                }
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                //d key is press link will move right
-                sprite = LinkRightSprite;
-                xPos++;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.E))
-            {
-                //Use 'e' to cause Link to become damaged.
-                sprite = DamagedSprite;
-            }
+            // reset game to original state
             else
             {
-                //default state for link
                 sprite = StillSprite;
-
+                xPos = 50; yPos = 100;
             }
 
-            //now set the sprite using the game state
-            /* should not need
-            if(gameState == 1)
-            {
-                sprite = nonanimatedSprite;
-            }else if(gameState == 2)
-            {
-                sprite = animatedSprite;
-            }else if(gameState == 3)
-            {
-                sprite = vertSprite;
-            }else if (gameState == 4)
-            {
-                sprite = horizSprite;
-            }
-            */
+            // draw and update sprites
+            blockSprite = block;
+            itemSprite = item;
+            
             sprite.Update();
             blockSprite.Update();
             itemSprite.Update();
