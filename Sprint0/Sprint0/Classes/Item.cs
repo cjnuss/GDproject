@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class Item : ISprite
+    internal class Item : IItem
     {
         public Texture2D Texture { get; set; }
 
@@ -64,7 +64,7 @@ namespace Sprint0
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
-        public void Update()
+        public void Update(int itemState)
         {
             // frame updates if animated item
             if (animKeys.Contains(itemIdx))
@@ -75,7 +75,7 @@ namespace Sprint0
             }
 
             // cycle forward in item list
-            if (Keyboard.GetState().IsKeyDown(Keys.I))
+            if (itemState == 1)
             {
                 currentFrame = 0; // reset frames
                 if (itemIdx <= items.Length-2)
@@ -87,7 +87,7 @@ namespace Sprint0
                     itemIdx = 0; // beginning of array
             }
             // cycle back in item list
-            else if (Keyboard.GetState().IsKeyDown(Keys.U))
+            if (itemState == 2)
             {
                 currentFrame = 0;
                 if (itemIdx >= 1)
@@ -100,7 +100,7 @@ namespace Sprint0
             }
 
             // reset back to original state
-            else if (Keyboard.GetState().IsKeyDown(Keys.R))
+            if (itemState == 0)
             {
                 itemIdx = 0;
             }

@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:blockSet.png
+/build:blockSet.png;block.png
 
 #begin FINAL_SPRITE_SHEET.png
 /importer:TextureImporter

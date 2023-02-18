@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public interface IBlock
+    public interface IItem
     {
         void Update(int blockState);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
