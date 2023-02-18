@@ -112,4 +112,8 @@ C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Co
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\items&weaponsSet.xnb
 C:\Users\chris\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\blockSet.xnb
 C:\Users\chris\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\items&weaponsSet.xnb
+<<<<<<< HEAD
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\linkanditems.xnb
+=======
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\block.xnb
+>>>>>>> be5c1332221728b4f1aed2d56b32954da8210ab4

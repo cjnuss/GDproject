@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class Block : ISprite
+    internal class Block : IBlock
     {
         public Texture2D Texture { get; set; }
 
@@ -35,10 +35,10 @@ namespace Sprint0
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
-        public void Update()
+        public void Update(int blockState)
         {
             // cycle forward in block list
-            if (Keyboard.GetState().IsKeyDown(Keys.Y))
+            if (blockState == 1)
             {
                 if (blockIdx <= 8)
                     blockIdx++;
@@ -46,7 +46,7 @@ namespace Sprint0
                     blockIdx = 0;
             }
             // cycle back in block list
-            else if (Keyboard.GetState().IsKeyDown(Keys.T))
+            if (blockState == 2)
             {
                 if (blockIdx >= 1)
                     blockIdx--;
@@ -54,7 +54,7 @@ namespace Sprint0
                     blockIdx = 9;
             }
             // reset back to original state
-            else if (Keyboard.GetState().IsKeyDown(Keys.R))
+            if (blockState == 0)
             {
                 blockIdx = 0;
             }

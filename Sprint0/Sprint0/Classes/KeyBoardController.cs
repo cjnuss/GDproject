@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
@@ -15,8 +16,8 @@ namespace Sprint0
         //implement
         private Game1 game1;
         ISprite sprite;
-        ISprite blockSprite;
-        ISprite itemSprite;
+        IBlock blockSprite;
+        IItem itemSprite;
         public Texture2D Texture { get; set; }
 
         private LinkMovingUp LinkUpSprite;
@@ -32,6 +33,10 @@ namespace Sprint0
         int xPos;
         int yPos;
 
+        private int oldBlockState;
+        private int blockState;
+        private int itemState;
+
 
         public KeyBoardController(Game1 game1, Texture2D atlas, Texture2D blocks, Texture2D items, SpriteBatch spriteBatch)
         {
@@ -46,7 +51,8 @@ namespace Sprint0
             block = new Block(blocks);
             item = new Item(items);
             xPos= 50; yPos = 100;
-
+            blockState = 0; oldBlockState = 0;
+            itemState = 0;
             _spriteBatch = spriteBatch;
         }
         public void Update()
@@ -93,6 +99,25 @@ namespace Sprint0
                     //Use 'e' to cause Link to become damaged.
                     sprite = DamagedSprite;
                 }
+                // block stuff
+                else if (Keyboard.GetState().IsKeyDown(Keys.Y))
+                {
+                    oldBlockState = blockState;
+                    blockState = 1;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.T))
+                {
+                    oldBlockState = blockState;
+                    blockState = 2;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.I))
+                {
+                    itemState = 1;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.U))
+                {
+                    itemState = 2;
+                }
                 else
                 {
                     //default state for link
@@ -103,6 +128,8 @@ namespace Sprint0
             // reset game to original state
             else
             {
+                blockState = 0;
+                itemState = 0;
                 sprite = StillSprite;
                 xPos = 50; yPos = 100;
             }
@@ -112,8 +139,16 @@ namespace Sprint0
             itemSprite = item;
             
             sprite.Update();
-            blockSprite.Update();
-            itemSprite.Update();
+
+            if (oldBlockState != blockState)                
+                blockSprite.Update(blockState);
+
+            itemSprite.Update(itemState);
+
+            // set default states
+            blockState = 3;
+            itemState = 3;
+
             sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
             blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
             itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
