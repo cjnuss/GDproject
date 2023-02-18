@@ -64,28 +64,29 @@ namespace Sprint0
                 {
                     //w key is pressed link will move up
                     sprite = LinkUpSprite;
-                    yPos--;
+                    yPos-=2;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    //s key is press link will move down
+                    //s key is press
+                    //link will move down
                     sprite = LinkDownSprite;
-                    yPos++;
+                    yPos+=2;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     //a key is press link will move left
                     sprite = LinkLeftSprite;
-                    xPos--;
+                    xPos-=2;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     //d key is press link will move right
                     sprite = LinkRightSprite;
-                    xPos++;
+                    xPos+=2;
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.E))
                 {
