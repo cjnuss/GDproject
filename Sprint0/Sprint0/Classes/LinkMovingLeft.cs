@@ -38,13 +38,13 @@ namespace Sprint0
             if (currentFrame <= 15)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(260, 225, 17, 18);
+                sourceRectangle = new Rectangle(674, 11, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 40);
             }
             else if (currentFrame > 15)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(279, 225, 17, 18);
+                sourceRectangle = new Rectangle(691, 11, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 40);
             }
             //draw the sprite
