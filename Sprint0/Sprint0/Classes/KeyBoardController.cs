@@ -15,9 +15,11 @@ namespace Sprint0
     {
         //implement
         private Game1 game1;
-        ISprite sprite;
-        IBlock blockSprite;
-        IItem itemSprite;
+
+        public ISprite sprite;
+        public IBlock blockSprite;
+        public IItem itemSprite;
+
         public Texture2D Texture { get; set; }
 
         private LinkMovingUp LinkUpSprite;
@@ -30,12 +32,14 @@ namespace Sprint0
         private Item item;
         private SpriteBatch _spriteBatch;
 
-        int xPos;
-        int yPos;
+        public int xPos;
+        public int yPos;
 
         private int oldBlockState;
         private int blockState;
         private int itemState;
+
+        private Dictionary<Keys, > controllerMapping;
 
 
         public KeyBoardController(Game1 game1, Texture2D atlas, Texture2D blocks, Texture2D items, SpriteBatch spriteBatch)
