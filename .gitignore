@@ -355,3 +355,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Sprint0/Sprint0/obj/Debug/net6.0/Sprint0.GeneratedMSBuildEditorConfig.editorconfig
+/Sprint0/Sprint0/obj/Debug/net6.0/Sprint0.GeneratedMSBuildEditorConfig.editorconfig
+/Sprint0/Sprint0/obj/Debug/net6.0/Sprint0.assets.cache
