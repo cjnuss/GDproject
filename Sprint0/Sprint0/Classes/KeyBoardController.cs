@@ -70,7 +70,7 @@ namespace Sprint0
                 {
                     //w key is pressed link will move up
                     sprite = LinkUpSprite;
-                    yPos-=2;
+                    yPos--;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.S))
@@ -78,28 +78,28 @@ namespace Sprint0
                     //s key is press
                     //link will move down
                     sprite = LinkDownSprite;
-                    yPos+=2;
+                    yPos++;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     //a key is press link will move left
                     sprite = LinkLeftSprite;
-                    xPos-=2;
+                    xPos--;
 
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     //d key is press link will move right
                     sprite = LinkRightSprite;
-                    xPos+=2;
+                    xPos++;
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.E))
                 {
                     //Use 'e' to cause Link to become damaged.
                     sprite = DamagedSprite;
                 }
-                // block stuff
+                // block actions
                 else if (Keyboard.GetState().IsKeyDown(Keys.Y))
                 {
                     oldBlockState = blockState;
@@ -110,6 +110,7 @@ namespace Sprint0
                     oldBlockState = blockState;
                     blockState = 2;
                 }
+                // item actions
                 else if (Keyboard.GetState().IsKeyDown(Keys.I))
                 {
                     itemState = 1;
