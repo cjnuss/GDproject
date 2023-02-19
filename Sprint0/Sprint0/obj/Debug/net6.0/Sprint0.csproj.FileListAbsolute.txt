@@ -120,3 +120,4 @@ C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Co
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\block.xnb
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\linkanditemsold.xnb
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\links.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\linksprites.xnb
