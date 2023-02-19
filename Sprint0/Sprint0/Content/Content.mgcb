@@ -37,10 +37,17 @@
 /processorParam:TextureFormat=Color
 /build:combinedlinkstates.png;linkanditems2.png
 
-#begin combinedlinkstates2
-/importer:
-/processor:
-/build:combinedlinkstates2;linkanditems.png
+#begin combinedlinkstates2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:combinedlinkstates2.png;linkanditems.png
 
 #begin FINAL_SPRITE_SHEET.png
 /importer:TextureImporter
