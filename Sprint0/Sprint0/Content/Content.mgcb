@@ -35,7 +35,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:combinedlinkstates.png;linkanditems.png
+/build:combinedlinkstates.png;linkanditems2.png
+
+#begin combinedlinkstates2
+/importer:
+/processor:
+/build:combinedlinkstates2;linkanditems.png
 
 #begin FINAL_SPRITE_SHEET.png
 /importer:TextureImporter
