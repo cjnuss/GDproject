@@ -35,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:combinedlinkstates2.png;linkanditems.png
+/build:combinedlinkstates2.png;linksprites.png
 
 #begin items&weaponsSet.png
 /importer:TextureImporter

@@ -38,7 +38,7 @@ namespace Sprint0
             //BlockSpriteFactory.Instance.LoadBlockTextures(Content);
 
             // load in objects
-            Texture2D atlas = Content.Load<Texture2D>("linkanditems");
+            Texture2D atlas = Content.Load<Texture2D>("linksprites");
             Texture2D blocks = Content.Load<Texture2D>("blockSet");
             Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
 
