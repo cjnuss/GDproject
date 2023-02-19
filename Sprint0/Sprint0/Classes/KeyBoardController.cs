@@ -50,7 +50,12 @@ namespace Sprint0
             DamagedSprite = new LinkTakingDamage(atlas);
             block = new Block(blocks);
             item = new Item(items);
-            xPos= 50; yPos = 100;
+
+            // draw and update sprites
+            blockSprite = block;
+            itemSprite = item;
+
+            xPos = 50; yPos = 100;
             blockState = 0; oldBlockState = 0;
             itemState = 0;
             _spriteBatch = spriteBatch;
@@ -99,32 +104,24 @@ namespace Sprint0
                     //Use 'e' to cause Link to become damaged.
                     sprite = DamagedSprite;
                 }
+
                 // block actions
                 else if (Keyboard.GetState().IsKeyDown(Keys.Y))
-                {
-                    oldBlockState = blockState;
-                    blockState = 1;
-                }
+                    block.KeyBlockUpdate(true, ref oldBlockState, ref blockState);
+
                 else if (Keyboard.GetState().IsKeyDown(Keys.T))
-                {
-                    oldBlockState = blockState;
-                    blockState = 2;
-                }
+                    block.KeyBlockUpdate(false, ref oldBlockState, ref blockState);
+                
                 // item actions
                 else if (Keyboard.GetState().IsKeyDown(Keys.I))
-                {
-                    itemState = 1;
-                }
-                else if (Keyboard.GetState().IsKeyDown(Keys.U))
-                {
-                    itemState = 2;
-                }
-                else
-                {
-                    //default state for link
-                    sprite = StillSprite;
+                    item.KeyItemUpdate(true, ref itemState);
 
-                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.U))
+                    item.KeyItemUpdate(false, ref itemState);
+
+                // default state for link
+                else
+                    sprite = StillSprite;
             }
             // reset game to original state
             else
@@ -134,14 +131,10 @@ namespace Sprint0
                 sprite = StillSprite;
                 xPos = 50; yPos = 100;
             }
-
-            // draw and update sprites
-            blockSprite = block;
-            itemSprite = item;
             
             sprite.Update();
 
-            if (oldBlockState != blockState)                
+            if (oldBlockState != blockState)
                 blockSprite.Update(blockState);
 
             itemSprite.Update(itemState);

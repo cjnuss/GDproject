@@ -59,5 +59,19 @@ namespace Sprint0
                 blockIdx = 0;
             }
         }
+
+        public void KeyBlockUpdate(bool check, ref int oldBlockState, ref int blockState)
+        {
+            if (check)
+            {
+                oldBlockState = blockState;
+                blockState = 1;
+            }
+            else
+            {
+                oldBlockState = blockState;
+                blockState = 2;
+            }
+        }
     }
 }

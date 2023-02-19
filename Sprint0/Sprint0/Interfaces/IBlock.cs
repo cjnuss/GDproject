@@ -12,5 +12,6 @@ namespace Sprint0
     {
         void Update(int blockState);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
+        void KeyBlockUpdate(bool check, ref int oldBlockState, ref int blockState);
     }
 }

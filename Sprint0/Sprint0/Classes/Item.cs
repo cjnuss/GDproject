@@ -109,5 +109,17 @@ namespace Sprint0
             if (animKeys.Contains(itemIdx - 1))
                 itemIdx--;
         }
+
+        public void KeyItemUpdate(bool check, ref int itemState)
+        {
+            if (check)
+            {
+                itemState = 1;
+            }
+            else
+            {
+                itemState = 2;
+            }
+        }
     }
 }
