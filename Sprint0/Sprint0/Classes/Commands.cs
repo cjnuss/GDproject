@@ -61,6 +61,28 @@ namespace Sprint0
         }
     }
 
+    public class ResetCommand : ICommand
+    {
+
+        private KeyBoardController KeyBoardController;
+        private ISprite sprite;
+
+        public ResetCommand(KeyBoardController KeyBoardController, ISprite sprite)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.sprite = sprite;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.blockState = 0;
+            KeyBoardController.itemState = 0;
+            KeyBoardController.sprite = sprite;
+            KeyBoardController.xPos = 50; KeyBoardController.yPos = 100;
+
+        }
+    }
+
     public class BlockChangeCommand : ICommand
     {
 

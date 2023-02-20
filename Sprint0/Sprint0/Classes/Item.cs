@@ -108,20 +108,20 @@ namespace Sprint0
                     else
                         itemIdx = items.Length - 1; // end of array
                 }
-
-                // reset back to original state
-                if (itemState == 0)
-                {
-                    itemIdx = 0;
-                }
-
-                // correct frame adjustment
-                if (animKeys.Contains(itemIdx - 1))
-                    itemIdx--;
             } else
             {
                 currentCount++;
             }
+
+            // reset back to original state
+            if (itemState == 0)
+            {
+                itemIdx = 0;
+            }
+
+            // correct frame adjustment
+            if (animKeys.Contains(itemIdx - 1))
+                itemIdx--;
         }
 
         public void KeyItemUpdate(bool check, ref int itemState)

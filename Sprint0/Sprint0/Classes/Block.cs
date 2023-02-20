@@ -61,14 +61,15 @@ namespace Sprint0
                     else
                         blockIdx = 9;
                 }
-                // reset back to original state
-                if (blockState == 0)
-                {
-                    blockIdx = 0;
-                }
             } else
             {
                 currentCount++;
+            }
+
+            // reset back to original state
+            if (blockState == 0)
+            {
+                blockIdx = 0;
             }
         }
 

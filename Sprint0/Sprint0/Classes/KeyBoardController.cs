@@ -52,6 +52,8 @@ namespace Sprint0
         private ICommand itemStateOne;
         private ICommand itemStateTwo;
 
+        private ICommand resetCommand;
+
 
         private Dictionary<Keys, ICommand> controllerMapping;
 
@@ -82,6 +84,8 @@ namespace Sprint0
             itemStateOne = new ItemChangeCommand(this, 1);
             itemStateTwo = new ItemChangeCommand(this, 2);
 
+            resetCommand = new ResetCommand(this, StillSprite);
+
             controllerMapping.Add(Keys.Q, exitCommand);
             controllerMapping.Add(Keys.W, moveUpCommand);
             controllerMapping.Add(Keys.S, moveDownCommand);
@@ -92,6 +96,7 @@ namespace Sprint0
             controllerMapping.Add(Keys.T, blockStateTwo);
             controllerMapping.Add(Keys.I, itemStateOne);
             controllerMapping.Add(Keys.U, itemStateTwo);
+            controllerMapping.Add(Keys.R, resetCommand);
 
 
             // draw and update sprites
@@ -105,27 +110,23 @@ namespace Sprint0
         }
         public void Update()
         {
+            sprite = StillSprite;
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            foreach (Keys key in pressedKeys)
+            {
+                if (controllerMapping.ContainsKey(key))
+                    controllerMapping[key].Execute();
+            }
+
+            /*
             // until the game is reset, do actions
             if (!Keyboard.GetState().IsKeyDown(Keys.R))
             {
-                
-                if(Keyboard.GetState().GetPressedKeyCount().Equals(0))
-                {
-                    sprite = StillSprite;
-                } else
-                {
-                    Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-                    foreach (Keys key in pressedKeys)
-                    {
-                        if (controllerMapping.ContainsKey(key))
-                            controllerMapping[key].Execute();
-                    }
-                }
 
                 //set game state so that once a key is pressed it will hold a state
 
 
-                /*
+                
                 if (Keyboard.GetState().IsKeyDown(Keys.Q))
                 {
                     //exit
@@ -183,7 +184,7 @@ namespace Sprint0
                 // default state for link
                 else
                     sprite = StillSprite;
-                */
+                
 
             }
             // reset game to original state
@@ -194,6 +195,7 @@ namespace Sprint0
                 sprite = StillSprite;
                 xPos = 50; yPos = 100;
             }
+            */
             
             sprite.Update();
 
