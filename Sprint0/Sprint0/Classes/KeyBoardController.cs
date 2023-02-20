@@ -24,6 +24,8 @@ namespace Sprint0
         private IBlock blockSprite;
         private IItem itemSprite;
 
+        private ISprite greenArow;
+
         public Texture2D Texture { get; set; }
 
         private LinkMovingUp LinkUpSprite;
