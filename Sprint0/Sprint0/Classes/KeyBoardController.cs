@@ -19,6 +19,7 @@ namespace Sprint0
 
         public ISprite sprite;
         public ISprite StillSprite;
+        public ISprite DamagedSprite;
 
         private IBlock blockSprite;
         private IItem itemSprite;
@@ -29,7 +30,7 @@ namespace Sprint0
         private LinkMovingDown LinkDownSprite;
         private LinkMovingLeft LinkLeftSprite;
         private LinkMovingRight LinkRightSprite;
-        private LinkTakingDamage DamagedSprite;
+        
 
         private LinkLookingLeft linkLookingLeft;
         private LinkLookingRight linkLookingRight;
@@ -46,19 +47,19 @@ namespace Sprint0
         public int blockState;
         public int itemState;
 
-        private ICommand exitCommand;
-        private ICommand moveLeftCommand;
-        private ICommand moveRightCommand;
-        private ICommand moveUpCommand;
-        private ICommand moveDownCommand;
-        private ICommand linkDamagedCommand;
+        private ExitCommand exitCommand;
+        private LinkMoveLeftCommand moveLeftCommand;
+        private LinkMoveRightCommand moveRightCommand;
+        private LinkMoveUpCommand moveUpCommand;
+        private LinkMoveDownCommand moveDownCommand;
+        private LinkChangeSpriteCommand linkDamagedCommand;
 
-        private ICommand blockStateOne;
-        private ICommand blockStateTwo;
-        private ICommand itemStateOne;
-        private ICommand itemStateTwo;
+        private BlockChangeCommand blockStateOne;
+        private BlockChangeCommand blockStateTwo;
+        private ItemChangeCommand itemStateOne;
+        private ItemChangeCommand itemStateTwo;
 
-        private ICommand resetCommand;
+        private ResetCommand resetCommand;
 
 
         private Dictionary<Keys, ICommand> controllerMapping;
@@ -86,10 +87,10 @@ namespace Sprint0
             exitCommand = new ExitCommand(game1);
             moveLeftCommand = new LinkMoveLeftCommand(this, LinkLeftSprite, linkLookingLeft);
             moveRightCommand = new LinkMoveRightCommand(this, LinkRightSprite, linkLookingRight);
-            moveDownCommand = new LinkMoveUpCommand(this, LinkDownSprite, linkLookingDown);
-            moveUpCommand = new LinkMoveDownCommand(this, LinkUpSprite, linkLookingUp);
+            moveDownCommand = new LinkMoveDownCommand(this, LinkDownSprite, linkLookingDown);
+            moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
-            linkDamagedCommand = new LinkMoveRightCommand(this, DamagedSprite, StillSprite);
+            linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);

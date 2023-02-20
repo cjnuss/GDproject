@@ -72,18 +72,17 @@ namespace Sprint0
         }
         public void Update(int itemState)
         {
+            // frame updates if animated item
+            if (animKeys.Contains(itemIdx))
+            {
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
+            }
+
             if (currentCount >= totalCount)
             {
                 currentCount = 0;
-
-                // frame updates if animated item
-                if (animKeys.Contains(itemIdx))
-                {
-                    currentFrame++;
-                    if (currentFrame == totalFrames)
-                        currentFrame = 0;
-                }
-
                 // cycle forward in item list
                 if (itemState == 1)
                 {

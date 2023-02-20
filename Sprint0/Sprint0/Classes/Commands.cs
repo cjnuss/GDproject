@@ -21,6 +21,23 @@ namespace Sprint0
         }
     }
 
+    public class LinkChangeSpriteCommand : ICommand
+    {
+        private ISprite sprite;
+        private KeyBoardController KeyBoardController;
+
+        public LinkChangeSpriteCommand(KeyBoardController KeyBoardController, ISprite sprite)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.sprite = sprite;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.sprite = sprite;
+        }
+    }
+
     public class LinkMoveLeftCommand : ICommand
     {
         private ISprite sprite;
@@ -79,7 +96,7 @@ namespace Sprint0
         public void Execute()
         {
             KeyBoardController.sprite = sprite;
-            KeyBoardController.yPos++;
+            KeyBoardController.yPos--;
             KeyBoardController.StillSprite = linkLookingUp;
         }
     }
@@ -100,7 +117,7 @@ namespace Sprint0
         public void Execute()
         {
             KeyBoardController.sprite = sprite;
-            KeyBoardController.yPos--;
+            KeyBoardController.yPos++;
             KeyBoardController.StillSprite = linkLookingDown;
         }
     }
