@@ -14,9 +14,14 @@ namespace Sprint0
     {
         public Texture2D Texture { get; set; }
 
+        private int currentCount;
+        private int totalCount;
+
         public Block(Texture2D texture)
         {
             Texture = texture;
+            currentCount = 0;
+            totalCount = 10;
         }
 
         // list of 10 blocks to cycle through
@@ -37,26 +42,33 @@ namespace Sprint0
 
         public void Update(int blockState)
         {
-            // cycle forward in block list
-            if (blockState == 1)
+            if (currentCount >= totalCount)
             {
-                if (blockIdx <= 8)
-                    blockIdx++;
-                else
+                currentCount = 0;
+                // cycle forward in block list
+                if (blockState == 1)
+                {
+                    if (blockIdx <= 8)
+                        blockIdx++;
+                    else
+                        blockIdx = 0;
+                }
+                // cycle back in block list
+                if (blockState == 2)
+                {
+                    if (blockIdx >= 1)
+                        blockIdx--;
+                    else
+                        blockIdx = 9;
+                }
+                // reset back to original state
+                if (blockState == 0)
+                {
                     blockIdx = 0;
-            }
-            // cycle back in block list
-            if (blockState == 2)
+                }
+            } else
             {
-                if (blockIdx >= 1)
-                    blockIdx--;
-                else
-                    blockIdx = 9;
-            }
-            // reset back to original state
-            if (blockState == 0)
-            {
-                blockIdx = 0;
+                currentCount++;
             }
         }
 

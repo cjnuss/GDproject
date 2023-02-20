@@ -1,13 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSE3902sprint0
+namespace Sprint0
 {
     public class ExitCommand : ICommand
     {
@@ -59,6 +58,42 @@ namespace CSE3902sprint0
         {
             KeyBoardController.sprite = sprite;
             KeyBoardController.yPos = KeyBoardController.yPos + increment;
+        }
+    }
+
+    public class BlockChangeCommand : ICommand
+    {
+
+        private KeyBoardController KeyBoardController;
+        private int blockState;
+
+        public BlockChangeCommand(KeyBoardController KeyBoardController, int blockState)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.blockState = blockState;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.blockState = blockState;
+        }
+    }
+
+    public class ItemChangeCommand : ICommand
+    {
+
+        private KeyBoardController KeyBoardController;
+        private int itemState;
+
+        public ItemChangeCommand(KeyBoardController KeyBoardController, int itemState)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.itemState = itemState;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.itemState = itemState;
         }
     }
 }

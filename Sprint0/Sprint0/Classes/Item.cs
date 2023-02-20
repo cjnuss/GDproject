@@ -20,11 +20,17 @@ namespace Sprint0
         private int currentFrame;
         private int totalFrames;
 
+        private int currentCount;
+        private int totalCount;
+
         public Item(Texture2D texture)
         {
             Texture = texture;
             currentFrame = 0;
             totalFrames = 30;
+
+            currentCount = 0;
+            totalCount = 10;
         }
 
         // item information
@@ -66,48 +72,56 @@ namespace Sprint0
         }
         public void Update(int itemState)
         {
-            // frame updates if animated item
-            if (animKeys.Contains(itemIdx))
+            if (currentCount >= totalCount)
             {
-                currentFrame++;
-                if (currentFrame == totalFrames)
+                currentCount = 0;
+
+                // frame updates if animated item
+                if (animKeys.Contains(itemIdx))
+                {
+                    currentFrame++;
+                    if (currentFrame == totalFrames)
+                        currentFrame = 0;
+                }
+
+                // cycle forward in item list
+                if (itemState == 1)
+                {
+                    currentFrame = 0; // reset frames
+                    if (itemIdx <= items.Length - 2)
+                        if (animKeys.Contains(itemIdx)) // if animating
+                            itemIdx += 2; // skip over other animated half of item
+                        else
+                            itemIdx++; // go to next item
+                    else
+                        itemIdx = 0; // beginning of array
+                }
+                // cycle back in item list
+                if (itemState == 2)
+                {
                     currentFrame = 0;
-            }
-
-            // cycle forward in item list
-            if (itemState == 1)
-            {
-                currentFrame = 0; // reset frames
-                if (itemIdx <= items.Length-2)
-                    if (animKeys.Contains(itemIdx)) // if animating
-                        itemIdx += 2; // skip over other animated half of item
+                    if (itemIdx >= 1)
+                        if (animKeys.Contains(itemIdx))
+                            itemIdx -= 2;
+                        else
+                            itemIdx--;
                     else
-                        itemIdx++; // go to next item
-                else
-                    itemIdx = 0; // beginning of array
-            }
-            // cycle back in item list
-            if (itemState == 2)
-            {
-                currentFrame = 0;
-                if (itemIdx >= 1)
-                    if (animKeys.Contains(itemIdx))
-                        itemIdx -= 2;
-                    else
-                        itemIdx--;
-                else
-                    itemIdx = items.Length-1; // end of array
-            }
+                        itemIdx = items.Length - 1; // end of array
+                }
 
-            // reset back to original state
-            if (itemState == 0)
-            {
-                itemIdx = 0;
-            }
+                // reset back to original state
+                if (itemState == 0)
+                {
+                    itemIdx = 0;
+                }
 
-            // correct frame adjustment
-            if (animKeys.Contains(itemIdx - 1))
-                itemIdx--;
+                // correct frame adjustment
+                if (animKeys.Contains(itemIdx - 1))
+                    itemIdx--;
+            } else
+            {
+                currentCount++;
+            }
         }
 
         public void KeyItemUpdate(bool check, ref int itemState)

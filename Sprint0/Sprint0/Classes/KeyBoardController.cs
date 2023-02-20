@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using System.Security.Cryptography;
 using System.Runtime.CompilerServices;
+using System.ComponentModel.Design;
 
 namespace Sprint0
 {
@@ -17,8 +18,9 @@ namespace Sprint0
         private Game1 game1;
 
         public ISprite sprite;
-        public IBlock blockSprite;
-        public IItem itemSprite;
+
+        private IBlock blockSprite;
+        private IItem itemSprite;
 
         public Texture2D Texture { get; set; }
 
@@ -35,12 +37,23 @@ namespace Sprint0
         public int xPos;
         public int yPos;
 
-        private int oldBlockState;
-        private int blockState;
-        private int itemState;
+        public int blockState;
+        public int itemState;
 
-        private Dictionary<Keys, > controllerMapping;
+        private ICommand exitCommand;
+        private ICommand moveLeftCommand;
+        private ICommand moveRightCommand;
+        private ICommand moveUpCommand;
+        private ICommand moveDownCommand;
+        private ICommand linkDamagedCommand;
 
+        private ICommand blockStateOne;
+        private ICommand blockStateTwo;
+        private ICommand itemStateOne;
+        private ICommand itemStateTwo;
+
+
+        private Dictionary<Keys, ICommand> controllerMapping;
 
         public KeyBoardController(Game1 game1, Texture2D atlas, Texture2D blocks, Texture2D items, SpriteBatch spriteBatch)
         {
@@ -54,13 +67,39 @@ namespace Sprint0
             DamagedSprite = new LinkTakingDamage(atlas);
             block = new Block(blocks);
             item = new Item(items);
+            controllerMapping = new Dictionary<Keys, ICommand>();
+
+            exitCommand = new ExitCommand(game1);
+            moveLeftCommand = new LinkMoveHorizCommand(this, LinkLeftSprite, -1);
+            moveRightCommand = new LinkMoveHorizCommand(this, LinkRightSprite, 1);
+            moveDownCommand = new LinkMoveVertCommand(this, LinkDownSprite, 1);
+            moveUpCommand = new LinkMoveVertCommand(this, LinkUpSprite, -1);
+
+            linkDamagedCommand = new LinkMoveHorizCommand(this, DamagedSprite, 0);
+
+            blockStateOne = new BlockChangeCommand(this, 1);
+            blockStateTwo = new BlockChangeCommand(this, 2);
+            itemStateOne = new ItemChangeCommand(this, 1);
+            itemStateTwo = new ItemChangeCommand(this, 2);
+
+            controllerMapping.Add(Keys.Q, exitCommand);
+            controllerMapping.Add(Keys.W, moveUpCommand);
+            controllerMapping.Add(Keys.S, moveDownCommand);
+            controllerMapping.Add(Keys.A, moveLeftCommand);
+            controllerMapping.Add(Keys.D, moveRightCommand);
+            controllerMapping.Add(Keys.E, linkDamagedCommand);
+            controllerMapping.Add(Keys.Y, blockStateOne);
+            controllerMapping.Add(Keys.T, blockStateTwo);
+            controllerMapping.Add(Keys.I, itemStateOne);
+            controllerMapping.Add(Keys.U, itemStateTwo);
+
 
             // draw and update sprites
             blockSprite = block;
             itemSprite = item;
 
             xPos = 50; yPos = 100;
-            blockState = 0; oldBlockState = 0;
+            blockState = 0;
             itemState = 0;
             _spriteBatch = spriteBatch;
         }
@@ -69,7 +108,24 @@ namespace Sprint0
             // until the game is reset, do actions
             if (!Keyboard.GetState().IsKeyDown(Keys.R))
             {
+                
+                if(Keyboard.GetState().GetPressedKeyCount().Equals(0))
+                {
+                    sprite = StillSprite;
+                } else
+                {
+                    Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+                    foreach (Keys key in pressedKeys)
+                    {
+                        if (controllerMapping.ContainsKey(key))
+                            controllerMapping[key].Execute();
+                    }
+                }
+
                 //set game state so that once a key is pressed it will hold a state
+
+
+                /*
                 if (Keyboard.GetState().IsKeyDown(Keys.Q))
                 {
                     //exit
@@ -103,6 +159,7 @@ namespace Sprint0
                     sprite = LinkRightSprite;
                     xPos++;
                 }
+
                 else if (Keyboard.GetState().IsKeyDown(Keys.E))
                 {
                     //Use 'e' to cause Link to become damaged.
@@ -126,6 +183,8 @@ namespace Sprint0
                 // default state for link
                 else
                     sprite = StillSprite;
+                */
+
             }
             // reset game to original state
             else
@@ -138,8 +197,7 @@ namespace Sprint0
             
             sprite.Update();
 
-            if (oldBlockState != blockState)
-                blockSprite.Update(blockState);
+            blockSprite.Update(blockState);
 
             itemSprite.Update(itemState);
 
