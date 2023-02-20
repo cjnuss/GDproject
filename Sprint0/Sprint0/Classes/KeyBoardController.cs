@@ -28,7 +28,7 @@ namespace Sprint0
 
         public Texture2D Texture { get; set; }
 
-        private LinkMovingUp LinkUpSprite;
+        private LinkMovingUp LinkUpSprite;  
         private LinkMovingDown LinkDownSprite;
         private LinkMovingLeft LinkLeftSprite;
         private LinkMovingRight LinkRightSprite;
