@@ -21,43 +21,87 @@ namespace Sprint0
         }
     }
 
-    public class LinkMoveHorizCommand : ICommand
+    public class LinkMoveLeftCommand : ICommand
     {
         private ISprite sprite;
-        private int increment;
         private KeyBoardController KeyBoardController;
+        private ISprite linkLookingLeft;
 
-        public LinkMoveHorizCommand(KeyBoardController KeyBoardController, ISprite sprite, int increment)
+        public LinkMoveLeftCommand(KeyBoardController KeyBoardController, ISprite sprite, ISprite linkLookingLeft)
         {
             this.KeyBoardController = KeyBoardController;
             this.sprite = sprite;
-            this.increment = increment;
+            this.linkLookingLeft = linkLookingLeft;
         }
 
         public void Execute()
         {
             KeyBoardController.sprite = sprite;
-            KeyBoardController.xPos = KeyBoardController.xPos + increment;
+            KeyBoardController.xPos--;
+            KeyBoardController.StillSprite = linkLookingLeft;
         }
     }
 
-    public class LinkMoveVertCommand : ICommand
+    public class LinkMoveRightCommand : ICommand
     {
         private ISprite sprite;
-        private int increment;
         private KeyBoardController KeyBoardController;
+        private ISprite linkLookingRight;
 
-        public LinkMoveVertCommand(KeyBoardController KeyBoardController, ISprite sprite, int increment)
+        public LinkMoveRightCommand(KeyBoardController KeyBoardController, ISprite sprite, ISprite linkLookingRight)
         {
             this.KeyBoardController = KeyBoardController;
             this.sprite = sprite;
-            this.increment = increment;
+            this.linkLookingRight = linkLookingRight;
         }
 
         public void Execute()
         {
             KeyBoardController.sprite = sprite;
-            KeyBoardController.yPos = KeyBoardController.yPos + increment;
+            KeyBoardController.xPos++;
+            KeyBoardController.StillSprite = linkLookingRight;
+        }
+    }
+
+    public class LinkMoveUpCommand : ICommand
+    {
+        private ISprite sprite;
+        private KeyBoardController KeyBoardController;
+        private ISprite linkLookingUp;
+
+        public LinkMoveUpCommand(KeyBoardController KeyBoardController, ISprite sprite, ISprite linkLookingUp)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.sprite = sprite;
+            this.linkLookingUp = linkLookingUp;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.sprite = sprite;
+            KeyBoardController.yPos++;
+            KeyBoardController.StillSprite = linkLookingUp;
+        }
+    }
+
+    public class LinkMoveDownCommand : ICommand
+    {
+        private ISprite sprite;
+        private KeyBoardController KeyBoardController;
+        private ISprite linkLookingDown;
+
+        public LinkMoveDownCommand(KeyBoardController KeyBoardController, ISprite sprite, ISprite linkLookingDown)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.sprite = sprite;
+            this.linkLookingDown = linkLookingDown;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.sprite = sprite;
+            KeyBoardController.yPos--;
+            KeyBoardController.StillSprite = linkLookingDown;
         }
     }
 

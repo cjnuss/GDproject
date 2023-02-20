@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class LinkDoingNothing : ISprite
+    internal class LinkLookingUp : ISprite
     {
         public Texture2D Texture { get; set; }
 
-        public LinkDoingNothing(Texture2D texture)
+        public LinkLookingUp(Texture2D texture)
         {
             Texture = texture;
 
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle sourceRectangle = new Rectangle(1, 11, 16, 16);
+            Rectangle sourceRectangle = new Rectangle(69, 11, 16, 16);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 40);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

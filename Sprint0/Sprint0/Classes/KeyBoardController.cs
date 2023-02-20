@@ -18,6 +18,7 @@ namespace Sprint0
         private Game1 game1;
 
         public ISprite sprite;
+        public ISprite StillSprite;
 
         private IBlock blockSprite;
         private IItem itemSprite;
@@ -27,9 +28,14 @@ namespace Sprint0
         private LinkMovingUp LinkUpSprite;
         private LinkMovingDown LinkDownSprite;
         private LinkMovingLeft LinkLeftSprite;
-        private LinkDoingNothing StillSprite;
         private LinkMovingRight LinkRightSprite;
         private LinkTakingDamage DamagedSprite;
+
+        private LinkLookingLeft linkLookingLeft;
+        private LinkLookingRight linkLookingRight;
+        private LinkLookingDown linkLookingDown;
+        private LinkLookingUp linkLookingUp;
+
         private Block block;
         private Item item;
         private SpriteBatch _spriteBatch;
@@ -65,19 +71,25 @@ namespace Sprint0
             LinkDownSprite = new LinkMovingDown(atlas);
             LinkLeftSprite = new LinkMovingLeft(atlas);
             LinkUpSprite = new LinkMovingUp(atlas);
-            StillSprite = new LinkDoingNothing(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
             block = new Block(blocks);
             item = new Item(items);
             controllerMapping = new Dictionary<Keys, ICommand>();
 
-            exitCommand = new ExitCommand(game1);
-            moveLeftCommand = new LinkMoveHorizCommand(this, LinkLeftSprite, -1);
-            moveRightCommand = new LinkMoveHorizCommand(this, LinkRightSprite, 1);
-            moveDownCommand = new LinkMoveVertCommand(this, LinkDownSprite, 1);
-            moveUpCommand = new LinkMoveVertCommand(this, LinkUpSprite, -1);
+            linkLookingLeft = new LinkLookingLeft(atlas);
+            linkLookingDown = new LinkLookingDown(atlas);
+            linkLookingUp = new LinkLookingUp(atlas);
+            linkLookingRight = new LinkLookingRight(atlas);
 
-            linkDamagedCommand = new LinkMoveHorizCommand(this, DamagedSprite, 0);
+            StillSprite = new LinkLookingDown(atlas);
+
+            exitCommand = new ExitCommand(game1);
+            moveLeftCommand = new LinkMoveLeftCommand(this, LinkLeftSprite, linkLookingLeft);
+            moveRightCommand = new LinkMoveRightCommand(this, LinkRightSprite, linkLookingRight);
+            moveDownCommand = new LinkMoveUpCommand(this, LinkDownSprite, linkLookingDown);
+            moveUpCommand = new LinkMoveDownCommand(this, LinkUpSprite, linkLookingUp);
+
+            linkDamagedCommand = new LinkMoveRightCommand(this, DamagedSprite, StillSprite);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -111,6 +123,7 @@ namespace Sprint0
         public void Update()
         {
             sprite = StillSprite;
+
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             foreach (Keys key in pressedKeys)
             {
@@ -196,7 +209,7 @@ namespace Sprint0
                 xPos = 50; yPos = 100;
             }
             */
-            
+
             sprite.Update();
 
             blockSprite.Update(blockState);
