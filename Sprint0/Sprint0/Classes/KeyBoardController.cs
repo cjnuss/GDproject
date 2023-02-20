@@ -99,7 +99,7 @@ namespace Sprint0
             itemStateOne = new ItemChangeCommand(this, 1);
             itemStateTwo = new ItemChangeCommand(this, 2);
 
-            resetCommand = new ResetCommand(this, StillSprite);
+            resetCommand = new ResetCommand(this, linkLookingDown);
 
             controllerMapping.Add(Keys.Q, exitCommand);
             controllerMapping.Add(Keys.W, moveUpCommand);
@@ -128,11 +128,27 @@ namespace Sprint0
             sprite = StillSprite;
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys key in pressedKeys)
+
+            if (pressedKeys.Contains(Keys.W))
+                controllerMapping[Keys.W].Execute();
+            else if (pressedKeys.Contains(Keys.S))
+                controllerMapping[Keys.S].Execute();
+            else if (pressedKeys.Contains(Keys.A))
+                controllerMapping[Keys.A].Execute();
+            else if (pressedKeys.Contains(Keys.D))
+                controllerMapping[Keys.D].Execute();
+            else
             {
-                if (controllerMapping.ContainsKey(key))
-                    controllerMapping[key].Execute();
+                foreach (Keys key in pressedKeys)
+                {
+                    if (controllerMapping.ContainsKey(key))
+                        controllerMapping[key].Execute();
+
+                    if (key.Equals(Keys.R))
+                        StillSprite = linkLookingDown;
+                }
             }
+            
 
             /*
             // until the game is reset, do actions
