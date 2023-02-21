@@ -40,6 +40,11 @@ namespace Sprint0
         private LinkLookingDown linkLookingDown;
         private LinkLookingUp linkLookingUp;
 
+        private LinkAttackLeft linkAttackLeft;
+        private LinkAttackRight linkAttackRight;
+        private LinkAttackDown linkAttackDown;
+        private LinkAttackUp linkAttackUp;  
+
         private Block block;
         private Item item;
         private SpriteBatch _spriteBatch;
