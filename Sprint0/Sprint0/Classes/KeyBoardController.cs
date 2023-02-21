@@ -57,6 +57,7 @@ namespace Sprint0
         private LinkMoveUpCommand moveUpCommand;
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
+        private LinkChangeSpriteCommand linkThrowDownCommand;
 
         private BlockChangeCommand blockStateOne;
         private BlockChangeCommand blockStateTwo;
