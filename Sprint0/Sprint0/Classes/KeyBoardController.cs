@@ -23,6 +23,7 @@ namespace Sprint0
 
         private IBlock blockSprite;
         private IItem itemSprite;
+        private Enemy enemySprite;
 
         private ISprite greenArow;
 
@@ -48,6 +49,7 @@ namespace Sprint0
 
         public int blockState;
         public int itemState;
+        public int enemyState;
 
         private ExitCommand exitCommand;
         private LinkMoveLeftCommand moveLeftCommand;
@@ -60,6 +62,8 @@ namespace Sprint0
         private BlockChangeCommand blockStateTwo;
         private ItemChangeCommand itemStateOne;
         private ItemChangeCommand itemStateTwo;
+        private EnemyChangeCommand enemyStateOne;
+        private EnemyChangeCommand enemyStateTwo;
 
         private ResetCommand resetCommand;
 
@@ -98,6 +102,8 @@ namespace Sprint0
             blockStateTwo = new BlockChangeCommand(this, 2);
             itemStateOne = new ItemChangeCommand(this, 1);
             itemStateTwo = new ItemChangeCommand(this, 2);
+            enemyStateOne = new EnemyChangeCommand(this, 1);
+            enemyStateTwo = new EnemyChangeCommand(this, 2);
 
             resetCommand = new ResetCommand(this, linkLookingDown);
 
@@ -112,15 +118,19 @@ namespace Sprint0
             controllerMapping.Add(Keys.I, itemStateOne);
             controllerMapping.Add(Keys.U, itemStateTwo);
             controllerMapping.Add(Keys.R, resetCommand);
+            controllerMapping.Add(Keys.O, enemyStateOne);
+            controllerMapping.Add(Keys.P, enemyStateTwo);
 
 
             // draw and update sprites
             blockSprite = block;
             itemSprite = item;
+            enemySprite = new Enemy(game1);
 
             xPos = 50; yPos = 100;
             blockState = 0;
             itemState = 0;
+            enemyState = 0;
             _spriteBatch = spriteBatch;
         }
         public void Update()
@@ -232,16 +242,18 @@ namespace Sprint0
             sprite.Update();
 
             blockSprite.Update(blockState);
-
             itemSprite.Update(itemState);
+            enemySprite.Update(enemyState);
 
             // set default states
             blockState = 3;
-            itemState = 3;
+            itemState = 3; 
+            enemyState = 3;
 
             sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
             blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
             itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
+            enemySprite.Draw(_spriteBatch);
         }
 
     }

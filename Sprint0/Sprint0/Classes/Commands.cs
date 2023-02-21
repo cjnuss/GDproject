@@ -138,6 +138,7 @@ namespace Sprint0
         {
             KeyBoardController.blockState = 0;
             KeyBoardController.itemState = 0;
+            KeyBoardController.enemyState= 0;
             KeyBoardController.sprite = sprite;
             KeyBoardController.xPos = 50; KeyBoardController.yPos = 100;
 
@@ -177,6 +178,22 @@ namespace Sprint0
         public void Execute()
         {
             KeyBoardController.itemState = itemState;
+        }
+    }
+    public class EnemyChangeCommand : ICommand
+    {
+        private KeyBoardController KeyBoardController;
+        private int EnemyState;
+
+        public EnemyChangeCommand(KeyBoardController keyboardController, int enemyState)
+        {
+            this.KeyBoardController = keyboardController;
+            this.EnemyState = enemyState;
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.enemyState = EnemyState;
         }
     }
 }
