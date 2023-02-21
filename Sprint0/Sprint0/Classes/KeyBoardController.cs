@@ -47,6 +47,7 @@ namespace Sprint0
         public int yPos;
 
         public int blockState;
+        public int oldBlockState;
         public int itemState;
 
         private ExitCommand exitCommand;
@@ -56,8 +57,8 @@ namespace Sprint0
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
 
-        private BlockChangeCommand blockStateOne;
-        private BlockChangeCommand blockStateTwo;
+        private BlockChangeCommand incBlock;
+        private BlockChangeCommand decBlock;
         private ItemChangeCommand itemStateOne;
         private ItemChangeCommand itemStateTwo;
 
@@ -77,6 +78,7 @@ namespace Sprint0
             DamagedSprite = new LinkTakingDamage(atlas);
             block = new Block(blocks);
             item = new Item(items);
+
             controllerMapping = new Dictionary<Keys, ICommand>();
 
             linkLookingLeft = new LinkLookingLeft(atlas);
@@ -94,8 +96,10 @@ namespace Sprint0
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
 
-            blockStateOne = new BlockChangeCommand(this, 1);
-            blockStateTwo = new BlockChangeCommand(this, 2);
+            blockState = 1;
+            oldBlockState = 1;
+            incBlock = new BlockChangeCommand(this, blockState);
+            decBlock = new BlockChangeCommand(this, oldBlockState);
             itemStateOne = new ItemChangeCommand(this, 1);
             itemStateTwo = new ItemChangeCommand(this, 2);
 
@@ -107,8 +111,8 @@ namespace Sprint0
             controllerMapping.Add(Keys.A, moveLeftCommand);
             controllerMapping.Add(Keys.D, moveRightCommand);
             controllerMapping.Add(Keys.E, linkDamagedCommand);
-            controllerMapping.Add(Keys.Y, blockStateOne);
-            controllerMapping.Add(Keys.T, blockStateTwo);
+            controllerMapping.Add(Keys.Y, incBlock);
+            controllerMapping.Add(Keys.T, decBlock);
             controllerMapping.Add(Keys.I, itemStateOne);
             controllerMapping.Add(Keys.U, itemStateTwo);
             controllerMapping.Add(Keys.R, resetCommand);
