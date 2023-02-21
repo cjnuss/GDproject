@@ -40,6 +40,11 @@ namespace Sprint0
         private LinkLookingDown linkLookingDown;
         private LinkLookingUp linkLookingUp;
 
+        private LinkThrowDown linkThrowDown;
+        private LinkThrowUp linkThrowUp;
+        private LinkThrowLeft linkThrowLeft;
+        private LinkThrowRight linkThrowRight;
+
         private Block block;
         private Item item;
         private SpriteBatch _spriteBatch;
@@ -57,7 +62,7 @@ namespace Sprint0
         private LinkMoveUpCommand moveUpCommand;
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
-        private LinkChangeSpriteCommand linkThrowDownCommand;
+        private LinkThrowCommand linkThrowCommand;
 
         private BlockChangeCommand blockStateOne;
         private BlockChangeCommand blockStateTwo;
@@ -80,6 +85,12 @@ namespace Sprint0
             LinkLeftSprite = new LinkMovingLeft(atlas);
             LinkUpSprite = new LinkMovingUp(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
+
+            linkThrowDown = new LinkThrowDown(atlas);
+            linkThrowUp = new LinkThrowUp(atlas);
+            linkThrowLeft = new LinkThrowLeft(atlas);
+            linkThrowRight = new LinkThrowRight(atlas);
+
             block = new Block(blocks);
             item = new Item(items);
             controllerMapping = new Dictionary<Keys, ICommand>();
@@ -98,6 +109,7 @@ namespace Sprint0
             moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
+            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -121,6 +133,7 @@ namespace Sprint0
             controllerMapping.Add(Keys.R, resetCommand);
             controllerMapping.Add(Keys.O, enemyStateOne);
             controllerMapping.Add(Keys.P, enemyStateTwo);
+            controllerMapping.Add(Keys.D1, linkThrowCommand);
 
 
             // draw and update sprites
