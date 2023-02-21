@@ -36,16 +36,22 @@ namespace Sprint0
 
         public Texture2D Texture { get; set; }
 
-        private LinkMovingUp LinkUpSprite;  
+        private LinkMovingUp LinkUpSprite;
         private LinkMovingDown LinkDownSprite;
         private LinkMovingLeft LinkLeftSprite;
         private LinkMovingRight LinkRightSprite;
-        
+
 
         private LinkLookingLeft linkLookingLeft;
         private LinkLookingRight linkLookingRight;
         private LinkLookingDown linkLookingDown;
         private LinkLookingUp linkLookingUp;
+
+
+        private LinkAttackLeft linkAttackLeft;
+        private LinkAttackRight linkAttackRight;
+        private LinkAttackDown linkAttackDown;
+        private LinkAttackUp linkAttackUp;
 
         private LinkThrowDown linkThrowDown;
         private LinkThrowUp linkThrowUp;
@@ -58,6 +64,7 @@ namespace Sprint0
 
         public int xPos;
         public int yPos;
+        public int dir;
 
         public int blockState;
         public int itemState;
@@ -115,6 +122,11 @@ namespace Sprint0
             linkLookingUp = new LinkLookingUp(atlas);
             linkLookingRight = new LinkLookingRight(atlas);
 
+            linkAttackDown = new LinkAttackDown(atlas);
+            linkAttackLeft = new LinkAttackLeft(atlas);
+            linkAttackRight = new LinkAttackRight(atlas);
+            linkAttackUp = new LinkAttackUp(atlas);
+
             StillSprite = new LinkLookingDown(atlas);
 
             exitCommand = new ExitCommand(game1);
@@ -157,6 +169,7 @@ namespace Sprint0
             enemySprite = new Enemy(game1);
 
             xPos = 50; yPos = 100;
+            dir = 0;
             blockState = 0;
             itemState = 0;
             enemyState = 0;
@@ -167,14 +180,21 @@ namespace Sprint0
             sprite = StillSprite;
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-
-            if (pressedKeys.Contains(Keys.W))
-                controllerMapping[Keys.W].Execute();
-            else if (pressedKeys.Contains(Keys.S))
+            //temp 1 = down, 2 = right, 3 = left, 4 = up
+            
+            if (pressedKeys.Contains(Keys.W)) { 
+            controllerMapping[Keys.W].Execute();
+            dir = 4;
+            }
+            else if (pressedKeys.Contains(Keys.S)) {
                 controllerMapping[Keys.S].Execute();
-            else if (pressedKeys.Contains(Keys.A))
+                dir = 1;
+            }
+            else if (pressedKeys.Contains(Keys.A)) {
                 controllerMapping[Keys.A].Execute();
-            else if (pressedKeys.Contains(Keys.D))
+                dir = 3;
+            }
+            else if (pressedKeys.Contains(Keys.D)) {
                 controllerMapping[Keys.D].Execute();
             else if (pressedKeys.Contains(Keys.D1))
             {
@@ -193,89 +213,35 @@ namespace Sprint0
                         controllerMapping[key].Execute();
 
                     if (key.Equals(Keys.R))
+                    {
                         StillSprite = linkLookingDown;
+                        dir = 1;
+                    }
                 }
             }
 
-
-            /*
-            // until the game is reset, do actions
-            if (!Keyboard.GetState().IsKeyDown(Keys.R))
+            //temp 1 = down, 2 = right, 3 = left, 4 = up
+            if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
             {
-
-                //set game state so that once a key is pressed it will hold a state
-
-
-                
-                if (Keyboard.GetState().IsKeyDown(Keys.Q))
-                {
-                    //exit
-                    game1.Exit();
-                }
-                else if (Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    //w key is pressed link will move up
-                    sprite = LinkUpSprite;
-                    yPos--;
-
-                }
-                else if (Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    //s key is press
-                    //link will move down
-                    sprite = LinkDownSprite;
-                    yPos++;
-
-                }
-                else if (Keyboard.GetState().IsKeyDown(Keys.A))
-                {
-                    //a key is press link will move left
-                    sprite = LinkLeftSprite;
-                    xPos--;
-
-                }
-                else if (Keyboard.GetState().IsKeyDown(Keys.D))
-                {
-                    //d key is press link will move right
-                    sprite = LinkRightSprite;
-                    xPos++;
-                }
-
-                else if (Keyboard.GetState().IsKeyDown(Keys.E))
-                {
-                    //Use 'e' to cause Link to become damaged.
-                    sprite = DamagedSprite;
-                }
-
-                // block actions
-                else if (Keyboard.GetState().IsKeyDown(Keys.Y))
-                    block.KeyBlockUpdate(true, ref oldBlockState, ref blockState);
-
-                else if (Keyboard.GetState().IsKeyDown(Keys.T))
-                    block.KeyBlockUpdate(false, ref oldBlockState, ref blockState);
-                
-                // item actions
-                else if (Keyboard.GetState().IsKeyDown(Keys.I))
-                    item.KeyItemUpdate(true, ref itemState);
-
-                else if (Keyboard.GetState().IsKeyDown(Keys.U))
-                    item.KeyItemUpdate(false, ref itemState);
-
-                // default state for link
-                else
-                    sprite = StillSprite;
-                
+                //link attack down
+                sprite = linkAttackDown;
 
             }
-            // reset game to original state
-            else
+            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
             {
-                blockState = 0;
-                itemState = 0;
-                sprite = StillSprite;
-                xPos = 50; yPos = 100;
+                //link attack down
+                sprite = linkAttackRight;
             }
-            */
+            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
+            {
+                //link attack down
+                sprite = linkAttackLeft;
+            }
+            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
+            {
+                //link attack down
+                sprite = linkAttackUp;
+            }
 
             greenArrow.Update();
             sprite.Update();
@@ -283,6 +249,7 @@ namespace Sprint0
             blockSprite.Update(blockState);
             itemSprite.Update(itemState);
             enemySprite.Update(enemyState);
+
 
             // set default states
             blockState = 3;
