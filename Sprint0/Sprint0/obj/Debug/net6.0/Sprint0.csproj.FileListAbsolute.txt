@@ -63,6 +63,7 @@ C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\re
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+<<<<<<< HEAD
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\block.xnb
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\Desc.xnb
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1 flippedv2.xnb
@@ -98,3 +99,10 @@ C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\Yura\source\repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+=======
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1 flippedv2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1v2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2 flippedv2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2v2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\npc sheetv2.xnb
+>>>>>>> bc5b8b115ed94a18e1c30ce95752c4d67c5eb286
