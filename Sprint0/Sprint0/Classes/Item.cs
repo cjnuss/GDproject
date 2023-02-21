@@ -27,7 +27,7 @@ namespace Sprint0
         {
             Texture = texture;
             currentFrame = 0;
-            totalFrames = 30;
+            totalFrames = 20;
 
             currentCount = 0;
             totalCount = 10;
@@ -56,13 +56,13 @@ namespace Sprint0
             Rectangle destinationRectangle = new Rectangle(0, 0, 0, 0);
 
             // first set of animated frames OR non-animated item
-            if (currentFrame <= 15)
+            if (currentFrame <= 10)
             {
                 sourceRectangle = items[itemIdx]; // draw first sprite at itemIdx
                 destinationRectangle = new Rectangle((int)location.X, (int)location.Y, itemWidth[itemIdx] * 3, itemHeight[itemIdx] * 3);
             }
             // second set of animated frames
-            else if (currentFrame > 15)
+            else if (currentFrame > 10)
             {
                 sourceRectangle = items[itemIdx + 1]; // draw second sprite at next index
                 destinationRectangle = new Rectangle((int)location.X, (int)location.Y, itemWidth[itemIdx] * 3, itemHeight[itemIdx] * 3);

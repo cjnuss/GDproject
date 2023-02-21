@@ -93,3 +93,8 @@ C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\re
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\brian\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1 flippedv2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1v2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2 flippedv2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2v2.xnb
+C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\npc sheetv2.xnb

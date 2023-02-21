@@ -48,7 +48,6 @@ namespace Sprint0
         public int yPos;
 
         public int blockState;
-        public int oldBlockState;
         public int itemState;
         public int enemyState;
 
@@ -59,15 +58,14 @@ namespace Sprint0
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
 
-        private BlockChangeCommand incBlock;
-        private BlockChangeCommand decBlock;
+        private BlockChangeCommand blockStateOne;
+        private BlockChangeCommand blockStateTwo;
         private ItemChangeCommand itemStateOne;
         private ItemChangeCommand itemStateTwo;
         private EnemyChangeCommand enemyStateOne;
         private EnemyChangeCommand enemyStateTwo;
 
         private ResetCommand resetCommand;
-
 
         private Dictionary<Keys, ICommand> controllerMapping;
 
@@ -80,6 +78,7 @@ namespace Sprint0
             LinkLeftSprite = new LinkMovingLeft(atlas);
             LinkUpSprite = new LinkMovingUp(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
+
             block = new Block(blocks);
             item = new Item(items);
 
@@ -100,10 +99,8 @@ namespace Sprint0
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
 
-            blockState = 1;
-            oldBlockState = 1;
-            incBlock = new BlockChangeCommand(this, blockState);
-            decBlock = new BlockChangeCommand(this, oldBlockState);
+            blockStateOne = new BlockChangeCommand(this, 1);
+            blockStateTwo = new BlockChangeCommand(this, 2);
             itemStateOne = new ItemChangeCommand(this, 1);
             itemStateTwo = new ItemChangeCommand(this, 2);
             enemyStateOne = new EnemyChangeCommand(this, 1);
@@ -112,16 +109,17 @@ namespace Sprint0
             resetCommand = new ResetCommand(this, linkLookingDown);
 
             controllerMapping.Add(Keys.Q, exitCommand);
+            controllerMapping.Add(Keys.R, resetCommand);
+
             controllerMapping.Add(Keys.W, moveUpCommand);
             controllerMapping.Add(Keys.S, moveDownCommand);
             controllerMapping.Add(Keys.A, moveLeftCommand);
             controllerMapping.Add(Keys.D, moveRightCommand);
             controllerMapping.Add(Keys.E, linkDamagedCommand);
-            controllerMapping.Add(Keys.Y, incBlock);
-            controllerMapping.Add(Keys.T, decBlock);
+            controllerMapping.Add(Keys.Y, blockStateOne);
+            controllerMapping.Add(Keys.T, blockStateTwo);
             controllerMapping.Add(Keys.I, itemStateOne);
             controllerMapping.Add(Keys.U, itemStateTwo);
-            controllerMapping.Add(Keys.R, resetCommand);
             controllerMapping.Add(Keys.O, enemyStateOne);
             controllerMapping.Add(Keys.P, enemyStateTwo);
 
@@ -244,7 +242,6 @@ namespace Sprint0
             */
 
             sprite.Update();
-
             blockSprite.Update(blockState);
             itemSprite.Update(itemState);
             enemySprite.Update(enemyState);
