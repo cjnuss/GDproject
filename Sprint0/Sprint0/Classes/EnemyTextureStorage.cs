@@ -70,12 +70,19 @@ namespace Sprint0
 
         public static Rectangle OldManSource = new Rectangle(1, 11, 16, 16);
 
-        public static Rectangle GoriyaDown = new Rectangle(222, 11, 16, 16);
         public static Rectangle GoriyaUp = new Rectangle(239, 11, 16, 16);
-        public static Rectangle GoriyaLeft1 = new Rectangle(256, 11, 16, 16);
-        public static Rectangle GoriyaLeft2 = new Rectangle(273, 11, 16, 16);
-        public static Rectangle GoriyaRight1 = new Rectangle(168, 11, 16, 16);
-        public static Rectangle GoriyaRight2 = new Rectangle(185, 11, 16, 16);
+        public static Rectangle GoriyaDown = new Rectangle(222, 11, 16, 16);
+        public static Rectangle GoriyaRight = new Rectangle(256, 11, 16, 16);
+        public static Rectangle GoriyaRight1 = new Rectangle(273, 11, 16, 16);
+
+        public static Rectangle GoriyaUp1 = new Rectangle(202, 11, 16, 16);
+        public static Rectangle GoriyaDown1 = new Rectangle(219, 11, 16, 16);
+        public static Rectangle GoriyaLeft = new Rectangle(185, 11, 16, 16);
+        public static Rectangle GoriyaLeft1 = new Rectangle(168, 11, 16, 16);
+
+        public static Rectangle GoriyaProjectile1 = new Rectangle(290, 11, 8, 16);
+        public static Rectangle GoriyaProjectile2 = new Rectangle(299, 11, 8, 16);
+        public static Rectangle GoriyaProjectile3 = new Rectangle(308, 11, 8, 16);
 
         public static Rectangle Gel1 = new Rectangle(1, 11, 8, 16);
         public static Rectangle Gel2 = new Rectangle(10, 11, 8, 16);

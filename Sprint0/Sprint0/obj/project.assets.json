@@ -102,19 +102,37 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\chris\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Yura\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
       "projectName": "Sprint0",
       "projectPath": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
       "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Yura\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
+      "projectName": "Sprint0",
+      "projectPath": "C:\\Users\\Yura\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
+      "packagesPath": "C:\\Users\\Yura\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yura\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\",
+>>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Yura\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

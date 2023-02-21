@@ -196,4 +196,51 @@ namespace Sprint0
             KeyBoardController.enemyState = EnemyState;
         }
     }
+
+    public class LinkThrowCommand : ICommand
+    {
+        private ISprite spriteDown;
+        private ISprite spriteUp;
+        private ISprite spriteLeft;
+        private ISprite spriteRight;
+
+        private ISprite throwDown;
+        private ISprite throwUp;
+        private ISprite throwLeft;
+        private ISprite throwRight;
+
+        private KeyBoardController KeyBoardController;
+
+        public LinkThrowCommand(KeyBoardController KeyBoardController, ISprite throwDown, ISprite spriteDown, ISprite throwUp, ISprite spriteUp, ISprite throwLeft, ISprite spriteLeft, ISprite throwRight, ISprite spriteRight)
+        {
+            this.KeyBoardController = KeyBoardController;
+
+            this.spriteDown = spriteDown;
+            this.spriteUp = spriteUp;
+            this.spriteLeft = spriteLeft;
+            this.spriteRight = spriteRight;
+
+            this.throwUp = throwUp;
+            this.throwDown = throwDown;
+            this.throwLeft = throwLeft;
+            this.throwRight = throwRight;
+        }
+
+        public void Execute()
+        {
+            if(KeyBoardController.sprite.Equals(spriteDown))
+            {
+                KeyBoardController.sprite = throwDown;
+            } else if(KeyBoardController.sprite.Equals(spriteUp))
+            {
+                KeyBoardController.sprite = throwUp;
+            } else if(KeyBoardController.sprite.Equals(spriteLeft))
+            {
+                KeyBoardController.sprite = throwLeft;
+            } else if(KeyBoardController.sprite.Equals(spriteRight))
+            {
+                KeyBoardController.sprite = throwRight;
+            }
+        }
+    }
 }

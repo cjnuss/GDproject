@@ -40,10 +40,17 @@ namespace Sprint0
         private LinkLookingDown linkLookingDown;
         private LinkLookingUp linkLookingUp;
 
+<<<<<<< HEAD
         private LinkAttackLeft linkAttackLeft;
         private LinkAttackRight linkAttackRight;
         private LinkAttackDown linkAttackDown;
         private LinkAttackUp linkAttackUp;
+=======
+        private LinkThrowDown linkThrowDown;
+        private LinkThrowUp linkThrowUp;
+        private LinkThrowLeft linkThrowLeft;
+        private LinkThrowRight linkThrowRight;
+>>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
 
         private Block block;
         private Item item;
@@ -63,6 +70,7 @@ namespace Sprint0
         private LinkMoveUpCommand moveUpCommand;
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
+        private LinkThrowCommand linkThrowCommand;
 
         private BlockChangeCommand blockStateOne;
         private BlockChangeCommand blockStateTwo;
@@ -72,6 +80,7 @@ namespace Sprint0
         private EnemyChangeCommand enemyStateTwo;
 
         private ResetCommand resetCommand;
+
 
         private Dictionary<Keys, ICommand> controllerMapping;
 
@@ -85,9 +94,13 @@ namespace Sprint0
             LinkUpSprite = new LinkMovingUp(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
 
+            linkThrowDown = new LinkThrowDown(atlas);
+            linkThrowUp = new LinkThrowUp(atlas);
+            linkThrowLeft = new LinkThrowLeft(atlas);
+            linkThrowRight = new LinkThrowRight(atlas);
+
             block = new Block(blocks);
             item = new Item(items);
-
             controllerMapping = new Dictionary<Keys, ICommand>();
 
             linkLookingLeft = new LinkLookingLeft(atlas);
@@ -109,6 +122,7 @@ namespace Sprint0
             moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
+            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -120,8 +134,6 @@ namespace Sprint0
             resetCommand = new ResetCommand(this, linkLookingDown);
 
             controllerMapping.Add(Keys.Q, exitCommand);
-            controllerMapping.Add(Keys.R, resetCommand);
-
             controllerMapping.Add(Keys.W, moveUpCommand);
             controllerMapping.Add(Keys.S, moveDownCommand);
             controllerMapping.Add(Keys.A, moveLeftCommand);
@@ -131,8 +143,10 @@ namespace Sprint0
             controllerMapping.Add(Keys.T, blockStateTwo);
             controllerMapping.Add(Keys.I, itemStateOne);
             controllerMapping.Add(Keys.U, itemStateTwo);
+            controllerMapping.Add(Keys.R, resetCommand);
             controllerMapping.Add(Keys.O, enemyStateOne);
             controllerMapping.Add(Keys.P, enemyStateTwo);
+            controllerMapping.Add(Keys.D1, linkThrowCommand);
 
 
             // draw and update sprites
@@ -209,6 +223,7 @@ namespace Sprint0
             }
 
             sprite.Update();
+
             blockSprite.Update(blockState);
             itemSprite.Update(itemState);
             enemySprite.Update(enemyState);
