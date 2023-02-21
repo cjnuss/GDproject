@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Security.Cryptography;
 using System.Runtime.CompilerServices;
 using System.ComponentModel.Design;
+using Sprint0.Classes;
 
 namespace Sprint0
 {
@@ -25,7 +26,13 @@ namespace Sprint0
         private IItem itemSprite;
         private Enemy enemySprite;
 
-        private ISprite greenArow;
+        private EmptySprtie emptySprtie;
+        public ISprite greenArrow;
+
+        private LinkGreenArrowRight greenArrowRight;
+        private LinkGreenArrowLeft greenArrowLeft;
+        private LinkGreenArrowUp greenArrowUp;
+        private LinkGreenArrowDown greenArrowDown;
 
         public Texture2D Texture { get; set; }
 
@@ -86,6 +93,14 @@ namespace Sprint0
             LinkUpSprite = new LinkMovingUp(atlas);
             DamagedSprite = new LinkTakingDamage(atlas);
 
+            greenArrowRight = new LinkGreenArrowRight(atlas);
+            greenArrowLeft = new LinkGreenArrowLeft(atlas);
+            greenArrowUp = new LinkGreenArrowUp(atlas);
+            greenArrowDown = new LinkGreenArrowDown(atlas);
+
+            emptySprtie = new EmptySprtie(atlas);
+            greenArrow = emptySprtie;
+
             linkThrowDown = new LinkThrowDown(atlas);
             linkThrowUp = new LinkThrowUp(atlas);
             linkThrowLeft = new LinkThrowLeft(atlas);
@@ -109,7 +124,7 @@ namespace Sprint0
             moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
-            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight);
+            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight, greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -161,6 +176,15 @@ namespace Sprint0
                 controllerMapping[Keys.A].Execute();
             else if (pressedKeys.Contains(Keys.D))
                 controllerMapping[Keys.D].Execute();
+            else if (pressedKeys.Contains(Keys.D1))
+            {
+                greenArrow = emptySprtie;
+                greenArrowRight.registerPos(xPos, yPos);
+                greenArrowLeft.registerPos(xPos, yPos);
+                greenArrowDown.registerPos(xPos, yPos);
+                greenArrowUp.registerPos(xPos, yPos);
+                controllerMapping[Keys.D1].Execute();
+            }
             else
             {
                 foreach (Keys key in pressedKeys)
@@ -172,7 +196,7 @@ namespace Sprint0
                         StillSprite = linkLookingDown;
                 }
             }
-            
+
 
             /*
             // until the game is reset, do actions
@@ -253,6 +277,7 @@ namespace Sprint0
             }
             */
 
+            greenArrow.Update();
             sprite.Update();
 
             blockSprite.Update(blockState);
@@ -264,6 +289,7 @@ namespace Sprint0
             itemState = 3; 
             enemyState = 3;
 
+            greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
             sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
             blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
             itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
