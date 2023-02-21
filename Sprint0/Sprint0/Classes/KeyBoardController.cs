@@ -40,17 +40,16 @@ namespace Sprint0
         private LinkLookingDown linkLookingDown;
         private LinkLookingUp linkLookingUp;
 
-<<<<<<< HEAD
+
         private LinkAttackLeft linkAttackLeft;
         private LinkAttackRight linkAttackRight;
         private LinkAttackDown linkAttackDown;
         private LinkAttackUp linkAttackUp;
-=======
+
         private LinkThrowDown linkThrowDown;
         private LinkThrowUp linkThrowUp;
         private LinkThrowLeft linkThrowLeft;
         private LinkThrowRight linkThrowRight;
->>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
 
         private Block block;
         private Item item;
