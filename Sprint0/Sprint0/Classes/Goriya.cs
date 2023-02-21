@@ -64,7 +64,7 @@ namespace Sprint0
             currentFrame = 0;
             textureFrame = 0;
             direction = RNG.Next(0, 4);
-            location = new Vector2(200, 150);
+            location = new Vector2(600, 240);
             boomerangCount = 0;
         }
 
