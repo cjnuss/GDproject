@@ -200,6 +200,7 @@ namespace Sprint0
             else if (pressedKeys.Contains(Keys.D))
             {
                 controllerMapping[Keys.D].Execute();
+                dir = 2;
             }
             else if (pressedKeys.Contains(Keys.D1))
             {
