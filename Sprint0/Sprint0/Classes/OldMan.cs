@@ -22,7 +22,7 @@ namespace Sprint0
         {
             texture = EnemyTextureStorage.Instance.GetNPC();
             Rectangle source = EnemyTextureStorage.OldManSource;
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width, source.Height);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 2, source.Height * 2);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }
