@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class LinkGreenArrowRight : ISprite
+    internal class LinkGreenArrowUp : ISprite
     {
         //private int currentPos;
 
@@ -22,7 +22,7 @@ namespace Sprint0
         Rectangle destinationRectangle;
 
         public Texture2D Texture { get; set; }
-        public LinkGreenArrowRight(Texture2D texture)
+        public LinkGreenArrowUp(Texture2D texture)
         {
             Texture = texture;
             //currentPos = 0;
@@ -31,20 +31,22 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            if (currentPosX <= finalPosition)
+            if (currentPosY >= finalPosition)
             {
-                sourceRectangle = new Rectangle(10, 185, 16, 16);
-                destinationRectangle = new Rectangle(currentPosX, currentPosY, 32, 32);
-            } else if(currentPosX <= poofPosition)
+                sourceRectangle = new Rectangle(3, 185, 5, 16);
+                destinationRectangle = new Rectangle(currentPosX, currentPosY, 10, 32);
+            }
+            else if (currentPosY >= poofPosition)
             {
                 sourceRectangle = new Rectangle(53, 189, 8, 8);
                 destinationRectangle = new Rectangle(currentPosX, currentPosY, 16, 16);
-            } else
+            }
+            else
             {
                 sourceRectangle = new Rectangle(0, 0, 0, 0);
                 destinationRectangle = new Rectangle(currentPosX, currentPosY, 16, 16);
             }
-     
+
             //now draw the sprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
@@ -53,14 +55,14 @@ namespace Sprint0
         {
             currentPosX = x;
             currentPosY = y;
-            finalPosition = x + 5 * 16;
-            poofPosition = finalPosition + 5;
+            finalPosition = y - 5 * 16;
+            poofPosition = finalPosition - 5;
         }
 
         public void Update()
         {
             //set the frames for animation
-            currentPosX = currentPosX + 5;
+            currentPosY = currentPosY - 5;
             //need to add both dimensions later
             //if (currentPos < 299) currentPos--;
 
