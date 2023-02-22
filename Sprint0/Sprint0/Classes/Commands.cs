@@ -196,4 +196,65 @@ namespace Sprint0
             KeyBoardController.enemyState = EnemyState;
         }
     }
+
+    public class LinkThrowCommand : ICommand
+    {
+        private ISprite spriteDown;
+        private ISprite spriteUp;
+        private ISprite spriteLeft;
+        private ISprite spriteRight;
+
+        private ISprite throwDown;
+        private ISprite throwUp;
+        private ISprite throwLeft;
+        private ISprite throwRight;
+
+        private ISprite greenArrowRight;
+        private ISprite greenArrowLeft;
+        private ISprite greenArrowUp;
+        private ISprite greenArrowDown;
+
+        private KeyBoardController KeyBoardController;
+
+        public LinkThrowCommand(KeyBoardController KeyBoardController, ISprite throwDown, ISprite spriteDown, ISprite throwUp, ISprite spriteUp, ISprite throwLeft, ISprite spriteLeft, ISprite throwRight, ISprite spriteRight, ISprite greenArrowRight, ISprite greenArrowLeft, ISprite greenArrowUp, ISprite greenArrowDown)
+        {
+            this.KeyBoardController = KeyBoardController;
+
+            this.spriteDown = spriteDown;
+            this.spriteUp = spriteUp;
+            this.spriteLeft = spriteLeft;
+            this.spriteRight = spriteRight;
+
+            this.throwUp = throwUp;
+            this.throwDown = throwDown;
+            this.throwLeft = throwLeft;
+            this.throwRight = throwRight;
+
+            this.greenArrowRight = greenArrowRight;
+            this.greenArrowLeft = greenArrowLeft;
+            this.greenArrowUp = greenArrowUp;
+            this.greenArrowDown = greenArrowDown;
+        }
+
+        public void Execute()
+        {
+            if(KeyBoardController.sprite.Equals(spriteDown))
+            {
+                KeyBoardController.sprite = throwDown;
+                KeyBoardController.greenArrow = greenArrowDown;
+            } else if(KeyBoardController.sprite.Equals(spriteUp))
+            {
+                KeyBoardController.sprite = throwUp;
+                KeyBoardController.greenArrow = greenArrowUp;
+            } else if(KeyBoardController.sprite.Equals(spriteLeft))
+            {
+                KeyBoardController.sprite = throwLeft;
+                KeyBoardController.greenArrow = greenArrowLeft;
+            } else if(KeyBoardController.sprite.Equals(spriteRight))
+            {
+                KeyBoardController.sprite = throwRight;
+                KeyBoardController.greenArrow = greenArrowRight;
+            }
+        }
+    }
 }
