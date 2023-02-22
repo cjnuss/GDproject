@@ -105,7 +105,6 @@ C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Co
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2 flippedv2.xnb
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2v2.xnb
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\npc sheetv2.xnb
-<<<<<<< HEAD
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.dll
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\refint\Sprint0.dll
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
@@ -141,6 +140,5 @@ C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sp
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CopyComplete
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
-=======
 >>>>>>> bc5b8b115ed94a18e1c30ce95752c4d67c5eb286
 >>>>>>> 92d05f64daeb5a969601359d6d656a5b7a37a8db
