@@ -1,24 +1,18 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "+hLTaPaKbeype2BHqO4MxHEj6P+Wach8sIBSn2bo9tJ4mQnY4uqvYw9kwfff2d/YvSv3UCpM81lPJ8WCbUk29w==",
+  "dgSpecHash": "P3fYym8TGEHJZ2ZTXeZ+6gBORQk7pjSLe6oL3BBjIfHrpR28k5OJBoxnpjHzsDFdv0972kyztuj2+ucoWAm42w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yura\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
-=======
-  "dgSpecHash": "jlhkxq1hpOggl9irWvn9PbnuHPybCS86DOkNRd44P+j/fR9SmGtGE0y6r4p0y9FZzbCLyKAsntpkFmO4Sdf+wg==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
->>>>>>> ad289c4147d005570dc485932de9392ea5b977df
+  "projectFilePath": "C:\\Users\\jluki\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\chris\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\chris\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\jluki\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\jluki\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file C:\\Users\\jluki\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }

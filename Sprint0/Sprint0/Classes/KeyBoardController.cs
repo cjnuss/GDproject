@@ -181,21 +181,26 @@ namespace Sprint0
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             //temp 1 = down, 2 = right, 3 = left, 4 = up
-            
-            if (pressedKeys.Contains(Keys.W)) { 
-            controllerMapping[Keys.W].Execute();
-            dir = 4;
+
+            if (pressedKeys.Contains(Keys.W))
+            {
+                controllerMapping[Keys.W].Execute();
+                dir = 4;
             }
-            else if (pressedKeys.Contains(Keys.S)) {
+            else if (pressedKeys.Contains(Keys.S))
+            {
                 controllerMapping[Keys.S].Execute();
                 dir = 1;
             }
-            else if (pressedKeys.Contains(Keys.A)) {
+            else if (pressedKeys.Contains(Keys.A))
+            {
                 controllerMapping[Keys.A].Execute();
                 dir = 3;
             }
-            else if (pressedKeys.Contains(Keys.D)) {
+            else if (pressedKeys.Contains(Keys.D))
+            {
                 controllerMapping[Keys.D].Execute();
+            }
             else if (pressedKeys.Contains(Keys.D1))
             {
                 greenArrow = emptySprtie;
@@ -220,48 +225,48 @@ namespace Sprint0
                 }
             }
 
-            //temp 1 = down, 2 = right, 3 = left, 4 = up
-            if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
-            {
-                //link attack down
-                sprite = linkAttackDown;
+                //temp 1 = down, 2 = right, 3 = left, 4 = up
+                if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
+                {
+                    //link attack down
+                    sprite = linkAttackDown;
 
+                }
+                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
+                {
+                    //link attack down
+                    sprite = linkAttackRight;
+                }
+                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
+                {
+                    //link attack down
+                    sprite = linkAttackLeft;
+                }
+                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
+                {
+                    //link attack down
+                    sprite = linkAttackUp;
+                }
+
+                greenArrow.Update();
+                sprite.Update();
+
+                blockSprite.Update(blockState);
+                itemSprite.Update(itemState);
+                enemySprite.Update(enemyState);
+
+
+                // set default states
+                blockState = 3;
+                itemState = 3;
+                enemyState = 3;
+
+                greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
+                sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
+                blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
+                itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
+                enemySprite.Draw(_spriteBatch);
             }
-            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
-            {
-                //link attack down
-                sprite = linkAttackRight;
-            }
-            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
-            {
-                //link attack down
-                sprite = linkAttackLeft;
-            }
-            else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
-            {
-                //link attack down
-                sprite = linkAttackUp;
-            }
 
-            greenArrow.Update();
-            sprite.Update();
-
-            blockSprite.Update(blockState);
-            itemSprite.Update(itemState);
-            enemySprite.Update(enemyState);
-
-
-            // set default states
-            blockState = 3;
-            itemState = 3; 
-            enemyState = 3;
-
-            greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
-            sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
-            blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
-            itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
-            enemySprite.Draw(_spriteBatch);
         }
-
     }
-}
