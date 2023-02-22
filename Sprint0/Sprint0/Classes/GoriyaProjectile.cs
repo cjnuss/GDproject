@@ -28,7 +28,7 @@ namespace Sprint0
 
         public GoriyaProjectile(Vector2 location, int direction)
         {
-            location1 = new Vector2(location.X + 4, location.Y);
+            location1 = new Vector2(location.X + 8, location.Y);
             direction1 = direction;
             toDraw = true;
         }
@@ -105,7 +105,7 @@ namespace Sprint0
                 {
                     Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
                     Rectangle source = projectile[frame];
-                    Rectangle destinaton = new Rectangle((int)location1.X, (int)location1.Y, source.Width, source.Height);
+                    Rectangle destinaton = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 2, source.Height * 2);
                     spriteBatch.Draw(texture, destinaton, source, Color.White);
                 }
             }

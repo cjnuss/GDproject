@@ -90,7 +90,7 @@ namespace Sprint0
             }
 
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width, source.Height);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 2, source.Height * 2);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }
