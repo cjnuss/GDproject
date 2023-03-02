@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD
   <SourceFile>C:/Users/chris/source/repos/cjnuss/GDproject/Sprint0/Sprint0/Content/SpriteFont1.spritefont</SourceFile>
   <SourceTime>2023-02-20T23:00:15.1678552-05:00</SourceTime>
   <DestFile>C:/Users/chris/source/repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/Desc.xnb</DestFile>
   <DestTime>2023-03-01T20:01:56.2676934-05:00</DestTime>
+=======
+  <SourceFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/SpriteFont1.spritefont</SourceFile>
+  <SourceTime>2023-02-15T16:29:28.9954224-05:00</SourceTime>
+  <DestFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/Desc.xnb</DestFile>
+  <DestTime>2023-02-22T13:34:58.0123925-05:00</DestTime>
+>>>>>>> 1d9a13747ead501e697e6e670076ce9fdc6ad5a7
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
