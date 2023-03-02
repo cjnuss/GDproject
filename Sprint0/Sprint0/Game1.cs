@@ -14,7 +14,7 @@ namespace Sprint0
         private bool key;
 
         private KeyBoardController Kcontroller;
-        //private MouseController Mcontroller;
+        private MouseController Mcontroller;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,7 +26,6 @@ namespace Sprint0
 
     protected override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -74,11 +73,10 @@ namespace Sprint0
             {
                 Kcontroller.Update();
             }
-            //NEED THIS FOR LATER HOME SCREEN
-            //else if (!key)
-            //{
-            //    Mcontroller.Update();
-            //}
+            else if (!key)
+            {
+                Mcontroller.Update();
+            }
 
             _spriteBatch.End();
             base.Draw(gameTime);
