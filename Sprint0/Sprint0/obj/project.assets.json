@@ -107,11 +107,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
       "projectName": "Sprint0",
-      "projectPath": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
+      "projectPath": "C:\\Users\\chris\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\Sprint0.csproj",
       "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\",
+      "outputPath": "C:\\Users\\chris\\Source\\Repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -168,13 +168,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\chris\\source\\repos\\cjnuss\\GDproject\\Sprint0\\Sprint0\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

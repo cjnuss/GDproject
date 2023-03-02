@@ -69,3 +69,39 @@ C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sp
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
 C:\Users\jluki\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\level1.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\block.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\Desc.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1 flippedv2.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies1v2.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2 flippedv2.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\enemies2v2.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\items&weaponsSet.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\level1.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\linksprites.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\mario.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\npc sheetv2.xnb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.exe
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.deps.json
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.runtimeconfig.json
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Sprint0.pdb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.csproj.AssemblyReference.cache
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.AssemblyInfoInputs.cache
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.AssemblyInfo.cs
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CoreCompileInputs.cache
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CopyComplete
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\refint\Sprint0.dll
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
+C:\Users\chris\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
