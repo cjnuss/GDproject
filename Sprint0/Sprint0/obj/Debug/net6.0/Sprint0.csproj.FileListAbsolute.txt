@@ -68,3 +68,4 @@ C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\re
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\jluki\Source\Repos\cjnuss\GDproject\Sprint0\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\jluki\source\repos\cjnuss\GDproject\Sprint0\Sprint0\bin\Debug\net6.0\Content\level1.xnb
