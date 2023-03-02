@@ -136,7 +136,8 @@ namespace Sprint0
             moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
-            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight, greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
+            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight,
+                greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -148,10 +149,16 @@ namespace Sprint0
             resetCommand = new ResetCommand(this, linkLookingDown);
 
             controllerMapping.Add(Keys.Q, exitCommand);
+            //player movement
             controllerMapping.Add(Keys.W, moveUpCommand);
             controllerMapping.Add(Keys.S, moveDownCommand);
             controllerMapping.Add(Keys.A, moveLeftCommand);
             controllerMapping.Add(Keys.D, moveRightCommand);
+            controllerMapping.Add(Keys.Up, moveUpCommand);
+            controllerMapping.Add(Keys.Down, moveDownCommand);
+            controllerMapping.Add(Keys.Left, moveLeftCommand);
+            controllerMapping.Add(Keys.Right, moveRightCommand);
+
             controllerMapping.Add(Keys.E, linkDamagedCommand);
             controllerMapping.Add(Keys.Y, blockStateOne);
             controllerMapping.Add(Keys.T, blockStateTwo);
@@ -182,22 +189,22 @@ namespace Sprint0
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
             //temp 1 = down, 2 = right, 3 = left, 4 = up
 
-            if (pressedKeys.Contains(Keys.W))
+            if (pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.Up))
             {
                 controllerMapping[Keys.W].Execute();
                 dir = 4;
             }
-            else if (pressedKeys.Contains(Keys.S))
+            else if (pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.Down))
             {
                 controllerMapping[Keys.S].Execute();
                 dir = 1;
             }
-            else if (pressedKeys.Contains(Keys.A))
+            else if (pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.Left))
             {
                 controllerMapping[Keys.A].Execute();
                 dir = 3;
             }
-            else if (pressedKeys.Contains(Keys.D))
+            else if (pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Right))
             {
                 controllerMapping[Keys.D].Execute();
                 dir = 2;

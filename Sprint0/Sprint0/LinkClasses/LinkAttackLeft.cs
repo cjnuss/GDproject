@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class LinkAttackUp : ISprite
+    internal class LinkAttackLeft: ISprite
     {
         public Texture2D Texture { get; set; }
 
         private int currentFrame;
         private int totalFrames;
-        //private int currentPos;
+        private int currentPos;
         //private bool down;
 
-        public LinkAttackUp(Texture2D texture)
+        public LinkAttackLeft(Texture2D texture)
         {
             Texture = texture;
             //for animation
             currentFrame = 0;
             totalFrames = 20;
             //for movement
-            //currentPos = 0;
+            currentPos = 0;
             //down = false;
 
         }
@@ -37,26 +37,26 @@ namespace Sprint0
             if (currentFrame <= 5)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(1, 109, 16, 16);
+                sourceRectangle = new Rectangle(725, 77, 16, 16);
                 destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 40);
             }
             else if (currentFrame <= 10)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(18, 97, 16, 28);
-                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 69);
+                sourceRectangle = new Rectangle(697, 77, 27, 17);
+                destinationRectangle = new Rectangle((int)location.X - 28, (int)location.Y, 68, 42);
             }
             else if (currentFrame <= 15)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(35, 98, 16, 27);
-                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 68);
+                sourceRectangle = new Rectangle(673, 77, 23, 17);
+                destinationRectangle = new Rectangle((int)location.X - 18, (int)location.Y, 58, 42);
             }
             else if (currentFrame > 15)
             {
                 //animates one frame
-                sourceRectangle = new Rectangle(52, 106, 16, 19);
-                destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 40, 48);
+                sourceRectangle = new Rectangle(653, 77, 19, 17);
+                destinationRectangle = new Rectangle((int)location.X - 8, (int)location.Y, 48, 42);
             }
             //draw the sprite
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);

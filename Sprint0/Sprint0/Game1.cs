@@ -38,6 +38,7 @@ namespace Sprint0
             //BlockSpriteFactory.Instance.LoadBlockTextures(Content);
 
             // load in objects
+            // Texture2D level = Content.Load<Texture2D>("level1");
             Texture2D atlas = Content.Load<Texture2D>("linksprites");
             Texture2D blocks = Content.Load<Texture2D>("block");
             Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
@@ -56,6 +57,9 @@ namespace Sprint0
             GraphicsDevice.Clear(Color.LightSlateGray);
 
             _spriteBatch.Begin();
+
+            // Texture2D level = Content.Load<Texture2D>("level1");
+            // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
 
             // unless Q is pressed, keep updating
             if(!Keyboard.GetState().IsKeyDown(Keys.Q))
