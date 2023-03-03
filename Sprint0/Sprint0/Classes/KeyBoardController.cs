@@ -77,6 +77,7 @@ namespace Sprint0
         private LinkMoveDownCommand moveDownCommand;
         private LinkChangeSpriteCommand linkDamagedCommand;
         private LinkThrowCommand linkThrowCommand;
+        private LinkAttackCommand attackCommand;
 
         private BlockChangeCommand blockStateOne;
         private BlockChangeCommand blockStateTwo;
@@ -136,8 +137,9 @@ namespace Sprint0
             moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
 
             linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
-            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight,
-                greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
+            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkThrowUp, linkThrowLeft, linkThrowRight, greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
+
+            attackCommand = new LinkAttackCommand(this, linkAttackUp, linkAttackDown, linkAttackLeft, linkAttackRight);
 
             blockStateOne = new BlockChangeCommand(this, 1);
             blockStateTwo = new BlockChangeCommand(this, 2);
@@ -169,6 +171,8 @@ namespace Sprint0
             controllerMapping.Add(Keys.P, enemyStateTwo);
             controllerMapping.Add(Keys.D1, linkThrowCommand);
 
+            controllerMapping.Add(Keys.Z, attackCommand);
+
 
             // draw and update sprites
             blockSprite = block;
@@ -187,27 +191,22 @@ namespace Sprint0
             sprite = StillSprite;
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            //temp 1 = down, 2 = right, 3 = left, 4 = up
 
             if (pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.Up))
             {
                 controllerMapping[Keys.W].Execute();
-                dir = 4;
             }
             else if (pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.Down))
             {
                 controllerMapping[Keys.S].Execute();
-                dir = 1;
             }
             else if (pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.Left))
             {
                 controllerMapping[Keys.A].Execute();
-                dir = 3;
             }
             else if (pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Right))
             {
                 controllerMapping[Keys.D].Execute();
-                dir = 2;
             }
             else if (pressedKeys.Contains(Keys.D1))
             {
@@ -232,29 +231,6 @@ namespace Sprint0
                     }
                 }
             }
-
-                //temp 1 = down, 2 = right, 3 = left, 4 = up
-                if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
-                {
-                    //link attack down
-                    sprite = linkAttackDown;
-
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
-                {
-                    //link attack down
-                    sprite = linkAttackRight;
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
-                {
-                    //link attack down
-                    sprite = linkAttackLeft;
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
-                {
-                    //link attack down
-                    sprite = linkAttackUp;
-                }
 
                 greenArrow.Update();
                 sprite.Update();

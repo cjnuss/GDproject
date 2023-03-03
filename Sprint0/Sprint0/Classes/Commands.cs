@@ -53,6 +53,7 @@ namespace Sprint0
 
         public void Execute()
         {
+            KeyBoardController.dir = 3;
             KeyBoardController.sprite = sprite;
             KeyBoardController.xPos--;
             KeyBoardController.StillSprite = linkLookingLeft;
@@ -74,6 +75,7 @@ namespace Sprint0
 
         public void Execute()
         {
+            KeyBoardController.dir = 2;
             KeyBoardController.sprite = sprite;
             KeyBoardController.xPos++;
             KeyBoardController.StillSprite = linkLookingRight;
@@ -95,6 +97,7 @@ namespace Sprint0
 
         public void Execute()
         {
+            KeyBoardController.dir = 4;
             KeyBoardController.sprite = sprite;
             KeyBoardController.yPos--;
             KeyBoardController.StillSprite = linkLookingUp;
@@ -116,6 +119,7 @@ namespace Sprint0
 
         public void Execute()
         {
+            KeyBoardController.dir = 1;
             KeyBoardController.sprite = sprite;
             KeyBoardController.yPos++;
             KeyBoardController.StillSprite = linkLookingDown;
@@ -199,11 +203,6 @@ namespace Sprint0
 
     public class LinkThrowCommand : ICommand
     {
-        private ISprite spriteDown;
-        private ISprite spriteUp;
-        private ISprite spriteLeft;
-        private ISprite spriteRight;
-
         private ISprite throwDown;
         private ISprite throwUp;
         private ISprite throwLeft;
@@ -216,14 +215,9 @@ namespace Sprint0
 
         private KeyBoardController KeyBoardController;
 
-        public LinkThrowCommand(KeyBoardController KeyBoardController, ISprite throwDown, ISprite spriteDown, ISprite throwUp, ISprite spriteUp, ISprite throwLeft, ISprite spriteLeft, ISprite throwRight, ISprite spriteRight, ISprite greenArrowRight, ISprite greenArrowLeft, ISprite greenArrowUp, ISprite greenArrowDown)
+        public LinkThrowCommand(KeyBoardController KeyBoardController, ISprite throwDown, ISprite throwUp, ISprite throwLeft, ISprite throwRight, ISprite greenArrowRight, ISprite greenArrowLeft, ISprite greenArrowUp, ISprite greenArrowDown)
         {
             this.KeyBoardController = KeyBoardController;
-
-            this.spriteDown = spriteDown;
-            this.spriteUp = spriteUp;
-            this.spriteLeft = spriteLeft;
-            this.spriteRight = spriteRight;
 
             this.throwUp = throwUp;
             this.throwDown = throwDown;
@@ -238,22 +232,61 @@ namespace Sprint0
 
         public void Execute()
         {
-            if(KeyBoardController.sprite.Equals(spriteDown))
+            if(KeyBoardController.dir.Equals(1))
             {
                 KeyBoardController.sprite = throwDown;
                 KeyBoardController.greenArrow = greenArrowDown;
-            } else if(KeyBoardController.sprite.Equals(spriteUp))
+            } else if(KeyBoardController.dir.Equals(4))
             {
                 KeyBoardController.sprite = throwUp;
                 KeyBoardController.greenArrow = greenArrowUp;
-            } else if(KeyBoardController.sprite.Equals(spriteLeft))
+            } else if(KeyBoardController.dir.Equals(3))
             {
                 KeyBoardController.sprite = throwLeft;
                 KeyBoardController.greenArrow = greenArrowLeft;
-            } else if(KeyBoardController.sprite.Equals(spriteRight))
+            } else if(KeyBoardController.dir.Equals(2))
             {
                 KeyBoardController.sprite = throwRight;
                 KeyBoardController.greenArrow = greenArrowRight;
+            }
+        }
+    }
+
+    public class LinkAttackCommand : ICommand
+    {
+        private ISprite attackDown;
+        private ISprite attackUp;
+        private ISprite attackLeft;
+        private ISprite attackRight;
+
+        private KeyBoardController KeyBoardController;
+
+        public LinkAttackCommand(KeyBoardController KeyBoardController, ISprite attackUp, ISprite attackDown, ISprite attackLeft, ISprite attackRight)
+        {
+            this.KeyBoardController =  KeyBoardController;
+            this.attackUp = attackUp;
+            this.attackDown = attackDown;
+            this.attackLeft = attackLeft;
+            this.attackRight = attackRight;
+        }
+
+        public void Execute()
+        {
+            if (KeyBoardController.dir.Equals(1))
+            {
+                KeyBoardController.sprite = attackDown;
+            }
+            else if (KeyBoardController.dir.Equals(4))
+            {
+                KeyBoardController.sprite = attackUp;
+            }
+            else if (KeyBoardController.dir.Equals(3))
+            {
+                KeyBoardController.sprite = attackLeft;
+            }
+            else if (KeyBoardController.dir.Equals(2))
+            {
+                KeyBoardController.sprite = attackRight;
             }
         }
     }
