@@ -22,9 +22,9 @@ namespace Sprint0
         public ISprite StillSprite;
         public ISprite DamagedSprite;
 
-        private IBlock blockSprite;
-        private IItem itemSprite;
-        private Enemy enemySprite;
+        // private IBlock blockSprite;
+        // private IItem itemSprite;
+        // private Enemy enemySprite;
 
         private EmptySprtie emptySprtie;
         public ISprite greenArrow;
@@ -58,8 +58,9 @@ namespace Sprint0
         private LinkThrowLeft linkThrowLeft;
         private LinkThrowRight linkThrowRight;
 
-        private Block block;
-        private Item item;
+        // private Block block;
+        // private Item item;
+        
         private SpriteBatch _spriteBatch;
 
         public int xPos;
@@ -114,8 +115,8 @@ namespace Sprint0
             linkThrowLeft = new LinkThrowLeft(atlas);
             linkThrowRight = new LinkThrowRight(atlas);
 
-            block = new Block(blocks);
-            item = new Item(items);
+            // block = new Block(blocks);
+            // item = new Item(items);
             controllerMapping = new Dictionary<Keys, ICommand>();
 
             linkLookingLeft = new LinkLookingLeft(atlas);
@@ -175,9 +176,9 @@ namespace Sprint0
 
 
             // draw and update sprites
-            blockSprite = block;
-            itemSprite = item;
-            enemySprite = new Enemy(game1);
+            // blockSprite = block;
+            // itemSprite = item;
+            // enemySprite = new Enemy(game1);
 
             xPos = 50; yPos = 100;
             dir = 0;
@@ -235,9 +236,9 @@ namespace Sprint0
                 greenArrow.Update();
                 sprite.Update();
 
-                blockSprite.Update(blockState);
-                itemSprite.Update(itemState);
-                enemySprite.Update(enemyState);
+                // blockSprite.Update(blockState);
+                // itemSprite.Update(itemState);
+                // enemySprite.Update(enemyState);
 
 
                 // set default states
@@ -247,9 +248,10 @@ namespace Sprint0
 
                 greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
                 sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
-                blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
-                itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
-                enemySprite.Draw(_spriteBatch);
+                
+                // blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
+                // itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
+                // enemySprite.Draw(_spriteBatch);
             }
 
         }

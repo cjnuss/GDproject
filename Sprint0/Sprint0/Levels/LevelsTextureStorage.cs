@@ -32,10 +32,31 @@ namespace Sprint0
             levels = content.Load<Texture2D>("level1");
         }
 
-        public Texture2D GetEnemies()
+        public Texture2D GetLevels()
         {
             return levels;
         }
+
+        public static Dictionary<string, Rectangle> Sources = new Dictionary<string, Rectangle>()
+        {
+            ["1"] = new Rectangle(256, 880, 256, 176),
+            ["2"] = new Rectangle(512, 880, 256, 176),
+            ["3"] = new Rectangle(768, 880, 256, 176),
+            ["4"] = new Rectangle(512, 704, 256, 176),
+            ["5"] = new Rectangle(256, 528, 256, 176),
+            ["6"] = new Rectangle(512, 528, 256, 176),
+            ["7"] = new Rectangle(768, 528, 256, 176),
+            ["8"] = new Rectangle(0, 352, 256, 176),
+            ["9"] = new Rectangle(256, 352, 256, 176),
+            ["10"] = new Rectangle(512, 352, 256, 176),
+            ["11"] = new Rectangle(768, 352, 256, 176),
+            ["12"] = new Rectangle(1024, 352, 256, 176),
+            ["13"] = new Rectangle(512, 176, 256, 176),
+            ["14"] = new Rectangle(1024, 176, 256, 176),
+            ["15"] = new Rectangle(1280, 176, 256, 176),
+            ["16"] = new Rectangle(256, 0, 256, 176),
+            ["17"] = new Rectangle(512, 0, 256, 176)
+        };
 
         public static Rectangle level1 = new Rectangle(256, 880, 256, 176);
         public static Rectangle level2 = new Rectangle(512, 880, 256, 176);

@@ -23,6 +23,8 @@ namespace Sprint0.Levels
         private SpriteBatch _spriteBatch;
         private int levelState;
         Texture2D texture;
+        List<IRoom> rooms = new List<IRoom>();
+        private RoomLoad roomLoad;
 
         private static List<Rectangle> levels = new List<Rectangle>
         {
@@ -66,6 +68,11 @@ namespace Sprint0.Levels
             Namelist = levelDoc.GetElementsByTagName("Name");
             Loclist = levelDoc.GetElementsByTagName("Location");
             */
+            roomLoad = new RoomLoad();
+            for (int i = 1; i <= 3; i++)
+            {
+                rooms.Add(roomLoad.load("Room" + i.ToString() + ".txt"));
+            }
         }
 
         public void Update()
@@ -79,20 +86,32 @@ namespace Sprint0.Levels
 
             if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed))
             {
-                //next level
-                if (levelState < 16) levelState++;
+                if (levelState == 2)
+                {
+                    levelState = 0;
+                }
+                else
+                {
+                    levelState++;
+                }
             }
             else if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed))
             {
-                //prev level
-                if (levelState > 0) levelState--;
-
+                if (levelState == 0)
+                {
+                    levelState = 2;
+                }
+                else
+                {
+                    levelState--;
+                }
             }
             Rectangle source = levels[levelState];
             Rectangle target = new Rectangle(0,0, 800, 480);
             _spriteBatch.Draw(texture, target, source, Color.White);
 
-
+            rooms[levelState].Update();
+            rooms[levelState].Draw(_spriteBatch);
 
             //sprite.Update();
             //sprite.Draw(_spriteBatch, new Vector2(390, 210));

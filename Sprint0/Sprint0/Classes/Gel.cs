@@ -26,11 +26,11 @@ namespace Sprint0
             EnemyTextureStorage.Gel2
         };
 
-        public Gel()
+        public Gel(Vector2 coords)
         {
             currentFrame = 0;
             textureFrame = 0;
-            location = new Vector2(600, 240);
+            location = coords;
             random = 1;
         }
 

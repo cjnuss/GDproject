@@ -24,11 +24,11 @@ namespace Sprint0
             EnemyTextureStorage.Bat2
         };
 
-        public Bat()
+        public Bat(Vector2 coords)
         {
             currentFrame = 0;
             textureFrame = 0;
-            location = new Vector2(600, 240) ;
+            location = coords;
             random = 1;
         }
 

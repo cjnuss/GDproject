@@ -1,0 +1,6 @@
+﻿BLOCKS
+ITEMS
+ENEMIES
+bat,100,100
+bat,100,400
+bat,500,100

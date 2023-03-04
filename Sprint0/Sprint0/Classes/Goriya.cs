@@ -59,12 +59,12 @@ namespace Sprint0
         };
 
 
-        public Goriya()
+        public Goriya(Vector2 coords)
         {
             currentFrame = 0;
             textureFrame = 0;
             direction = RNG.Next(0, 4);
-            location = new Vector2(600, 240);
+            location = coords;
             boomerangCount = 0;
         }
 

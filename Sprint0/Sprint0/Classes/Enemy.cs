@@ -32,12 +32,12 @@ namespace Sprint0
         {
             this.game1 = game1;
 
-            skeleton = new Skeleton();
-            gel = new Gel();
-            bat = new Bat();
-            aquamentus = new Aquamentus();
-            goriya = new Goriya();
-            oldman = new OldMan();
+            skeleton = new Skeleton(new Vector2(600, 240));
+            gel = new Gel(new Vector2(600, 240));
+            bat = new Bat(new Vector2(600, 240));
+            aquamentus = new Aquamentus(new Vector2(600, 240));
+            goriya = new Goriya(new Vector2(600, 240));
+            oldman = new OldMan(new Vector2(600, 240));
 
             sprites = new ISprite1[]
             {
@@ -102,22 +102,22 @@ namespace Sprint0
             switch (currentSprite)
             {
                 case 0:
-                    sprites[0] = new Skeleton();
+                    sprites[0] = new Skeleton(new Vector2(600, 240));
                     break;
                 case 1:
-                    sprites[1] = new Gel();
+                    sprites[1] = new Gel(new Vector2(600, 240));
                     break;
                 case 2:
-                    sprites[2] = new Bat();
+                    sprites[2] = new Bat(new Vector2(600, 240));
                     break;
                 case 3:
-                    sprites[3] = new Aquamentus();
+                    sprites[3] = new Aquamentus(new Vector2(600, 240));
                     break;
                 case 4:
-                    sprites[4] = new Goriya();
+                    sprites[4] = new Goriya(new Vector2(600, 240));
                     break;
                 case 5:
-                    sprites[5] = new OldMan();
+                    sprites[5] = new OldMan(new Vector2(600, 240));
                     break;
             }
         }
