@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-
-<Objects>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
 	<Object>
 		<Type>Enemy</Type>
 		<Name>Bat</Name>
@@ -16,4 +15,4 @@
 		<Name>Bat</Name>
 		<Location>150 100</Location>
 	</Object>
-</Objects>
+</root>
