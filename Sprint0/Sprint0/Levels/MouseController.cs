@@ -73,7 +73,7 @@ namespace Sprint0.Levels
             /*all xml level logic
             for (int i = 0; i < Typelist.Count; i++)
             {
-                if (Typelist[i].InnerText.ToString() == "Enemy") sprite = LinkRightSprite;
+                if (Typelist[i].InnerText.ToString() == "Enemy") set an object based on this;
             }
             */
 
