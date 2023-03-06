@@ -56,6 +56,5 @@ namespace Sprint0
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
         }
-
     }
 }
