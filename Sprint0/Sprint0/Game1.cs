@@ -11,7 +11,6 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         //private SpriteFont font;
-        private bool key;
 
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
@@ -20,8 +19,6 @@ namespace Sprint0
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            //default state is 
-            key = true;
     }
 
     protected override void Initialize()
