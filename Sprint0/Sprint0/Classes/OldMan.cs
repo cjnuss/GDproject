@@ -12,7 +12,12 @@ namespace Sprint0
     public class OldMan : ISprite1
     {
         private Texture2D texture;
-        public Vector2 location = new Vector2(600, 240);
+        public Vector2 location;
+
+        public OldMan(Vector2 coords)
+        {
+            location = coords;
+        }
 
         public void Update()
         {

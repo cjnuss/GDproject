@@ -1,0 +1,6 @@
+﻿BLOCKS
+ITEMS
+ENEMIES
+skeleton,100,100
+skeleton,100,400
+skeleton,500,100

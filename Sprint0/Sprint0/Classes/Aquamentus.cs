@@ -27,12 +27,12 @@ namespace Sprint0
             EnemyTextureStorage.Aquamentus4,
         };
 
-        public Aquamentus()
+        public Aquamentus(Vector2 coords)
         {
             currentFrame = 0;
             textureFrame = 0;
             projectileCount = 0;
-            location = new Vector2(600, 240);
+            location = coords;
             random = 2;
             projectile = true;
         }

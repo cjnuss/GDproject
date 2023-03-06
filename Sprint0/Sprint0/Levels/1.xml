@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Object>
+		<Type>Enemy</Type>
+		<Name>Bat</Name>
+		<Location>50 100</Location>
+	</Object>
+	<Object>
+		<Type>Enemy</Type>
+		<Name>Bat</Name>
+		<Location>100 100</Location>
+	</Object>
+	<Object>
+		<Type>Enemy</Type>
+		<Name>Bat</Name>
+		<Location>150 100</Location>
+	</Object>
+</root>

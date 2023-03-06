@@ -33,11 +33,11 @@ namespace Sprint0
             EnemyTextureStorage.Instance.GetEnemies1Flipped(),
         };
 
-        public Skeleton()
+        public Skeleton(Vector2 coords)
         {
             currentFrame = 0;
             textureFrame = 0;
-            location = new Vector2(600, 240);
+            location = coords;
             random = 1;
         }
 
