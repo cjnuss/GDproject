@@ -16,6 +16,8 @@
     <None Remove="Sprite Factories\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Classes\Block.cs" />
+    <Compile Remove="Classes\Item.cs" />
     <Compile Remove="Old Link Classes\LinkAttackDown.cs" />
     <Compile Remove="Old Link Classes\LinkAttackLeft.cs" />
     <Compile Remove="Old Link Classes\LinkAttackRight.cs" />

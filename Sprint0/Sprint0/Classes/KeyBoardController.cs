@@ -21,58 +21,25 @@ namespace Sprint0
         public Link linkSprite;
 
         public Texture2D Texture { get; set; }
-
-        #region useless link sprites
-        //private LinkMovingUp LinkUpSprite;
-        //private LinkMovingDown LinkDownSprite;
-        //private LinkMovingLeft LinkLeftSprite;
-        //private LinkMovingRight LinkRightSprite;
-
-        //private LinkLookingLeft linkLookingLeft;
-        //private LinkLookingRight linkLookingRight;
-        //private LinkLookingDown linkLookingDown;
-        //private LinkLookingUp linkLookingUp;
-
-        //private LinkAttackLeft linkAttackLeft;
-        //private LinkAttackRight linkAttackRight;
-        //private LinkAttackDown linkAttackDown;
-        //private LinkAttackUp linkAttackUp;
-
-        //private LinkThrowDown linkThrowDown;
-        //private LinkThrowUp linkThrowUp;
-        //private LinkThrowLeft linkThrowLeft;
-        //private LinkThrowRight linkThrowRight;
-        #endregion
-
-        private Block block;
-        private Item item;
         public SpriteBatch _spriteBatch;
 
-        public int dir;
+        public int dir, linkState;
         public Vector2 location;
-        public int linkState; //mine
 
-        public ExitCommand exitCommand;
-        private ResetCommand resetCommand;
+        public MapCommands mappingCommands;
+
+        //public ExitCommand exitCommand;
+        //private ResetCommand resetCommand;
         
-        // player movement commands
-        private LinkMoveLeftCommand moveLeftCommand;
-        private LinkMoveRightCommand moveRightCommand;
-        private LinkMoveUpCommand moveUpCommand;
-        private LinkMoveDownCommand moveDownCommand;
+        //// player movement commands
+        //private LinkMoveLeftCommand moveLeftCommand;
+        //private LinkMoveRightCommand moveRightCommand;
+        //private LinkMoveUpCommand moveUpCommand;
+        //private LinkMoveDownCommand moveDownCommand;
 
-        private LinkDamageCommand linkDamageCommand;
-        private LinkAttackingCommand linkAttackingCommand;
-        private LinkThrowGreenArrowCommand linkThrowGreenArrowCommand;
-
-        #region Useless
-        //private BlockChangeCommand blockStateOne;
-        //private BlockChangeCommand blockStateTwo;
-        //private ItemChangeCommand itemStateOne;
-        //private ItemChangeCommand itemStateTwo;
-        //private EnemyChangeCommand enemyStateOne;
-        //private EnemyChangeCommand enemyStateTwo;
-        #endregion
+        //private LinkDamageCommand linkDamageCommand;
+        //private LinkAttackingCommand linkAttackingCommand;
+        //private LinkThrowGreenArrowCommand linkThrowGreenArrowCommand;
 
         public Dictionary<Keys, ICommand> controllerMapping;
 
@@ -83,38 +50,42 @@ namespace Sprint0
 
             controllerMapping = new Dictionary<Keys, ICommand>();
 
-            exitCommand = new ExitCommand(game1);
-            resetCommand = new ResetCommand(this, linkSprite, game1);
+            mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
+            mappingCommands.createCommands();
+            controllerMapping = mappingCommands.getControllerMapping(controllerMapping);
+
+            //exitCommand = new ExitCommand(game1);
+            //resetCommand = new ResetCommand(this, linkSprite, game1);
             
-            moveLeftCommand = new LinkMoveLeftCommand(this, linkSprite);
-            moveRightCommand = new LinkMoveRightCommand(this, linkSprite);
-            moveDownCommand = new LinkMoveDownCommand(this, linkSprite);
-            moveUpCommand = new LinkMoveUpCommand(this, linkSprite);
+            //moveLeftCommand = new LinkMoveLeftCommand(this, linkSprite);
+            //moveRightCommand = new LinkMoveRightCommand(this, linkSprite);
+            //moveDownCommand = new LinkMoveDownCommand(this, linkSprite);
+            //moveUpCommand = new LinkMoveUpCommand(this, linkSprite);
 
-            linkDamageCommand = new LinkDamageCommand(this, linkSprite);
-            linkAttackingCommand = new LinkAttackingCommand(this, linkSprite);
-            linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(this, linkSprite);
+            //linkDamageCommand = new LinkDamageCommand(this, linkSprite);
+            //linkAttackingCommand = new LinkAttackingCommand(this, linkSprite);
+            //linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(this, linkSprite);
 
-            #region Mapping Commands
-            // master commands
-            controllerMapping.Add(Keys.Q, exitCommand);
-            controllerMapping.Add(Keys.R, resetCommand);
+            //#region Mapping Commands
+            //// master commands
+            //controllerMapping.Add(Keys.Q, exitCommand);
+            //controllerMapping.Add(Keys.R, resetCommand);
 
-            //player movement
-            controllerMapping.Add(Keys.W, moveUpCommand);
-            controllerMapping.Add(Keys.S, moveDownCommand);
-            controllerMapping.Add(Keys.A, moveLeftCommand);
-            controllerMapping.Add(Keys.D, moveRightCommand);
-            controllerMapping.Add(Keys.Up, moveUpCommand);
-            controllerMapping.Add(Keys.Down, moveDownCommand);
-            controllerMapping.Add(Keys.Left, moveLeftCommand);
-            controllerMapping.Add(Keys.Right, moveRightCommand);
+            ////player movement
+            //controllerMapping.Add(Keys.W, moveUpCommand);
+            //controllerMapping.Add(Keys.S, moveDownCommand);
+            //controllerMapping.Add(Keys.A, moveLeftCommand);
+            //controllerMapping.Add(Keys.D, moveRightCommand);
+            //controllerMapping.Add(Keys.Up, moveUpCommand);
+            //controllerMapping.Add(Keys.Down, moveDownCommand);
+            //controllerMapping.Add(Keys.Left, moveLeftCommand);
+            //controllerMapping.Add(Keys.Right, moveRightCommand);
 
-            controllerMapping.Add(Keys.E, linkDamageCommand);
-            controllerMapping.Add(Keys.Z, linkAttackingCommand);
-            controllerMapping.Add(Keys.N, linkAttackingCommand);
-            controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
-            #endregion
+            //controllerMapping.Add(Keys.E, linkDamageCommand);
+            //controllerMapping.Add(Keys.Z, linkAttackingCommand);
+            //controllerMapping.Add(Keys.N, linkAttackingCommand);
+            //controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
+            //#endregion
 
             // draw and update sprites
             linkSprite = new Link(game1);
