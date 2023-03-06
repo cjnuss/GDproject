@@ -11,6 +11,12 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Old Link Classes\LinkThrowDown.cs" />
+    <Compile Remove="Old Link Classes\LinkThrowLeft.cs" />
+    <Compile Remove="Old Link Classes\LinkThrowRight.cs" />
+    <Compile Remove="Old Link Classes\LinkThrowUp.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>

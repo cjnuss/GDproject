@@ -14,7 +14,7 @@ namespace Sprint2Move
     public class MouseController : IController
     {
         private Game1 game1;
-        ISprite sprite;
+        ISprite1 sprite;
         //get sprites and needed classes ready
         public Texture2D Texture { get; set; }
 
@@ -75,7 +75,8 @@ namespace Sprint2Move
                 //wait
             }
             sprite.Update();
-            sprite.Draw(_spriteBatch, new Vector2(390, 210));
+            //sprite.Draw(_spriteBatch, new Vector2(390, 210));
+            sprite.Draw(_spriteBatch);
         }
     }
 

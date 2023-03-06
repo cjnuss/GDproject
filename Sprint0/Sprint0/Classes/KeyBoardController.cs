@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Runtime.CompilerServices;
 using System.ComponentModel.Design;
 using Sprint0.Classes;
+using Sprint0.Link_Classes;
 
 namespace Sprint0
 {
@@ -18,137 +19,149 @@ namespace Sprint0
         //implement
         private Game1 game1;
 
-        public ISprite sprite;
-        public ISprite StillSprite;
-        public ISprite DamagedSprite;
+        //public ISprite sprite;
+        //public ISprite StillSprite;
+        //public ISprite DamagedSprite;
 
         private IBlock blockSprite;
         private IItem itemSprite;
         private Enemy enemySprite;
 
-        private EmptySprtie emptySprtie;
-        public ISprite greenArrow;
+        // MY STUFF
+        public Link linkSprite;
 
-        private LinkGreenArrowRight greenArrowRight;
-        private LinkGreenArrowLeft greenArrowLeft;
-        private LinkGreenArrowUp greenArrowUp;
-        private LinkGreenArrowDown greenArrowDown;
+        //private EmptySprtie emptySprtie;
+        //public ISprite greenArrow;
+
+        //private LinkGreenArrowRight greenArrowRight;
+        //private LinkGreenArrowLeft greenArrowLeft;
+        //private LinkGreenArrowUp greenArrowUp;
+        //private LinkGreenArrowDown greenArrowDown;
 
         public Texture2D Texture { get; set; }
 
-        private LinkMovingUp LinkUpSprite;
-        private LinkMovingDown LinkDownSprite;
-        private LinkMovingLeft LinkLeftSprite;
-        private LinkMovingRight LinkRightSprite;
+        #region useless link sprites
+        //private LinkMovingUp LinkUpSprite;
+        //private LinkMovingDown LinkDownSprite;
+        //private LinkMovingLeft LinkLeftSprite;
+        //private LinkMovingRight LinkRightSprite;
 
+        //private LinkLookingLeft linkLookingLeft;
+        //private LinkLookingRight linkLookingRight;
+        //private LinkLookingDown linkLookingDown;
+        //private LinkLookingUp linkLookingUp;
 
-        private LinkLookingLeft linkLookingLeft;
-        private LinkLookingRight linkLookingRight;
-        private LinkLookingDown linkLookingDown;
-        private LinkLookingUp linkLookingUp;
+        //private LinkAttackLeft linkAttackLeft;
+        //private LinkAttackRight linkAttackRight;
+        //private LinkAttackDown linkAttackDown;
+        //private LinkAttackUp linkAttackUp;
 
-
-        private LinkAttackLeft linkAttackLeft;
-        private LinkAttackRight linkAttackRight;
-        private LinkAttackDown linkAttackDown;
-        private LinkAttackUp linkAttackUp;
-
-        private LinkThrowDown linkThrowDown;
-        private LinkThrowUp linkThrowUp;
-        private LinkThrowLeft linkThrowLeft;
-        private LinkThrowRight linkThrowRight;
+        //private LinkThrowDown linkThrowDown;
+        //private LinkThrowUp linkThrowUp;
+        //private LinkThrowLeft linkThrowLeft;
+        //private LinkThrowRight linkThrowRight;
+        #endregion
 
         private Block block;
         private Item item;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
 
-        public int xPos;
-        public int yPos;
         public int dir;
+        public Vector2 location;
 
         public int blockState;
         public int itemState;
         public int enemyState;
+        public int linkState; //mine
 
-        private ExitCommand exitCommand;
+        public ExitCommand exitCommand;
+        private ResetCommand resetCommand;
+        
+        // player movement commands
         private LinkMoveLeftCommand moveLeftCommand;
         private LinkMoveRightCommand moveRightCommand;
         private LinkMoveUpCommand moveUpCommand;
         private LinkMoveDownCommand moveDownCommand;
-        private LinkChangeSpriteCommand linkDamagedCommand;
-        private LinkThrowCommand linkThrowCommand;
 
-        private BlockChangeCommand blockStateOne;
-        private BlockChangeCommand blockStateTwo;
-        private ItemChangeCommand itemStateOne;
-        private ItemChangeCommand itemStateTwo;
-        private EnemyChangeCommand enemyStateOne;
-        private EnemyChangeCommand enemyStateTwo;
+        private LinkDamageCommand linkDamageCommand;
+        private LinkAttackingCommand linkAttackingCommand;
+        private LinkThrowGreenArrowCommand linkThrowGreenArrowCommand;
 
-        private ResetCommand resetCommand;
+        #region Useless
+        //private BlockChangeCommand blockStateOne;
+        //private BlockChangeCommand blockStateTwo;
+        //private ItemChangeCommand itemStateOne;
+        //private ItemChangeCommand itemStateTwo;
+        //private EnemyChangeCommand enemyStateOne;
+        //private EnemyChangeCommand enemyStateTwo;
+        #endregion
 
-
-        private Dictionary<Keys, ICommand> controllerMapping;
+        public Dictionary<Keys, ICommand> controllerMapping;
 
         public KeyBoardController(Game1 game1, Texture2D atlas, Texture2D blocks, Texture2D items, SpriteBatch spriteBatch)
         {
             //need to change atlas and these calls
             this.game1 = game1;
-            LinkRightSprite = new LinkMovingRight(atlas);
-            LinkDownSprite = new LinkMovingDown(atlas);
-            LinkLeftSprite = new LinkMovingLeft(atlas);
-            LinkUpSprite = new LinkMovingUp(atlas);
-            DamagedSprite = new LinkTakingDamage(atlas);
+            //LinkRightSprite = new LinkMovingRight(atlas);
+            //LinkDownSprite = new LinkMovingDown(atlas);
+            //LinkLeftSprite = new LinkMovingLeft(atlas);
+            //LinkUpSprite = new LinkMovingUp(atlas);
+            //DamagedSprite = new LinkTakingDamage(atlas);
 
-            greenArrowRight = new LinkGreenArrowRight(atlas);
-            greenArrowLeft = new LinkGreenArrowLeft(atlas);
-            greenArrowUp = new LinkGreenArrowUp(atlas);
-            greenArrowDown = new LinkGreenArrowDown(atlas);
+            //greenArrowRight = new LinkGreenArrowRight(atlas);
+            //greenArrowLeft = new LinkGreenArrowLeft(atlas);
+            //greenArrowUp = new LinkGreenArrowUp(atlas);
+            //greenArrowDown = new LinkGreenArrowDown(atlas);
 
-            emptySprtie = new EmptySprtie(atlas);
-            greenArrow = emptySprtie;
+            //emptySprtie = new EmptySprtie(atlas);
+            //greenArrow = emptySprtie;
 
-            linkThrowDown = new LinkThrowDown(atlas);
-            linkThrowUp = new LinkThrowUp(atlas);
-            linkThrowLeft = new LinkThrowLeft(atlas);
-            linkThrowRight = new LinkThrowRight(atlas);
+            //linkThrowDown = new LinkThrowDown(atlas);
+            //linkThrowUp = new LinkThrowUp(atlas);
+            //linkThrowLeft = new LinkThrowLeft(atlas);
+            //linkThrowRight = new LinkThrowRight(atlas);
 
             block = new Block(blocks);
             item = new Item(items);
             controllerMapping = new Dictionary<Keys, ICommand>();
 
-            linkLookingLeft = new LinkLookingLeft(atlas);
-            linkLookingDown = new LinkLookingDown(atlas);
-            linkLookingUp = new LinkLookingUp(atlas);
-            linkLookingRight = new LinkLookingRight(atlas);
+            //linkLookingLeft = new LinkLookingLeft(atlas);
+            //linkLookingDown = new LinkLookingDown(atlas);
+            //linkLookingUp = new LinkLookingUp(atlas);
+            //linkLookingRight = new LinkLookingRight(atlas);
 
-            linkAttackDown = new LinkAttackDown(atlas);
-            linkAttackLeft = new LinkAttackLeft(atlas);
-            linkAttackRight = new LinkAttackRight(atlas);
-            linkAttackUp = new LinkAttackUp(atlas);
+            //linkAttackDown = new LinkAttackDown(atlas);
+            //linkAttackLeft = new LinkAttackLeft(atlas);
+            //linkAttackRight = new LinkAttackRight(atlas);
+            //linkAttackUp = new LinkAttackUp(atlas);
 
-            StillSprite = new LinkLookingDown(atlas);
+            //StillSprite = new LinkLookingDown(atlas);
 
             exitCommand = new ExitCommand(game1);
-            moveLeftCommand = new LinkMoveLeftCommand(this, LinkLeftSprite, linkLookingLeft);
-            moveRightCommand = new LinkMoveRightCommand(this, LinkRightSprite, linkLookingRight);
-            moveDownCommand = new LinkMoveDownCommand(this, LinkDownSprite, linkLookingDown);
-            moveUpCommand = new LinkMoveUpCommand(this, LinkUpSprite, linkLookingUp);
+            resetCommand = new ResetCommand(this, linkSprite, game1);
+            
+            moveLeftCommand = new LinkMoveLeftCommand(this, linkSprite);
+            moveRightCommand = new LinkMoveRightCommand(this, linkSprite);
+            moveDownCommand = new LinkMoveDownCommand(this, linkSprite);
+            moveUpCommand = new LinkMoveUpCommand(this, linkSprite);
 
-            linkDamagedCommand = new LinkChangeSpriteCommand(this, DamagedSprite);
-            linkThrowCommand = new LinkThrowCommand(this, linkThrowDown, linkLookingDown, linkThrowUp, linkLookingUp, linkThrowLeft, linkLookingLeft, linkThrowRight, linkLookingRight,
-                greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
+            linkDamageCommand = new LinkDamageCommand(this, linkSprite);
+            linkAttackingCommand = new LinkAttackingCommand(this, linkSprite);
+            linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(this, linkSprite);
+            //    greenArrowRight, greenArrowLeft, greenArrowUp, greenArrowDown);
 
-            blockStateOne = new BlockChangeCommand(this, 1);
-            blockStateTwo = new BlockChangeCommand(this, 2);
-            itemStateOne = new ItemChangeCommand(this, 1);
-            itemStateTwo = new ItemChangeCommand(this, 2);
-            enemyStateOne = new EnemyChangeCommand(this, 1);
-            enemyStateTwo = new EnemyChangeCommand(this, 2);
+            //blockStateOne = new BlockChangeCommand(this, 1);
+            //blockStateTwo = new BlockChangeCommand(this, 2);
+            //itemStateOne = new ItemChangeCommand(this, 1);
+            //itemStateTwo = new ItemChangeCommand(this, 2);
+            //enemyStateOne = new EnemyChangeCommand(this, 1);
+            //enemyStateTwo = new EnemyChangeCommand(this, 2);
 
-            resetCommand = new ResetCommand(this, linkLookingDown);
-
+            #region Mapping Commands
+            // master commands
             controllerMapping.Add(Keys.Q, exitCommand);
+            controllerMapping.Add(Keys.R, resetCommand);
+
             //player movement
             controllerMapping.Add(Keys.W, moveUpCommand);
             controllerMapping.Add(Keys.S, moveDownCommand);
@@ -159,122 +172,133 @@ namespace Sprint0
             controllerMapping.Add(Keys.Left, moveLeftCommand);
             controllerMapping.Add(Keys.Right, moveRightCommand);
 
-            controllerMapping.Add(Keys.E, linkDamagedCommand);
-            controllerMapping.Add(Keys.Y, blockStateOne);
-            controllerMapping.Add(Keys.T, blockStateTwo);
-            controllerMapping.Add(Keys.I, itemStateOne);
-            controllerMapping.Add(Keys.U, itemStateTwo);
-            controllerMapping.Add(Keys.R, resetCommand);
-            controllerMapping.Add(Keys.O, enemyStateOne);
-            controllerMapping.Add(Keys.P, enemyStateTwo);
-            controllerMapping.Add(Keys.D1, linkThrowCommand);
-
+            controllerMapping.Add(Keys.E, linkDamageCommand);
+            controllerMapping.Add(Keys.Z, linkAttackingCommand);
+            controllerMapping.Add(Keys.N, linkAttackingCommand);
+            //controllerMapping.Add(Keys.Y, blockStateOne);
+            //controllerMapping.Add(Keys.T, blockStateTwo);
+            //controllerMapping.Add(Keys.I, itemStateOne);
+            //controllerMapping.Add(Keys.U, itemStateTwo);
+            //controllerMapping.Add(Keys.O, enemyStateOne);
+            //controllerMapping.Add(Keys.P, enemyStateTwo);
+            controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
+            #endregion
 
             // draw and update sprites
             blockSprite = block;
             itemSprite = item;
             enemySprite = new Enemy(game1);
+            // my stuff
+            linkSprite = new Link(game1);
 
-            xPos = 50; yPos = 100;
             dir = 0;
             blockState = 0;
             itemState = 0;
             enemyState = 0;
+            linkState = 0;//mine
             _spriteBatch = spriteBatch;
         }
         public void Update()
         {
-            sprite = StillSprite;
+            linkState = 0;
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+
+            foreach (Keys key in pressedKeys)
+            {
+                if (controllerMapping.ContainsKey(key))
+                    controllerMapping[key].Execute();
+            }
+
             //temp 1 = down, 2 = right, 3 = left, 4 = up
 
-            if (pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.Up))
-            {
-                controllerMapping[Keys.W].Execute();
-                dir = 4;
-            }
-            else if (pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.Down))
-            {
-                controllerMapping[Keys.S].Execute();
-                dir = 1;
-            }
-            else if (pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.Left))
-            {
-                controllerMapping[Keys.A].Execute();
-                dir = 3;
-            }
-            else if (pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Right))
-            {
-                controllerMapping[Keys.D].Execute();
-                dir = 2;
-            }
-            else if (pressedKeys.Contains(Keys.D1))
-            {
-                greenArrow = emptySprtie;
-                greenArrowRight.registerPos(xPos, yPos);
-                greenArrowLeft.registerPos(xPos, yPos);
-                greenArrowDown.registerPos(xPos, yPos);
-                greenArrowUp.registerPos(xPos, yPos);
-                controllerMapping[Keys.D1].Execute();
-            }
-            else
-            {
-                foreach (Keys key in pressedKeys)
-                {
-                    if (controllerMapping.ContainsKey(key))
-                        controllerMapping[key].Execute();
+            //if (pressedKeys.Contains(Keys.W) || pressedKeys.Contains(Keys.Up))
+            //{
+            //    controllerMapping[Keys.W].Execute();
+            //    dir = 4;
+            //}
+            //else if (pressedKeys.Contains(Keys.S) || pressedKeys.Contains(Keys.Down))
+            //{
+            //    controllerMapping[Keys.S].Execute();
+            //    dir = 1;
+            //}
+            //else if (pressedKeys.Contains(Keys.A) || pressedKeys.Contains(Keys.Left))
+            //{
+            //    controllerMapping[Keys.A].Execute();
+            //    dir = 3;
+            //}
+            //else if (pressedKeys.Contains(Keys.D) || pressedKeys.Contains(Keys.Right))
+            //{
+            //    controllerMapping[Keys.D].Execute();
+            //    dir = 2;
+            //}
+            //else if (pressedKeys.Contains(Keys.D1))
+            //{
+            //    greenArrow = emptySprtie;
+            //    greenArrowRight.registerPos(xPos, yPos);
+            //    greenArrowLeft.registerPos(xPos, yPos);
+            //    greenArrowDown.registerPos(xPos, yPos);
+            //    greenArrowUp.registerPos(xPos, yPos);
+            //    controllerMapping[Keys.D1].Execute();
+            //}
+            //else
+            //{
+            //    foreach (Keys key in pressedKeys)
+            //    {
+            //        if (controllerMapping.ContainsKey(key))
+            //            controllerMapping[key].Execute();
 
-                    if (key.Equals(Keys.R))
-                    {
-                        StillSprite = linkLookingDown;
-                        dir = 1;
-                    }
-                }
-            }
+            //        if (key.Equals(Keys.R))
+            //        {
+            //            StillSprite = linkLookingDown;
+            //            dir = 1;
+            //        }
+            //    }
+            //}
 
-                //temp 1 = down, 2 = right, 3 = left, 4 = up
-                if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
-                {
-                    //link attack down
-                    sprite = linkAttackDown;
+            //temp 1 = down, 2 = right, 3 = left, 4 = up
+            //if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 1)
+            //{
+            //    //link attack down
+            //    sprite = linkAttackDown;
 
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
-                {
-                    //link attack down
-                    sprite = linkAttackRight;
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
-                {
-                    //link attack down
-                    sprite = linkAttackLeft;
-                }
-                else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
-                {
-                    //link attack down
-                    sprite = linkAttackUp;
-                }
+            //}
+            //else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 2)
+            //{
+            //    //link attack down
+            //    sprite = linkAttackRight;
+            //}
+            //else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 3)
+            //{
+            //    //link attack down
+            //    sprite = linkAttackLeft;
+            //}
+            //else if ((Keyboard.GetState().IsKeyDown(Keys.Z) || Keyboard.GetState().IsKeyDown(Keys.N)) && dir == 4)
+            //{
+            //    //link attack down
+            //    sprite = linkAttackUp;
+            //}
 
-                greenArrow.Update();
-                sprite.Update();
+            //greenArrow.Update();
+            //sprite.Update();
 
-                blockSprite.Update(blockState);
-                itemSprite.Update(itemState);
-                enemySprite.Update(enemyState);
+            blockSprite.Update(blockState);
+            itemSprite.Update(itemState);
+            linkSprite.Update(linkState, dir, location);//mine
+            enemySprite.Update(enemyState);
 
+            // set default states
+            blockState = 3;
+            itemState = 3;
+            enemyState = 3;
 
-                // set default states
-                blockState = 3;
-                itemState = 3;
-                enemyState = 3;
-
-                greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
-                sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
-                blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
-                itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
-                enemySprite.Draw(_spriteBatch);
-            }
-
+            //greenArrow.Draw(_spriteBatch, new Vector2(xPos, yPos));
+            //sprite.Draw(_spriteBatch, new Vector2(xPos, yPos));
+            blockSprite.Draw(_spriteBatch, new Vector2(440, 150));
+            itemSprite.Draw(_spriteBatch, new Vector2(200, 300));
+            enemySprite.Draw(_spriteBatch);
+            linkSprite.Draw(_spriteBatch); // mine
         }
+
     }
+}

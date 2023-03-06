@@ -21,8 +21,6 @@ namespace Sprint0
             //for animation
             currentFrame = 0;
             totalFrames = 20;
-
-
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {

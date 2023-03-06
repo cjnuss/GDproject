@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Classes
 {
-    internal class EmptySprtie : ISprite
+    public class EmptySprite : ISprite1
     {
         public Texture2D Texture { get; set; }
 
@@ -21,11 +21,11 @@ namespace Sprint0.Classes
         //private int currentPos;
         //private bool down;
 
-        public EmptySprtie(Texture2D texture)
+        public EmptySprite(Texture2D texture)
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             sourceRectangle = new Rectangle(0, 0, 0, 0);
             destinationRectangle = new Rectangle(0, 0, 0, 0);

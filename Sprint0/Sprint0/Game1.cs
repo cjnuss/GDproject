@@ -26,7 +26,6 @@ namespace Sprint0
 
     protected override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -43,6 +42,7 @@ namespace Sprint0
             Texture2D blocks = Content.Load<Texture2D>("block");
             Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
             EnemyTextureStorage.Instance.Load(Content);
+            LinkTextureStorage.Instance.Load(Content); // DEBUG
             // keyboard controller
             Kcontroller = new KeyBoardController(this, atlas, blocks, items, _spriteBatch);
         }
