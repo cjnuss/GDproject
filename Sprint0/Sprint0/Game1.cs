@@ -60,11 +60,8 @@ namespace Sprint0
             // unless Q is pressed, keep updating
             //!Keyboard.GetState().IsKeyDown(Keys.Q)
 
-
             Mcontroller.Update();
             Kcontroller.Update();
-
-
 
             _spriteBatch.End();
             base.Draw(gameTime);
