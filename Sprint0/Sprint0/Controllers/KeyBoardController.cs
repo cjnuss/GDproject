@@ -38,13 +38,12 @@ namespace Sprint0
 
             linkSprite = new Link(game1);
 
-            dir = 0;
-            linkState = 0;//mine
+            dir = 0; linkState = 0;
             _spriteBatch = spriteBatch;
         }
         public void Update()
         {
-            linkState = 0;
+            linkState = 0; // reset link state
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 

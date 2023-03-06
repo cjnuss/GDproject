@@ -93,7 +93,6 @@ namespace Sprint0.Link_Classes
 
         public void Update()
         {
-            // debug: could do switch case?
             if (toDraw)
             {
                 if (direction == 0)
