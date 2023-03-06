@@ -38,12 +38,10 @@ namespace Sprint0
 
             // load in objects
             Texture2D level = Content.Load<Texture2D>("level1");
-            Texture2D atlas = Content.Load<Texture2D>("linksprites");
-            Texture2D blocks = Content.Load<Texture2D>("block");
-            Texture2D items = Content.Load<Texture2D>("items&weaponsSet");
             EnemyTextureStorage.Instance.Load(Content);
-            LinkTextureStorage.Instance.Load(Content); // DEBUG
-            // keyboard controller
+            LinkTextureStorage.Instance.Load(Content);
+
+            // controller setup
             Kcontroller = new KeyBoardController(this, _spriteBatch);
             Mcontroller = new MouseController(this, level, _spriteBatch);
         }
