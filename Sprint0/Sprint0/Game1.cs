@@ -44,7 +44,7 @@ namespace Sprint0
             EnemyTextureStorage.Instance.Load(Content);
             LinkTextureStorage.Instance.Load(Content); // DEBUG
             // keyboard controller
-            Kcontroller = new KeyBoardController(this, atlas, blocks, items, _spriteBatch);
+            Kcontroller = new KeyBoardController(this, _spriteBatch);
             Mcontroller = new MouseController(this, level, _spriteBatch);
         }
 

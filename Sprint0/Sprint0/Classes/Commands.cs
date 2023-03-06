@@ -40,9 +40,6 @@ namespace Sprint0
 
         public void Execute()
         {
-            KeyBoardController.blockState = 0;
-            KeyBoardController.itemState = 0;
-            KeyBoardController.enemyState= 0;
 
             //mine
             KeyBoardController.linkState = 0;
