@@ -47,14 +47,12 @@ namespace Sprint0
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            foreach (Keys key in pressedKeys)
-            {
-                if (controllerMapping.ContainsKey(key))
-                    controllerMapping[key].Execute();
-            }
+            if (pressedKeys.Length != 0 && controllerMapping.ContainsKey(pressedKeys[0]))
+                controllerMapping[pressedKeys[0]].Execute();
 
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
         }
+
     }
 }
