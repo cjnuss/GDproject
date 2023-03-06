@@ -11,34 +11,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Old Link Classes\**" />
     <Compile Remove="Sprite Factories\**" />
+    <EmbeddedResource Remove="Old Link Classes\**" />
     <EmbeddedResource Remove="Sprite Factories\**" />
+    <None Remove="Old Link Classes\**" />
     <None Remove="Sprite Factories\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Classes\Block.cs" />
-    <Compile Remove="Classes\Item.cs" />
-    <Compile Remove="Old Link Classes\LinkAttackDown.cs" />
-    <Compile Remove="Old Link Classes\LinkAttackLeft.cs" />
-    <Compile Remove="Old Link Classes\LinkAttackRight.cs" />
-    <Compile Remove="Old Link Classes\LinkAttackUp.cs" />
-    <Compile Remove="Old Link Classes\LinkGreenArrowDown.cs" />
-    <Compile Remove="Old Link Classes\LinkGreenArrowLeft.cs" />
-    <Compile Remove="Old Link Classes\LinkGreenArrowRight.cs" />
-    <Compile Remove="Old Link Classes\LinkGreenArrowUp.cs" />
-    <Compile Remove="Old Link Classes\LinkLookingDown.cs" />
-    <Compile Remove="Old Link Classes\LinkLookingLeft.cs" />
-    <Compile Remove="Old Link Classes\linkLookingRight.cs" />
-    <Compile Remove="Old Link Classes\LinkLookingUp.cs" />
-    <Compile Remove="Old Link Classes\LinkMovingDown.cs" />
-    <Compile Remove="Old Link Classes\LinkMovingLeft.cs" />
-    <Compile Remove="Old Link Classes\LinkMovingRight.cs" />
-    <Compile Remove="Old Link Classes\LinkMovingUp.cs" />
-    <Compile Remove="Old Link Classes\LinkTakingDamage.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowDown.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowLeft.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowRight.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowUp.cs" />
+    <Compile Remove="Enemies\Block.cs" />
+    <Compile Remove="Enemies\EmptySprite.cs" />
+    <Compile Remove="Enemies\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -47,9 +30,6 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Old Link Classes\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
