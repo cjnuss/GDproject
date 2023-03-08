@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Levels;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0
@@ -46,6 +47,7 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
         }
 
         protected override void Draw(GameTime gameTime)

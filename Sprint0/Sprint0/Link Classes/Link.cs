@@ -75,7 +75,10 @@ namespace Sprint0
             if (linkState == 3)
                 linkAttacking.Update();
             if (linkState == 4)
+            {
+                linkThrowing.arrow = true;
                 linkThrowing.Update();
+            }
         }
     }
 }
