@@ -196,10 +196,9 @@ namespace Sprint0.Link_Classes
                         toDraw = false;
                     }
                 }
+                // finally draw sprite
+                spriteBatch.Draw(texture, dest, source, Color.White);
             }
-
-            // finally draw sprite
-            spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Sprint0.Link_Classes.Item_Usage
     public class Bomb : ISprite1
     {
         public int frame, currentFrame, totalFrames, direction;
-        Vector2 location1;
+        public Vector2 location1;
         public Boolean toDraw = true;
         Rectangle source;
         Rectangle dest;
@@ -23,7 +23,8 @@ namespace Sprint0.Link_Classes.Item_Usage
             LinkTextureStorage.LinkBomb,
             LinkTextureStorage.LinkBombExplode,
             LinkTextureStorage.LinkBombExplode1,
-            LinkTextureStorage.LinkBombExplode2
+            LinkTextureStorage.LinkBombExplode2,
+            new Rectangle(0,0,0,0)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
@@ -35,7 +36,7 @@ namespace Sprint0.Link_Classes.Item_Usage
             totalFrames = 60;
         }
 
-        public void RegisterPos(Vector2 location)
+        public void UpdatePos(Vector2 location)
         {
             location1 = location;
             if (direction == 0)
@@ -63,19 +64,22 @@ namespace Sprint0.Link_Classes.Item_Usage
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
+            if (toDraw)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
 
-            frame = 0;
-            if (currentFrame <= 36)
                 frame = 0;
-            else if (currentFrame > 36 && currentFrame <= 44)
-                frame = 1;
-            else if (currentFrame > 44 && currentFrame <= 52)
-                frame = 2;
-            else if (currentFrame > 52)
-                frame = 3;
+                if (currentFrame <= 36)
+                    frame = 0;
+                else if (currentFrame > 36 && currentFrame <= 44)
+                    frame = 1;
+                else if (currentFrame > 44 && currentFrame <= 52)
+                    frame = 2;
+                else if (currentFrame > 52)
+                    frame = 3;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -85,10 +89,13 @@ namespace Sprint0.Link_Classes.Item_Usage
             {
                 source = BombList[frame];
                 dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
+                System.Diagnostics.Debug.WriteLine("drawing bomb at " + location1);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
-            if (frame == 3)
-                toDraw = false;
+            else
+            {
+                frame = 4;
+            }
         }
     }
 }

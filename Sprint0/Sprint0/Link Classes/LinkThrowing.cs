@@ -21,7 +21,7 @@ namespace Sprint0
         public GreenArrow greenArrow;
         public Fire fire;
         public Bomb bomb;
-        public Boolean arrowBool, fireBool, bombBool, setArrowPos, setFirePos, setBombPos;
+        public Boolean arrowBool, fireBool, bombBool, setArrowPos, setFirePos, setBomb;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -44,9 +44,7 @@ namespace Sprint0
             greenArrow = new GreenArrow();
             fire = new Fire();
             bomb = new Bomb();
-            setArrowPos = true;
-            setFirePos = true;
-            setBombPos = true;
+            setArrowPos = true; setFirePos = true; setBomb = true;
         }
 
         public void Update()
@@ -92,21 +90,21 @@ namespace Sprint0
             }
             else if (bombBool)
             {
-                if (setBombPos)
+                if (setBomb)
                 {
                     bomb = new Bomb();
-                    bomb.direction = direction;
-                    bomb.RegisterPos(location1);
-                    setBombPos = false;
+                    setBomb = false;
                 }
                 else
                 {
                     if (!bomb.toDraw)
                     {
                         bombBool = false;
-                        setBombPos = true;
+                        setBomb = true;
                     }
                 }
+                bomb.direction = direction;
+                bomb.UpdatePos(location1);
                 bomb.Update();
             }
         }

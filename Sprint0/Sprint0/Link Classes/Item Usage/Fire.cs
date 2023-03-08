@@ -20,7 +20,8 @@ namespace Sprint0
         private static List<Rectangle> FireList = new List<Rectangle>
         {
             LinkTextureStorage.LinkFire1,
-            LinkTextureStorage.LinkFire2
+            LinkTextureStorage.LinkFire2,
+            new Rectangle(0,0,0,0)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
@@ -99,6 +100,7 @@ namespace Sprint0
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
                 {
                     toDraw = false;
+                    frame = 2;
                 }
 
                 source = FireList[frame]; // frame
