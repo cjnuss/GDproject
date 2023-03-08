@@ -79,14 +79,14 @@ namespace Sprint0
                 linkAttacking.Update();
             if (linkState == 4)
             {
-                linkThrowing.arrow = true;
-                linkThrowing.fire = false;
+                linkThrowing.arrowBool = true;
+                linkThrowing.fireBool = false;
                 linkThrowing.Update();
             }
             if (linkState == 5)
             {
-                linkThrowing.fire = true;
-                linkThrowing.arrow = false;
+                linkThrowing.fireBool = true;
+                linkThrowing.arrowBool = false;
                 linkThrowing.Update();
             }
 

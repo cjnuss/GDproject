@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkFire : ISprite1
+    public class Fire : ISprite1
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos;
         public Boolean toDraw = true;
@@ -17,7 +17,7 @@ namespace Sprint0
 
         private Texture2D texture;
 
-        private static List<Rectangle> LinkFireList = new List<Rectangle>
+        private static List<Rectangle> FireList = new List<Rectangle>
         {
             LinkTextureStorage.LinkFire1,
             LinkTextureStorage.LinkFire2
@@ -25,7 +25,7 @@ namespace Sprint0
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
-        public LinkFire()
+        public Fire()
         {
             direction = 0;
             currentFrame = 0;
@@ -90,7 +90,7 @@ namespace Sprint0
                     toDraw = false;
                 }
 
-                source = LinkFireList[frame]; // frame
+                source = FireList[frame]; // frame
                 dest = new Rectangle((int)currentX, (int)currentY, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
