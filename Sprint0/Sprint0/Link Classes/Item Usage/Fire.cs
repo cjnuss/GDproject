@@ -10,7 +10,7 @@ namespace Sprint0
 {
     public class Fire : ISprite1
     {
-        public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos;
+        public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, stillPos;
         public Boolean toDraw = true;
         Rectangle source;
         Rectangle dest;
@@ -40,13 +40,25 @@ namespace Sprint0
             System.Diagnostics.Debug.WriteLine("position registered at " + location);
 
             if (direction == 0)
+            {
                 finalPos = (int)location.Y + 5 * 16;
+                //stillPos = finalPos + 5;
+            }
             if (direction == 1)
+            {
                 finalPos = (int)location.X - 5 * 16;
+                //stillPos = finalPos - 5;
+            }
             if (direction == 2)
+            {
                 finalPos = (int)location.X + 5 * 16;
+                //stillPos = finalPos + 5;
+            }
             if (direction == 3)
+            {
                 finalPos = (int)location.Y - 5 * 16;
+                //stillPos = finalPos - 5;
+            }
         }
 
         public void Update()
@@ -54,7 +66,7 @@ namespace Sprint0
             // distance updates
             if (toDraw)
             {
-                if (direction == 0)
+                if (direction == 0 && currentY <= finalPos)
                     currentY += 3; // magic?
                 if (direction == 1)
                     currentX -= 3;
@@ -86,7 +98,6 @@ namespace Sprint0
                 if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
                 {
-                    System.Diagnostics.Debug.WriteLine("current x or y exceeds finalPos");
                     toDraw = false;
                 }
 
