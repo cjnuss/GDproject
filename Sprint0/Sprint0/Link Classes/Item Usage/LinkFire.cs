@@ -29,13 +29,15 @@ namespace Sprint0
         {
             direction = 0;
             currentFrame = 0;
-            totalFrames = 30;
+            totalFrames = 20;
         }
 
         public void RegisterPos(Vector2 location)
         {
             currentX = (int)location.X;
             currentY = (int)location.Y;
+
+            System.Diagnostics.Debug.WriteLine("position registered at " + location);
 
             if (direction == 0)
                 finalPos = (int)location.Y + 5 * 16;
@@ -53,26 +55,26 @@ namespace Sprint0
             if (toDraw)
             {
                 if (direction == 0)
-                    currentY += 5; // magic?
+                    currentY += 3; // magic?
                 if (direction == 1)
-                    currentX -= 5;
+                    currentX -= 3;
                 if (direction == 2)
-                    currentX += 5;
+                    currentX += 3;
                 if (direction == 3)
-                    currentY -= 5;
+                    currentY -= 3;
             }
 
-        //    // overall frame updates
-        //    currentFrame++;
-        //    if (currentFrame == totalFrames)
-        //        currentFrame = 0;
+            // overall frame updates
+            currentFrame++;
+            if (currentFrame == totalFrames)
+                currentFrame = 0;
 
-        //    // animation frame updates
-        //    frame = 0;
-        //    if (currentFrame <= 15)
-        //        frame = 0;
-        //    else if (currentFrame > 15)
-        //        frame = 1;
+            // animation frame updates
+            frame = 0;
+            if (currentFrame <= 10)
+                frame = 0;
+            else if (currentFrame > 10)
+                frame = 1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -83,11 +85,13 @@ namespace Sprint0
             {
                 if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
+                {
+                    System.Diagnostics.Debug.WriteLine("current x or y exceeds finalPos");
                     toDraw = false;
+                }
 
-                source = LinkFireList[0]; // frame
+                source = LinkFireList[frame]; // frame
                 dest = new Rectangle((int)currentX, (int)currentY, source.Width * 3, source.Height * 3);
-                System.Diagnostics.Debug.WriteLine("location is " + currentX + " , " + currentY);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
         }

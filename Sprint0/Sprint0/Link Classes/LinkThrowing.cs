@@ -19,8 +19,7 @@ namespace Sprint0
 
         public GreenArrow greenArrow;
         public LinkFire linkFire;
-        public Boolean arrow = false, fire = false;
-        public Boolean setArrowPos, setFirePos;
+        public Boolean arrow, fire, setArrowPos, setFirePos;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -41,6 +40,7 @@ namespace Sprint0
         {
             direction = 0;
             greenArrow = new GreenArrow();
+            linkFire = new LinkFire();
             setArrowPos = true;
             setFirePos = true;
         }
@@ -51,7 +51,7 @@ namespace Sprint0
             {
                 if (setArrowPos)
                 {
-                    greenArrow = new GreenArrow();
+                    //greenArrow = new GreenArrow();
                     greenArrow.direction = direction;
                     greenArrow.RegisterPos(location1);
                     setArrowPos = false;
@@ -60,6 +60,7 @@ namespace Sprint0
                 {
                     if (!greenArrow.toDraw)
                     {
+                        greenArrow = new GreenArrow();
                         arrow = false;
                         setArrowPos = true;
                     }
@@ -83,6 +84,7 @@ namespace Sprint0
                         setFirePos = true;
                     }
                 }
+                linkFire.Update();
             }
         }
 
