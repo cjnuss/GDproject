@@ -18,7 +18,7 @@ namespace Sprint0
         {
             this.game = game;
         }
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             game.Exit();
         }
@@ -38,7 +38,7 @@ namespace Sprint0
             this.link = link;
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
 
             //mine
@@ -56,19 +56,21 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
+        private float linkVelocity;
 
         public LinkMoveLeftCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
+            linkVelocity = 100f;
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 1;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.X--; // update with speed later     
+            KeyBoardController.linkSprite.location.X -= linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds; // update with speed later     
         }
     }
 
@@ -77,19 +79,21 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
+        private float linkVelocity;
 
         public LinkMoveRightCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
+            linkVelocity = 100f;
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 2;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.X++;
+            KeyBoardController.linkSprite.location.X += linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 
@@ -98,19 +102,21 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
+        private float linkVelocity;
 
         public LinkMoveUpCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
+            linkVelocity = 100f;
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 3;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.Y--;
+            KeyBoardController.linkSprite.location.Y -= linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 
@@ -119,19 +125,21 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
+        private float linkVelocity;
 
         public LinkMoveDownCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
+            linkVelocity = 100f;
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 0;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.Y++;
+            KeyBoardController.linkSprite.location.Y += linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
     #endregion
@@ -150,7 +158,7 @@ namespace Sprint0
             linkDamaged = new LinkDamaged();
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             // no direction change necessary
             KeyBoardController.linkState = 2; // non-moving sprite
@@ -171,12 +179,13 @@ namespace Sprint0
             linkAttacking = new LinkAttacking();
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = 3; // attacking sprites
         }
     }
 
+    #region Link Throwing Items
     // throw green arrow
     public class LinkThrowGreenArrowCommand : ICommand
     {
@@ -191,7 +200,7 @@ namespace Sprint0
             linkThrowing = new LinkThrowing();
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = 4;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
@@ -212,7 +221,7 @@ namespace Sprint0
             linkThrowing = new LinkThrowing();
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = 5;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
@@ -232,10 +241,11 @@ namespace Sprint0
             linkThrowing = new LinkThrowing();
         }
 
-        public void Execute()
+        public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = 6;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
+        #endregion
     }
 }

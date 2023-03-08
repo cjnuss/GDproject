@@ -65,8 +65,8 @@ namespace Sprint0
             //!Keyboard.GetState().IsKeyDown(Keys.Q)
 
             
-            Mcontroller.Update();
-            Kcontroller.Update();
+            Mcontroller.Update(gameTime);
+            Kcontroller.Update(gameTime);
 
             _spriteBatch.End();
             base.Draw(gameTime);

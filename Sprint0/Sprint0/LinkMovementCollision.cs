@@ -32,22 +32,22 @@ namespace Sprint0
 
                 if(obsticleRectangle.Intersects(linkRectangle))
                 {
-                    if (KeyBoardController.dir == 1)
-                    {
-                        KeyBoardController.controllerMapping[Keys.Right].Execute();
-                    }
-                    else if (KeyBoardController.dir == 2)
-                    {
-                        KeyBoardController.controllerMapping[Keys.Left].Execute();
-                    }
-                    else if (KeyBoardController.dir == 3)
-                    {
-                        KeyBoardController.controllerMapping[Keys.Down].Execute();
-                    }
-                    else if (KeyBoardController.dir == 0)
-                    {
-                        KeyBoardController.controllerMapping[Keys.Up].Execute();
-                    }
+                    //if (KeyBoardController.dir == 1)
+                    //{
+                    //    KeyBoardController.controllerMapping[Keys.Right].Execute();
+                    //}
+                    //else if (KeyBoardController.dir == 2)
+                    //{
+                    //    KeyBoardController.controllerMapping[Keys.Left].Execute();
+                    //}
+                    //else if (KeyBoardController.dir == 3)
+                    //{
+                    //    KeyBoardController.controllerMapping[Keys.Down].Execute();
+                    //}
+                    //else if (KeyBoardController.dir == 0)
+                    //{
+                    //    KeyBoardController.controllerMapping[Keys.Up].Execute();
+                    //}
                 }
         }
     }
