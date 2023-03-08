@@ -59,7 +59,7 @@ namespace Sprint0.Levels
                             roomNum = Int32.Parse(line);
                             break;
                         case "BLOCKS":
-                            // addBlock(line);
+                            addBlock(line);
                             break;
                         case "ITEMS":
                             // addItem(line);
@@ -75,7 +75,29 @@ namespace Sprint0.Levels
 
         void addBlock(String line)
         {
+            String[] all = line.Split(",");
+            IBlock block;
 
+            int x = Int32.Parse(all[1]);
+            int y = Int32.Parse(all[2]);
+
+            switch (all[0])
+            {
+                case "tallWall":
+                    block = new CollisionBlock(new Vector2(x, y), 25 * 3, 113 * 3);
+                    break;
+                case "widetWall":
+                    block = new CollisionBlock(new Vector2(x, y), 190 * 3, 25 * 3);
+                    break;
+                case "twoByThree":
+                    block = new CollisionBlock(new Vector2(x, y), 32 * 3, 48 * 3);
+                    break;
+                default :
+                    block = new CollisionBlock(new Vector2(0, 0), 0, 0);
+                    break;
+            }
+            
+            blocks.Add(block);
         }
         void addItem(String line)
         {
