@@ -218,4 +218,24 @@ namespace Sprint0
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }
+
+    public class LinkThrowBombCommand : ICommand
+    {
+        private Link link;
+        private LinkThrowing linkThrowing;
+        private KeyBoardController KeyBoardController;
+
+        public LinkThrowBombCommand(KeyBoardController KeyBoardController, Link link)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.link = link;
+            linkThrowing = new LinkThrowing();
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.linkState = 6;
+            KeyBoardController.location = KeyBoardController.linkSprite.location;
+        }
+    }
 }

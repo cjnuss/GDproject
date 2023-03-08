@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sprint0;
 using System.Diagnostics;
 using Sprint0.Link_Classes;
+using Sprint0.Link_Classes.Item_Usage;
 
 namespace Sprint0
 {
@@ -19,7 +20,8 @@ namespace Sprint0
 
         public GreenArrow greenArrow;
         public Fire fire;
-        public Boolean arrowBool, fireBool, setArrowPos, setFirePos;
+        public Bomb bomb;
+        public Boolean arrowBool, fireBool, bombBool, setArrowPos, setFirePos, setBombPos;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -41,8 +43,10 @@ namespace Sprint0
             direction = 0;
             greenArrow = new GreenArrow();
             fire = new Fire();
+            bomb = new Bomb();
             setArrowPos = true;
             setFirePos = true;
+            setBombPos = true;
         }
 
         public void Update()
@@ -86,6 +90,25 @@ namespace Sprint0
                 }
                 fire.Update();
             }
+            else if (bombBool)
+            {
+                if (setBombPos)
+                {
+                    bomb = new Bomb();
+                    bomb.direction = direction;
+                    bomb.RegisterPos(location1);
+                    setBombPos = false;
+                }
+                else
+                {
+                    if (!bomb.toDraw)
+                    {
+                        bombBool = false;
+                        setBombPos = true;
+                    }
+                }
+                bomb.Update();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -99,6 +122,8 @@ namespace Sprint0
                 greenArrow.Draw(spriteBatch);
             else if (fireBool)
                 fire.Draw(spriteBatch);
+            else if (bombBool)
+                bomb.Draw(spriteBatch);
         }
     }
 }
