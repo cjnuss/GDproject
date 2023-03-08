@@ -19,6 +19,8 @@ namespace Sprint0.Levels
         List<IItem> items;
         List<ISprite1> enemies;
 
+        private LinkMovementCollision linkMovementCollision;
+
         Rectangle roomSource;
 
         public Room(List<IBlock> blocks1, List<IItem> items1, List<ISprite1> enemies1, int roomNum1)
@@ -50,11 +52,14 @@ namespace Sprint0.Levels
         
         public void Update()
         {
+            
             /*
             foreach (IBlock block in blocks)
             {
+                block.Update();
             }
 
+            /*
             foreach (IItem item in items)
             {
             }

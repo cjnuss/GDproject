@@ -1,4 +1,10 @@
 ﻿BLOCKS
+wideWall,99,24
+wideWall,99,429
+tallWall,24,96
+tallWall,669,96
+twoByThree,204,175
+twoByThree,504,175
 ITEMS
 ENEMIES
 skeleton,100,100

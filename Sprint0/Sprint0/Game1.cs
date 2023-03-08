@@ -15,6 +15,8 @@ namespace Sprint0
 
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
+
+        public IRoom currentRoom;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -62,6 +64,7 @@ namespace Sprint0
             // unless Q is pressed, keep updating
             //!Keyboard.GetState().IsKeyDown(Keys.Q)
 
+            
             Mcontroller.Update();
             Kcontroller.Update();
 
