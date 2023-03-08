@@ -26,6 +26,7 @@ namespace Sprint0
         public LinkDamageCommand linkDamageCommand;
         public LinkAttackingCommand linkAttackingCommand;
         public LinkThrowGreenArrowCommand linkThrowGreenArrowCommand;
+        public LinkThrowFireCommand linkThrowFireCommand;
 
         public MapCommands(KeyBoardController KeyBoardController, Dictionary<Keys, ICommand> controllerMapping, Game1 game1, Link link)
         {
@@ -46,6 +47,7 @@ namespace Sprint0
             linkDamageCommand = new LinkDamageCommand(KeyBoardController, link);
             linkAttackingCommand = new LinkAttackingCommand(KeyBoardController, link);
             linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(KeyBoardController, link);
+            linkThrowFireCommand = new LinkThrowFireCommand(KeyBoardController, link);
         }
 
         public Dictionary<Keys, ICommand> getControllerMapping(Dictionary<Keys, ICommand> controllerMapping)
@@ -66,6 +68,7 @@ namespace Sprint0
             controllerMapping.Add(Keys.Z, linkAttackingCommand);
             controllerMapping.Add(Keys.N, linkAttackingCommand);
             controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
+            controllerMapping.Add(Keys.D2, linkThrowFireCommand);
 
             return controllerMapping;
         }

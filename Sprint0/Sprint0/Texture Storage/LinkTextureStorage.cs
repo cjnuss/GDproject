@@ -100,5 +100,10 @@ namespace Sprint0
         public static Rectangle LinkGreenArrowUp1 = new Rectangle(53, 189, 8, 8);
         public static Rectangle LinkGreenArrowUp2 = new Rectangle(0, 0, 0, 0);
         #endregion
+
+        #region Link Fire Attack
+        public static Rectangle LinkFire1 = new Rectangle(191, 185, 16, 16);
+        public static Rectangle LinkFire2 = new Rectangle(535, 185, 16, 16);
+        #endregion
     }
 }

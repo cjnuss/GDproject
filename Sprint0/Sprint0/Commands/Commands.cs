@@ -177,7 +177,7 @@ namespace Sprint0
         }
     }
 
-    // throw command
+    // throw green arrow
     public class LinkThrowGreenArrowCommand : ICommand
     {
         private Link link;
@@ -194,6 +194,27 @@ namespace Sprint0
         public void Execute()
         {
             KeyBoardController.linkState = 4;
+            KeyBoardController.location = KeyBoardController.linkSprite.location;
+        }
+    }
+
+    // throw fire
+    public class LinkThrowFireCommand : ICommand
+    {
+        private Link link;
+        private LinkThrowing linkThrowing;
+        private KeyBoardController KeyBoardController;
+
+        public LinkThrowFireCommand(KeyBoardController KeyBoardController, Link link)
+        {
+            this.KeyBoardController = KeyBoardController;
+            this.link = link;
+            linkThrowing = new LinkThrowing();
+        }
+
+        public void Execute()
+        {
+            KeyBoardController.linkState = 5;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }

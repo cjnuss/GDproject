@@ -18,8 +18,9 @@ namespace Sprint0
         private Texture2D texture;
 
         public GreenArrow greenArrow;
-        public Boolean arrow = true;
-        public Boolean setPos = true;
+        public LinkFire linkFire;
+        public Boolean arrow = false, fire = false;
+        public Boolean setArrowPos, setFirePos;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -40,28 +41,48 @@ namespace Sprint0
         {
             direction = 0;
             greenArrow = new GreenArrow();
+            setArrowPos = true;
+            setFirePos = true;
         }
 
         public void Update()
         {
             if (arrow)
             {
-                if (setPos)
+                if (setArrowPos)
                 {
                     greenArrow = new GreenArrow();
                     greenArrow.direction = direction;
                     greenArrow.RegisterPos(location1);
-                    setPos = false;
+                    setArrowPos = false;
                 }
                 else
                 {
                     if (!greenArrow.toDraw)
                     {
                         arrow = false;
-                        setPos = true;
+                        setArrowPos = true;
                     }
                 }
                 greenArrow.Update();
+            }
+            else if (fire)
+            {
+                if (setFirePos)
+                {
+                    linkFire = new LinkFire();
+                    linkFire.direction = direction;
+                    linkFire.RegisterPos(location1);
+                    setFirePos = false;
+                }
+                else
+                {
+                    if (!linkFire.toDraw)
+                    {
+                        fire = false;
+                        setFirePos = true;
+                    }
+                }
             }
         }
 
@@ -73,9 +94,9 @@ namespace Sprint0
             spriteBatch.Draw(texture, dest, source, Color.White);
 
             if (arrow)
-            {
                 greenArrow.Draw(spriteBatch);
-            }
+            else if (fire)
+                linkFire.Draw(spriteBatch);
         }
     }
 }
