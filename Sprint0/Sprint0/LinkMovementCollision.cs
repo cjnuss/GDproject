@@ -30,8 +30,24 @@ namespace Sprint0
                 linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, 16*3, 16*3);
                 obsticleRectangle = new Rectangle((int)collisionBlock.location.X, (int)collisionBlock.location.Y, collisionBlock.width, collisionBlock.height);
 
-                if(obsticleRectangle.Intersects(linkRectangle))
-                {
+            if (obsticleRectangle.Intersects(linkRectangle))
+            {
+                link.velocity = 0;
+                if(KeyBoardController.dir == 1)
+                    link.location.X = link.location.X + 1;
+                else if(KeyBoardController.dir == 2)
+                    link.location.X = link.location.X - 1;
+                else if(KeyBoardController.dir == 3)
+                    link.location.Y = link.location.Y + 1;
+                else if (KeyBoardController.dir == 0)
+                    link.location.Y = link.location.Y - 1;
+            }
+
+            else
+                link.velocity = 100f;
+
+
+                
                     //if (KeyBoardController.dir == 1)
                     //{
                     //    KeyBoardController.controllerMapping[Keys.Right].Execute();
@@ -48,7 +64,6 @@ namespace Sprint0
                     //{
                     //    KeyBoardController.controllerMapping[Keys.Up].Execute();
                     //}
-                }
         }
     }
 }

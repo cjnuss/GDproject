@@ -35,12 +35,14 @@ namespace Sprint0
         {
             this.game1 = game1;
 
+            linkSprite = new Link(game1);
+
             controllerMapping = new Dictionary<Keys, ICommand>();
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
             mappingCommands.createCommands();
             controllerMapping = mappingCommands.getControllerMapping(controllerMapping);
 
-            linkSprite = new Link(game1);
+            
 
             linkMovementCollision = new LinkMovementCollision(this, linkSprite);
 
