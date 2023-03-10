@@ -75,7 +75,7 @@ namespace Sprint0.Levels
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             /*all xml level logic
             for (int i = 0; i < Typelist.Count; i++)
@@ -110,6 +110,7 @@ namespace Sprint0.Levels
             Rectangle target = new Rectangle(0,0, 800, 480);
             _spriteBatch.Draw(texture, target, source, Color.White);
 
+            game1.currentRoom = rooms[levelState];
             rooms[levelState].Update();
             rooms[levelState].Draw(_spriteBatch);
 

@@ -68,6 +68,9 @@ namespace Sprint0
             // update currentSprite: stationary, 0; moving, 1; damaged, 2; attacking, 3; throwing, 4
             currentSprite = linkState;
 
+            if (currentSprite == 5)
+                currentSprite--;
+
             if (linkState == 1)
                 linkMoving.Update();
             if (linkState == 2)
@@ -75,7 +78,34 @@ namespace Sprint0
             if (linkState == 3)
                 linkAttacking.Update();
             if (linkState == 4)
-                linkThrowing.Update();
+            {
+                linkThrowing.arrowBool = true;
+                linkThrowing.fireBool = false;
+                linkThrowing.bombBool = false;
+                //linkThrowing.Update();
+            }
+            if (linkState == 5)
+            {
+                linkThrowing.fireBool = true;
+                linkThrowing.arrowBool = false;
+                linkThrowing.bombBool = false;
+                //linkThrowing.Update();
+            }
+            if (linkState == 6)
+            {
+                linkThrowing.bombBool = true;
+                linkThrowing.arrowBool = false;
+                linkThrowing.fireBool = false;
+                //linkThrowing.Update();
+            }
+            // DEBUG: update fixed directional issue
+            linkThrowing.Update();
+
+            // update currentSprite: stationary, 0; moving, 1; damaged, 2; attacking, 3; throwing, 4
+            if (linkState < 5)
+                currentSprite = linkState;
+            else
+                currentSprite = 4;
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sprint0;
 using System.Diagnostics;
 using Sprint0.Link_Classes;
+using Sprint0.Link_Classes.Item_Usage;
 
 namespace Sprint0
 {
@@ -18,8 +19,9 @@ namespace Sprint0
         private Texture2D texture;
 
         public GreenArrow greenArrow;
-        public Boolean arrow = true;
-        public Boolean setPos = true;
+        public Fire fire;
+        public Bomb bomb;
+        public Boolean arrowBool, fireBool, bombBool, setArrowPos, setFirePos, setBomb;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -40,28 +42,70 @@ namespace Sprint0
         {
             direction = 0;
             greenArrow = new GreenArrow();
+            fire = new Fire();
+            bomb = new Bomb();
+            setArrowPos = true; setFirePos = true; setBomb = true;
         }
 
         public void Update()
         {
-            if (arrow)
+            if (arrowBool)
             {
-                if (setPos)
+                if (setArrowPos)
                 {
-                    greenArrow = new GreenArrow();
+                    //greenArrow = new GreenArrow();
                     greenArrow.direction = direction;
                     greenArrow.RegisterPos(location1);
-                    setPos = false;
+                    setArrowPos = false;
                 }
                 else
                 {
                     if (!greenArrow.toDraw)
                     {
-                        arrow = false;
-                        setPos = true;
+                        greenArrow = new GreenArrow();
+                        arrowBool = false;
+                        setArrowPos = true;
                     }
                 }
                 greenArrow.Update();
+            }
+            else if (fireBool)
+            {
+                if (setFirePos)
+                {
+                    fire = new Fire();
+                    fire.direction = direction;
+                    fire.RegisterPos(location1);
+                    setFirePos = false;
+                }
+                else
+                {
+                    if (!fire.toDraw)
+                    {
+                        fireBool = false;
+                        setFirePos = true;
+                    }
+                }
+                fire.Update();
+            }
+            else if (bombBool)
+            {
+                if (setBomb)
+                {
+                    bomb = new Bomb();
+                    setBomb = false;
+                }
+                else
+                {
+                    if (!bomb.toDraw)
+                    {
+                        bombBool = false;
+                        setBomb = true;
+                    }
+                }
+                bomb.direction = direction;
+                bomb.UpdatePos(location1);
+                bomb.Update();
             }
         }
 
@@ -72,10 +116,12 @@ namespace Sprint0
             Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3); // DEBUG *3?
             spriteBatch.Draw(texture, dest, source, Color.White);
 
-            if (arrow)
-            {
+            if (arrowBool)
                 greenArrow.Draw(spriteBatch);
-            }
+            else if (fireBool)
+                fire.Draw(spriteBatch);
+            else if (bombBool)
+                bomb.Draw(spriteBatch);
         }
     }
 }

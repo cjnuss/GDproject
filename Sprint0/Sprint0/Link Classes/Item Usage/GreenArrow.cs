@@ -93,7 +93,6 @@ namespace Sprint0.Link_Classes
 
         public void Update()
         {
-            // debug: could do switch case?
             if (toDraw)
             {
                 if (direction == 0)
@@ -197,10 +196,9 @@ namespace Sprint0.Link_Classes
                         toDraw = false;
                     }
                 }
+                // finally draw sprite
+                spriteBatch.Draw(texture, dest, source, Color.White);
             }
-
-            // finally draw sprite
-            spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
 }

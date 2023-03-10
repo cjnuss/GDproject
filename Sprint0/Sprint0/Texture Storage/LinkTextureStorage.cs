@@ -100,5 +100,33 @@ namespace Sprint0
         public static Rectangle LinkGreenArrowUp1 = new Rectangle(53, 189, 8, 8);
         public static Rectangle LinkGreenArrowUp2 = new Rectangle(0, 0, 0, 0);
         #endregion
+
+        #region Link Fire Attack
+        public static Rectangle LinkFire1 = new Rectangle(191, 185, 16, 16);
+        public static Rectangle LinkFire2 = new Rectangle(535, 185, 16, 16);
+        #endregion
+
+        #region Link Bomb Attack
+        public static Rectangle LinkBomb = new Rectangle(129, 185, 8, 14);
+        public static Rectangle LinkBombExplode = new Rectangle(138, 185, 16, 16);
+        public static Rectangle LinkBombExplode1 = new Rectangle(155, 185, 16, 16);
+        public static Rectangle LinkBombExplode2 = new Rectangle(174, 187, 14, 14);
+        #endregion
+
+        #region Link Blue Arrow
+        // DEBUG: CHANGE COORDS!! DOWN TBDDDDD
+        public static Rectangle LinkBlueArrowDown = new Rectangle(734, 185, 5, 16);
+        public static Rectangle LinkBlueArrowDown1 = new Rectangle(53, 189, 8, 8);
+        public static Rectangle LinkBlueArrowDown2 = new Rectangle(0, 0, 0, 0);
+        public static Rectangle LinkBlueArrowLeft = new Rectangle(690, 190, 16, 16);
+        public static Rectangle LinkBlueArrowLeft1 = new Rectangle(53, 189, 8, 8);
+        public static Rectangle LinkBlueArrowLeft2 = new Rectangle(0, 0, 0, 0);
+        public static Rectangle LinkBlueArrowRight = new Rectangle(36, 190, 16, 16);
+        public static Rectangle LinkBlueArrowRight1 = new Rectangle(53, 189, 8, 8);
+        public static Rectangle LinkBlueArrowRight2 = new Rectangle(0, 0, 0, 0);
+        public static Rectangle LinkBlueArrowUp = new Rectangle(29, 185, 5, 16);
+        public static Rectangle LinkBlueArrowUp1 = new Rectangle(53, 189, 8, 8);
+        public static Rectangle LinkBlueArrowUp2 = new Rectangle(0, 0, 0, 0);
+        #endregion
     }
 }

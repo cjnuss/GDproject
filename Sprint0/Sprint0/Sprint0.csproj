@@ -11,10 +11,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Old Link Classes\LinkThrowDown.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowLeft.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowRight.cs" />
-    <Compile Remove="Old Link Classes\LinkThrowUp.cs" />
+    <Compile Remove="Old Link Classes\**" />
+    <Compile Remove="Sprite Factories\**" />
+    <EmbeddedResource Remove="Old Link Classes\**" />
+    <EmbeddedResource Remove="Sprite Factories\**" />
+    <None Remove="Old Link Classes\**" />
+    <None Remove="Sprite Factories\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Enemies\Block.cs" />
+    <Compile Remove="Enemies\EmptySprite.cs" />
+    <Compile Remove="Enemies\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
