@@ -56,21 +56,19 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
-        private float linkVelocity;
 
         public LinkMoveLeftCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
-            linkVelocity = 100f;
         }
 
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 1;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.X -= linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds; // update with speed later     
+            KeyBoardController.linkSprite.location.X -= link.velocity * (float)gameTime.ElapsedGameTime.TotalSeconds; // update with speed later     
         }
     }
 
@@ -79,21 +77,19 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
-        private float linkVelocity;
 
         public LinkMoveRightCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
-            linkVelocity = 100f;
         }
 
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 2;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.X += linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            KeyBoardController.linkSprite.location.X += link.velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 
@@ -102,21 +98,19 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
-        private float linkVelocity;
 
         public LinkMoveUpCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
-            linkVelocity = 100f;
         }
 
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 3;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.Y -= linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            KeyBoardController.linkSprite.location.Y -= link.velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 
@@ -125,21 +119,19 @@ namespace Sprint0
         private Link link;
         private LinkMoving linkMoving;
         private KeyBoardController KeyBoardController;
-        private float linkVelocity;
 
         public LinkMoveDownCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkMoving = new LinkMoving();
-            linkVelocity = 100f;
         }
 
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.dir = 0;
             KeyBoardController.linkState = 1; // moving sprite
-            KeyBoardController.linkSprite.location.Y += linkVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            KeyBoardController.linkSprite.location.Y += link.velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
     #endregion

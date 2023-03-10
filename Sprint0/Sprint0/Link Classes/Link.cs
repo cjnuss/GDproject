@@ -17,6 +17,7 @@ namespace Sprint0
 
         private int currentSprite = 0;
         public Vector2 location;
+        public float velocity = 100f;
 
         private LinkLooking linkLooking;
         private LinkMoving linkMoving;
