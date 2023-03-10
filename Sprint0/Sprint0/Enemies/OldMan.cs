@@ -9,7 +9,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class OldMan : ISprite1
+    public class OldMan : ISprite
     {
         private Texture2D texture;
         public Vector2 location;

@@ -17,6 +17,7 @@ namespace Sprint0
 
         private int currentSprite = 0;
         public Vector2 location;
+        public float velocity = 100f;
 
         private LinkLooking linkLooking;
         private LinkMoving linkMoving;
@@ -25,7 +26,7 @@ namespace Sprint0
         private LinkThrowing linkThrowing;
         // rest of them
 
-        private ISprite[] sprites;
+        private ILinkSprite[] sprites;
 
         public Link(Game1 game1)
         {
@@ -38,7 +39,7 @@ namespace Sprint0
             linkThrowing = new LinkThrowing();
             // rest of them
 
-            sprites = new ISprite[]
+            sprites = new ILinkSprite[]
             {
                 linkLooking,
                 linkMoving,

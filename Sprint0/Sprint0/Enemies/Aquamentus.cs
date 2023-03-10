@@ -9,14 +9,14 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Aquamentus : ISprite1
+    public class Aquamentus : ISprite
     {
         public int totalFrames = 20;
         public int textureFrame1 = 20;
         public Vector2 location;
         public int frame, currentFrame, textureFrame, random, projectileCount;
         public bool projectile;
-        private ISprite1 projectileSprite;
+        private ISprite projectileSprite;
         public System.Random RNG = new System.Random();
 
         private static List<Rectangle> frames = new List<Rectangle>

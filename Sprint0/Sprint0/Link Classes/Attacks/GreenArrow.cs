@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Sprint0.Link_Classes
 {
-    public class GreenArrow : ISprite1
+    public class GreenArrow : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, poofPos;
         public Boolean toDraw = true;

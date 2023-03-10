@@ -13,9 +13,11 @@ namespace Sprint0
     {
         private Game1 game1;
 
-        public ISprite1 sprite;
+        public ISprite sprite;
         private int currentCount = 0;
         private int totalCount = 10;
+
+        public Vector2 location = new Vector2(600, 240);
 
         private int currentSprite = 0;
 
@@ -26,20 +28,20 @@ namespace Sprint0
         private Goriya goriya;
         private OldMan oldman;
 
-        private ISprite1[] sprites;
+        private ISprite[] sprites;
 
         public Enemy(Game1 game1)
         {
             this.game1 = game1;
 
-            skeleton = new Skeleton(new Vector2(600, 240));
-            gel = new Gel(new Vector2(600, 240));
-            bat = new Bat(new Vector2(600, 240));
-            aquamentus = new Aquamentus(new Vector2(600, 240));
-            goriya = new Goriya(new Vector2(600, 240));
-            oldman = new OldMan(new Vector2(600, 240));
+            skeleton = new Skeleton(location);
+            gel = new Gel(location);
+            bat = new Bat(location);
+            aquamentus = new Aquamentus(location);
+            goriya = new Goriya(location);
+            oldman = new OldMan(location);
 
-            sprites = new ISprite1[]
+            sprites = new ISprite[]
             {
                 skeleton,
                 gel,
