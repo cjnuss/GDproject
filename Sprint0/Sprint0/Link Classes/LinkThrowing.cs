@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using Sprint0;
 using System.Diagnostics;
 using Sprint0.Link_Classes;
+using Sprint0.Link_Classes.Item_Usage;
 
 namespace Sprint0
 {
-    public class LinkThrowing : ISprite
+    public class LinkThrowing : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
         public Vector2 location1;
@@ -19,7 +20,8 @@ namespace Sprint0
 
         public GreenArrow greenArrow;
         public Fire fire;
-        public Boolean arrowBool, fireBool, setArrowPos, setFirePos;
+        public Bomb bomb;
+        public Boolean arrowBool, fireBool, bombBool, setArrowPos, setFirePos, setBomb;
 
         private static Rectangle LinkThrowDown = LinkTextureStorage.LinkThrowDown;
         private static Rectangle LinkThrowLeft = LinkTextureStorage.LinkThrowLeft;
@@ -41,8 +43,8 @@ namespace Sprint0
             direction = 0;
             greenArrow = new GreenArrow();
             fire = new Fire();
-            setArrowPos = true;
-            setFirePos = true;
+            bomb = new Bomb();
+            setArrowPos = true; setFirePos = true; setBomb = true;
         }
 
         public void Update()
@@ -86,6 +88,25 @@ namespace Sprint0
                 }
                 fire.Update();
             }
+            else if (bombBool)
+            {
+                if (setBomb)
+                {
+                    bomb = new Bomb();
+                    setBomb = false;
+                }
+                else
+                {
+                    if (!bomb.toDraw)
+                    {
+                        bombBool = false;
+                        setBomb = true;
+                    }
+                }
+                bomb.direction = direction;
+                bomb.UpdatePos(location1);
+                bomb.Update();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -99,6 +120,8 @@ namespace Sprint0
                 greenArrow.Draw(spriteBatch);
             else if (fireBool)
                 fire.Draw(spriteBatch);
+            else if (bombBool)
+                bomb.Draw(spriteBatch);
         }
     }
 }

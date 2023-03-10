@@ -17,7 +17,7 @@ namespace Sprint0.Levels
     public class MouseController : IController
     {
         private Game1 game1;
-        ISprite sprite;
+        //ISprite sprite;
         //get sprites and needed classes ready
         public Texture2D Texture { get; set; }
         private SpriteBatch _spriteBatch;
@@ -75,7 +75,7 @@ namespace Sprint0.Levels
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             /*all xml level logic
             for (int i = 0; i < Typelist.Count; i++)

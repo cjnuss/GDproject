@@ -12,7 +12,7 @@ namespace Sprint0
         public void Draw(SpriteBatch spriteBatch);
         public void Update();
 
-        public List<ISprite1> GetEnemies();
+        public List<ISprite> GetEnemies();
         public List<IBlock> GetBlocks();
         public List<IItem> GetItems();
     }

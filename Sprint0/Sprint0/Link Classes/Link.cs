@@ -25,7 +25,7 @@ namespace Sprint0
         private LinkThrowing linkThrowing;
         // rest of them
 
-        private ISprite[] sprites;
+        private ILinkSprite[] sprites;
 
         public Link(Game1 game1)
         {
@@ -38,7 +38,7 @@ namespace Sprint0
             linkThrowing = new LinkThrowing();
             // rest of them
 
-            sprites = new ISprite[]
+            sprites = new ILinkSprite[]
             {
                 linkLooking,
                 linkMoving,
@@ -81,17 +81,28 @@ namespace Sprint0
             {
                 linkThrowing.arrowBool = true;
                 linkThrowing.fireBool = false;
-                linkThrowing.Update();
+                linkThrowing.bombBool = false;
+                //linkThrowing.Update();
             }
             if (linkState == 5)
             {
                 linkThrowing.fireBool = true;
                 linkThrowing.arrowBool = false;
-                linkThrowing.Update();
+                linkThrowing.bombBool = false;
+                //linkThrowing.Update();
             }
+            if (linkState == 6)
+            {
+                linkThrowing.bombBool = true;
+                linkThrowing.arrowBool = false;
+                linkThrowing.fireBool = false;
+                //linkThrowing.Update();
+            }
+            // DEBUG: update fixed directional issue
+            linkThrowing.Update();
 
             // update currentSprite: stationary, 0; moving, 1; damaged, 2; attacking, 3; throwing, 4
-            if (linkState != 5)
+            if (linkState < 5)
                 currentSprite = linkState;
             else
                 currentSprite = 4;

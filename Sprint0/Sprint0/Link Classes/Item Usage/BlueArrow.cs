@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 using Sprint0;
 using System.Diagnostics;
 
-namespace Sprint0.Link_Classes
+namespace Sprint0
 {
-    public class GreenArrow : ISprite
+    public class BlueArrow : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, poofPos;
         public Boolean toDraw = true;
         Rectangle source;
         Rectangle dest;
+
+        // DEBUG: CHANGE EVERYTHING BELOW THIS LINE
 
         private Texture2D texture;
 
@@ -57,7 +59,7 @@ namespace Sprint0.Link_Classes
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
-        public GreenArrow()
+        public BlueArrow()
         {
             direction = 0;
             currentFrame = 0;
@@ -68,7 +70,7 @@ namespace Sprint0.Link_Classes
         {
             currentX = (int)location.X;
             currentY = (int)location.Y;
-            
+
             if (direction == 0)
             {
                 finalPos = (int)location.Y + 5 * 16;
@@ -196,9 +198,10 @@ namespace Sprint0.Link_Classes
                         toDraw = false;
                     }
                 }
-                // finally draw sprite
-                spriteBatch.Draw(texture, dest, source, Color.White);
             }
+
+            // finally draw sprite
+            spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
 }

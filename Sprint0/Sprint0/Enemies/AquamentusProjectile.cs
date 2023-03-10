@@ -10,7 +10,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class AquamentusProjectile : ISprite1
+    public class AquamentusProjectile : ISprite
     {
         public Vector2 location1, location2, location3;
         public int frame, textureFrame, currentFrame;

@@ -9,7 +9,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Gel : ISprite1
+    public class Gel : ISprite
     {
         public int currentFrame;
         public int totalFrames = 40;

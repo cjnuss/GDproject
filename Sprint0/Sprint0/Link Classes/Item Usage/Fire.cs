@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class Fire : ISprite1
+    public class Fire : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, stillPos;
         public Boolean toDraw = true;
@@ -20,7 +20,8 @@ namespace Sprint0
         private static List<Rectangle> FireList = new List<Rectangle>
         {
             LinkTextureStorage.LinkFire1,
-            LinkTextureStorage.LinkFire2
+            LinkTextureStorage.LinkFire2,
+            new Rectangle(0,0,0,0)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
@@ -68,11 +69,11 @@ namespace Sprint0
             {
                 if (direction == 0 && currentY <= finalPos)
                     currentY += 3; // magic?
-                if (direction == 1)
+                if (direction == 1 && currentX >= finalPos)
                     currentX -= 3;
-                if (direction == 2)
+                if (direction == 2 && currentX <= finalPos)
                     currentX += 3;
-                if (direction == 3)
+                if (direction == 3 && currentY >= finalPos)
                     currentY -= 3;
             }
 

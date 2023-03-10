@@ -14,16 +14,16 @@ namespace Sprint0.Levels
     {
 
         int roomNum;
-
+        public Vector2 location;
         List<IBlock> blocks;
         List<IItem> items;
-        List<ISprite1> enemies;
+        List<ISprite> enemies;
 
         private LinkMovementCollision linkMovementCollision;
 
         Rectangle roomSource;
 
-        public Room(List<IBlock> blocks1, List<IItem> items1, List<ISprite1> enemies1, int roomNum1)
+        public Room(List<IBlock> blocks1, List<IItem> items1, List<ISprite> enemies1, int roomNum1)
         {
             blocks = blocks1;
             items = items1;
@@ -44,8 +44,9 @@ namespace Sprint0.Levels
             {
             }
             */
-            foreach(ISprite1 enemy in enemies)
+            foreach(ISprite enemy in enemies)
             {
+                //location = new Vector2(600, 240); // magic?
                 enemy.Draw(spriteBatch);
             }
         }
@@ -64,7 +65,7 @@ namespace Sprint0.Levels
             {
             }
             */
-            foreach (ISprite1 enemy in enemies)
+            foreach (ISprite enemy in enemies)
             {
                 enemy.Update();
             }
@@ -77,7 +78,7 @@ namespace Sprint0.Levels
         {
             return items;
         }
-        public List<ISprite1> GetEnemies()
+        public List<ISprite> GetEnemies()
         {
             return enemies;
         }

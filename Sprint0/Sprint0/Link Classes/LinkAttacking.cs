@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Sprint0
 {
-    public class LinkAttacking : ISprite
+    public class LinkAttacking : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
         private Texture2D texture;

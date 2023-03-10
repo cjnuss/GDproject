@@ -46,7 +46,7 @@ namespace Sprint0
             dir = 0; linkState = 0;
             _spriteBatch = spriteBatch;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             linkState = 0; // reset link state
 
@@ -56,7 +56,7 @@ namespace Sprint0
             Array.Reverse(pressedKeys);
 
             if (pressedKeys.Length != 0 && controllerMapping.ContainsKey(pressedKeys[0]))
-                controllerMapping[pressedKeys[0]].Execute();
+                controllerMapping[pressedKeys[0]].Execute(gameTime);
 
             foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
             {
