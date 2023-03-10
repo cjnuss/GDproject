@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/chris/source/repos/cjnuss/GDproject/Sprint0/Sprint0/Content/SpriteFont1.spritefont</SourceFile>
+  <SourceFile>C:/Users/chris/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/SpriteFont1.spritefont</SourceFile>
   <SourceTime>2023-03-08T12:49:35.0267918-05:00</SourceTime>
-  <DestFile>C:/Users/chris/source/repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/Desc.xnb</DestFile>
-  <DestTime>2023-03-08T13:10:42.4950044-05:00</DestTime>
-=======
-  <SourceFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/SpriteFont1.spritefont</SourceFile>
-  <SourceTime>2023-02-15T16:29:28.9954224-05:00</SourceTime>
-  <DestFile>C:/Users/jluki/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/Desc.xnb</DestFile>
-  <DestTime>2023-03-09T19:16:56.324077-05:00</DestTime>
->>>>>>> f20268efcb042e398935397661326e2833e3172f
+  <DestFile>C:/Users/chris/Source/Repos/cjnuss/GDproject/Sprint0/Sprint0/Content/bin/DesktopGL/Content/Desc.xnb</DestFile>
+  <DestTime>2023-03-09T21:51:44.9638861-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

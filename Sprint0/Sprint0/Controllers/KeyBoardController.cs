@@ -29,6 +29,7 @@ namespace Sprint0
         public Dictionary<Keys, ICommand> controllerMapping;
 
         private LinkMovementCollision linkMovementCollision;
+        
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {

@@ -46,6 +46,9 @@ namespace Sprint0.Levels
             LevelsTextureStorage.level16,
             LevelsTextureStorage.level17,
         };
+        Boolean lastRightMouseState;
+        Boolean lastLeftMouseState;
+
         /*
         //reading xml
         XmlDocument levelDoc;
@@ -60,6 +63,8 @@ namespace Sprint0.Levels
             _spriteBatch = spriteBatch;
             levelState = 0;
             texture = atlas;
+            lastLeftMouseState = false;
+            lastRightMouseState = false;
             /*
             levelDoc = new XmlDocument();
             XMLpath = Directory.GetCurrentDirectory + @"\1.xml";
@@ -84,7 +89,7 @@ namespace Sprint0.Levels
             }
             */
 
-            if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed))
+            if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed) && lastRightMouseState != true)
             {
                 if (levelState == 2)
                 {
@@ -94,8 +99,9 @@ namespace Sprint0.Levels
                 {
                     levelState++;
                 }
+                lastRightMouseState = true;
             }
-            else if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed))
+            else if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && lastLeftMouseState != true)
             {
                 if (levelState == 0)
                 {
@@ -105,7 +111,12 @@ namespace Sprint0.Levels
                 {
                     levelState--;
                 }
+                lastLeftMouseState = true;
             }
+            if (!Mouse.GetState().LeftButton.Equals(ButtonState.Pressed)) lastLeftMouseState = false;
+            if (!Mouse.GetState().RightButton.Equals(ButtonState.Pressed)) lastRightMouseState = false;
+
+
             Rectangle source = levels[levelState];
             Rectangle target = new Rectangle(0,0, 800, 480);
             _spriteBatch.Draw(texture, target, source, Color.White);
