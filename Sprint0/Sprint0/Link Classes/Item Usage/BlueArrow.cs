@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Sprint0
 {
-    public class BlueArrow : ISprite1
+    public class BlueArrow : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, poofPos;
         public Boolean toDraw = true;

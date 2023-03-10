@@ -12,7 +12,7 @@ using Sprint0.Link_Classes.Item_Usage;
 
 namespace Sprint0
 {
-    public class LinkThrowing : ISprite
+    public class LinkThrowing : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
         public Vector2 location1;

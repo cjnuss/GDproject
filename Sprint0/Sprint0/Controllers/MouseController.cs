@@ -17,7 +17,7 @@ namespace Sprint0.Levels
     public class MouseController : IController
     {
         private Game1 game1;
-        ISprite sprite;
+        //ISprite sprite;
         //get sprites and needed classes ready
         public Texture2D Texture { get; set; }
         private SpriteBatch _spriteBatch;

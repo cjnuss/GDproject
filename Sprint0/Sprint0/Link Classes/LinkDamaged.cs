@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Sprint0
 {
-    public class LinkDamaged : ISprite
+    public class LinkDamaged : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
         private Texture2D texture;

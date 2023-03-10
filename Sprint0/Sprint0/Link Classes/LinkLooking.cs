@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
-    public class LinkLooking : ISprite
+    public class LinkLooking : ILinkSprite
     {
         public int direction;
         private Texture2D texture;

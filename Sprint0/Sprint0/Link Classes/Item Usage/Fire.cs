@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class Fire : ISprite1
+    public class Fire : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, stillPos;
         public Boolean toDraw = true;
@@ -69,11 +69,11 @@ namespace Sprint0
             {
                 if (direction == 0 && currentY <= finalPos)
                     currentY += 3; // magic?
-                if (direction == 1)
+                if (direction == 1 && currentX >= finalPos)
                     currentX -= 3;
-                if (direction == 2)
+                if (direction == 2 && currentX <= finalPos)
                     currentX += 3;
-                if (direction == 3)
+                if (direction == 3 && currentY >= finalPos)
                     currentY -= 3;
             }
 
@@ -100,7 +100,6 @@ namespace Sprint0
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
                 {
                     toDraw = false;
-                    frame = 2;
                 }
 
                 source = FireList[frame]; // frame

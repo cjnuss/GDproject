@@ -10,7 +10,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Skeleton : ISprite1
+    public class Skeleton : ISprite
     {
         public int currentFrame;
         public int totalFrames = 60;

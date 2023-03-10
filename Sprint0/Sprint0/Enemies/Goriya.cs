@@ -9,7 +9,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Goriya : ISprite1
+    public class Goriya : ISprite
     {
         public int frame, textureFrame, currentFrame, direction, boomerangCount;
         public int totalFrames = 40;
@@ -18,7 +18,7 @@ namespace Sprint0
         private Texture2D texture;
         public System.Random RNG = new System.Random();
         public Boolean boomerang;
-        ISprite1 projectileSprite;
+        ISprite projectileSprite;
 
         private static List<Rectangle> GoriyaUp = new List<Rectangle>
         {

@@ -10,7 +10,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class GoriyaProjectile : ISprite1
+    public class GoriyaProjectile : ISprite
     {
         public Vector2 location1;
         public int frame, textureFrame, currentFrame;

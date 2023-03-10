@@ -9,7 +9,7 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Bat : ISprite1
+    public class Bat : ISprite
     {
         public int currentFrame, textureFrame, frame;
         public int totalFrames = 40;

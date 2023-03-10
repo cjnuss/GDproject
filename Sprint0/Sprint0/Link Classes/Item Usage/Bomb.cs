@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Link_Classes.Item_Usage
 {
-    public class Bomb : ISprite1
+    public class Bomb : ISprite
     {
         public int frame, currentFrame, totalFrames, direction;
         public Vector2 location1;
