@@ -62,9 +62,6 @@ namespace Sprint0
 
             // Texture2D level = Content.Load<Texture2D>("level1");
             // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
-
-            // unless Q is pressed, keep updating
-            //!Keyboard.GetState().IsKeyDown(Keys.Q)
             
             Mcontroller.Update(gameTime);
             Kcontroller.Update(gameTime);
