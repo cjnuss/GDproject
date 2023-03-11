@@ -63,7 +63,16 @@ namespace Sprint0
 
             foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
             {
-                linkMovementCollision.Update(block);          
+                if((block.location.X - linkSprite.location.X >= 0 && block.location.X - linkSprite.location.X <= 16 * 3) || (linkSprite.location.X - block.location.X >= 0 && linkSprite.location.X - block.location.X <= block.width))
+                {
+                    linkMovementCollision.Update(block);
+                }  
+                
+                if(linkSprite.velocity == 0)
+                {
+                    linkSprite.velocity = 100f;
+                    break;
+                }
             }
             
             linkSprite.Update(linkState, dir, location);

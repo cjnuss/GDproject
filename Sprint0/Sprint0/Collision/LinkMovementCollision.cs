@@ -34,17 +34,14 @@ namespace Sprint0
             {
                 link.velocity = 0;
                 if(KeyBoardController.dir == 1)
-                    link.location.X = link.location.X + 1;
+                    link.location.X = link.location.X + 2;
                 else if(KeyBoardController.dir == 2)
-                    link.location.X = link.location.X - 1;
+                    link.location.X = link.location.X - 2;
                 else if(KeyBoardController.dir == 3)
-                    link.location.Y = link.location.Y + 1;
+                    link.location.Y = link.location.Y + 2;
                 else if (KeyBoardController.dir == 0)
-                    link.location.Y = link.location.Y - 1;
+                    link.location.Y = link.location.Y - 2;
             }
-
-            else
-                link.velocity = 100f;
 
 
                 
