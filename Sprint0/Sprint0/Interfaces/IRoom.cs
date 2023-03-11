@@ -14,6 +14,6 @@ namespace Sprint0
 
         public List<ISprite> GetEnemies();
         public List<IBlock> GetBlocks();
-        public List<IItem> GetItems();
+        public List<ISprite> GetItems();
     }
 }

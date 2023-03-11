@@ -1,0 +1,11 @@
+﻿BLOCKS
+wideWall,99,24
+wideWall,99,390
+tallWall,24,96
+tallWall, 700,90 
+ITEMS
+map,650,200
+ENEMIES
+gel,375,150
+gel,150,200
+gel,600,200

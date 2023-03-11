@@ -74,7 +74,7 @@ namespace Sprint0.Levels
             Loclist = levelDoc.GetElementsByTagName("Location");
             */
             roomLoad = new RoomLoad();
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 17; i++)
             {
                 rooms.Add(roomLoad.load("Room" + i.ToString() + ".txt"));
             }
@@ -91,7 +91,7 @@ namespace Sprint0.Levels
 
             if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed) && lastRightMouseState != true)
             {
-                if (levelState == 2)
+                if (levelState == 16)
                 {
                     levelState = 0;
                 }
@@ -105,7 +105,7 @@ namespace Sprint0.Levels
             {
                 if (levelState == 0)
                 {
-                    levelState = 2;
+                    levelState = 16;
                 }
                 else
                 {

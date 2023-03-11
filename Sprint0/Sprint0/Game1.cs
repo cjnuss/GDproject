@@ -41,6 +41,7 @@ namespace Sprint0
             Texture2D level = Content.Load<Texture2D>("level1");
             EnemyTextureStorage.Instance.Load(Content);
             LinkTextureStorage.Instance.Load(Content);
+            ItemsTextureStorage.Instance.Load(Content);
 
             // controller setup
             Kcontroller = new KeyBoardController(this, _spriteBatch);

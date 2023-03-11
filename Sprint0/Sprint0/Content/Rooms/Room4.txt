@@ -1,0 +1,10 @@
+﻿BLOCKS
+wideWall,99,24
+wideWall,99,390
+tallWall,24,96
+tallWall, 700,90 
+ITEMS
+ENEMIES
+skeleton,200,200
+skeleton,600,300
+skeleton,150,300

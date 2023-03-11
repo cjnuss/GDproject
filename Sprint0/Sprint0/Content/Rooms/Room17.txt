@@ -5,4 +5,5 @@ tallWall,24,96
 tallWall, 700,90 
 ITEMS
 ENEMIES
-gel,400,200
+goriya,400,100
+goriya,300,100

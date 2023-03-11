@@ -7,6 +7,8 @@ twoByThree,204,175
 twoByThree,504,175
 ITEMS
 ENEMIES
-skeleton,100,100
-skeleton,100,400
+skeleton,120,100
+skeleton,120,300
 skeleton,500,100
+skeleton,600,300
+skeleton,200,300

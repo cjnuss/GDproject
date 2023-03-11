@@ -11,7 +11,7 @@ namespace Sprint0
 {
     public class LevelsTextureStorage : ISpriteFactory
     {
-        private static LevelsTextureStorage instance = null;
+        private static LevelsTextureStorage instance;
 
         public static LevelsTextureStorage Instance
         {
@@ -25,7 +25,7 @@ namespace Sprint0
             }
         }
 
-        private static Texture2D levels = null;
+        private static Texture2D levels;
 
         public void Load(ContentManager content)
         {

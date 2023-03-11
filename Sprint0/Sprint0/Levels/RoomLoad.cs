@@ -9,6 +9,9 @@ using System.Xml.Linq;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Sprint0.Link_Classes.Item_Usage;
+using System.Data;
 
 namespace Sprint0.Levels
 {
@@ -17,13 +20,10 @@ namespace Sprint0.Levels
 
         int roomNum;
         List<IBlock> blocks = new List<IBlock>();
-        List<IItem> items = new List<IItem>();
+        List<ISprite> items = new List<ISprite>();
         List<ISprite> enemies = new List<ISprite>();
 
-        int screenx = 256;
-        int screeny = 176;
-
-        public RoomLoad() 
+        public RoomLoad()
         {
         }
 
@@ -31,7 +31,7 @@ namespace Sprint0.Levels
         public Room load(String sourcefile)
         {
             blocks = new List<IBlock>();
-            items = new List<IItem>();
+            items = new List<ISprite>();
             enemies = new List<ISprite>();
             roomNum = 1;
             loadin(sourcefile);
@@ -41,19 +41,20 @@ namespace Sprint0.Levels
         public void loadin(String sourcefile)
         {
             String path = Directory.GetCurrentDirectory();
-            path = path.Replace(@"bin\Debug\net6.0", @"Content\");
+            path = path.Replace(@"bin\Debug\net6.0", @"Content\Rooms\");
             StreamReader reader = new StreamReader(path + sourcefile);
             String type = "";
 
             while (!reader.EndOfStream)
             {
                 String line = reader.ReadLine();
-                if(!line.Contains(','))
+                if (!line.Contains(','))
                 {
                     type = line;
-                } else
+                }
+                else
                 {
-                    switch(type)
+                    switch (type)
                     {
                         case "ROOM":
                             roomNum = Int32.Parse(line);
@@ -62,7 +63,7 @@ namespace Sprint0.Levels
                             addBlock(line);
                             break;
                         case "ITEMS":
-                            // addItem(line);
+                            addItem(line);
                             break;
                         case "ENEMIES":
                             addEnemy(line);
@@ -92,17 +93,69 @@ namespace Sprint0.Levels
                 case "twoByThree":
                     block = new CollisionBlock(new Vector2(x, y), 32 * 3, 48 * 3);
                     break;
-                default :
+                case "oneByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 16 * 3, 16 * 3);
+                    break;
+                case "twoByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 32 * 3, 16 * 3);
+                    break;
+                default:
                     block = new CollisionBlock(new Vector2(0, 0), 0, 0);
                     break;
             }
-            
+
             blocks.Add(block);
         }
         void addItem(String line)
         {
+            String[] all = line.Split(",");
+            ISprite item;
 
+            int x = Int32.Parse(all[1]);
+            int y = Int32.Parse(all[2]);
+
+            switch (all[0])
+            {
+                case "arrow":
+                    item = new Arrow(new Vector2(x, y));
+                    break;
+                case "bomb":
+                    item = new BombItem(new Vector2(x, y));
+                    break;
+                case "bow":
+                    item = new Bow(new Vector2(x, y));
+                    break;
+                case "clock":
+                    item = new Clock(new Vector2(x, y));
+                    break;
+                case "compass":
+                    item = new Compass(new Vector2(x, y));
+                    break;
+                case "fairy":
+                    item = new Fairy(new Vector2(x, y));
+                    break;
+                case "heart":
+                    item = new Heart(new Vector2(x, y));
+                    break;
+                case "key":
+                    item = new Key(new Vector2(x, y));
+                    break;
+                case "map":
+                    item = new Map(new Vector2(x, y));
+                    break;
+                case "rupee":
+                    item = new Rupee(new Vector2(x, y));
+                    break;
+                case "triforce":
+                    item = new Triforce(new Vector2(x, y));
+                    break;
+                default:
+                    item = null;
+                    break;
+            }
+            items.Add(item);
         }
+
         void addEnemy(String line)
         {
             String[] all = line.Split(",");

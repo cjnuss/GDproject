@@ -96,7 +96,7 @@ namespace Sprint0
 
             Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 2, source.Height * 2);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }

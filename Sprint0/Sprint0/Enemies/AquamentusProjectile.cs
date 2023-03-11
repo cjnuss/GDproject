@@ -27,9 +27,9 @@ namespace Sprint0
 
         public AquamentusProjectile(Vector2 location)
         {
-            location1 = new Vector2(location.X + 16, location.Y + 21);
-            location2 = new Vector2(location.X + 16, location.Y + 21);
-            location3 = new Vector2(location.X + 16, location.Y + 21);
+            location1 = new Vector2(location.X + 24, location.Y + 31);
+            location2 = new Vector2(location.X + 24, location.Y + 31);
+            location3 = new Vector2(location.X + 24, location.Y + 31);
         }
 
         public void Update()
@@ -68,9 +68,9 @@ namespace Sprint0
 
                 Texture2D texture = EnemyTextureStorage.Instance.GetEnemies();
                 Rectangle source = frames[frame];
-                Rectangle destinaton1 = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 2, source.Height * 2);
-                Rectangle destinaton2 = new Rectangle((int)location2.X, (int)location2.Y, source.Width * 2, source.Height * 2);
-                Rectangle destinaton3 = new Rectangle((int)location3.X, (int)location3.Y, source.Width * 2, source.Height * 2);
+                Rectangle destinaton1 = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
+                Rectangle destinaton2 = new Rectangle((int)location2.X, (int)location2.Y, source.Width * 3, source.Height * 3);
+                Rectangle destinaton3 = new Rectangle((int)location3.X, (int)location3.Y, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, destinaton1, source, Color.White);
                 spriteBatch.Draw(texture, destinaton2, source, Color.White);
                 spriteBatch.Draw(texture, destinaton3, source, Color.White);

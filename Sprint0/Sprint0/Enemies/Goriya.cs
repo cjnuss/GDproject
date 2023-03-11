@@ -147,7 +147,7 @@ namespace Sprint0
             }
 
             Rectangle source = frames[direction][frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 2, source.Height * 2);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
 
             if (boomerang)

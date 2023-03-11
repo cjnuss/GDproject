@@ -1,0 +1,11 @@
+﻿BLOCKS
+wideWall,99,24
+wideWall,99,390
+tallWall,24,96
+tallWall, 700,90 
+ITEMS
+compass,600,200
+ENEMIES
+bat,150,150
+bat,600,150
+bat,400,200

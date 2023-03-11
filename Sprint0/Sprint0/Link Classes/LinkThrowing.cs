@@ -63,7 +63,8 @@ namespace Sprint0
                     if (!greenArrow.toDraw)
                     {
                         greenArrow = new GreenArrow();
-                        arrowBool = false; setArrowPos = true;
+                        arrowBool = false;
+                        setArrowPos = true;
                     }
                 }
                 greenArrow.Update();
@@ -72,7 +73,7 @@ namespace Sprint0
             {
                 if (setFirePos)
                 {
-                    //fire = new Fire();
+                    fire = new Fire();
                     fire.direction = direction;
                     fire.RegisterPos(location1);
                     setFirePos = false;
@@ -81,8 +82,8 @@ namespace Sprint0
                 {
                     if (!fire.toDraw)
                     {
-                        fire = new Fire();
-                        fireBool = false; setFirePos = true;
+                        fireBool = false;
+                        setFirePos = true;
                     }
                 }
                 fire.Update();
@@ -91,15 +92,15 @@ namespace Sprint0
             {
                 if (setBomb)
                 {
-                    //bomb = new Bomb();
+                    bomb = new Bomb();
                     setBomb = false;
                 }
                 else
                 {
                     if (!bomb.toDraw)
                     {
-                        bomb = new Bomb();
-                        bombBool = false; setBomb = true;
+                        bombBool = false;
+                        setBomb = true;
                     }
                 }
                 bomb.direction = direction;
