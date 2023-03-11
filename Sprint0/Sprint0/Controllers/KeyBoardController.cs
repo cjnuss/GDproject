@@ -28,7 +28,7 @@ namespace Sprint0
         public MapCommands mappingCommands;
         public Dictionary<Keys, ICommand> controllerMapping;
 
-        private LinkMovementCollision linkMovementCollision;
+        public BlockCollisionCheck blockCollisionCheck;
         
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
@@ -39,12 +39,10 @@ namespace Sprint0
 
             controllerMapping = new Dictionary<Keys, ICommand>();
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
-            mappingCommands.createCommands();
-            controllerMapping = mappingCommands.getControllerMapping(controllerMapping);
+            mappingCommands.CreateCommands();
+            controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
 
-            
-
-            linkMovementCollision = new LinkMovementCollision(this, linkSprite);
+            blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
 
             dir = 0; linkState = 0;
             _spriteBatch = spriteBatch;
@@ -61,19 +59,9 @@ namespace Sprint0
             if (pressedKeys.Length != 0 && controllerMapping.ContainsKey(pressedKeys[0]))
                 controllerMapping[pressedKeys[0]].Execute(gameTime);
 
-            foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
-            {
-                if((block.location.X - linkSprite.location.X >= 0 && block.location.X - linkSprite.location.X <= 16 * 3) || (linkSprite.location.X - block.location.X >= 0 && linkSprite.location.X - block.location.X <= block.width))
-                {
-                    linkMovementCollision.Update(block);
-                }  
-                
-                if(linkSprite.velocity == 0)
-                {
-                    linkSprite.velocity = 100f;
-                    break;
-                }
-            }
+            // collision checks
+            blockCollisionCheck.CheckCollision();
+            // more to follow..
             
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);

@@ -8,24 +8,20 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    internal class CollisionBlock : IBlock
+    internal class CollisionEnemy : IEnemy
     {
         public Vector2 location;
         public int width;
         public int height;
 
-        public CollisionBlock(Vector2 location, int width, int height)
+        public CollisionEnemy(Vector2 location, int width, int height)
         {
             this.location = location;
-            this.width = width; 
+            this.width = width;
             this.height = height;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-        }
-
-        public void KeyBlockUpdate(bool check, ref int oldBlockState, ref int blockState)
+        public void Draw(SpriteBatch spriteBatch)
         {
         }
 

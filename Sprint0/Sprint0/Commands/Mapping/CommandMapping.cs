@@ -37,7 +37,7 @@ namespace Sprint0
             this.link = link;
         }
 
-        public void createCommands()
+        public void CreateCommands()
         {
             exitCommand = new ExitCommand(game1);
             resetCommand = new ResetCommand(KeyBoardController, link, game1);
@@ -52,7 +52,7 @@ namespace Sprint0
             linkThrowBombCommand = new LinkThrowBombCommand(KeyBoardController, link);
         }
 
-        public Dictionary<Keys, ICommand> getControllerMapping(Dictionary<Keys, ICommand> controllerMapping)
+        public Dictionary<Keys, ICommand> GetControllerMapping(Dictionary<Keys, ICommand> controllerMapping)
         {
             controllerMapping.Add(Keys.Q, exitCommand);
             controllerMapping.Add(Keys.R, resetCommand);
