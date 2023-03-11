@@ -70,16 +70,21 @@ namespace Sprint0.Link_Classes.Item_Usage
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
 
-                frame = 0;
-                if (currentFrame <= 36)
-                    frame = 0;
-                else if (currentFrame > 36 && currentFrame <= 44)
-                    frame = 1;
-                else if (currentFrame > 44 && currentFrame <= 52)
-                    frame = 2;
-                else if (currentFrame > 52)
-                    frame = 3;
+                FrameUpdate(currentFrame, totalFrames);
             }
+        }
+
+        public void FrameUpdate(int currentFrame, int totalFrames)
+        {
+            frame = 0;
+            if (currentFrame <= 36)
+                frame = 0;
+            else if (currentFrame > 36 && currentFrame <= 44)
+                frame = 1;
+            else if (currentFrame > 44 && currentFrame <= 52)
+                frame = 2;
+            else if (currentFrame > 52)
+                frame = 3;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -89,7 +94,6 @@ namespace Sprint0.Link_Classes.Item_Usage
             {
                 source = BombList[frame];
                 dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
-                System.Diagnostics.Debug.WriteLine("drawing bomb at " + location1);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
             else

@@ -11,7 +11,7 @@ namespace Sprint0
     public class Fire : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, stillPos;
-        public Boolean toDraw = true;
+        public Boolean toDraw = true, updatePos = true;
         Rectangle source;
         Rectangle dest;
 
@@ -31,6 +31,7 @@ namespace Sprint0
             direction = 0;
             currentFrame = 0;
             totalFrames = 20;
+            updatePos = true;
         }
 
         public void RegisterPos(Vector2 location)
@@ -38,37 +39,41 @@ namespace Sprint0
             currentX = (int)location.X;
             currentY = (int)location.Y;
 
-            System.Diagnostics.Debug.WriteLine("position registered at " + location);
-
             if (direction == 0)
             {
                 finalPos = (int)location.Y + 5 * 16;
-                //stillPos = finalPos + 5;
+                stillPos = finalPos + 5;
             }
             if (direction == 1)
             {
                 finalPos = (int)location.X - 5 * 16;
-                //stillPos = finalPos - 5;
+                stillPos = finalPos - 5;
             }
             if (direction == 2)
             {
                 finalPos = (int)location.X + 5 * 16;
-                //stillPos = finalPos + 5;
+                stillPos = finalPos + 5;
             }
             if (direction == 3)
             {
                 finalPos = (int)location.Y - 5 * 16;
-                //stillPos = finalPos - 5;
+                stillPos = finalPos - 5;
             }
         }
 
         public void Update()
         {
             // distance updates
-            if (toDraw)
+            if (updatePos && toDraw)
             {
                 if (direction == 0 && currentY <= finalPos)
+                {
                     currentY += 3; // magic?
+                }
+                else
+                {
+                    frame = 2;
+                }
                 if (direction == 1 && currentX >= finalPos)
                     currentX -= 3;
                 if (direction == 2 && currentX <= finalPos)
@@ -77,16 +82,20 @@ namespace Sprint0
                     currentY -= 3;
             }
 
-            // overall frame updates
-            currentFrame++;
+           // overall frame updates
+           currentFrame++;
             if (currentFrame == totalFrames)
                 currentFrame = 0;
 
-            // animation frame updates
+            FrameUpdate(currentFrame, totalFrames);
+        }
+
+        public void FrameUpdate(int currentFrame, int totalFrames)
+        {
             frame = 0;
-            if (currentFrame <= 10)
+            if (currentFrame <= totalFrames/2)
                 frame = 0;
-            else if (currentFrame > 10)
+            else if (currentFrame > totalFrames/2)
                 frame = 1;
         }
 
