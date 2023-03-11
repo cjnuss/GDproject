@@ -19,7 +19,7 @@ namespace Sprint0.Levels
         List<IItem> items;
         List<ISprite> enemies;
 
-        private LinkMovementCollision linkMovementCollision;
+        private LinkBlockCollision linkMovementCollision;
 
         Rectangle roomSource;
 

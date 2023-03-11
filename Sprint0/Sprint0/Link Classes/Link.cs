@@ -80,23 +80,17 @@ namespace Sprint0
                 linkAttacking.Update();
             if (linkState == 4)
             {
-                linkThrowing.arrowBool = true;
-                linkThrowing.fireBool = false;
-                linkThrowing.bombBool = false;
+                linkThrowing.arrowBool = true; linkThrowing.fireBool = false; linkThrowing.bombBool = false;
                 //linkThrowing.Update();
             }
             if (linkState == 5)
             {
-                linkThrowing.fireBool = true;
-                linkThrowing.arrowBool = false;
-                linkThrowing.bombBool = false;
+                linkThrowing.fireBool = true; linkThrowing.arrowBool = false; linkThrowing.bombBool = false;
                 //linkThrowing.Update();
             }
             if (linkState == 6)
             {
-                linkThrowing.bombBool = true;
-                linkThrowing.arrowBool = false;
-                linkThrowing.fireBool = false;
+                linkThrowing.bombBool = true; linkThrowing.arrowBool = false; linkThrowing.fireBool = false;
                 //linkThrowing.Update();
             }
             // DEBUG: update fixed directional issue
