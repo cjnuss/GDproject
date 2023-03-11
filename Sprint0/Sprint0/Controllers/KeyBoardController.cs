@@ -29,7 +29,6 @@ namespace Sprint0
         public Dictionary<Keys, ICommand> controllerMapping;
 
         public BlockCollisionCheck blockCollisionCheck;
-        
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {
