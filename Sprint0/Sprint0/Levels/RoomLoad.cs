@@ -85,7 +85,7 @@ namespace Sprint0.Levels
             switch (all[0])
             {
                 case "tallWall":
-                    block = new CollisionBlock(new Vector2(x, y), 25 * 3, 113 * 3);
+                    block = new CollisionBlock(new Vector2(x, y), 25 * 3, 113 * 3); // debug * 3
                     break;
                 case "widetWall":
                     block = new CollisionBlock(new Vector2(x, y), 190 * 3, 25 * 3);
