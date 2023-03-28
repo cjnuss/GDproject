@@ -29,7 +29,7 @@ namespace Sprint0
         public Dictionary<Keys, ICommand> controllerMapping;
 
 
-        private LinkMovementCollision linkMovementCollision;
+        //private LinkMovementCollision linkMovementCollision;
         //for repeats
         Keys[] prevPressedKeys;
         Boolean first;
@@ -49,14 +49,10 @@ namespace Sprint0
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
 
             mappingCommands.CreateCommands();
-            controllerMapping = mappingCommands.getControllerMapping(controllerMapping);
+            controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
             //take out repeats
             prevPressedKeys = new Keys[400];
             first = true;
-
-            mappingCommands.CreateCommands();
-            controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
-
 
             blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
 

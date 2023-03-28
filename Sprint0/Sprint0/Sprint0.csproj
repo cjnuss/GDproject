@@ -19,7 +19,7 @@
     <None Remove="Sprite Factories\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Controllers\Chris_KeyBoardController.cs" />
+    <Compile Remove="Controllers\KeyBoardController.cs" />
     <Compile Remove="Enemies\Block.cs" />
     <Compile Remove="Enemies\EmptySprite.cs" />
     <Compile Remove="Enemies\Item.cs" />

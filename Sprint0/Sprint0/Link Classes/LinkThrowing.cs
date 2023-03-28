@@ -41,72 +41,72 @@ namespace Sprint0
         public LinkThrowing()
         {
             direction = 0;
-            greenArrow = new GreenArrow();
-            fire = new Fire();
-            bomb = new Bomb();
-            setArrowPos = true; setFirePos = true; setBomb = true;
+            //greenArrow = new GreenArrow();
+            //fire = new Fire();
+            //bomb = new Bomb();
+            //setArrowPos = true; setFirePos = true; setBomb = true;
         }
 
         public void Update()
         {
-            if (arrowBool)
-            {
-                if (setArrowPos)
-                {
-                    //greenArrow = new GreenArrow();
-                    greenArrow.direction = direction;
-                    greenArrow.RegisterPos(location1);
-                    setArrowPos = false;
-                }
-                else
-                {
-                    if (!greenArrow.toDraw)
-                    {
-                        greenArrow = new GreenArrow();
-                        arrowBool = false;
-                        setArrowPos = true;
-                    }
-                }
-                greenArrow.Update();
-            }
-            else if (fireBool)
-            {
-                if (setFirePos)
-                {
-                    fire = new Fire();
-                    fire.direction = direction;
-                    fire.RegisterPos(location1);
-                    setFirePos = false;
-                }
-                else
-                {
-                    if (!fire.toDraw)
-                    {
-                        fireBool = false;
-                        setFirePos = true;
-                    }
-                }
-                fire.Update();
-            }
-            else if (bombBool)
-            {
-                if (setBomb)
-                {
-                    bomb = new Bomb();
-                    setBomb = false;
-                }
-                else
-                {
-                    if (!bomb.toDraw)
-                    {
-                        bombBool = false;
-                        setBomb = true;
-                    }
-                }
-                bomb.direction = direction;
-                bomb.UpdatePos(location1);
-                bomb.Update();
-            }
+            //if (arrowBool)
+            //{
+            //    if (setArrowPos)
+            //    {
+            //        //greenArrow = new GreenArrow();
+            //        greenArrow.direction = direction;
+            //        greenArrow.RegisterPos(location1);
+            //        setArrowPos = false;
+            //    }
+            //    else
+            //    {
+            //        if (!greenArrow.toDraw)
+            //        {
+            //            greenArrow = new GreenArrow();
+            //            arrowBool = false;
+            //            setArrowPos = true;
+            //        }
+            //    }
+            //    greenArrow.Update();
+            //}
+            //else if (fireBool)
+            //{
+            //    if (setFirePos)
+            //    {
+            //        fire = new Fire();
+            //        fire.direction = direction;
+            //        fire.RegisterPos(location1);
+            //        setFirePos = false;
+            //    }
+            //    else
+            //    {
+            //        if (!fire.toDraw)
+            //        {
+            //            fireBool = false;
+            //            setFirePos = true;
+            //        }
+            //    }
+            //    fire.Update();
+            //}
+            //else if (bombBool)
+            //{
+            //    if (setBomb)
+            //    {
+            //        bomb = new Bomb();
+            //        setBomb = false;
+            //    }
+            //    else
+            //    {
+            //        if (!bomb.toDraw)
+            //        {
+            //            bombBool = false;
+            //            setBomb = true;
+            //        }
+            //    }
+            //    bomb.direction = direction;
+            //    bomb.UpdatePos(location1);
+            //    bomb.Update();
+            //}
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -116,12 +116,12 @@ namespace Sprint0
             Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3); // DEBUG *3?
             spriteBatch.Draw(texture, dest, source, Color.White);
 
-            if (arrowBool)
-                greenArrow.Draw(spriteBatch);
-            else if (fireBool)
-                fire.Draw(spriteBatch);
-            else if (bombBool)
-                bomb.Draw(spriteBatch);
+            //if (arrowBool)
+            //    greenArrow.Draw(spriteBatch);
+            //else if (fireBool)
+            //    fire.Draw(spriteBatch);
+            //else if (bombBool)
+            //    bomb.Draw(spriteBatch);
         }
     }
 }
