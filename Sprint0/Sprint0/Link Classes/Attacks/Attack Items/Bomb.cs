@@ -83,8 +83,14 @@ namespace Sprint0.Link_Classes.Item_Usage
                 frame = 1;
             else if (currentFrame > 44 && currentFrame <= 52)
                 frame = 2;
-            else if (currentFrame > 52)
+            else if (currentFrame > 52 && currentFrame < 59) // totalFrames-1
                 frame = 3;
+            // we completed animation sequence
+            else
+            {
+                toDraw = false;
+                frame = 4;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -95,10 +101,6 @@ namespace Sprint0.Link_Classes.Item_Usage
                 source = BombList[frame];
                 dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, dest, source, Color.White);
-            }
-            else
-            {
-                frame = 4;
             }
         }
     }

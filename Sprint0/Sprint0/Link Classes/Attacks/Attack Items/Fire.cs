@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sprint0
 {
     public class Fire : ISprite
     {
-        public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, stillPos;
+        public int frame, currentFrame, totalFrames, count, direction, currentX, currentY, finalPos, stillPos;
         public Boolean toDraw = true, updatePos = true;
         Rectangle source;
         Rectangle dest;
@@ -31,6 +32,7 @@ namespace Sprint0
             direction = 0;
             currentFrame = 0;
             totalFrames = 20;
+            count = 0;
             updatePos = true;
         }
 
@@ -42,7 +44,7 @@ namespace Sprint0
             if (direction == 0)
             {
                 finalPos = (int)location.Y + 5 * 16;
-                stillPos = finalPos + 5;
+                //stillPos = finalPos + 5;
             }
             if (direction == 1)
             {
@@ -61,8 +63,17 @@ namespace Sprint0
             }
         }
 
+        public bool CheckFinalPos()
+        {
+            return ((direction == 0 && currentY > stillPos) ||
+                (direction == 1 && currentX < stillPos) ||
+                (direction == 2 && currentX > stillPos) ||
+                (direction == 3 && currentY < stillPos));
+        }
+
         public void Update()
         {
+
             // distance updates
             if (updatePos && toDraw)
             {
@@ -70,10 +81,10 @@ namespace Sprint0
                 {
                     currentY += 3; // magic?
                 }
-                else
-                {
-                    frame = 2;
-                }
+                //else
+                //{
+                //    frame = 2;
+                //}
                 if (direction == 1 && currentX >= finalPos)
                     currentX -= 3;
                 if (direction == 2 && currentX <= finalPos)
@@ -87,10 +98,10 @@ namespace Sprint0
             if (currentFrame == totalFrames)
                 currentFrame = 0;
 
-            FrameUpdate(currentFrame, totalFrames);
+            FrameUpdate();
         }
 
-        public void FrameUpdate(int currentFrame, int totalFrames)
+        public void FrameUpdate()
         {
             frame = 0;
             if (currentFrame <= totalFrames/2)
@@ -108,7 +119,11 @@ namespace Sprint0
                 if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
                 {
-                    toDraw = false;
+                    // update standing still, 20 times
+                    if (count >= 20)
+                        toDraw = false;
+
+                    count++;
                 }
 
                 source = FireList[frame]; // frame

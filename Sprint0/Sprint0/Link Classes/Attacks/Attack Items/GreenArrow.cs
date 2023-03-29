@@ -91,6 +91,14 @@ namespace Sprint0.Link_Classes
             }
         }
 
+        public bool CheckFinalPos()
+        {
+            return ((direction == 0 && currentY > poofPos) ||
+                (direction == 1 && currentX < poofPos) ||
+                (direction == 2 && currentX > poofPos) ||
+                (direction == 3 && currentY < poofPos));
+        }
+
         public void Update()
         {
             if (toDraw)
