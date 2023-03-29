@@ -112,7 +112,7 @@ namespace Sprint0
                 bomb = new Bomb();
                 bombKey = true;
                 bomb.direction = dir;
-                bomb.location1 = location;
+                bomb.UpdatePos(location);
             }
 
             if (arrowKey)

@@ -119,7 +119,7 @@ namespace Sprint0
                 if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
                     direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
                 {
-                    Update(); // frame updates standing still, 20 times
+                    // update standing still, 20 times
                     if (count >= 20)
                         toDraw = false;
 
