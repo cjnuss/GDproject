@@ -72,11 +72,11 @@ namespace Sprint0
             if (currentSprite == 5)
                 currentSprite--;
 
-            if (linkState == 1)
+            //if (linkState == 1)
                 linkMoving.Update();
-            if (linkState == 2)
+            //if (linkState == 2)
                 linkDamaged.Update();
-            if (linkState == 3)
+            //if (linkState == 3)
                 linkAttacking.Update();
             if (linkState == 4)
             {
