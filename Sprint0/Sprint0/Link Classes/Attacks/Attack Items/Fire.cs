@@ -44,7 +44,7 @@ namespace Sprint0
             if (direction == 0)
             {
                 finalPos = (int)location.Y + 5 * 16;
-                stillPos = finalPos + 5;
+                //stillPos = finalPos + 5;
             }
             if (direction == 1)
             {
