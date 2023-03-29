@@ -56,14 +56,7 @@ namespace Sprint0
             // blueArrow = new BlueArrow();
             // swordBeam = new SwordBeam();
 
-            sprites = new ILinkSprite[]
-            {
-                linkLooking,
-                linkMoving,
-                linkDamaged,
-                linkAttacking,
-                linkThrowing
-            };
+            sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
 
             attackSequence = new AttackSequence(greenArrow, fire, bomb);
         }
@@ -81,7 +74,7 @@ namespace Sprint0
             linkAttacking.direction = dir; 
             linkThrowing.direction = dir;
 
-            // update currentSprite: stationary, 0; moving, 1; damaged, 2; attacking, 3; throwing, 4 and beyond
+            // update currentSprite: (0) looking; (1) moving; (2)damaged; (3) attacking; (4) throwing
             if (linkState == 5 || linkState == 6 || linkState == 7) // throwing fire, bomb, blue arrow
                 currentSprite = 4;
             else if (linkState == 8) // DEBUG: swordBeam attack (is this right??)
