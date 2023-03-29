@@ -69,9 +69,9 @@ namespace Sprint0
         public void Update(int linkState, int dir, Vector2 location)
         {
             // dir adjustments
-            linkLooking.direction = dir; 
-            linkMoving.direction = dir; 
-            linkAttacking.direction = dir; 
+            linkLooking.direction = dir;
+            linkMoving.direction = dir;
+            linkAttacking.direction = dir;
             linkThrowing.direction = dir;
 
             // update currentSprite: (0) looking; (1) moving; (2)damaged; (3) attacking; (4) throwing
@@ -82,41 +82,10 @@ namespace Sprint0
             else // 4 and below
                 currentSprite = linkState;
 
-<<<<<<< HEAD
-            // update currentSprite: stationary, 0; moving, 1; damaged, 2; attacking, 3; throwing, 4
-            currentSprite = linkState;
-
-            if (currentSprite == 5)
-                currentSprite--;
-
-            //if (linkState == 1)
-                linkMoving.Update();
-            //if (linkState == 2)
-                linkDamaged.Update();
-            //if (linkState == 3)
-                linkAttacking.Update();
-            if (linkState == 4)
-            {
-                linkThrowing.arrowBool = true; linkThrowing.fireBool = false; linkThrowing.bombBool = false;
-                //linkThrowing.Update();
-            }
-            if (linkState == 5)
-            {
-                linkThrowing.fireBool = true; linkThrowing.arrowBool = false; linkThrowing.bombBool = false;
-                //linkThrowing.Update();
-            }
-            if (linkState == 6)
-            {
-                linkThrowing.bombBool = true; linkThrowing.arrowBool = false; linkThrowing.fireBool = false;
-                //linkThrowing.Update();
-            }
-            // DEBUG: update fixed directional issue
-=======
             // update linkStates
-            linkLooking.Update(); 
-            linkMoving.Update(); 
-            linkAttacking.Update(); 
->>>>>>> 66eb948c7065df21bc4382ab5b9569f4d3890db5
+            linkLooking.Update();
+            linkMoving.Update();
+            linkAttacking.Update();
             linkThrowing.Update();
 
             attackSequence.UpdateAttack(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey);
