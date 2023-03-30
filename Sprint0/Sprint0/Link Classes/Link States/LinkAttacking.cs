@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using Sprint0;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
     public class LinkAttacking : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
+        private bool toDraw = true;
         private Texture2D texture;
 
         private static List<Rectangle> LinkAttackingDown = new List<Rectangle>
@@ -67,28 +69,35 @@ namespace Sprint0
 
         public void Update()
         {
-            // overall frame updates
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
+            if (toDraw)
+            {
+                // overall frame updates
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
 
-            // animation frame updates
-            frame = 0;
-            if (currentFrame <= 8)
-                frame = 0;
-            else if (currentFrame <= 15)
-                frame = 1;
-            else if (currentFrame <= 23)
-                frame = 2;
-            else if (currentFrame > 23)
-                frame = 3;
+                // animation frame updates
+                //frame = 0;
+                if (currentFrame <= 8)
+                    frame = 0;
+                else if (currentFrame <= 15)
+                    frame = 1;
+                else if (currentFrame <= 23)
+                    frame = 2;
+                else if (currentFrame > 23 && currentFrame < 29) // total-1
+                    frame = 3;
+                else
+                {
+                    toDraw = false;
+                    /*frame = 0;*/ // DEBUG idk
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             texture = _texture;
-            Rectangle sprite = frames[direction][frame];
-            
+
             // offset logic
             int xOffset = 0;
             int yOffset = 0;
@@ -105,10 +114,20 @@ namespace Sprint0
             if (direction == 3 && frame == 3)
                 yOffset = 8;
 
-            // draw
-            spriteBatch.Draw(texture,
-                         new Rectangle((int)location.X-xOffset, (int)location.Y-yOffset, sprite.Width*3, sprite.Height*3), // debug *3
-                         sprite, Color.White);
+            if (toDraw)
+            {
+                Rectangle sprite = frames[direction][frame];
+                // draw
+                spriteBatch.Draw(texture,
+                             new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * 3, sprite.Height * 3), // debug *3
+                             sprite, Color.White);
+            }
+            //else
+            //{
+            //    spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset,
+            //        LinkTextureStorage.LinkLookingDown.Width * 3, LinkTextureStorage.LinkLookingDown.Height * 3),
+            //        LinkTextureStorage.LinkLookingDown, Color.White);
+            //}
         }
     }
 }
