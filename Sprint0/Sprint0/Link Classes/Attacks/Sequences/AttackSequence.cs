@@ -18,18 +18,19 @@ namespace Sprint0
         private GreenArrow greenArrow;
         private Fire fire;
         private Bomb bomb;
-        // private BlueArrow blueArrow;
+        private BlueArrow blueArrow;
         // private SwordBeam swordBeam;
 
-        public AttackSequence(GreenArrow greenArrow, Fire fire, Bomb bomb)
+        public AttackSequence(GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow)
         {
             this.greenArrow = greenArrow;
             this.fire = fire;
             this.bomb = bomb;
+            this.blueArrow = blueArrow;
         }
 
         public void UpdateAttack(int linkState, int dir, Vector2 location,
-                                 ref bool arrowKey, ref bool fireKey, ref bool bombKey)
+                                 ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
         {
             // attack update sequence
             if (linkState == 4 && !arrowKey)
@@ -53,6 +54,13 @@ namespace Sprint0
                 bomb.direction = dir;
                 bomb.UpdatePos(location);
             }
+            if (linkState == 7 && !blueArrowKey)
+            {
+                blueArrow = new BlueArrow();
+                blueArrowKey = true;
+                blueArrow.direction = dir;
+                blueArrow.RegisterPos(location);
+            }
 
             if (arrowKey)
                 greenArrow.Update();
@@ -60,17 +68,21 @@ namespace Sprint0
                 fire.Update();
             if (bombKey)
                 bomb.Update();
+            if (blueArrowKey)
+                blueArrow.Update();
         }
 
-        public void DrawAttack(SpriteBatch spriteBatch, ref bool arrowKey, ref bool fireKey, ref bool bombKey)
+        public void DrawAttack(SpriteBatch spriteBatch, ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
         {
             if (arrowKey) greenArrow.Draw(spriteBatch);
             if (fireKey) fire.Draw(spriteBatch);
             if (bombKey) bomb.Draw(spriteBatch);
+            if (blueArrowKey) blueArrow.Draw(spriteBatch);
 
             if (!greenArrow.toDraw) arrowKey = false;
             if (!fire.toDraw) fireKey = false;
             if (!bomb.toDraw) bombKey = false;
+            if (!blueArrow.toDraw) blueArrowKey = false;
         }
     }
 }

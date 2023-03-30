@@ -21,7 +21,7 @@ namespace Sprint0
         public Vector2 location;
         public float velocity = 100f; // magic
 
-        private bool arrowKey = false, fireKey = false, bombKey = false; // blueArrowKey = false, swordBeamKey = false;
+        private bool arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false; // swordBeamKey = false;
 
         private AttackSequence attackSequence;
 
@@ -34,6 +34,7 @@ namespace Sprint0
         private GreenArrow greenArrow;
         private Fire fire;
         private Bomb bomb;
+        private BlueArrow blueArrow;
 
         private ILinkSprite[] sprites;
 
@@ -53,18 +54,18 @@ namespace Sprint0
             greenArrow = new GreenArrow();
             fire = new Fire();
             bomb = new Bomb();
-            // blueArrow = new BlueArrow();
+            blueArrow = new BlueArrow();
             // swordBeam = new SwordBeam();
 
             sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
 
-            attackSequence = new AttackSequence(greenArrow, fire, bomb);
+            attackSequence = new AttackSequence(greenArrow, fire, bomb, blueArrow);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprites[currentSprite].Draw(spriteBatch, location);
-            attackSequence.DrawAttack(spriteBatch, ref arrowKey, ref fireKey, ref bombKey);
+            attackSequence.DrawAttack(spriteBatch, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
@@ -88,7 +89,7 @@ namespace Sprint0
             linkAttacking.Update();
             linkThrowing.Update();
 
-            attackSequence.UpdateAttack(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey);
+            attackSequence.UpdateAttack(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
         }
     }
 }
