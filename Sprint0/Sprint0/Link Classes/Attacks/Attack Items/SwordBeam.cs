@@ -49,6 +49,10 @@ namespace Sprint0
 
         public void RegisterPos(Vector2 location)
         {
+            System.Diagnostics.Debug.WriteLine("set location to " + location);
+            currentX = (int)location.X;
+            currentY = (int)location.Y;
+
             if (direction == 0)
             {
                 finalPos = (int)location.Y + 7 * 32; // changed to 7 and 32
@@ -112,10 +116,21 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            // offset logic
+            int xOffset = 0;
+            int yOffset = 0;
+            if (direction == 0)
+                yOffset = 5;
+            if (direction == 1)
+                xOffset = -5;
+            if (direction == 2)
+                xOffset = 5;
+            if (direction == 3)
+                yOffset = -5;
+
             //texture = _texture;
             if (toDraw)
             {
-                System.Diagnostics.Debug.WriteLine("drawing sword beam");
                 if (direction == 0)
                     texture = _texture2;
                 else
@@ -134,7 +149,7 @@ namespace Sprint0
                 else
                     source = flashing;
 
-                dest = new Rectangle((int)currentX, (int)currentY, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX+xOffset, (int)currentY+yOffset, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
         }

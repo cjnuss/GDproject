@@ -93,7 +93,6 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            System.Diagnostics.Debug.WriteLine("entering draw with frame " + frame);
             texture = _texture;
 
             // offset logic
@@ -115,8 +114,6 @@ namespace Sprint0
             if (toDraw)
             {
                 Rectangle sprite = frames[direction][frame];
-                System.Diagnostics.Debug.WriteLine("drawing frame " + frame);
-                // draw
                 spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * 3, sprite.Height * 3), // debug *3
                                  sprite, Color.White);
             }

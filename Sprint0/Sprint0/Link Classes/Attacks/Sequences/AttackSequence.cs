@@ -19,7 +19,6 @@ namespace Sprint0
         private Fire fire;
         private Bomb bomb;
         private BlueArrow blueArrow;
-        //private SwordBeam swordBeam;
 
         public AttackSequence(GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow)
         {
@@ -60,13 +59,6 @@ namespace Sprint0
                 blueArrow.direction = dir;
                 blueArrow.RegisterPos(location);
             }
-            //if (swordBeamKey == 1)
-            //{
-            //    swordBeam = new SwordBeam();
-            //    swordBeamKey = 2; // drawing in progress
-            //    swordBeam.direction = dir;
-            //    swordBeam.RegisterPos(location);
-            //}
 
             if (arrowKey)
                 greenArrow.Update();
@@ -84,13 +76,11 @@ namespace Sprint0
             if (fireKey) fire.Draw(spriteBatch);
             if (bombKey) bomb.Draw(spriteBatch);
             if (blueArrowKey) blueArrow.Draw(spriteBatch);
-            //if (swordBeamKey == 2) swordBeam.Draw(spriteBatch);
 
             if (!greenArrow.toDraw) arrowKey = false;
             if (!fire.toDraw) fireKey = false;
             if (!bomb.toDraw) bombKey = false;
             if (!blueArrow.toDraw) blueArrowKey = false;
-            //if (!swordBeam.toDraw) swordBeamKey = 1; // ready to draw another
         }
     }
 }

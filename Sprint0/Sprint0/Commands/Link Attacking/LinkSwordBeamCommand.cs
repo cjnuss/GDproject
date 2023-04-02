@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Sprint0
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = 8;
+            KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }
 }

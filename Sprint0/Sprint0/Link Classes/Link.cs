@@ -69,7 +69,10 @@ namespace Sprint0
             sprites[currentSprite].Draw(spriteBatch, location);
             attackSequence.DrawAttack(spriteBatch, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
 
-            swordBeam.Draw(spriteBatch);
+            if (swordBeamKey == 2)
+            {
+                swordBeam.Draw(spriteBatch);
+            }
             if (!swordBeam.toDraw) swordBeamKey = 1;
         }
         public void Update(int linkState, int dir, Vector2 location)
@@ -95,7 +98,7 @@ namespace Sprint0
             linkMoving.Update();
 
             // update attack state
-            if (linkState == 3 && !attackKey)
+            if ((linkState == 3 || linkState == 8) && !attackKey)
             {
                 linkAttacking.toDraw = true;
                 attackKey = true;
@@ -109,35 +112,21 @@ namespace Sprint0
             if (!linkAttacking.toDraw)
                 attackKey = false;
 
-            // sword beam adjustments
-            if (linkState == 8 && swordBeamKey == 1)
+            // sword beam checks 
+            // new sword beam
+            if (swordBeamKey == 1)
             {
+                swordBeamKey = 2;
                 swordBeam = new SwordBeam();
-                swordBeamKey = 2; // drawing in progress
                 swordBeam.direction = dir;
-                swordBeam.RegisterPos(location);
             }
             if (swordBeamKey == 2)
             {
-                if (!attackKey)
-                {
-                    linkAttacking.toDraw = true;
-                    attackKey = true;
-                    linkAttacking.direction = dir;
-                }
-                if (attackKey)
-                {
-                    currentSprite = 3;
-                    linkAttacking.Update();
-                }
-                if (!linkAttacking.toDraw)
-                    attackKey = false;
-
-                // time to draw
                 if (linkAttacking.frame == 2)
+                {
                     swordBeam.toDraw = true;
-
-                currentSprite = 3;
+                    swordBeam.RegisterPos(location);
+                }
                 swordBeam.Update();
             }
 
