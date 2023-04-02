@@ -114,7 +114,7 @@ namespace Sprint0
 
             // sword beam checks 
             // new sword beam
-            if (swordBeamKey == 1)
+            if (linkState == 8 && swordBeamKey == 1)
             {
                 swordBeamKey = 2;
                 swordBeam = new SwordBeam();
