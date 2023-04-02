@@ -13,14 +13,14 @@ using System.Transactions;
 
 namespace Sprint0
 {
-    public class AttackSequence
+    public class Attack
     {
         private GreenArrow greenArrow;
         private Fire fire;
         private Bomb bomb;
         private BlueArrow blueArrow;
 
-        public AttackSequence(GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow)
+        public Attack(GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow)
         {
             this.greenArrow = greenArrow;
             this.fire = fire;
@@ -28,7 +28,7 @@ namespace Sprint0
             this.blueArrow = blueArrow;
         }
 
-        public void UpdateAttack(int linkState, int dir, Vector2 location,
+        public void Update(int linkState, int dir, Vector2 location,
                                  ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
         {
             if (linkState == 4 && !arrowKey)
@@ -70,7 +70,7 @@ namespace Sprint0
                 blueArrow.Update();
         }
 
-        public void DrawAttack(SpriteBatch spriteBatch, Vector2 location, ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
         {
             if (arrowKey) greenArrow.Draw(spriteBatch);
             if (fireKey) fire.Draw(spriteBatch);

@@ -22,9 +22,9 @@ namespace Sprint0
         public float velocity = 100f; // magic
 
         private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false;
-        private int swordBeamKey = 0; // (0) initial, (1) draw, (2) don't draw
+        private bool swordBeamKey = false;
 
-        private AttackSequence attackSequence;
+        private Attack attack;
 
         private LinkLooking linkLooking;
         private LinkMoving linkMoving;
@@ -61,19 +61,16 @@ namespace Sprint0
 
             sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
 
-            attackSequence = new AttackSequence(greenArrow, fire, bomb, blueArrow);
+            attack = new Attack(greenArrow, fire, bomb, blueArrow);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprites[currentSprite].Draw(spriteBatch, location);
-            attackSequence.DrawAttack(spriteBatch, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
+            attack.Draw(spriteBatch, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
 
-            if (swordBeamKey == 2)
-            {
-                swordBeam.Draw(spriteBatch);
-            }
-            if (!swordBeam.toDraw) swordBeamKey = 1;
+            if (swordBeamKey || swordBeam.explodeKey) swordBeam.Draw(spriteBatch);
+            if (!swordBeam.toDraw) swordBeamKey = false;
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
@@ -88,8 +85,8 @@ namespace Sprint0
                 currentSprite = 4;
             else if (linkState == 8) // sword beam
             {
-                swordBeamKey = 1;
-                currentSprite = 3;
+                //swordBeamKey = 1;
+                currentSprite = 3; // don't really need this here
             }
             else // 4 and below
                 currentSprite = linkState;
@@ -114,24 +111,22 @@ namespace Sprint0
 
             // sword beam checks 
             // new sword beam
-            if (linkState == 8 && swordBeamKey == 1)
+            if (linkState == 8 && !swordBeamKey)
             {
-                swordBeamKey = 2;
+                swordBeamKey = true;
                 swordBeam = new SwordBeam();
                 swordBeam.direction = dir;
             }
-            if (swordBeamKey == 2)
+            // update sequence
+            if (swordBeamKey && linkAttacking.frame == 2)
             {
-                if (linkAttacking.frame == 2)
-                {
-                    swordBeam.toDraw = true;
-                    swordBeam.RegisterPos(location);
-                }
-                swordBeam.Update();
+                swordBeam.toDraw = true;
+                swordBeam.RegisterPos(location);
             }
 
             // update attack item states
-            attackSequence.UpdateAttack(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
+            attack.Update(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
+            swordBeam.Update();
         }
     }
 }

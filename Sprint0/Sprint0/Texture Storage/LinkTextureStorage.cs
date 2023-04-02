@@ -144,10 +144,10 @@ namespace Sprint0
         // DEBUG: sword beam should be color of background when flashing? NES playthrough
         public static Rectangle LinkSwordBeamFlashing = new Rectangle(0, 0, 0, 0); // DEBUG: flashing?
 
-        public static Rectangle LinkSwordBeamExplode = new Rectangle(); // bottom left
-        public static Rectangle LinkSwordBeamExplode1 = new Rectangle(); // bottom right
-        public static Rectangle LinkSwordBeamExplode2 = new Rectangle(); // top left
-        public static Rectangle LinkSwordBeamExplode3 = new Rectangle(); // top right
+        public static Rectangle LinkSwordBeamExplode = new Rectangle(62, 157, 8, 10); // NORM: top left
+        public static Rectangle LinkSwordBeamExplode1 = new Rectangle(672, 157, 8, 10); // NORM: top right
+        public static Rectangle LinkSwordBeamExplode2 = new Rectangle(62, 143, 8, 10); // FLIP: bottom left
+        public static Rectangle LinkSwordBeamExplode3 = new Rectangle(672, 143, 8, 10); // FLIP: bottom right
         #endregion
     }
 }
