@@ -134,5 +134,20 @@ namespace Sprint0
         public static Rectangle LinkBlueArrowUp1 = new Rectangle(53, 189, 8, 8);
         public static Rectangle LinkBlueArrowUp2 = new Rectangle(0, 0, 0, 0);
         #endregion
+
+        #region Link Sword Beam
+        public static Rectangle LinkSwordBeamDown = new Rectangle(36, 140, 7, 16); // upside down sheet
+        public static Rectangle LinkSwordBeamLeft = new Rectangle(681, 159, 16, 7);
+        public static Rectangle LinkSwordBeamRight = new Rectangle(45, 159, 16, 7);
+        public static Rectangle LinkSwordBeamUp = new Rectangle(36, 154, 7, 16);
+
+        // DEBUG: sword beam should be color of background when flashing? NES playthrough
+        public static Rectangle LinkSwordBeamFlashing = new Rectangle(0, 0, 0, 0); // DEBUG: flashing?
+
+        public static Rectangle LinkSwordBeamExplode = new Rectangle(); // bottom left
+        public static Rectangle LinkSwordBeamExplode1 = new Rectangle(); // bottom right
+        public static Rectangle LinkSwordBeamExplode2 = new Rectangle(); // top left
+        public static Rectangle LinkSwordBeamExplode3 = new Rectangle(); // top right
+        #endregion
     }
 }

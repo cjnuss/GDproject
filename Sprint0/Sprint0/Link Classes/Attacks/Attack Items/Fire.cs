@@ -31,7 +31,7 @@ namespace Sprint0
         {
             direction = 0;
             currentFrame = 0;
-            totalFrames = 20;
+            totalFrames = 10;
             count = 0;
             updatePos = true;
         }
@@ -78,13 +78,7 @@ namespace Sprint0
             if (updatePos && toDraw)
             {
                 if (direction == 0 && currentY <= finalPos)
-                {
                     currentY += 3; // magic?
-                }
-                //else
-                //{
-                //    frame = 2;
-                //}
                 if (direction == 1 && currentX >= finalPos)
                     currentX -= 3;
                 if (direction == 2 && currentX <= finalPos)

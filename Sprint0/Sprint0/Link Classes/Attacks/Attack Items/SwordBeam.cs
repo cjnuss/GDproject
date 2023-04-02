@@ -13,62 +13,61 @@ namespace Sprint0
     public class SwordBeam : ISprite
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, explodePos;
-        public Boolean toDraw = true;
+        public Boolean toDraw = false, updatePos = true;
         Rectangle source;
         Rectangle dest;
 
         private Texture2D texture;
 
-        private static List<Rectangle> LinkSwordBeamDown = new List<Rectangle>
+        private static List<Rectangle> directions = new List<Rectangle>()
         {
-            // LinkTextureStorage.LinkSwordBeamDown, 1, 2, 3,..
+            LinkTextureStorage.LinkSwordBeamDown,
+            LinkTextureStorage.LinkSwordBeamLeft,
+            LinkTextureStorage.LinkSwordBeamRight,
+            LinkTextureStorage.LinkSwordBeamUp
         };
 
-        private static List<Rectangle> LinkSwordBeamLeft = new List<Rectangle>
-        {
-            // LinkTextureStorage.LinkSwordBeamLeft, 1, 2, 3,..
-        };
+        Rectangle flashing = LinkTextureStorage.LinkSwordBeamFlashing;
 
-        private static List<Rectangle> LinkSwordBeamRight = new List<Rectangle>
+        private static List<Rectangle> explode = new List<Rectangle>()
         {
-            // LinkTextureStorage.LinkSwordBeamRight, 1, 2, 3,..
-        };
-
-        private static List<Rectangle> LinkSwordBeamUp = new List<Rectangle>
-        {
-            // LinkTextureStorage.LinkSwordBeamUp, 1, 2, 3,..
+            LinkTextureStorage.LinkSwordBeamExplode,
+            LinkTextureStorage.LinkSwordBeamExplode1,
+            LinkTextureStorage.LinkSwordBeamExplode2,
+            LinkTextureStorage.LinkSwordBeamExplode3
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
+        private Texture2D _texture2 = LinkTextureStorage.Instance.GetUpsideDown();
 
         public SwordBeam()
         {
             direction = 0;
             currentFrame = 0;
-            totalFrames = 30;
+            totalFrames = 20; // changed
         }
 
         public void RegisterPos(Vector2 location)
         {
             if (direction == 0)
             {
-                finalPos = (int)location.Y + 5 * 32; // changed to 32
-                explodePos = finalPos + 5;
+                finalPos = (int)location.Y + 7 * 32; // changed to 7 and 32
+                explodePos = finalPos + 7;
             }
             if (direction == 1)
             {
-                finalPos = (int)location.X - 5 * 32;
-                explodePos = finalPos - 5;
+                finalPos = (int)location.X - 7 * 32;
+                explodePos = finalPos - 7;
             }
             if (direction == 2)
             {
-                finalPos = (int)location.X + 5 * 32;
-                explodePos = finalPos + 5;
+                finalPos = (int)location.X + 7 * 32;
+                explodePos = finalPos + 7;
             }
             if (direction == 3)
             {
-                finalPos = (int)location.Y - 5 * 32;
-                explodePos = finalPos - 5;
+                finalPos = (int)location.Y - 7 * 32;
+                explodePos = finalPos - 7;
             }
         }
 
@@ -82,24 +81,62 @@ namespace Sprint0
 
         public void Update()
         {
-            if (toDraw)
+            if (updatePos && toDraw)
             {
                 if (direction == 0)
-                    currentY += 5; // magic?
+                    currentY += 7; // magic?
                 if (direction == 1)
-                    currentX -= 5;
+                    currentX -= 7;
                 if (direction == 2)
-                    currentX += 5;
+                    currentX += 7;
                 if (direction == 3)
-                    currentY -= 5;
+                    currentY -= 7;
+
+                // overall frame updates
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
+
+                FrameUpdate();
             }
+        }
+
+        public void FrameUpdate()
+        {
+            frame = 0;
+            if (currentFrame <= 15) // magic
+                frame = 0;
+            else if (currentFrame > 15)
+                frame = 1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            texture = _texture;
-            List<Rectangle> thisDirectionSwordBeam; // = directions[direction]
-            // logic below: AFTER SPRITESHEET UPDATES
+            //texture = _texture;
+            if (toDraw)
+            {
+                System.Diagnostics.Debug.WriteLine("drawing sword beam");
+                if (direction == 0)
+                    texture = _texture2;
+                else
+                    texture = _texture;
+
+                // we reach finalPos
+                if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
+                    direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
+                {
+                    // draw explode stuff now
+                    toDraw = false;
+                }
+
+                if (frame == 0)
+                    source = directions[direction];
+                else
+                    source = flashing;
+
+                dest = new Rectangle((int)currentX, (int)currentY, source.Width * 3, source.Height * 3);
+                spriteBatch.Draw(texture, dest, source, Color.White);
+            }
         }
     }
 }

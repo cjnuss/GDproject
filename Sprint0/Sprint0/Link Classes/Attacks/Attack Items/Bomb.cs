@@ -24,7 +24,7 @@ namespace Sprint0.Link_Classes.Item_Usage
             LinkTextureStorage.LinkBombExplode,
             LinkTextureStorage.LinkBombExplode1,
             LinkTextureStorage.LinkBombExplode2,
-            new Rectangle(0,0,0,0)
+            //new Rectangle(0,0,0,0)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
@@ -89,7 +89,7 @@ namespace Sprint0.Link_Classes.Item_Usage
             else
             {
                 toDraw = false;
-                frame = 4;
+                //frame = 4;
             }
         }
 

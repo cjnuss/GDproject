@@ -15,7 +15,7 @@ namespace Sprint0
     public class LinkAttacking : ILinkSprite
     {
         public int frame, currentFrame, totalFrames, direction;
-        private bool toDraw = true;
+        public bool toDraw = true;
         private Texture2D texture;
 
         private static List<Rectangle> LinkAttackingDown = new List<Rectangle>
@@ -64,7 +64,7 @@ namespace Sprint0
         {
             direction = 0;
             currentFrame = 0;
-            totalFrames = 30;
+            totalFrames = 20;
         }
 
         public void Update()
@@ -77,25 +77,23 @@ namespace Sprint0
                     currentFrame = 0;
 
                 // animation frame updates
-                //frame = 0;
-                if (currentFrame <= 8)
+                frame = 0;
+                if (currentFrame <= 5)
                     frame = 0;
-                else if (currentFrame <= 15)
+                else if (currentFrame > 5 && currentFrame <= 10)
                     frame = 1;
-                else if (currentFrame <= 23)
+                else if (currentFrame > 10 && currentFrame <= 15)
                     frame = 2;
-                else if (currentFrame > 23 && currentFrame < 29) // total-1
+                else if (currentFrame > 15 && currentFrame < 19) // total-1
                     frame = 3;
                 else
-                {
                     toDraw = false;
-                    /*frame = 0;*/ // DEBUG idk
-                }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            System.Diagnostics.Debug.WriteLine("entering draw with frame " + frame);
             texture = _texture;
 
             // offset logic
@@ -117,17 +115,27 @@ namespace Sprint0
             if (toDraw)
             {
                 Rectangle sprite = frames[direction][frame];
+                System.Diagnostics.Debug.WriteLine("drawing frame " + frame);
                 // draw
-                spriteBatch.Draw(texture,
-                             new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * 3, sprite.Height * 3), // debug *3
-                             sprite, Color.White);
+                spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * 3, sprite.Height * 3), // debug *3
+                                 sprite, Color.White);
             }
-            //else
-            //{
-            //    spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset,
-            //        LinkTextureStorage.LinkLookingDown.Width * 3, LinkTextureStorage.LinkLookingDown.Height * 3),
-            //        LinkTextureStorage.LinkLookingDown, Color.White);
-            //}
+            else
+            {
+                Rectangle sprite;
+                if (direction == 0)
+                    sprite = LinkTextureStorage.LinkLookingDown;
+                else if (direction == 1)
+                    sprite = LinkTextureStorage.LinkLookingLeft;
+                else if (direction == 2)
+                    sprite = LinkTextureStorage.LinkLookingRight;
+                else /*(direction == 3)*/
+                    sprite = LinkTextureStorage.LinkLookingUp;
+
+
+                spriteBatch.Draw(texture, new Rectangle((int)location.X, (int)location.Y, sprite.Width * 3, sprite.Height * 3), // debug *3
+                                 sprite, Color.White);
+            }
         }
     }
 }
