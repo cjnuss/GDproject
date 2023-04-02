@@ -173,25 +173,24 @@ namespace Sprint0
                 // offset
                 expOffsetX += 2;
                 expOffsetY += 2;
-                //System.Diagnostics.Debug.WriteLine("expOffsetX: " + expOffsetX);
 
                 // top left
-                dest = new Rectangle((int)currentX-expOffsetX, (int)currentY-expOffsetY, source.Width*3, source.Height*3);
+                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY - expOffsetY, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(_texture, dest, explode[0], Color.White);
 
                 // top right
-                dest = new Rectangle((int)currentX+expOffsetX, (int)currentY-expOffsetY, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY - expOffsetY, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(_texture, dest, explode[1], Color.White);
 
                 // bottom left
-                dest = new Rectangle((int)currentX-expOffsetX, (int)currentY+expOffsetY, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY + expOffsetY, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(_texture2, dest, explode[2], Color.White);
 
                 // bottom right
-                dest = new Rectangle((int)currentX+expOffsetX, (int)currentY+expOffsetY, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY + expOffsetY, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(_texture2, dest, explode[3], Color.White);
 
-                if (count > 10)
+                if (count > 30)
                     explodeKey = false;
                 count++;
             }
