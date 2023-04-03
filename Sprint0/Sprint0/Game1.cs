@@ -33,7 +33,10 @@ namespace Sprint0
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            //480 x 800 - added 150 to height
+            _graphics.PreferredBackBufferHeight = 630;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.ApplyChanges();
             // sprite factory
             //BlockSpriteFactory.Instance.LoadBlockTextures(Content);
 
@@ -42,6 +45,7 @@ namespace Sprint0
             EnemyTextureStorage.Instance.Load(Content);
             LinkTextureStorage.Instance.Load(Content);
             ItemsTextureStorage.Instance.Load(Content);
+            UITextureStorage.Instance.Load(Content);
 
             // controller setup
             Kcontroller = new KeyBoardController(this, _spriteBatch);
@@ -56,7 +60,7 @@ namespace Sprint0
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.LightSlateGray);
+            GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
 

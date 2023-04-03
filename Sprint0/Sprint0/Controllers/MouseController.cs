@@ -118,7 +118,7 @@ namespace Sprint0.Levels
 
 
             Rectangle source = levels[levelState];
-            Rectangle target = new Rectangle(0,0, 800, 480);
+            Rectangle target = new Rectangle(0,150, 800, 480);
             _spriteBatch.Draw(texture, target, source, Color.White);
 
             game1.currentRoom = rooms[levelState];
