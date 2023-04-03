@@ -62,9 +62,9 @@ namespace Sprint0
 
         public LinkAttacking()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 20;
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.TotalSwordFrames;
         }
 
         public void Update()
@@ -74,18 +74,18 @@ namespace Sprint0
                 // overall frame updates
                 currentFrame++;
                 if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                    currentFrame = GameConstants.Zero;
 
                 // animation frame updates
-                frame = 0;
-                if (currentFrame <= 5)
-                    frame = 0;
-                else if (currentFrame > 5 && currentFrame <= 10)
-                    frame = 1;
-                else if (currentFrame > 10 && currentFrame <= 15)
-                    frame = 2;
-                else if (currentFrame > 15 && currentFrame < 19) // total-1
-                    frame = 3;
+                frame = LinkConstants.Frame0;
+                if (currentFrame <= LinkConstants.SwordPhase1)
+                    frame = LinkConstants.Frame0;
+                else if (currentFrame > LinkConstants.SwordPhase1 && currentFrame <= LinkConstants.SwordPhase2)
+                    frame = LinkConstants.Frame1;
+                else if (currentFrame > LinkConstants.SwordPhase2 && currentFrame <= LinkConstants.SwordPhase3)
+                    frame = LinkConstants.Frame2;
+                else if (currentFrame > LinkConstants.SwordPhase3 && currentFrame < LinkConstants.SwordPhase4) // total-1
+                    frame = LinkConstants.Frame3;
                 else
                     toDraw = false;
             }
@@ -96,42 +96,42 @@ namespace Sprint0
             texture = _texture;
 
             // offset logic
-            int xOffset = 0;
-            int yOffset = 0;
-            if (direction == 1 && frame == 1)
-                xOffset = 28;
-            if (direction == 1 && frame == 2)
-                xOffset = 18;
-            if (direction == 1 && frame == 3)
-                xOffset = 8;
-            if (direction == 3 && frame == 1)
-                yOffset = 29;
-            if (direction == 3 && frame == 2)
-                yOffset = 28;
-            if (direction == 3 && frame == 3)
-                yOffset = 8;
+            int xOffset = GameConstants.Zero;
+            int yOffset = GameConstants.Zero;
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame1)
+                xOffset = LinkConstants.LeftOffset1;
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame2)
+                xOffset = LinkConstants.LeftOffset2;
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame3)
+                xOffset = LinkConstants.LeftOffset3;
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame1)
+                yOffset = LinkConstants.UpOffset1;
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame2)
+                yOffset = LinkConstants.UpOffset2;
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame3)
+                yOffset = LinkConstants.UpOffset3;
 
             if (toDraw)
             {
                 Rectangle sprite = frames[direction][frame];
-                spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * 3, sprite.Height * 3), // debug *3
-                                 sprite, Color.White);
+                spriteBatch.Draw(texture, new Rectangle((int)location.X - xOffset, (int)location.Y - yOffset, sprite.Width * GameConstants.Sizing, 
+                    sprite.Height * GameConstants.Sizing), sprite, Color.White);
             }
             else
             {
                 Rectangle sprite;
-                if (direction == 0)
+                if (direction == GameConstants.Down)
                     sprite = LinkTextureStorage.LinkLookingDown;
-                else if (direction == 1)
+                else if (direction == GameConstants.Left)
                     sprite = LinkTextureStorage.LinkLookingLeft;
-                else if (direction == 2)
+                else if (direction == GameConstants.Right)
                     sprite = LinkTextureStorage.LinkLookingRight;
-                else /*(direction == 3)*/
+                else /* direction up */
                     sprite = LinkTextureStorage.LinkLookingUp;
 
 
-                spriteBatch.Draw(texture, new Rectangle((int)location.X, (int)location.Y, sprite.Width * 3, sprite.Height * 3), // debug *3
-                                 sprite, Color.White);
+                spriteBatch.Draw(texture, new Rectangle((int)location.X, (int)location.Y, sprite.Width * GameConstants.Sizing, 
+                    sprite.Height * GameConstants.Sizing), sprite, Color.White);
             }
         }
     }

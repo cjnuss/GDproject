@@ -34,19 +34,18 @@ namespace Sprint0
 
         public LinkThrowing()
         {
-            direction = 0;
+            direction = GameConstants.Down;
         }
 
-        public void Update()
-        {
-            // nothing to do here
-        }
+        // nothing to do here
+        public void Update() { }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             texture = _texture;
             Rectangle source = frames[direction];
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3); // DEBUG *3?
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width*GameConstants.Sizing, 
+                source.Height*GameConstants.Sizing);
             spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }

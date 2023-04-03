@@ -13,13 +13,24 @@ using System.Transactions;
 
 namespace Sprint0
 {
+    //static class LinkConstants
+    //{
+    //    public const int InitialX = 200;
+    //    public const int InitialY = 100;
+    //    public const int Looking = 0;
+    //    public const int Moving = 1;
+    //    public const int Damaged = 2;
+    //    public const int Attacking = 3;
+    //    public const int Throwing = 4;
+    //}
+
     public class Link : ILink
     {
         private Game1 game1;
 
-        private int currentSprite = 0; // default looking sprite
+        private int currentSprite = LinkConstants.Default;
         public Vector2 location;
-        public float velocity = 100f; // magic
+        public float velocity = LinkConstants.Velocity;
 
         private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false;
         private bool swordBeamKey = false;
@@ -43,7 +54,7 @@ namespace Sprint0
         public Link(Game1 game1)
         {
             this.game1 = game1;
-            location = new Vector2(200, 250); // debug: magic number initial location
+            location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY); // debug: magic number initial location
 
             // link states
             linkLooking = new LinkLooking();
@@ -80,22 +91,18 @@ namespace Sprint0
             //linkAttacking.direction = dir;
             linkThrowing.direction = dir;
 
-            // update currentSprite: (0) looking; (1) moving; (2)damaged; (3) attacking; (4) throwing
-            if (linkState == 5 || linkState == 6 || linkState == 7) // throwing fire, bomb, blue arrow
-                currentSprite = 4;
-            else if (linkState == 8) // sword beam
-            {
-                //swordBeamKey = 1;
-                currentSprite = 3; // don't really need this here
-            }
-            else // 4 and below
+            // update currentSprite
+            if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire || 
+                linkState == LinkConstants.Bomb|| linkState == LinkConstants.BlueArrow)
+                currentSprite = LinkConstants.Throwing;
+            else if (linkState != LinkConstants.SwordBeam)
                 currentSprite = linkState;
 
             // update movement state
             linkMoving.Update();
 
             // update attack state
-            if ((linkState == 3 || linkState == 8) && !attackKey)
+            if ((linkState == LinkConstants.WoodenSword || linkState == LinkConstants.SwordBeam) && !attackKey)
             {
                 linkAttacking.toDraw = true;
                 attackKey = true;
@@ -103,22 +110,20 @@ namespace Sprint0
             }
             if (attackKey)
             {
-                currentSprite = 3;
+                currentSprite = LinkConstants.Attacking;
                 linkAttacking.Update();
             }
             if (!linkAttacking.toDraw)
                 attackKey = false;
 
             // sword beam checks 
-            // new sword beam
-            if (linkState == 8 && !swordBeamKey)
+            if (linkState == LinkConstants.SwordBeam && !swordBeamKey)
             {
                 swordBeamKey = true;
                 swordBeam = new SwordBeam();
                 swordBeam.direction = dir;
             }
-            // update sequence
-            if (swordBeamKey && linkAttacking.frame == 2)
+            if (swordBeamKey && linkAttacking.frame == LinkConstants.PeakAnimation)
             {
                 swordBeam.toDraw = true;
                 swordBeam.RegisterPos(location);

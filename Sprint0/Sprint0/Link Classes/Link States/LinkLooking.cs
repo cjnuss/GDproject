@@ -32,23 +32,18 @@ namespace Sprint0
 
         public LinkLooking()
         {
-            direction = 0; // initialized as looking down
-            // DEBUG: LOCATION?? magic numbers
+            direction = GameConstants.Down;
         }
 
         // nothing to do here
-        public void Update()
-        {
-            // DEBUG: might just be within keyboard controller
-            // update lookingState based on key press
-            // velocity must be 0 to update this
-        }
+        public void Update() { }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             texture = _texture;
             Rectangle source = frames[direction];
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width*3, source.Height*3); // DEBUG *3?
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, source.Width*GameConstants.Sizing, 
+                source.Height*GameConstants.Sizing);
             spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
