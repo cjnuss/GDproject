@@ -21,43 +21,44 @@ namespace Sprint0
 
         private Texture2D texture;
 
-        private static List<Rectangle> LinkGreenArrowDown = new List<Rectangle>
+        private static List<Rectangle> LinkBlueArrowDown = new List<Rectangle>
         {
-            LinkTextureStorage.LinkGreenArrowDown,
-            LinkTextureStorage.LinkGreenArrowDown1,
-            LinkTextureStorage.LinkGreenArrowDown2
+            LinkTextureStorage.LinkBlueArrowDown,
+            LinkTextureStorage.LinkBlueArrowDown1,
+            LinkTextureStorage.LinkBlueArrowDown2
         };
 
-        private static List<Rectangle> LinkGreenArrowLeft = new List<Rectangle>
+        private static List<Rectangle> LinkBlueArrowLeft = new List<Rectangle>
         {
-            LinkTextureStorage.LinkGreenArrowLeft,
-            LinkTextureStorage.LinkGreenArrowLeft1,
-            LinkTextureStorage.LinkGreenArrowLeft2
+            LinkTextureStorage.LinkBlueArrowLeft,
+            LinkTextureStorage.LinkBlueArrowLeft1,
+            LinkTextureStorage.LinkBlueArrowLeft2
         };
 
-        private static List<Rectangle> LinkGreenArrowRight = new List<Rectangle>
+        private static List<Rectangle> LinkBlueArrowRight = new List<Rectangle>
         {
-            LinkTextureStorage.LinkGreenArrowRight,
-            LinkTextureStorage.LinkGreenArrowRight1,
-            LinkTextureStorage.LinkGreenArrowRight2
+            LinkTextureStorage.LinkBlueArrowRight,
+            LinkTextureStorage.LinkBlueArrowRight1,
+            LinkTextureStorage.LinkBlueArrowRight2
         };
 
-        private static List<Rectangle> LinkGreenArrowUp = new List<Rectangle>
+        private static List<Rectangle> LinkBlueArrowUp = new List<Rectangle>
         {
-            LinkTextureStorage.LinkGreenArrowUp,
-            LinkTextureStorage.LinkGreenArrowUp1,
-            LinkTextureStorage.LinkGreenArrowUp2
+            LinkTextureStorage.LinkBlueArrowUp,
+            LinkTextureStorage.LinkBlueArrowUp1,
+            LinkTextureStorage.LinkBlueArrowUp2
         };
 
         private static List<List<Rectangle>> directions = new List<List<Rectangle>>
         {
-            LinkGreenArrowDown,
-            LinkGreenArrowLeft,
-            LinkGreenArrowRight,
-            LinkGreenArrowUp
+            LinkBlueArrowDown,
+            LinkBlueArrowLeft,
+            LinkBlueArrowRight,
+            LinkBlueArrowUp
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
+        private Texture2D _texture2 = LinkTextureStorage.Instance.GetUpsideDown();
 
         public BlueArrow()
         {
@@ -73,23 +74,23 @@ namespace Sprint0
 
             if (direction == 0)
             {
-                finalPos = (int)location.Y + 5 * 16;
-                poofPos = finalPos + 5;
+                finalPos = (int)location.Y + 7 * 32; // changed mult to 32
+                poofPos = finalPos + 7;
             }
             if (direction == 1)
             {
-                finalPos = (int)location.X - 5 * 16;
-                poofPos = finalPos - 5;
+                finalPos = (int)location.X - 7 * 32;
+                poofPos = finalPos - 7;
             }
             if (direction == 2)
             {
-                finalPos = (int)location.X + 5 * 16;
-                poofPos = finalPos + 5;
+                finalPos = (int)location.X + 7 * 32;
+                poofPos = finalPos + 7;
             }
             if (direction == 3)
             {
-                finalPos = (int)location.Y - 5 * 16;
-                poofPos = finalPos - 5;
+                finalPos = (int)location.Y - 7 * 32;
+                poofPos = finalPos - 7;
             }
         }
 
@@ -98,13 +99,13 @@ namespace Sprint0
             if (toDraw)
             {
                 if (direction == 0)
-                    currentY += 5; // magic?
+                    currentY += 7; // magic?
                 if (direction == 1)
-                    currentX -= 5;
+                    currentX -= 7;
                 if (direction == 2)
-                    currentX += 5;
+                    currentX += 7;
                 if (direction == 3)
-                    currentY -= 5;
+                    currentY -= 7;
             }
         }
 
@@ -119,6 +120,7 @@ namespace Sprint0
                 // down
                 if (direction == 0)
                 {
+                    texture = _texture2; 
                     if (currentY <= finalPos)
                     {
                         source = thisDirectionArrows[0];
@@ -140,10 +142,11 @@ namespace Sprint0
                 // left
                 if (direction == 1)
                 {
+                    texture = _texture;
                     if (currentX >= finalPos)
                     {
                         source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 32); // magic?
+                        dest = new Rectangle(currentX, currentY, 32, 10); // magic?
                     }
                     else if (currentX >= poofPos)
                     {
@@ -161,10 +164,11 @@ namespace Sprint0
                 // right
                 if (direction == 2)
                 {
+                    texture = _texture;
                     if (currentX <= finalPos)
                     {
                         source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 32); // magic?
+                        dest = new Rectangle(currentX, currentY, 32, 10); // magic?
                     }
                     else if (currentX <= poofPos)
                     {
@@ -181,6 +185,7 @@ namespace Sprint0
 
                 if (direction == 3)
                 {
+                    texture = _texture;
                     if (currentY >= finalPos)
                     {
                         source = thisDirectionArrows[0];
