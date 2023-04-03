@@ -40,7 +40,7 @@ namespace Sprint0
         public Link(Game1 game1)
         {
             this.game1 = game1;
-            location = new Vector2(200, 100); // debug: magic number initial location
+            location = new Vector2(200, 250); // debug: magic number initial location
 
             // link states
             linkLooking = new LinkLooking();

@@ -11,6 +11,8 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel.Design;
 using Sprint0.Link_Classes;
 using static System.Reflection.Metadata.BlobBuilder;
+using Sprint0.UI;
+using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0
 {
@@ -18,7 +20,10 @@ namespace Sprint0
     {
         private Game1 game1;
         public Link linkSprite;
-
+        //test
+        private StaticText testingText;
+        private HpHearts testingHearts;
+        private MainHUD mainHUD;
         public Texture2D Texture { get; set; }
         public SpriteBatch _spriteBatch;
 
@@ -35,6 +40,10 @@ namespace Sprint0
             this.game1 = game1;
 
             linkSprite = new Link(game1);
+            //temp
+            testingText = new StaticText(game1);
+            testingHearts = new HpHearts(game1);
+            mainHUD = new MainHUD(game1);
 
             controllerMapping = new Dictionary<Keys, ICommand>();
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
@@ -64,6 +73,12 @@ namespace Sprint0
             
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
+            //temp
+
+            testingText.Draw(_spriteBatch);
+            mainHUD.Draw(_spriteBatch);
+            testingHearts.Draw(_spriteBatch);
+
         }
 
     }
