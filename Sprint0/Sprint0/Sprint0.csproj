@@ -25,6 +25,9 @@
     <Compile Remove="Enemies\Item.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
