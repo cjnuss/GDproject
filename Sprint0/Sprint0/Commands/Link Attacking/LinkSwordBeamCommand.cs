@@ -1,30 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    // throw green arrow
-    public class LinkThrowGreenArrowCommand : ICommand
+    // sword attack
+    public class LinkSwordBeamCommand : ICommand
     {
         private Link link;
-        private LinkThrowing linkThrowing;
+        private LinkAttacking linkAttacking;
         private KeyBoardController KeyBoardController;
 
-        public LinkThrowGreenArrowCommand(KeyBoardController KeyBoardController, Link link)
+        public LinkSwordBeamCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
-            linkThrowing = new LinkThrowing();
+            linkAttacking = new LinkAttacking();
         }
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 4;
+            KeyBoardController.linkState = 8;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }

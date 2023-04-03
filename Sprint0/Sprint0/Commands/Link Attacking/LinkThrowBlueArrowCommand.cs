@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Sprint0
 {
     // throw green arrow
-    public class LinkThrowGreenArrowCommand : ICommand
+    public class LinkThrowBlueArrowCommand : ICommand
     {
         private Link link;
         private LinkThrowing linkThrowing;
         private KeyBoardController KeyBoardController;
 
-        public LinkThrowGreenArrowCommand(KeyBoardController KeyBoardController, Link link)
+        public LinkThrowBlueArrowCommand(KeyBoardController KeyBoardController, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
@@ -24,7 +24,7 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 4;
+            KeyBoardController.linkState = 7;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }

@@ -25,16 +25,23 @@ namespace Sprint0
 		}
 
 		private static Texture2D linkTextures = null;
+        private static Texture2D upsideDownTextures = null;
 
 		public void Load(ContentManager content)
 		{
 			linkTextures = content.Load<Texture2D>("linksprites");
-		}
+            upsideDownTextures = content.Load<Texture2D>("upsidedownlinksprites");
+        }
 
 		public Texture2D GetLinkTextures()
 		{
 			return linkTextures;
 		}
+
+        public Texture2D GetUpsideDown()
+        {
+            return upsideDownTextures;
+        }
 
         #region Link Looking
         public static Rectangle LinkLookingDown = new Rectangle(1, 11, 16, 16);
@@ -114,19 +121,33 @@ namespace Sprint0
         #endregion
 
         #region Link Blue Arrow
-        // DEBUG: CHANGE COORDS!! DOWN TBDDDDD
-        public static Rectangle LinkBlueArrowDown = new Rectangle(734, 185, 5, 16);
-        public static Rectangle LinkBlueArrowDown1 = new Rectangle(53, 189, 8, 8);
+        public static Rectangle LinkBlueArrowDown = new Rectangle(29, 109, 5, 16); // upside down
+        public static Rectangle LinkBlueArrowDown1 = new Rectangle(53, 113, 8, 8); // poof
         public static Rectangle LinkBlueArrowDown2 = new Rectangle(0, 0, 0, 0);
-        public static Rectangle LinkBlueArrowLeft = new Rectangle(690, 190, 16, 16);
+        public static Rectangle LinkBlueArrowLeft = new Rectangle(690, 190, 16, 5);
         public static Rectangle LinkBlueArrowLeft1 = new Rectangle(53, 189, 8, 8);
         public static Rectangle LinkBlueArrowLeft2 = new Rectangle(0, 0, 0, 0);
-        public static Rectangle LinkBlueArrowRight = new Rectangle(36, 190, 16, 16);
+        public static Rectangle LinkBlueArrowRight = new Rectangle(36, 190, 16, 5);
         public static Rectangle LinkBlueArrowRight1 = new Rectangle(53, 189, 8, 8);
-        public static Rectangle LinkBlueArrowRight2 = new Rectangle(0, 0, 0, 0);
+        public static Rectangle LinkBlueArrowRight2 = new Rectangle(0, 0, 0, 04);
         public static Rectangle LinkBlueArrowUp = new Rectangle(29, 185, 5, 16);
         public static Rectangle LinkBlueArrowUp1 = new Rectangle(53, 189, 8, 8);
         public static Rectangle LinkBlueArrowUp2 = new Rectangle(0, 0, 0, 0);
+        #endregion
+
+        #region Link Sword Beam
+        public static Rectangle LinkSwordBeamDown = new Rectangle(36, 140, 7, 16); // upside down sheet
+        public static Rectangle LinkSwordBeamLeft = new Rectangle(681, 159, 16, 7);
+        public static Rectangle LinkSwordBeamRight = new Rectangle(45, 159, 16, 7);
+        public static Rectangle LinkSwordBeamUp = new Rectangle(36, 154, 7, 16);
+
+        // DEBUG: sword beam should be color of background when flashing? NES playthrough
+        public static Rectangle LinkSwordBeamFlashing = new Rectangle(0, 0, 0, 0); // DEBUG: flashing?
+
+        public static Rectangle LinkSwordBeamExplode = new Rectangle(62, 157, 8, 10); // NORM: top left
+        public static Rectangle LinkSwordBeamExplode1 = new Rectangle(672, 157, 8, 10); // NORM: top right
+        public static Rectangle LinkSwordBeamExplode2 = new Rectangle(62, 143, 8, 10); // FLIP: bottom left
+        public static Rectangle LinkSwordBeamExplode3 = new Rectangle(672, 143, 8, 10); // FLIP: bottom right
         #endregion
     }
 }
