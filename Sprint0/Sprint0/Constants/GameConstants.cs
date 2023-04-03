@@ -15,6 +15,7 @@ namespace Sprint0
 {
     static class GameConstants
     {
+        public const int Zero = 0;
         // size multiplier
         public const int Sizing = 3;
         // directions

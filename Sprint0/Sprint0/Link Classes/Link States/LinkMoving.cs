@@ -49,12 +49,11 @@ namespace Sprint0
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
-        public LinkMoving() // DEBUG
+        public LinkMoving()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 30;
-            // location
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.TotalMovingFrames;
         }
 
         public void Update()
@@ -62,17 +61,14 @@ namespace Sprint0
             // overall frame updates
             currentFrame++;
             if (currentFrame == totalFrames)
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
 
             // animation frame updates
-            frame = 0;
-            if (currentFrame <= 15)
-                frame = 0;
-            else if (currentFrame > 15)
-                frame = 1;
-
-            // direction updates
-            // DEBUG: above might be in keyboard controller
+            frame = LinkConstants.Frame0;
+            if (currentFrame <= LinkConstants.MovingPhase)
+                frame = LinkConstants.Frame0;
+            else if (currentFrame > LinkConstants.MovingPhase)
+                frame = LinkConstants.Frame1;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -80,8 +76,8 @@ namespace Sprint0
             texture = _texture;
             Rectangle sprite = frames[direction][frame];
             spriteBatch.Draw(texture,
-                         new Rectangle((int)location.X, (int)location.Y, sprite.Width*3, sprite.Height*3), // texture.width...
-                         sprite, Color.White);
+                         new Rectangle((int)location.X, (int)location.Y, sprite.Width*GameConstants.Sizing, 
+                         sprite.Height*GameConstants.Sizing), sprite, Color.White);
         }
     }
 }

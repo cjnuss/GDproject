@@ -16,7 +16,6 @@ namespace Sprint0
 {
     static class LinkConstants
     {
-        public const int Zero = 0;
         // locations
         public const int InitialX = 200;
         public const int InitialY = 100;
@@ -40,11 +39,12 @@ namespace Sprint0
         public const int SwordBeam = 8;
         // sword beam trigger frame
         public const int PeakAnimation = 2;
+        // frames
+        public const int Frame0 = 0;
+        public const int Frame1 = 1;
+        public const int Frame2 = 2;
+        public const int Frame3 = 3;
         // link attacking
-        public const int SwordFrame0 = 0;
-        public const int SwordFrame1 = 1;
-        public const int SwordFrame2 = 2;
-        public const int SwordFrame3 = 3;
         public const int TotalSwordFrames = 20;
         public const int SwordPhase1 = TotalSwordFrames / 4;
         public const int SwordPhase2 = TotalSwordFrames / 2;
@@ -56,5 +56,10 @@ namespace Sprint0
         public const int UpOffset1 = 29;
         public const int UpOffset2 = 28;
         public const int UpOffset3 = 8;
+        // link damaged
+        public const int TotalDamageFrames = 30;
+        // link moving
+        public const int TotalMovingFrames = 20;
+        public const int MovingPhase = TotalMovingFrames / 2;
     }
 }

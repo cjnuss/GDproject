@@ -63,7 +63,7 @@ namespace Sprint0
         public LinkAttacking()
         {
             direction = GameConstants.Down;
-            currentFrame = LinkConstants.Zero;
+            currentFrame = GameConstants.Zero;
             totalFrames = LinkConstants.TotalSwordFrames;
         }
 
@@ -74,18 +74,18 @@ namespace Sprint0
                 // overall frame updates
                 currentFrame++;
                 if (currentFrame == totalFrames)
-                    currentFrame = LinkConstants.Zero;
+                    currentFrame = GameConstants.Zero;
 
                 // animation frame updates
-                frame = LinkConstants.SwordFrame0;
+                frame = LinkConstants.Frame0;
                 if (currentFrame <= LinkConstants.SwordPhase1)
-                    frame = LinkConstants.SwordFrame0;
+                    frame = LinkConstants.Frame0;
                 else if (currentFrame > LinkConstants.SwordPhase1 && currentFrame <= LinkConstants.SwordPhase2)
-                    frame = LinkConstants.SwordFrame1;
+                    frame = LinkConstants.Frame1;
                 else if (currentFrame > LinkConstants.SwordPhase2 && currentFrame <= LinkConstants.SwordPhase3)
-                    frame = LinkConstants.SwordFrame2;
+                    frame = LinkConstants.Frame2;
                 else if (currentFrame > LinkConstants.SwordPhase3 && currentFrame < LinkConstants.SwordPhase4) // total-1
-                    frame = LinkConstants.SwordFrame3;
+                    frame = LinkConstants.Frame3;
                 else
                     toDraw = false;
             }
@@ -96,19 +96,19 @@ namespace Sprint0
             texture = _texture;
 
             // offset logic
-            int xOffset = LinkConstants.Zero;
-            int yOffset = LinkConstants.Zero;
-            if (direction == GameConstants.Left && frame == LinkConstants.SwordFrame1)
+            int xOffset = GameConstants.Zero;
+            int yOffset = GameConstants.Zero;
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame1)
                 xOffset = LinkConstants.LeftOffset1;
-            if (direction == GameConstants.Left && frame == LinkConstants.SwordFrame2)
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame2)
                 xOffset = LinkConstants.LeftOffset2;
-            if (direction == GameConstants.Left && frame == LinkConstants.SwordFrame3)
+            if (direction == GameConstants.Left && frame == LinkConstants.Frame3)
                 xOffset = LinkConstants.LeftOffset3;
-            if (direction == GameConstants.Up && frame == LinkConstants.SwordFrame1)
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame1)
                 yOffset = LinkConstants.UpOffset1;
-            if (direction == GameConstants.Up && frame == LinkConstants.SwordFrame2)
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame2)
                 yOffset = LinkConstants.UpOffset2;
-            if (direction == GameConstants.Up && frame == LinkConstants.SwordFrame3)
+            if (direction == GameConstants.Up && frame == LinkConstants.Frame3)
                 yOffset = LinkConstants.UpOffset3;
 
             if (toDraw)

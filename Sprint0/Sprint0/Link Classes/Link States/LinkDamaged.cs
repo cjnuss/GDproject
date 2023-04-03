@@ -28,10 +28,9 @@ namespace Sprint0
 
         public LinkDamaged()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 30;
-            // location
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.TotalDamageFrames;
         }
 
         public void Update()
@@ -39,28 +38,24 @@ namespace Sprint0
             // overall frame updates
             currentFrame++;
             if (currentFrame == totalFrames)
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
 
             // animation frame updates
-            frame = 0;
+            frame = LinkConstants.Frame0;
             if (currentFrame <= 10)
-                frame = 0;
+                frame = LinkConstants.Frame0;
             else if (currentFrame <= 20)
-                frame = 1;
+                frame = LinkConstants.Frame1;
             else if (currentFrame > 20)
-                frame = 2;
-
-            // direction updates?
-            // DEBUG: above might be in keyboard controller
+                frame = LinkConstants.Frame2;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             texture = _texture;
             Rectangle sprite = LinkTakingDamage[frame];
-            spriteBatch.Draw(texture,
-                         new Rectangle((int)location.X, (int)location.Y, sprite.Width*3, sprite.Width*3),
-                         sprite, Color.White);
+            spriteBatch.Draw(texture, new Rectangle((int)location.X, (int)location.Y, sprite.Width*GameConstants.Sizing, 
+                         sprite.Width*GameConstants.Sizing), sprite, Color.White);
         }
     }
 }
