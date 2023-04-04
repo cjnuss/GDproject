@@ -1,8 +1,8 @@
 ﻿BLOCKS
-wideWall,99,24
-wideWall,99,390
-tallWall,24,96
-tallWall, 700,90 
+wideWall,99,150
+wideWall,99,540
+tallWall,24,246
+tallWall, 700,240 
 ITEMS
 ENEMIES
 gel,150,150
