@@ -45,21 +45,25 @@ namespace Sprint0
         {
             return render;
         }
-        public static Rectangle HPheart = new Rectangle(645, 117, 8, 8);
-        public static Rectangle MainHUD = new Rectangle(346, 27, 256, 56);
-        public static Rectangle MapKey = new Rectangle(584, 1, 64, 40);
+        public static Rectangle HPheart = new Rectangle(645, 117, 9, 9);
+        public static Rectangle MainHUD = new Rectangle(256, 16, 256, 50);
+        public static Rectangle MapKey = new Rectangle(584, 1, 65, 41);
+        public static Rectangle AnnoyingAssBoxes = new Rectangle(10, 128, 65, 17);
+        public static Rectangle wholeMap = new Rectangle(687, 58, 65, 33);
+        public static Rectangle linkLocation = new Rectangle(519, 126, 2, 2);
+
         public static Rectangle Num0 = new Rectangle(528, 117, 8, 8);
         public static Rectangle Num1 = new Rectangle(537, 117, 8, 8);
         public static Rectangle Num2 = new Rectangle(546, 117, 8, 8);
         public static Rectangle Num3 = new Rectangle(555, 117, 8, 8);
-
         public static Rectangle Num4 = new Rectangle(564, 117, 8, 8);
         public static Rectangle Num5 = new Rectangle(573, 117, 8, 8);
-        public static Rectangle Num6 = new Rectangle(555, 117, 8, 8);
-        public static Rectangle Num7 = new Rectangle(555, 117, 8, 8);
-        public static Rectangle Num8 = new Rectangle(555, 117, 8, 8);
-        public static Rectangle Num9 = new Rectangle(555, 117, 8, 8);
-        public static Rectangle NumX = new Rectangle(555, 117, 8, 8);
+        public static Rectangle Num6 = new Rectangle(582, 117, 8, 8);
+        public static Rectangle Num7 = new Rectangle(591, 117, 8, 8);
+        public static Rectangle Num8 = new Rectangle(600, 117, 8, 8);
+        public static Rectangle Num9 = new Rectangle(609, 117, 8, 8);
+        public static Rectangle NumX = new Rectangle(519, 117, 8, 8);
+        public static Rectangle NumBox = new Rectangle(96, 48, 8, 8);
 
 
 

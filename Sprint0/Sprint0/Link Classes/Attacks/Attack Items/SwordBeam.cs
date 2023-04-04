@@ -15,8 +15,8 @@ namespace Sprint0
     {
         public int frame, currentFrame, totalFrames, direction, currentX, currentY, finalPos, explodePos;
         public Boolean toDraw = false, explodeKey = false;
-        private int expOffsetX = 0, expOffsetY = 0;
-        private int count = 0;
+        private int expOffsetX = GameConstants.Zero, expOffsetY = GameConstants.Zero;
+        private int count = GameConstants.Zero;
         Rectangle source;
         Rectangle dest;
 
@@ -45,9 +45,9 @@ namespace Sprint0
 
         public SwordBeam()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 10; // changed
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.SwordBeamTotalFrames;
         }
 
         public void RegisterPos(Vector2 location)
@@ -55,53 +55,53 @@ namespace Sprint0
             currentX = (int)location.X;
             currentY = (int)location.Y;
 
-            if (direction == 0)
+            if (direction == GameConstants.Down)
             {
-                finalPos = (int)location.Y + 7 * 32; // changed to 7 and 32
-                explodePos = finalPos + 7;
+                finalPos = (int)location.Y + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
             }
-            if (direction == 1)
+            if (direction == GameConstants.Left)
             {
-                finalPos = (int)location.X - 7 * 32;
-                explodePos = finalPos - 7;
+                finalPos = (int)location.X - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
             }
-            if (direction == 2)
+            if (direction == GameConstants.Right)
             {
-                finalPos = (int)location.X + 7 * 32;
-                explodePos = finalPos + 7;
+                finalPos = (int)location.X + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
             }
-            if (direction == 3)
+            if (direction == GameConstants.Up)
             {
-                finalPos = (int)location.Y - 7 * 32;
-                explodePos = finalPos - 7;
+                finalPos = (int)location.Y - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
             }
         }
 
         public bool CheckFinalPos()
         {
-            return ((direction == 0 && currentY > explodePos) ||
-                (direction == 1 && currentX < explodePos) ||
-                (direction == 2 && currentX > explodePos) ||
-                (direction == 3 && currentY < explodePos));
+            return ((direction == GameConstants.Down && currentY > explodePos) ||
+                (direction == GameConstants.Left && currentX < explodePos) ||
+                (direction == GameConstants.Right && currentX > explodePos) ||
+                (direction == GameConstants.Up && currentY < explodePos));
         }
 
         public void Update()
         {
             if (toDraw)
             {
-                if (direction == 0)
-                    currentY += 7; // magic?
-                if (direction == 1)
-                    currentX -= 7;
-                if (direction == 2)
-                    currentX += 7;
-                if (direction == 3)
-                    currentY -= 7;
+                if (direction == GameConstants.Down)
+                    currentY += LinkConstants.SwordBeamPosChange;
+                if (direction == GameConstants.Left)
+                    currentX -= LinkConstants.SwordBeamPosChange;
+                if (direction == GameConstants.Right)
+                    currentX += LinkConstants.SwordBeamPosChange;
+                if (direction == GameConstants.Up)
+                    currentY -= LinkConstants.SwordBeamPosChange;
 
                 // overall frame updates
                 currentFrame++;
                 if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                    currentFrame = GameConstants.Zero;
 
                 FrameUpdate();
             }
@@ -109,88 +109,88 @@ namespace Sprint0
 
         public void FrameUpdate()
         {
-            frame = 0;
-            if (currentFrame <= 6) // magic
-                frame = 0;
-            else if (currentFrame > 7)
-                frame = 1;
+            frame = LinkConstants.Frame0;
+            if (currentFrame <= LinkConstants.SwordBeamPhase)
+                frame = LinkConstants.Frame0;
+            else if (currentFrame > LinkConstants.SwordBeamPhase)
+                frame = LinkConstants.Frame1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             // offset logic
-            int xOffset = 0;
-            int yOffset = 0;
-            if (direction == 0)
+            int xOffset = GameConstants.Zero;
+            int yOffset = GameConstants.Zero;
+            if (direction == GameConstants.Down)
             {
-                xOffset = 15;
-                yOffset = 18;
+                xOffset = LinkConstants.SwordBeamXOffset1;
+                yOffset = LinkConstants.SwordBeamYOffset1;
             }
-            if (direction == 1)
+            if (direction == GameConstants.Left)
             {
-                xOffset = -18;
-                yOffset = 17;
+                xOffset = LinkConstants.SwordBeamXOffset2;
+                yOffset = LinkConstants.SwordBeamYOffset2;
             }
-            if (direction == 2)
+            if (direction == GameConstants.Right)
             {
-                xOffset = 18;
-                yOffset = 16;
+                xOffset = LinkConstants.SwordBeamXOffset3;
+                yOffset = LinkConstants.SwordBeamYOffset3;
             }
-            if (direction == 3)
+            if (direction == GameConstants.Up)
             {
-                xOffset = 9;
-                yOffset = -19;
+                xOffset = LinkConstants.SwordBeamXOffset4;
+                yOffset = LinkConstants.SwordBeamYOffset4;
             }
 
             //texture = _texture;
             if (toDraw)
             {
-                if (direction == 0)
+                if (direction == GameConstants.Down)
                     texture = _texture2;
                 else
                     texture = _texture;
 
                 // we reach finalPos
-                if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
-                    direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
+                if (direction == GameConstants.Down && currentY >= finalPos || direction == GameConstants.Left && currentX <= finalPos ||
+                    direction == GameConstants.Right && currentX >= finalPos || direction == GameConstants.Up && currentY <= finalPos)
                 {
                     // draw explode stuff now
                     toDraw = false;
                     explodeKey = true;
                 }
 
-                if (frame == 0)
+                if (frame == LinkConstants.Frame0)
                     source = directions[direction];
                 else
                     source = flashing;
 
-                dest = new Rectangle((int)currentX+xOffset, (int)currentY+yOffset, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX+xOffset, (int)currentY+yOffset, source.Width*GameConstants.Sizing, source.Height * GameConstants.Sizing);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
 
             if (explodeKey)
             {
                 // offset
-                expOffsetX += 2;
-                expOffsetY += 2;
+                expOffsetX += LinkConstants.SwordBeamOffsetIncrease;
+                expOffsetY += LinkConstants.SwordBeamOffsetIncrease;
 
                 // top left
-                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY - expOffsetY, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(_texture, dest, explode[0], Color.White);
+                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY - expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
+                spriteBatch.Draw(_texture, dest, explode[LinkConstants.Frame0], Color.White);
 
                 // top right
-                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY - expOffsetY, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(_texture, dest, explode[1], Color.White);
+                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY - expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
+                spriteBatch.Draw(_texture, dest, explode[LinkConstants.Frame1], Color.White);
 
                 // bottom left
-                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY + expOffsetY, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(_texture2, dest, explode[2], Color.White);
+                dest = new Rectangle((int)currentX - expOffsetX, (int)currentY + expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
+                spriteBatch.Draw(_texture2, dest, explode[LinkConstants.Frame2], Color.White);
 
                 // bottom right
-                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY + expOffsetY, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(_texture2, dest, explode[3], Color.White);
+                dest = new Rectangle((int)currentX + expOffsetX, (int)currentY + expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
+                spriteBatch.Draw(_texture2, dest, explode[LinkConstants.Frame3], Color.White);
 
-                if (count > 30)
+                if (count > LinkConstants.SwordBeamCount)
                     explodeKey = false;
                 count++;
             }
