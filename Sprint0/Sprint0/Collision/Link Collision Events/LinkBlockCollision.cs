@@ -27,7 +27,7 @@ namespace Sprint0
 
         public void Update(CollisionBlock collisionBlock)
         {
-                linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, 16*3, 16*3);
+                linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + 7, 16*3, 14*3);
                 obstacleRectangle = new Rectangle((int)collisionBlock.location.X, (int)collisionBlock.location.Y, collisionBlock.width, collisionBlock.height);
 
             if (obstacleRectangle.Intersects(linkRectangle))
@@ -42,25 +42,6 @@ namespace Sprint0
                 else if (KeyBoardController.dir == 0)
                     link.location.Y = link.location.Y - 2;
             }
-
-
-                
-                    //if (KeyBoardController.dir == 1)
-                    //{
-                    //    KeyBoardController.controllerMapping[Keys.Right].Execute();
-                    //}
-                    //else if (KeyBoardController.dir == 2)
-                    //{
-                    //    KeyBoardController.controllerMapping[Keys.Left].Execute();
-                    //}
-                    //else if (KeyBoardController.dir == 3)
-                    //{
-                    //    KeyBoardController.controllerMapping[Keys.Down].Execute();
-                    //}
-                    //else if (KeyBoardController.dir == 0)
-                    //{
-                    //    KeyBoardController.controllerMapping[Keys.Up].Execute();
-                    //}
         }
     }
 }
