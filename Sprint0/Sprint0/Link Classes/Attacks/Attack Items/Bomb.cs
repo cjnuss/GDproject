@@ -24,40 +24,39 @@ namespace Sprint0.Link_Classes.Item_Usage
             LinkTextureStorage.LinkBombExplode,
             LinkTextureStorage.LinkBombExplode1,
             LinkTextureStorage.LinkBombExplode2,
-            //new Rectangle(0,0,0,0)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
         public Bomb()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 60;
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.BombTotalFrames;
         }
 
         public void UpdatePos(Vector2 location)
         {
             location1 = location;
-            if (direction == 0)
+            if (direction == GameConstants.Down)
             {
-                location1.X += 10; // magic nums all around
-                location1.Y += 48;
+                location1.X += LinkConstants.xOffset1; // magic nums all around
+                location1.Y += LinkConstants.yOffset1;
             }
-            if (direction == 1)
+            if (direction == GameConstants.Left)
             {
-                location1.X -= 32;
-                location1.Y += 10;
+                location1.X -= LinkConstants.xOffset2;
+                location1.Y += LinkConstants.yOffset2;
             }
-            if (direction == 2)
+            if (direction == GameConstants.Right)
             {
-                location1.X += 48;
-                location1.Y += 10;
+                location1.X += LinkConstants.xOffset3;
+                location1.Y += LinkConstants.yOffset2;
             }
-            if (direction == 3)
+            if (direction == GameConstants.Up)
             {
-                location1.X += 10;
-                location1.Y -= 48;
+                location1.X += LinkConstants.xOffset1;
+                location1.Y -= LinkConstants.yOffset1;
             }
             
         }
@@ -68,7 +67,7 @@ namespace Sprint0.Link_Classes.Item_Usage
             {
                 currentFrame++;
                 if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                    currentFrame = GameConstants.Zero;
 
                 FrameUpdate(currentFrame, totalFrames);
             }
@@ -76,21 +75,18 @@ namespace Sprint0.Link_Classes.Item_Usage
 
         public void FrameUpdate(int currentFrame, int totalFrames)
         {
-            frame = 0;
-            if (currentFrame <= 36)
-                frame = 0;
-            else if (currentFrame > 36 && currentFrame <= 44)
-                frame = 1;
-            else if (currentFrame > 44 && currentFrame <= 52)
-                frame = 2;
-            else if (currentFrame > 52 && currentFrame < 59) // totalFrames-1
-                frame = 3;
+            frame = LinkConstants.Frame0;
+            if (currentFrame <= LinkConstants.BombPhase1)
+                frame = LinkConstants.Frame0;
+            else if (currentFrame > LinkConstants.BombPhase1 && currentFrame <= LinkConstants.BombPhase2)
+                frame = LinkConstants.Frame1;
+            else if (currentFrame > LinkConstants.BombPhase2 && currentFrame <= LinkConstants.BombPhase3)
+                frame = LinkConstants.Frame2;
+            else if (currentFrame > LinkConstants.BombPhase3 && currentFrame < LinkConstants.BombPhase4) // totalFrames-1
+                frame = LinkConstants.Frame3;
             // we completed animation sequence
             else
-            {
                 toDraw = false;
-                //frame = 4;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -99,7 +95,7 @@ namespace Sprint0.Link_Classes.Item_Usage
             if (toDraw)
             {
                 source = BombList[frame];
-                dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width*GameConstants.Sizing, source.Height*GameConstants.Sizing);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
         }

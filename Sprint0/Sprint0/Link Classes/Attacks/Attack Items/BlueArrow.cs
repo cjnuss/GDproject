@@ -17,8 +17,6 @@ namespace Sprint0
         Rectangle source;
         Rectangle dest;
 
-        // DEBUG: CHANGE EVERYTHING BELOW THIS LINE
-
         private Texture2D texture;
 
         private static List<Rectangle> LinkBlueArrowDown = new List<Rectangle>
@@ -62,9 +60,9 @@ namespace Sprint0
 
         public BlueArrow()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 30;
+            direction = GameConstants.Zero;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.TotalBlueArrowFrames;
         }
 
         public void RegisterPos(Vector2 location)
@@ -72,25 +70,25 @@ namespace Sprint0
             currentX = (int)location.X;
             currentY = (int)location.Y;
 
-            if (direction == 0)
+            if (direction == GameConstants.Down)
             {
-                finalPos = (int)location.Y + 7 * 32; // changed mult to 32
-                poofPos = finalPos + 7;
+                finalPos = (int)location.Y + LinkConstants.BlueArrowPosChange * LinkConstants.BlueArrowMultiplier; // changed mult to 32
+                poofPos = finalPos + LinkConstants.BlueArrowPosChange;
             }
-            if (direction == 1)
+            if (direction == GameConstants.Left)
             {
-                finalPos = (int)location.X - 7 * 32;
-                poofPos = finalPos - 7;
+                finalPos = (int)location.X - LinkConstants.BlueArrowPosChange * LinkConstants.BlueArrowMultiplier;
+                poofPos = finalPos - LinkConstants.BlueArrowPosChange;
             }
-            if (direction == 2)
+            if (direction == GameConstants.Right)
             {
-                finalPos = (int)location.X + 7 * 32;
-                poofPos = finalPos + 7;
+                finalPos = (int)location.X + LinkConstants.BlueArrowPosChange * LinkConstants.BlueArrowMultiplier;
+                poofPos = finalPos + LinkConstants.BlueArrowPosChange;
             }
-            if (direction == 3)
+            if (direction == GameConstants.Up)
             {
-                finalPos = (int)location.Y - 7 * 32;
-                poofPos = finalPos - 7;
+                finalPos = (int)location.Y - LinkConstants.BlueArrowPosChange * LinkConstants.BlueArrowMultiplier;
+                poofPos = finalPos - LinkConstants.BlueArrowPosChange;
             }
         }
 
@@ -98,14 +96,14 @@ namespace Sprint0
         {
             if (toDraw)
             {
-                if (direction == 0)
-                    currentY += 7; // magic?
-                if (direction == 1)
-                    currentX -= 7;
-                if (direction == 2)
-                    currentX += 7;
-                if (direction == 3)
-                    currentY -= 7;
+                if (direction == GameConstants.Down)
+                    currentY += LinkConstants.BlueArrowPosChange; // magic?
+                if (direction == GameConstants.Left)
+                    currentX -= LinkConstants.BlueArrowPosChange;
+                if (direction == GameConstants.Right)
+                    currentX += LinkConstants.BlueArrowPosChange;
+                if (direction == GameConstants.Up)
+                    currentY -= LinkConstants.BlueArrowPosChange;
             }
         }
 
@@ -118,94 +116,83 @@ namespace Sprint0
             {
                 // pos checks
                 // down
-                if (direction == 0)
+                if (direction == GameConstants.Down)
                 {
                     texture = _texture2; 
                     if (currentY <= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 10, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentY <= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
 
                 // left
-                if (direction == 1)
+                if (direction == GameConstants.Left)
                 {
                     texture = _texture;
                     if (currentX >= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 10); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentX >= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
 
                 // right
-                if (direction == 2)
+                if (direction == GameConstants.Right)
                 {
                     texture = _texture;
                     if (currentX <= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 10); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentX <= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
+
                 }
 
-                if (direction == 3)
+                if (direction == GameConstants.Up)
                 {
                     texture = _texture;
                     if (currentY >= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 10, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentY >= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
             }
 
-            // finally draw sprite
+            dest = new Rectangle(currentX, currentY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
             spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
