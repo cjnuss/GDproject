@@ -31,28 +31,28 @@ namespace Sprint0
         public void Update(int linkState, int dir, Vector2 location,
                                  ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
         {
-            if (linkState == 4 && !arrowKey)
+            if (linkState == LinkConstants.GreenArrow && !arrowKey)
             {
                 greenArrow = new GreenArrow();
                 arrowKey = true;
                 greenArrow.direction = dir;
                 greenArrow.RegisterPos(location);
             }
-            if (linkState == 5 && !fireKey)
+            if (linkState == LinkConstants.Fire && !fireKey)
             {
                 fire = new Fire();
                 fireKey = true;
                 fire.direction = dir;
                 fire.RegisterPos(location);
             }
-            if (linkState == 6 && !bombKey)
+            if (linkState == LinkConstants.Bomb && !bombKey)
             {
                 bomb = new Bomb();
                 bombKey = true;
                 bomb.direction = dir;
                 bomb.UpdatePos(location);
             }
-            if (linkState == 7 && !blueArrowKey)
+            if (linkState == LinkConstants.BlueArrow && !blueArrowKey)
             {
                 blueArrow = new BlueArrow();
                 blueArrowKey = true;

@@ -13,17 +13,6 @@ using System.Transactions;
 
 namespace Sprint0
 {
-    //static class LinkConstants
-    //{
-    //    public const int InitialX = 200;
-    //    public const int InitialY = 100;
-    //    public const int Looking = 0;
-    //    public const int Moving = 1;
-    //    public const int Damaged = 2;
-    //    public const int Attacking = 3;
-    //    public const int Throwing = 4;
-    //}
-
     public class Link : ILink
     {
         private Game1 game1;

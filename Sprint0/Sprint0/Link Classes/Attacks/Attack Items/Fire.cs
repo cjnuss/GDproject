@@ -22,17 +22,17 @@ namespace Sprint0
         {
             LinkTextureStorage.LinkFire1,
             LinkTextureStorage.LinkFire2,
-            new Rectangle(0,0,0,0)
+            new Rectangle(GameConstants.Zero, GameConstants.Zero, GameConstants.Zero, GameConstants.Zero)
         };
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
         public Fire()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 10;
-            count = 0;
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.FireTotalFrames;
+            count = GameConstants.Zero;
             updatePos = true;
         }
 
@@ -41,67 +41,62 @@ namespace Sprint0
             currentX = (int)location.X;
             currentY = (int)location.Y;
 
-            if (direction == 0)
+            if (direction == GameConstants.Down)
             {
-                finalPos = (int)location.Y + 5 * 16;
-                //stillPos = finalPos + 5;
+                finalPos = (int)location.Y + LinkConstants.FirePosChange * LinkConstants.FireMultiplier;
             }
-            if (direction == 1)
+            if (direction == GameConstants.Left)
             {
-                finalPos = (int)location.X - 5 * 16;
-                stillPos = finalPos - 5;
+                finalPos = (int)location.X - LinkConstants.FirePosChange * LinkConstants.FireMultiplier;
             }
-            if (direction == 2)
+            if (direction == GameConstants.Right)
             {
-                finalPos = (int)location.X + 5 * 16;
-                stillPos = finalPos + 5;
+                finalPos = (int)location.X + LinkConstants.FirePosChange * LinkConstants.FireMultiplier;
             }
-            if (direction == 3)
+            if (direction == GameConstants.Up)
             {
-                finalPos = (int)location.Y - 5 * 16;
-                stillPos = finalPos - 5;
+                finalPos = (int)location.Y - LinkConstants.FirePosChange * LinkConstants.FireMultiplier;
             }
         }
 
         public bool CheckFinalPos()
         {
-            return ((direction == 0 && currentY > stillPos) ||
-                (direction == 1 && currentX < stillPos) ||
-                (direction == 2 && currentX > stillPos) ||
-                (direction == 3 && currentY < stillPos));
+            return ((direction == GameConstants.Down && currentY > stillPos) ||
+                (direction == GameConstants.Left && currentX < stillPos) ||
+                (direction == GameConstants.Right && currentX > stillPos) ||
+                (direction == GameConstants.Up && currentY < stillPos));
         }
 
         public void Update()
         {
-
             // distance updates
             if (updatePos && toDraw)
             {
-                if (direction == 0 && currentY <= finalPos)
-                    currentY += 3; // magic?
-                if (direction == 1 && currentX >= finalPos)
-                    currentX -= 3;
-                if (direction == 2 && currentX <= finalPos)
-                    currentX += 3;
-                if (direction == 3 && currentY >= finalPos)
-                    currentY -= 3;
+                if (direction == GameConstants.Down && currentY <= finalPos)
+                    currentY += LinkConstants.FirePosChange; // magic?
+                if (direction == GameConstants.Left && currentX >= finalPos)
+                    currentX -= LinkConstants.FirePosChange;
+                if (direction == GameConstants.Right && currentX <= finalPos)
+                    currentX += LinkConstants.FirePosChange;
+                if (direction == GameConstants.Up && currentY >= finalPos)
+                    currentY -= LinkConstants.FirePosChange;
             }
 
            // overall frame updates
            currentFrame++;
             if (currentFrame == totalFrames)
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
 
             FrameUpdate();
         }
 
         public void FrameUpdate()
         {
-            frame = 0;
-            if (currentFrame <= totalFrames/2)
-                frame = 0;
-            else if (currentFrame > totalFrames/2)
-                frame = 1;
+            frame = LinkConstants.Frame0;
+            if (currentFrame <= LinkConstants.FirePhase)
+                frame = LinkConstants.Frame0;
+            else if (currentFrame > LinkConstants.FirePhase)
+                frame = LinkConstants.Frame1;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -110,18 +105,18 @@ namespace Sprint0
 
             if (toDraw)
             {
-                if (direction == 0 && currentY >= finalPos || direction == 1 && currentX <= finalPos ||
-                    direction == 2 && currentX >= finalPos || direction == 3 && currentY <= finalPos)
+                if (direction == GameConstants.Down && currentY >= finalPos || direction == GameConstants.Left && currentX <= finalPos ||
+                    direction == GameConstants.Right && currentX >= finalPos || direction == GameConstants.Up && currentY <= finalPos)
                 {
-                    // update standing still, 20 times
-                    if (count >= 20)
+                    // update standing still, StillCount times
+                    if (count >= LinkConstants.StillCount)
                         toDraw = false;
 
                     count++;
                 }
 
                 source = FireList[frame]; // frame
-                dest = new Rectangle((int)currentX, (int)currentY, source.Width * 3, source.Height * 3);
+                dest = new Rectangle((int)currentX, (int)currentY, source.Width*GameConstants.Sizing, source.Height*GameConstants.Sizing);
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
         }

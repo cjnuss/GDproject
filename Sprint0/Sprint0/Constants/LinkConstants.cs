@@ -18,7 +18,7 @@ namespace Sprint0
     {
         // locations
         public const int InitialX = 200;
-        public const int InitialY = 100;
+        public const int InitialY = 400;
         // velocity
         public const float Velocity = 100f;
         // link sprites
@@ -61,5 +61,45 @@ namespace Sprint0
         // link moving
         public const int TotalMovingFrames = 20;
         public const int MovingPhase = TotalMovingFrames / 2;
+        // blue arrow
+        public const int TotalBlueArrowFrames = 30;
+        public const int BlueArrowMultiplier = 32;
+        public const int BlueArrowPosChange = 7;
+        // green arrow
+        public const int TotalGreenArrowFrames = 30;
+        public const int GreenArrowMultiplier = 16;
+        public const int GreenArrowPosChange = 5;
+        // bomb
+        public const int BombTotalFrames = 60;
+        public const int xOffset1 = 10;
+        public const int xOffset2 = 32;
+        public const int xOffset3 = 48;
+        public const int yOffset1 = 48;
+        public const int yOffset2 = 10;
+        public const int BombPhase1 = 36;
+        public const int BombPhase2 = 44;
+        public const int BombPhase3 = 52;
+        public const int BombPhase4 = 59;
+        // fire
+        public const int FireTotalFrames = 10;
+        public const int FireMultiplier = 24;
+        public const int FirePosChange = 3;
+        public const int FirePhase = FireTotalFrames / 2;
+        public const int StillCount = 20;
+        // sword beam
+        public const int SwordBeamTotalFrames = 10;
+        public const int SwordBeamPosChange = 7;
+        public const int SwordBeamMultiplier = 32;
+        public const int SwordBeamPhase = (SwordBeamTotalFrames / 2) + 1;
+        public const int SwordBeamXOffset1 = 15;
+        public const int SwordBeamXOffset2 = -18;
+        public const int SwordBeamXOffset3 = 18;
+        public const int SwordBeamXOffset4 = 9;
+        public const int SwordBeamYOffset1 = 18;
+        public const int SwordBeamYOffset2 = 17;
+        public const int SwordBeamYOffset3 = 16;
+        public const int SwordBeamYOffset4 = -19;
+        public const int SwordBeamOffsetIncrease = 2;
+        public const int SwordBeamCount = 30;
     }
 }

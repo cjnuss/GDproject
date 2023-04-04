@@ -59,9 +59,9 @@ namespace Sprint0.Link_Classes
 
         public GreenArrow()
         {
-            direction = 0;
-            currentFrame = 0;
-            totalFrames = 30;
+            direction = GameConstants.Down;
+            currentFrame = GameConstants.Zero;
+            totalFrames = LinkConstants.TotalGreenArrowFrames;
         }
 
         public void RegisterPos(Vector2 location)
@@ -69,48 +69,48 @@ namespace Sprint0.Link_Classes
             currentX = (int)location.X;
             currentY = (int)location.Y;
             
-            if (direction == 0)
+            if (direction == GameConstants.Down)
             {
-                finalPos = (int)location.Y + 5 * 16;
-                poofPos = finalPos + 5;
+                finalPos = (int)location.Y + LinkConstants.GreenArrowPosChange * LinkConstants.GreenArrowMultiplier;
+                poofPos = finalPos + LinkConstants.GreenArrowPosChange;
             }
             if (direction == 1)
             {
-                finalPos = (int)location.X - 5 * 16;
-                poofPos = finalPos - 5;
+                finalPos = (int)location.X - LinkConstants.GreenArrowPosChange * LinkConstants.GreenArrowMultiplier;
+                poofPos = finalPos - LinkConstants.GreenArrowPosChange;
             }
             if (direction == 2)
             {
-                finalPos = (int)location.X + 5 * 16;
-                poofPos = finalPos + 5;
+                finalPos = (int)location.X + LinkConstants.GreenArrowPosChange * LinkConstants.GreenArrowMultiplier;
+                poofPos = finalPos + LinkConstants.GreenArrowPosChange;
             }
             if (direction == 3)
             {
-                finalPos = (int)location.Y - 5 * 16;
-                poofPos = finalPos - 5;
+                finalPos = (int)location.Y - LinkConstants.GreenArrowPosChange * LinkConstants.GreenArrowMultiplier;
+                poofPos = finalPos - LinkConstants.GreenArrowPosChange;
             }
         }
 
         public bool CheckFinalPos()
         {
-            return ((direction == 0 && currentY > poofPos) ||
-                (direction == 1 && currentX < poofPos) ||
-                (direction == 2 && currentX > poofPos) ||
-                (direction == 3 && currentY < poofPos));
+            return ((direction == GameConstants.Down && currentY > poofPos) ||
+                (direction == GameConstants.Left && currentX < poofPos) ||
+                (direction == GameConstants.Right && currentX > poofPos) ||
+                (direction == GameConstants.Up && currentY < poofPos));
         }
 
         public void Update()
         {
             if (toDraw)
             {
-                if (direction == 0)
-                    currentY += 5; // magic?
-                if (direction == 1)
-                    currentX -= 5;
-                if (direction == 2)
-                    currentX += 5;
-                if (direction == 3)
-                    currentY -= 5;
+                if (direction == GameConstants.Down)
+                    currentY += LinkConstants.GreenArrowPosChange;
+                if (direction == GameConstants.Left)
+                    currentX -= LinkConstants.GreenArrowPosChange;
+                if (direction == GameConstants.Right)
+                    currentX += LinkConstants.GreenArrowPosChange;
+                if (direction == GameConstants.Up)
+                    currentY -= LinkConstants.GreenArrowPosChange;
             }
         }
 
@@ -123,90 +123,80 @@ namespace Sprint0.Link_Classes
             {
                 // pos checks
                 // down
-                if (direction == 0)
+                if (direction == GameConstants.Down)
                 {
                     if (currentY <= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 10, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentY <= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
 
                 // left
-                if (direction == 1)
+                if (direction == GameConstants.Left)
                 {
                     if (currentX >= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentX >= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
 
                 // right
-                if (direction == 2)
+                if (direction == GameConstants.Right)
                 {
                     if (currentX <= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 32, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentX <= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
+
                 }
 
-                if (direction == 3)
+                if (direction == GameConstants.Up)
                 {
                     if (currentY >= finalPos)
                     {
-                        source = thisDirectionArrows[0];
-                        dest = new Rectangle(currentX, currentY, 10, 32); // magic?
+                        source = thisDirectionArrows[LinkConstants.Frame0];
                     }
                     else if (currentY >= poofPos)
                     {
-                        source = thisDirectionArrows[1];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[2];
-                        dest = new Rectangle(currentX, currentY, 16, 16);
+                        source = thisDirectionArrows[LinkConstants.Frame2];
                         toDraw = false;
                     }
                 }
-                // finally draw sprite
-                spriteBatch.Draw(texture, dest, source, Color.White);
             }
+
+            dest = new Rectangle(currentX, currentY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
+            spriteBatch.Draw(texture, dest, source, Color.White);
         }
     }
 }
