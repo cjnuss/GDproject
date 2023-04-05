@@ -16,6 +16,12 @@ namespace Sprint0
 {
     static class LinkConstants
     {
+        // size
+        public const int Size = 16;
+        // collision
+        public const int YChange = 7;
+        public const int CollisionSize = 14;
+        public const int Correction = 2;
         // locations
         public const int InitialX = 200;
         public const int InitialY = 400;

@@ -57,20 +57,20 @@ namespace Sprint0
 
             blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
 
-            dir = 0; linkState = 0;
+            dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
         }
         public void Update(GameTime gameTime)
         {
-            linkState = 0; // reset link state
+            linkState = LinkConstants.Default; // reset link state
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
             Array.Sort(pressedKeys);
             Array.Reverse(pressedKeys);
 
-            if (pressedKeys.Length != 0 && controllerMapping.ContainsKey(pressedKeys[0]))
-                controllerMapping[pressedKeys[0]].Execute(gameTime);
+            if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
+                controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
 
             // collision checks
             blockCollisionCheck.CheckCollision();
