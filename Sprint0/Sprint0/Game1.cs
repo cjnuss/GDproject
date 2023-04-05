@@ -34,8 +34,8 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //480 x 800 - added 150 to height
-            _graphics.PreferredBackBufferHeight = 630;
-            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = GameConstants.BufferHeight;
+            _graphics.PreferredBackBufferWidth = GameConstants.BufferWidth;
             _graphics.ApplyChanges();
             // sprite factory
             //BlockSpriteFactory.Instance.LoadBlockTextures(Content);
