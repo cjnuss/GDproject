@@ -75,15 +75,15 @@ namespace Sprint0.Link_Classes.Item_Usage
 
         public void FrameUpdate(int currentFrame, int totalFrames)
         {
-            frame = LinkConstants.Frame0;
+            frame = GameConstants.Frame0;
             if (currentFrame <= LinkConstants.BombPhase1)
-                frame = LinkConstants.Frame0;
+                frame = GameConstants.Frame0;
             else if (currentFrame > LinkConstants.BombPhase1 && currentFrame <= LinkConstants.BombPhase2)
-                frame = LinkConstants.Frame1;
+                frame = GameConstants.Frame1;
             else if (currentFrame > LinkConstants.BombPhase2 && currentFrame <= LinkConstants.BombPhase3)
-                frame = LinkConstants.Frame2;
+                frame = GameConstants.Frame2;
             else if (currentFrame > LinkConstants.BombPhase3 && currentFrame < LinkConstants.BombPhase4) // totalFrames-1
-                frame = LinkConstants.Frame3;
+                frame = GameConstants.Frame3;
             // we completed animation sequence
             else
                 toDraw = false;

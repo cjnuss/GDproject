@@ -64,11 +64,11 @@ namespace Sprint0
                 currentFrame = GameConstants.Zero;
 
             // animation frame updates
-            frame = LinkConstants.Frame0;
+            frame = GameConstants.Frame0;
             if (currentFrame <= LinkConstants.MovingPhase)
-                frame = LinkConstants.Frame0;
+                frame = GameConstants.Frame0;
             else if (currentFrame > LinkConstants.MovingPhase)
-                frame = LinkConstants.Frame1;
+                frame = GameConstants.Frame1;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

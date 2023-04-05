@@ -92,11 +92,11 @@ namespace Sprint0
 
         public void FrameUpdate()
         {
-            frame = LinkConstants.Frame0;
+            frame = GameConstants.Frame0;
             if (currentFrame <= LinkConstants.FirePhase)
-                frame = LinkConstants.Frame0;
+                frame = GameConstants.Frame0;
             else if (currentFrame > LinkConstants.FirePhase)
-                frame = LinkConstants.Frame1;
+                frame = GameConstants.Frame1;
         }
 
         public void Draw(SpriteBatch spriteBatch)

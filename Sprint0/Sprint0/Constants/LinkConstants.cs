@@ -45,11 +45,6 @@ namespace Sprint0
         public const int SwordBeam = 8;
         // sword beam trigger frame
         public const int PeakAnimation = 2;
-        // frames
-        public const int Frame0 = 0;
-        public const int Frame1 = 1;
-        public const int Frame2 = 2;
-        public const int Frame3 = 3;
         // link attacking
         public const int TotalSwordFrames = 20;
         public const int SwordPhase1 = TotalSwordFrames / 4;
