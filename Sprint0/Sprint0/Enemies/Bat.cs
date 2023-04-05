@@ -11,11 +11,8 @@ namespace Sprint0
 {
     public class Bat : ISprite
     {
-        public int currentFrame, textureFrame, frame;
-        public int totalFrames = 40;
-        public int textureFrame1 = 10;
+        public int currentFrame, textureFrame, frame, random, totalFrames;
         public Vector2 location;
-        public int random = 1;
         public System.Random RNG = new System.Random();
 
         private static List<Rectangle> frames = new List<Rectangle>
@@ -26,57 +23,58 @@ namespace Sprint0
 
         public Bat(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
+            currentFrame = EnemyConstants.Zero;
+            textureFrame = EnemyConstants.Zero;
             location = coords;
-            random = 1;
+            random = EnemyConstants.Right;
+            totalFrames = EnemyConstants.BatTotalFrames;
         }
 
         public void Update()
         {
             textureFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.BatTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
-                random = RNG.Next(1, 9);
-                totalFrames = RNG.Next(45, 75);
+                currentFrame = EnemyConstants.Zero;
+                random = RNG.Next(EnemyConstants.Zero, EnemyConstants.NW + EnemyConstants.One);
+                totalFrames = RNG.Next(EnemyConstants.BatMinFrame, EnemyConstants.BatMaxFrame);
             }
-            if (currentFrame % 10 == 0)
+            if (currentFrame % EnemyConstants.BatFrameChange == EnemyConstants.Zero)
             {
                 switch (random)
                 {
-                    case 1:
-                        location.X -= 6;
+                    case EnemyConstants.Down:
+                        location.Y += EnemyConstants.BatDisplacement;
                         break;
-                    case 2:
-                        location.X += 6;
+                    case EnemyConstants.Left:
+                        location.X -= EnemyConstants.BatDisplacement;
                         break;
-                    case 3:
-                        location.Y -= 6;
+                    case EnemyConstants.Right:
+                        location.X += EnemyConstants.BatDisplacement;
                         break;
-                    case 4:
-                        location.Y += 6;
+                    case EnemyConstants.Up:
+                        location.Y -= EnemyConstants.BatDisplacement;
                         break;
-                    case 5:
-                        location.X += 6;
-                        location.Y += 6;
+                    case EnemyConstants.NE:
+                        location.X += EnemyConstants.BatDisplacement;
+                        location.Y -= EnemyConstants.BatDisplacement;
                         break;
-                    case 6:
-                        location.X += 6;
-                        location.Y -= 6;
+                    case EnemyConstants.SE:
+                        location.X += EnemyConstants.BatDisplacement;
+                        location.Y += EnemyConstants.BatDisplacement;
                         break;
-                    case 7:
-                        location.X -= 6;
-                        location.Y += 6;
+                    case EnemyConstants.SW:
+                        location.X -= EnemyConstants.BatDisplacement;
+                        location.Y += EnemyConstants.BatDisplacement;
                         break;
-                    case 8:
-                        location.X -= 6;
-                        location.Y -= 6;
+                    case EnemyConstants.NW:
+                        location.X -= EnemyConstants.BatDisplacement;
+                        location.Y -= EnemyConstants.BatDisplacement;
                         break;
                 }
             }
@@ -85,18 +83,18 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame <= 5)
+            if (textureFrame <= EnemyConstants.Texture1)
             {
-                frame = 0;
+                frame = EnemyConstants.Frame1;
             }
-            else if (textureFrame > 5)
+            else if (textureFrame > EnemyConstants.Texture1)
             {
-                frame = 1;
+                frame = EnemyConstants.Frame2;
             }
 
             Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }
