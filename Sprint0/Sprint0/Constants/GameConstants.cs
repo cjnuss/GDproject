@@ -15,12 +15,15 @@ namespace Sprint0
 {
     static class GameConstants
     {
+        // height adj
+        public const int HeightAdj = 150;
         // numbers
         public const int Zero = 0;
         public const int One = 1;
         public const int Ten = 10;
         // size multiplier
         public const int Sizing = 3;
+        public const int Sizing2 = 4;
         // directions
         public const int Down = 0;
         public const int Left = 1;

@@ -23,13 +23,13 @@ namespace Sprint0
         {
             location = position;
 
-            destRect = new Rectangle((int)location.X, (int)location.Y + 150, sourceRect.Width * 4, sourceRect.Height * 4);
-            currentFrame = 0;
+            destRect = new Rectangle((int)location.X, (int)location.Y + GameConstants.HeightAdj, sourceRect.Width * GameConstants.Sizing2, sourceRect.Height * GameConstants.Sizing2);
+            currentFrame = GameConstants.Zero;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < 10)
+            if (currentFrame < ItemConstants.RupeePhase)
             {
                 sourceRect = ItemsTextureStorage.rupee1;
             }
@@ -45,7 +45,7 @@ namespace Sprint0
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
             }
         }
     }

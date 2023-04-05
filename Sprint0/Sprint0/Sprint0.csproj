@@ -23,6 +23,7 @@
     <Compile Remove="Enemies\Block.cs" />
     <Compile Remove="Enemies\EmptySprite.cs" />
     <Compile Remove="Enemies\Item.cs" />
+    <Compile Remove="Interfaces\ISprite_OLD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Content\Content.mgcb" />
