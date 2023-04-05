@@ -421,3 +421,4 @@ MigrationBackup/
 /Sprint0/Sprint0/obj/Debug/net6.0/Sprint0.pdb
 /Sprint0/Sprint0/obj/Debug/net6.0/Sprint0.csproj.AssemblyReference.cache
 /Sprint0/Sprint0/Content/Content.mgcb
+/Sprint0/Sprint0/Constants/EnemyConstants.cs

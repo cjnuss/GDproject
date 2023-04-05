@@ -91,7 +91,10 @@ namespace Sprint0.Levels
                     block = new CollisionBlock(new Vector2(x, y), 190 * 3, 25 * 3);
                     break;
                 case "twoByThree":
-                    block = new CollisionBlock(new Vector2(x, y), 32 * 3, 48 * 3);
+                    block = new CollisionBlock(new Vector2(x, y), 32 * 3, 40 * 3);
+                    break;
+                case "singleBlock":
+                    block = new CollisionBlock(new Vector2(x, y), 16 * 3, 16 * 3);
                     break;
                 case "oneByOne":
                     block = new CollisionBlock(new Vector2(x, y), 16 * 3, 16 * 3);
@@ -99,9 +102,25 @@ namespace Sprint0.Levels
                 case "twoByOne":
                     block = new CollisionBlock(new Vector2(x, y), 32 * 3, 16 * 3);
                     break;
+                case "sixByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 96 * 3, 16 * 2);
+                    break;
+                case "threeByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 48 * 3, 16 * 2);
+                    break;
+                case "oneByThree":
+                    block = new CollisionBlock(new Vector2(x, y), 16 * 3, 48 * 3);
+                    break;
+                case "tenByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 160 * 3, 16 * 3);
+                    break;
+                case "fourByOne":
+                    block = new CollisionBlock(new Vector2(x, y), 64 * 3, 16 * 3);
+                    break;
                 default:
                     block = new CollisionBlock(new Vector2(0, 0), 0, 0);
                     break;
+
             }
 
             blocks.Add(block);

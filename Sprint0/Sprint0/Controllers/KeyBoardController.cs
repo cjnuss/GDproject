@@ -24,6 +24,9 @@ namespace Sprint0
         private StaticText testingText;
         private HpHearts testingHearts;
         private MainHUD mainHUD;
+        private PlayerMap playerMap;
+        private Counts HUDnumbers;
+
         public Texture2D Texture { get; set; }
         public SpriteBatch _spriteBatch;
 
@@ -44,6 +47,8 @@ namespace Sprint0
             testingText = new StaticText(game1);
             testingHearts = new HpHearts(game1);
             mainHUD = new MainHUD(game1);
+            playerMap = new PlayerMap(game1);
+            HUDnumbers = new Counts(game1); 
 
             controllerMapping = new Dictionary<Keys, ICommand>();
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
@@ -78,7 +83,8 @@ namespace Sprint0
             testingText.Draw(_spriteBatch);
             mainHUD.Draw(_spriteBatch);
             testingHearts.Draw(_spriteBatch);
-
+            playerMap.Draw(_spriteBatch);
+            HUDnumbers.Draw(_spriteBatch);
         }
 
     }
