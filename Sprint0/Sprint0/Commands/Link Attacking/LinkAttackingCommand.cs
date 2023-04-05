@@ -23,7 +23,7 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 3; // attacking sprites
+            KeyBoardController.linkState = LinkConstants.WoodenSword;
         }
     }
 }

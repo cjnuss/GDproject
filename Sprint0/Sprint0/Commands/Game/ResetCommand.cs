@@ -25,9 +25,9 @@ namespace Sprint0
         {
 
             //mine
-            KeyBoardController.linkState = 0;
-            KeyBoardController.dir = 0;
-            KeyBoardController.linkSprite.location = new Vector2(200, 100); // debug: initial location
+            KeyBoardController.linkState = LinkConstants.Default;
+            KeyBoardController.dir = GameConstants.Down;
+            KeyBoardController.linkSprite.location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY); // debug: initial location
             KeyBoardController.linkSprite = new Link(game1);
         }
     }

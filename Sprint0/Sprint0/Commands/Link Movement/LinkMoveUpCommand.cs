@@ -22,8 +22,8 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.dir = 3;
-            KeyBoardController.linkState = 1; // moving sprite
+            KeyBoardController.dir = GameConstants.Up;
+            KeyBoardController.linkState = LinkConstants.Movement; // moving sprite
             KeyBoardController.linkSprite.location.Y -= link.velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }

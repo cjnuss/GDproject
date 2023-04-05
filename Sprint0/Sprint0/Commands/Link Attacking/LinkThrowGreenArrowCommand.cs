@@ -24,7 +24,7 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 4;
+            KeyBoardController.linkState = LinkConstants.GreenArrow;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }
