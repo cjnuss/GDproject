@@ -14,8 +14,7 @@ namespace Sprint0
     {
         public Vector2 location1, location2, location3;
         public int frame, textureFrame, currentFrame;
-        public int totalFrames = 200;
-        public int textureFrame1 = 20;
+        public int totalFrames = EnemyConstants.AquaProjTotalFrames;
 
         private static List<Rectangle> frames = new List<Rectangle>
         {
@@ -27,29 +26,31 @@ namespace Sprint0
 
         public AquamentusProjectile(Vector2 location)
         {
-            location1 = new Vector2(location.X + 24, location.Y + 31);
-            location2 = new Vector2(location.X + 24, location.Y + 31);
-            location3 = new Vector2(location.X + 24, location.Y + 31);
+            location1 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
+            location2 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
+            location3 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
         }
 
         public void Update()
         {
             textureFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.AquaProjTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             if (currentFrame != totalFrames)
             {
                 currentFrame++;
             }
-            if (currentFrame % 10 == 0)
+            if (currentFrame % EnemyConstants.AquaProjFrameChange == EnemyConstants.Zero)
             {
-                location1.X -= 6;
-                location1.Y += 3;
-                location2.X -= 6;
-                location3.X -= 6;
-                location3.Y -= 3;
+                location1.X -= EnemyConstants.AquaProjXDisplacement;
+                location1.Y += EnemyConstants.AquaProjYDisplacement;
+
+                location2.X -= EnemyConstants.AquaProjXDisplacement;
+
+                location3.X -= EnemyConstants.AquaProjXDisplacement;
+                location3.Y -= EnemyConstants.AquaProjYDisplacement;
             }
         }
 
@@ -57,20 +58,20 @@ namespace Sprint0
         {
             if (currentFrame != totalFrames)
             {
-                if (textureFrame < 5)
-                    frame = 0;
-                else if (textureFrame >= 5 && textureFrame < 10)
-                    frame = 1;
-                else if (textureFrame >= 10 && textureFrame < 15)
-                    frame = 2;
-                else if (textureFrame >= 20)
-                    frame = 3;
+                if (textureFrame < EnemyConstants.Texture1)
+                    frame = EnemyConstants.Frame1;
+                else if (textureFrame < EnemyConstants.Texture2)
+                    frame = EnemyConstants.Frame2;
+                else if (textureFrame < EnemyConstants.Texture3)
+                    frame = EnemyConstants.Frame3;
+                else if (textureFrame >= EnemyConstants.Texture3)
+                    frame = EnemyConstants.Frame4;
 
                 Texture2D texture = EnemyTextureStorage.Instance.GetEnemies();
                 Rectangle source = frames[frame];
-                Rectangle destinaton1 = new Rectangle((int)location1.X, (int)location1.Y, source.Width * 3, source.Height * 3);
-                Rectangle destinaton2 = new Rectangle((int)location2.X, (int)location2.Y, source.Width * 3, source.Height * 3);
-                Rectangle destinaton3 = new Rectangle((int)location3.X, (int)location3.Y, source.Width * 3, source.Height * 3);
+                Rectangle destinaton1 = new Rectangle((int)location1.X, (int)location1.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                Rectangle destinaton2 = new Rectangle((int)location2.X, (int)location2.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                Rectangle destinaton3 = new Rectangle((int)location3.X, (int)location3.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
                 spriteBatch.Draw(texture, destinaton1, source, Color.White);
                 spriteBatch.Draw(texture, destinaton2, source, Color.White);
                 spriteBatch.Draw(texture, destinaton3, source, Color.White);

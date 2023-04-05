@@ -12,13 +12,8 @@ namespace Sprint0
 {
     public class Skeleton : ISprite
     {
-        public int currentFrame;
-        public int totalFrames = 60;
-        public int textureFrame;
-        public int textureFrame1 = 14;
+        public int currentFrame, textureFrame, totalFrames, frame, random;
         private Vector2 location;
-        public int frame;
-        public int random;
         private Texture2D texture;
         public System.Random RNG = new System.Random();
 
@@ -35,41 +30,42 @@ namespace Sprint0
 
         public Skeleton(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
+            currentFrame = EnemyConstants.Zero;
+            textureFrame = EnemyConstants.Zero;
             location = coords;
-            random = 1;
+            random = EnemyConstants.Left;
+            totalFrames = EnemyConstants.SkeletonTotalFrames;
         }
 
         public void Update()
         {
             textureFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.SkeletonTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
-                random = RNG.Next(1, 5);
-                totalFrames = RNG.Next(30, 60);
+                currentFrame = EnemyConstants.Zero;
+                random = RNG.Next(EnemyConstants.Zero, EnemyConstants.Up + EnemyConstants.One);
+                totalFrames = RNG.Next(EnemyConstants.SkeletonMinFrame, EnemyConstants.SkeletonMaxFrame);
             }
-            if (currentFrame % 15 == 0)
+            if (currentFrame % EnemyConstants.SkeletonFrameChange == EnemyConstants.Zero)
             {
                 switch (random)
                 {
-                    case 1:
-                        location.X -= 6;
+                    case EnemyConstants.Down:
+                        location.Y += EnemyConstants.SkeletonDisplacement;
                         break;
-                    case 2:
-                        location.X += 6;
+                    case EnemyConstants.Left:
+                        location.X -= EnemyConstants.SkeletonDisplacement;
                         break;
-                    case 3:
-                        location.Y -= 6;
+                    case EnemyConstants.Right:
+                        location.X += EnemyConstants.SkeletonDisplacement;
                         break;
-                    case 4:
-                        location.Y += 6;
+                    case EnemyConstants.Up:
+                        location.Y -= EnemyConstants.SkeletonDisplacement;
                         break;
                 }
             }
@@ -78,19 +74,19 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame <= 7)
+            if (textureFrame <= EnemyConstants.SkeletonTexture1)
             {
-                texture = textures[0];
-                frame = 0;
+                texture = textures[EnemyConstants.Frame1];
+                frame = EnemyConstants.Frame1;
             }
-            else if (textureFrame > 7)
+            else if (textureFrame > EnemyConstants.SkeletonTexture1)
             {
-                texture = textures[1];
-                frame = 1;
+                texture = textures[EnemyConstants.Frame2];
+                frame = EnemyConstants.Frame2;
             }
 
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }

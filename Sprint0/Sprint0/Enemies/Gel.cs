@@ -11,13 +11,8 @@ namespace Sprint0
 {
     public class Gel : ISprite
     {
-        public int currentFrame;
-        public int totalFrames = 40;
+        public int currentFrame, frame, random, textureFrame, totalFrames;
         public Vector2 location;
-        public int frame;
-        public int random;
-        public int textureFrame;
-        public int textureFrame1 = 10;
         public System.Random RNG = new System.Random();
 
         private static List<Rectangle> frames = new List<Rectangle>
@@ -28,50 +23,51 @@ namespace Sprint0
 
         public Gel(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
+            currentFrame = EnemyConstants.Zero;
+            textureFrame = EnemyConstants.Zero;
             location = coords;
-            random = 1;
+            random = EnemyConstants.Left;
+            totalFrames = EnemyConstants.GelTotalFrames;
         }
 
         public void Update()
         {
             textureFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.GelTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
-                if (random == 5)
+                currentFrame = EnemyConstants.Zero;
+                if (random == EnemyConstants.GelStatic)
                 {
-                    random = RNG.Next(1, 5);
-                    totalFrames = RNG.Next(50, 120);
+                    random = RNG.Next(EnemyConstants.Down, EnemyConstants.GelStatic);
+                    totalFrames = RNG.Next(EnemyConstants.GelMinFrame, EnemyConstants.GelMaxFrame);
                 }
                 else
                 {
-                    random = 5;
-                    totalFrames = 80;
+                    random = EnemyConstants.GelStatic;
+                    totalFrames = EnemyConstants.GelStaticTime;
                 }
 
             }
-            if (currentFrame % 10 == 0)
+            if (currentFrame % EnemyConstants.GelFrameChange == EnemyConstants.Zero)
             {
                 switch (random)
                 {
-                    case 1:
-                        location.X -= 5;
+                    case EnemyConstants.Down:
+                        location.Y += EnemyConstants.GelDisplacement;
                         break;
-                    case 2:
-                        location.X += 5;
+                    case EnemyConstants.Left:
+                        location.X -= EnemyConstants.GelDisplacement;
                         break;
-                    case 3:
-                        location.Y -= 5;
+                    case EnemyConstants.Right:
+                        location.X += EnemyConstants.GelDisplacement;
                         break;
-                    case 4:
-                        location.Y += 5;
+                    case EnemyConstants.Up:
+                        location.Y -= EnemyConstants.GelDisplacement;
                         break;
                 }
             }
@@ -80,18 +76,18 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame <= 5)
+            if (textureFrame <= EnemyConstants.Texture1)
             {
-                frame = 0;
+                frame = EnemyConstants.Frame1;
             }
-            else if (textureFrame > 5)
+            else if (textureFrame > EnemyConstants.Texture1)
             {
-                frame = 1;
+                frame = EnemyConstants.Frame2;
             }
 
             Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
         }
     }

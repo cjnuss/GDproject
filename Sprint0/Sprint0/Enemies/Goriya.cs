@@ -6,14 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0;
+using System.Security.Principal;
 
 namespace Sprint0
 {
     public class Goriya : ISprite
     {
-        public int frame, textureFrame, currentFrame, direction, boomerangCount;
-        public int totalFrames = 40;
-        public int textureFrame1 = 20;
+        public int frame, textureFrame, currentFrame, direction, boomerangCount, totalFrames;
         public Vector2 location;
         private Texture2D texture;
         public System.Random RNG = new System.Random();
@@ -46,10 +45,10 @@ namespace Sprint0
 
         private static List<List<Rectangle>> frames = new List<List<Rectangle>>
         {
-            GoriyaUp,
             GoriyaDown,
             GoriyaLeft,
-            GoriyaRight
+            GoriyaRight,
+            GoriyaUp
         };
 
         private static List<Texture2D> textures = new List<Texture2D>
@@ -61,55 +60,56 @@ namespace Sprint0
 
         public Goriya(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
-            direction = RNG.Next(0, 4);
+            currentFrame = EnemyConstants.Zero;
+            textureFrame = EnemyConstants.Zero;
+            direction = RNG.Next(EnemyConstants.Zero, EnemyConstants.Up + EnemyConstants.One);
             location = coords;
-            boomerangCount = 0;
+            boomerangCount = EnemyConstants.Zero;
+            totalFrames = EnemyConstants.GoriyaTotalFrames;
         }
 
         public void Update()
         {
             textureFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.GoriyaTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             currentFrame++;
             if (currentFrame >= totalFrames && !boomerang)
             {
-                currentFrame = 0;
-                direction = RNG.Next(0, 4);
-                totalFrames = RNG.Next(30, 60);
+                currentFrame = EnemyConstants.Zero;
+                direction = RNG.Next(EnemyConstants.Zero, EnemyConstants.Up + EnemyConstants.One);
+                totalFrames = RNG.Next(EnemyConstants.GoriyaMinFrame, EnemyConstants.GoriyaMaxFrame);
             }
 
             boomerangCount++;
-            if (boomerangCount == 500)
+            if (boomerangCount == EnemyConstants.GoriyaProjCount)
             {
                 projectileSprite = new GoriyaProjectile(location, direction);
                 boomerang = true;
             }
-            else if (boomerangCount == 650)
+            else if (boomerangCount == (EnemyConstants.GoriyaProjCount + EnemyConstants.GoriyaProjTime))
             {
                 boomerang = false;
-                boomerangCount = 0;
+                boomerangCount = EnemyConstants.Zero;
             }
 
-            if (currentFrame % 15 == 0 && !boomerang)
+            if (currentFrame % EnemyConstants.GoriyaFrameChange == EnemyConstants.Zero && !boomerang)
             {
                 switch (direction)
                 {
-                    case 0:
-                        location.Y -= 6;
+                    case EnemyConstants.Down:
+                        location.Y += EnemyConstants.GoriyaDisplacement;
                         break;
-                    case 1:
-                        location.Y += 6;
+                    case EnemyConstants.Left:
+                        location.X -= EnemyConstants.GoriyaDisplacement;
                         break;
-                    case 2:
-                        location.X -= 6;
+                    case EnemyConstants.Right:
+                        location.X += EnemyConstants.GoriyaDisplacement;
                         break;
-                    case 3:
-                        location.X += 6;
+                    case EnemyConstants.Up:
+                        location.Y -= EnemyConstants.GoriyaDisplacement;
                         break;
                 }
             }
@@ -121,33 +121,33 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame <= 10)
+            if (textureFrame <= EnemyConstants.Texture2)
             {
-                if (direction == 2)
+                if (direction == EnemyConstants.Left)
                 {
-                    texture = textures[1];
+                    texture = textures[EnemyConstants.Frame2];
                 }
                 else
                 {
-                    texture = textures[0];
+                    texture = textures[EnemyConstants.Frame1];
                 }
-                frame = 0;
+                frame = EnemyConstants.Frame1;
             }
-            else if (textureFrame > 10)
+            else if (textureFrame > EnemyConstants.Texture2)
             {
-                if (direction == 3)
+                if (direction == EnemyConstants.Right)
                 {
-                    texture = textures[0];
+                    texture = textures[EnemyConstants.Frame1];
                 }
                 else
                 {
-                    texture = textures[1];
+                    texture = textures[EnemyConstants.Frame2];
                 }
-                frame = 1;
+                frame = EnemyConstants.Frame2;
             }
 
             Rectangle source = frames[direction][frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
 
             if (boomerang)
