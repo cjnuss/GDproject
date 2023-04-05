@@ -11,8 +11,8 @@ namespace Sprint0
 {
     public class Aquamentus : ISprite
     {
-        public int totalFrames = 20;
-        public int textureFrame1 = 20;
+        public int totalFrames = AquamentusConstants.TotalFrames;
+        public int textureFrame1 = AquamentusConstants.TextureFrames;
         public Vector2 location;
         public int frame, currentFrame, textureFrame, random, projectileCount;
         public bool projectile;
@@ -29,17 +29,17 @@ namespace Sprint0
 
         public Aquamentus(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
-            projectileCount = 0;
+            currentFrame = GameConstants.Zero;
+            textureFrame = GameConstants.Zero;
+            projectileCount = GameConstants.Zero;
             location = coords;
-            random = 2;
+            random = AquamentusConstants.InitialRandom;
             projectile = true;
         }
 
         public void Update()
         {
-            if (projectileCount == 0)
+            if (projectileCount == GameConstants.Zero)
             {
                 projectileSprite = new AquamentusProjectile(location);
             }
@@ -48,47 +48,47 @@ namespace Sprint0
             currentFrame++;
             if (textureFrame == textureFrame1)
             {
-                textureFrame = 0;
+                textureFrame = GameConstants.Zero;
             }
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
-                random = RNG.Next(1, 3);
-                totalFrames = RNG.Next(20, 50);
+                currentFrame = GameConstants.Zero;
+                random = RNG.Next(AquamentusConstants.NextRandom1, AquamentusConstants.NextRandom2);
+                totalFrames = RNG.Next(AquamentusConstants.NextRandomFrame1, AquamentusConstants.NextRandomFrame2);
             }
-            if (currentFrame % 10 == 0)
+            if (currentFrame % GameConstants.Ten == GameConstants.Zero)
             {
                 switch (random)
                 {
-                    case 1:
-                        location.X -= 5;
+                    case AquamentusConstants.Case1:
+                        location.X -= AquamentusConstants.PosChange;
                         break;
-                    case 2:
-                        location.X += 5;
+                    case AquamentusConstants.Case2:
+                        location.X += AquamentusConstants.PosChange;
                         break;
                 }
             }
-            if (projectileCount == 250)
+            if (projectileCount == AquamentusConstants.MaxProjectile)
             {
-                projectileCount = 0;
+                projectileCount = GameConstants.Zero;
             }
             projectileSprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame < 5)
-                frame = 0;
-            else if (textureFrame >= 5 && textureFrame < 10)
-                frame = 1;
-            else if (textureFrame >= 10 && textureFrame < 15)
-                frame = 2;
-            else if (textureFrame >= 20)
-                frame = 3;
+            if (textureFrame < AquamentusConstants.Phase1)
+                frame = GameConstants.Frame0;
+            else if (textureFrame >= AquamentusConstants.Phase1 && textureFrame < AquamentusConstants.Phase2)
+                frame = GameConstants.Frame1;
+            else if (textureFrame >= AquamentusConstants.Phase2 && textureFrame < AquamentusConstants.Phase3)
+                frame = GameConstants.Frame2;
+            else if (textureFrame >= totalFrames)
+                frame = GameConstants.Frame3;
 
             Texture2D texture = EnemyTextureStorage.Instance.GetEnemies();
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
             projectileSprite.Draw(spriteBatch);
         }
