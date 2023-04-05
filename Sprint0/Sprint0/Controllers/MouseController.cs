@@ -61,7 +61,7 @@ namespace Sprint0.Levels
         {
             this.game1 = game1;
             _spriteBatch = spriteBatch;
-            levelState = 0;
+            levelState = GameConstants.LevelState1;
             texture = atlas;
             lastLeftMouseState = false;
             lastRightMouseState = false;
@@ -74,7 +74,7 @@ namespace Sprint0.Levels
             Loclist = levelDoc.GetElementsByTagName("Location");
             */
             roomLoad = new RoomLoad();
-            for (int i = 1; i <= 17; i++)
+            for (int i = GameConstants.One; i <= GameConstants.NumRooms; i++)
             {
                 rooms.Add(roomLoad.load("Room" + i.ToString() + ".txt"));
             }
@@ -91,9 +91,9 @@ namespace Sprint0.Levels
 
             if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed) && lastRightMouseState != true)
             {
-                if (levelState == 16)
+                if (levelState == GameConstants.LevelState2)
                 {
-                    levelState = 0;
+                    levelState = GameConstants.LevelState1;
                 }
                 else
                 {
@@ -103,9 +103,9 @@ namespace Sprint0.Levels
             }
             else if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && lastLeftMouseState != true)
             {
-                if (levelState == 0)
+                if (levelState == GameConstants.LevelState1)
                 {
-                    levelState = 16;
+                    levelState = GameConstants.LevelState2;
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace Sprint0.Levels
 
 
             Rectangle source = levels[levelState];
-            Rectangle target = new Rectangle(0,150, 800, 480);
+            Rectangle target = new Rectangle(0,150, 800, 480); // magic?
             _spriteBatch.Draw(texture, target, source, Color.White);
 
             game1.currentRoom = rooms[levelState];

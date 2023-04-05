@@ -73,7 +73,7 @@ namespace Sprint0
             controllerMapping.Add(Keys.E, linkDamageCommand);
             controllerMapping.Add(Keys.Z, linkAttackingCommand);
             controllerMapping.Add(Keys.N, linkAttackingCommand);
-            controllerMapping.Add(Keys.X, linkSwordBeamCommand); // DEBUG: NEW AND X??
+            controllerMapping.Add(Keys.X, linkSwordBeamCommand);
             controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
             controllerMapping.Add(Keys.D2, linkThrowFireCommand);
             controllerMapping.Add(Keys.D3, linkThrowBombCommand);

@@ -15,7 +15,10 @@ namespace Sprint0
 {
     static class GameConstants
     {
+        // numbers
         public const int Zero = 0;
+        public const int One = 1;
+        public const int Ten = 10;
         // size multiplier
         public const int Sizing = 3;
         // directions
@@ -23,5 +26,15 @@ namespace Sprint0
         public const int Left = 1;
         public const int Right = 2;
         public const int Up = 3;
+        // frames
+        public const int Frame0 = 0;
+        public const int Frame1 = 1;
+        public const int Frame2 = 2;
+        public const int Frame3 = 3;
+        // levels
+        public const int NumRooms = 17;
+        public const int LevelState1 = 0;
+        public const int LevelState2 = 16;
+        // DEBUG: target rectangle in MouseController?
     }
 }

@@ -29,14 +29,15 @@ namespace Sprint0
         {
             foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
             {
-                if ((block.location.X - KeyBoardController.linkSprite.location.X >= 0 && block.location.X - KeyBoardController.linkSprite.location.X <= 16 * 3) || (KeyBoardController.linkSprite.location.X - block.location.X >= 0 && KeyBoardController.linkSprite.location.X - block.location.X <= block.width))
+                if ((block.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && block.location.X - KeyBoardController.linkSprite.location.X <= 
+                    LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - block.location.X >= 0 && KeyBoardController.linkSprite.location.X - block.location.X <= block.width))
                 {
                     linkBlockCollision.Update(block);
                 }
 
-                if (KeyBoardController.linkSprite.velocity == 0)
+                if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
                 {
-                    KeyBoardController.linkSprite.velocity = 100f;
+                    KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
                     break;
                 }
             }

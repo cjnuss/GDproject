@@ -24,7 +24,7 @@ namespace Sprint0
         public void Execute(GameTime gameTime)
         {
             // no direction change necessary
-            KeyBoardController.linkState = 2; // non-moving sprite
+            KeyBoardController.linkState = LinkConstants.Damage; // non-moving sprite
         }
     }
 }

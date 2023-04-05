@@ -24,7 +24,7 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 8;
+            KeyBoardController.linkState = LinkConstants.SwordBeam;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
         }
     }
