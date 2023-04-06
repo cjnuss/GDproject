@@ -105,7 +105,7 @@ namespace Sprint0
 
         public bool RegisterSwordBeam()
         {
-            return (!swordBeam.toDraw && swordBeamKey && linkAttacking.frame == LinkConstants.PeakAnimation);
+            return (!swordBeam.toDraw && swordBeamKey/* && linkAttacking.frame == LinkConstants.PeakAnimation*/);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
