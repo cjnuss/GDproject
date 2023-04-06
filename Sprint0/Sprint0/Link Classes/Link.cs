@@ -65,24 +65,30 @@ namespace Sprint0
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
+            UpdateDirection(dir);
+            currentSprite = UpdateSprite(linkState);
+            linkMoving.Update();
+            attack.Update(linkState, ref currentSprite, dir, location);
+        }
+
+        public int UpdateSprite(int linkState)
+        {
+            if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire ||
+                    linkState == LinkConstants.Bomb || linkState == LinkConstants.BlueArrow)
+                return LinkConstants.Throwing;
+            else if (linkState != LinkConstants.SwordBeam)
+                return linkState;
+            else
+                return GameConstants.Zero;
+        }
+
+        public void UpdateDirection(int dir)
+        {
             // dir adjustments
             linkLooking.direction = dir;
             linkMoving.direction = dir;
             //linkAttacking.direction = dir;
             linkThrowing.direction = dir;
-
-            // update currentSprite
-            if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire || 
-                linkState == LinkConstants.Bomb|| linkState == LinkConstants.BlueArrow)
-                currentSprite = LinkConstants.Throwing;
-            else if (linkState != LinkConstants.SwordBeam)
-                currentSprite = linkState;
-
-            // update movement state
-            linkMoving.Update();
-
-            // update attack item states
-            attack.Update(linkState, ref currentSprite, dir, location);
         }
     }
 }
