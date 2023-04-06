@@ -21,9 +21,6 @@ namespace Sprint0
         public Vector2 location;
         public float velocity = LinkConstants.Velocity;
 
-        private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false;
-        private bool swordBeamKey = false;
-
         private Attack attack;
 
         private LinkLooking linkLooking;
@@ -43,16 +40,14 @@ namespace Sprint0
         public Link(Game1 game1)
         {
             this.game1 = game1;
-            location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY); // debug: magic number initial location
+            location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY);
 
-            // link states
             linkLooking = new LinkLooking();
             linkMoving = new LinkMoving();
             linkDamaged = new LinkDamaged();
             linkAttacking = new LinkAttacking();
             linkThrowing = new LinkThrowing();
 
-            // link attacks
             greenArrow = new GreenArrow();
             fire = new Fire();
             bomb = new Bomb();
@@ -60,17 +55,13 @@ namespace Sprint0
             swordBeam = new SwordBeam();
 
             sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
-
-            attack = new Attack(greenArrow, fire, bomb, blueArrow);
+            attack = new Attack(linkAttacking, greenArrow, fire, bomb, blueArrow, swordBeam);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprites[currentSprite].Draw(spriteBatch, location);
-            attack.Draw(spriteBatch, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
-
-            if (swordBeamKey || swordBeam.explodeKey) swordBeam.Draw(spriteBatch);
-            if (!swordBeam.toDraw) swordBeamKey = false;
+            attack.Draw(spriteBatch, location);
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
@@ -90,37 +81,8 @@ namespace Sprint0
             // update movement state
             linkMoving.Update();
 
-            // update attack state
-            if ((linkState == LinkConstants.WoodenSword || linkState == LinkConstants.SwordBeam) && !attackKey)
-            {
-                linkAttacking.toDraw = true;
-                attackKey = true;
-                linkAttacking.direction = dir;
-            }
-            if (attackKey)
-            {
-                currentSprite = LinkConstants.Attacking;
-                linkAttacking.Update();
-            }
-            if (!linkAttacking.toDraw)
-                attackKey = false;
-
-            // sword beam checks 
-            if (linkState == LinkConstants.SwordBeam && !swordBeamKey)
-            {
-                swordBeamKey = true;
-                swordBeam = new SwordBeam();
-                swordBeam.direction = dir;
-            }
-            if (swordBeamKey && linkAttacking.frame == LinkConstants.PeakAnimation)
-            {
-                swordBeam.toDraw = true;
-                swordBeam.RegisterPos(location);
-            }
-
             // update attack item states
-            attack.Update(linkState, dir, location, ref arrowKey, ref fireKey, ref bombKey, ref blueArrowKey);
-            swordBeam.Update();
+            attack.Update(linkState, ref currentSprite, dir, location);
         }
     }
 }
