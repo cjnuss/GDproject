@@ -19,6 +19,7 @@ namespace Sprint0
         // list of commands
         public ExitCommand exitCommand;
         public ResetCommand resetCommand;
+        public ToggleMusicCommand toggleMusicCommand;
         public LinkMoveLeftCommand linkMoveLeftCommand;
         public LinkMoveRightCommand linkMoveRightCommand;
         public LinkMoveUpCommand linkMoveUpCommand;
@@ -43,6 +44,7 @@ namespace Sprint0
         {
             exitCommand = new ExitCommand(game1);
             resetCommand = new ResetCommand(KeyBoardController, link, game1);
+            toggleMusicCommand = new ToggleMusicCommand(game1);
             linkMoveLeftCommand = new LinkMoveLeftCommand(KeyBoardController, link);
             linkMoveUpCommand = new LinkMoveUpCommand(KeyBoardController, link);
             linkMoveDownCommand = new LinkMoveDownCommand(KeyBoardController, link);
@@ -60,6 +62,7 @@ namespace Sprint0
         {
             controllerMapping.Add(Keys.Q, exitCommand);
             controllerMapping.Add(Keys.R, resetCommand);
+            controllerMapping.Add(Keys.M, toggleMusicCommand); //DEBUG
 
             controllerMapping.Add(Keys.W, linkMoveUpCommand);
             controllerMapping.Add(Keys.S, linkMoveDownCommand);

@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Levels;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
@@ -12,6 +14,8 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         //private SpriteFont font;
+
+        public Audio audio;
 
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
@@ -47,6 +51,9 @@ namespace Sprint0
             ItemsTextureStorage.Instance.Load(Content);
             UITextureStorage.Instance.Load(Content);
 
+            // background music (press M to start)
+            audio = new Audio(this);
+
             // controller setup
             Kcontroller = new KeyBoardController(this, _spriteBatch);
             Mcontroller = new MouseController(this, level, _spriteBatch);
@@ -55,7 +62,6 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -66,7 +72,7 @@ namespace Sprint0
 
             // Texture2D level = Content.Load<Texture2D>("level1");
             // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
-            
+
             Mcontroller.Update(gameTime);
             Kcontroller.Update(gameTime);
 

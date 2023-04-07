@@ -100,7 +100,7 @@ namespace Sprint0
         public const int SwordBeamYOffset2 = 17;
         public const int SwordBeamYOffset3 = 16;
         public const int SwordBeamYOffset4 = -19;
-        public const int SwordBeamOffsetIncrease = 2;
-        public const int SwordBeamCount = 30;
+        public const int SwordBeamOffsetIncrease = 3; // changed from 2
+        public const int SwordBeamCount = 20; // changed from 30
     }
 }
