@@ -18,17 +18,17 @@ using System.Transactions;
 
 namespace Sprint0
 {
-    public class Audio
+    public class BackgroundAudio : IAudio
     {
         public SoundEffect backgroundMusic;
         public SoundEffectInstance backgroundMusicInstance;
 
-        public Audio(Game1 game)
+        public BackgroundAudio(Game1 game)
         {
             backgroundMusic = game.Content.Load<SoundEffect>("dungeontheme");
         }
 
-        public void PlayBackground()
+        public void PlaySound()
         {
             if (NotPlaying())
             {
@@ -38,7 +38,7 @@ namespace Sprint0
             }
         }
 
-        public void StopBackground()
+        public void StopSound()
         {
             if (IsPlaying())
             {
