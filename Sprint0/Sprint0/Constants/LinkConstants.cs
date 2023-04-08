@@ -89,8 +89,9 @@ namespace Sprint0
         public const int StillCount = 20;
         // sword beam
         public const int SwordBeamTotalFrames = 10;
-        public const int SwordBeamPosChange = 7;
-        public const int SwordBeamMultiplier = 32;
+        public const int SwordBeamPosChange = 12;
+        public const int SwordBeamPosChange2 = 5;
+        public const int SwordBeamMultiplier = 20;
         public const int SwordBeamPhase = (SwordBeamTotalFrames / 2) + 1;
         public const int SwordBeamXOffset1 = 15;
         public const int SwordBeamXOffset2 = -18;

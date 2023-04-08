@@ -23,7 +23,12 @@ namespace Sprint0
         public SoundEffect backgroundMusic;
         public SoundEffectInstance backgroundMusicInstance;
 
-        public BackgroundAudio(Game1 game)
+        public BackgroundAudio()
+        {
+            // nothing
+        }
+
+        public void LoadSound(Game1 game)
         {
             backgroundMusic = game.Content.Load<SoundEffect>("dungeontheme");
         }
@@ -43,7 +48,6 @@ namespace Sprint0
             if (IsPlaying())
             {
                 backgroundMusicInstance.Stop(false);
-                backgroundMusicInstance.Dispose();
                 backgroundMusicInstance = null;
             }
         }

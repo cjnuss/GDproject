@@ -10,6 +10,7 @@ namespace Sprint0
 {
     public interface IAudio
     {
+        void LoadSound(Game1 game);
         void PlaySound();
         void StopSound();
         bool IsPlaying();

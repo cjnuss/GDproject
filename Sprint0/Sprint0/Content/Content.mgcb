@@ -127,6 +127,18 @@
 /processorParam:TextureFormat=Color
 /build:level1.png
 
+#begin LOZ_Sword_Shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Sword_Shoot.wav;swordbeam.wav
+
+#begin LOZ_Sword_Slash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Sword_Slash.wav;woodensword.wav
+
 #begin mario-luigi.gif
 /importer:TextureImporter
 /processor:TextureProcessor

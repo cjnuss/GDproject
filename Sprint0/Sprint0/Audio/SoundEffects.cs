@@ -17,33 +17,41 @@ using System.Transactions;
 
 namespace Sprint0
 {
-    public class SoundEffects : IAudio
+    public class SoundEffects
     {
-        // variables
+        private Dictionary<string, SoundEffect> soundEffects;
+        private Dictionary<string, SoundEffectInstance> soundEffectInstances;
+
         public SoundEffects()
         {
-            // constructor
-            // load calls?
+            soundEffects = new Dictionary<string, SoundEffect>();
+            soundEffectInstances = new Dictionary<string, SoundEffectInstance>();
         }
 
-        public void PlaySound()
+        public void LoadSound(Game1 game, String sound, String name)
         {
-            // logic
+            SoundEffect soundEffect = game.Content.Load<SoundEffect>(name);
+            soundEffects[sound] = soundEffect;
         }
 
-        public void StopSound()
+        public void PlaySound(String sound)
         {
-            // logic
+            SoundEffect soundEffect;
+            if (soundEffects.TryGetValue(sound, out soundEffect))
+            {
+                SoundEffectInstance soundEffectInstance = soundEffect.CreateInstance();
+                soundEffectInstances[sound] = soundEffectInstance;
+                soundEffectInstance.Play();
+            }
         }
 
-        public bool IsPlaying()
+        public bool IsPlaying(String sound)
         {
-            return false; // DEBUG
-        }
-
-        public bool NotPlaying()
-        {
-            return false; // DEBUG
+            SoundEffectInstance soundEffectInstance;
+            if (soundEffectInstances.TryGetValue(sound, out soundEffectInstance))
+                return soundEffectInstance.State == SoundState.Playing;
+            else
+                return false;
         }
     }
 }

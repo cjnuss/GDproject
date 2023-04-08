@@ -50,12 +50,12 @@ namespace Sprint0
             linkMoveDownCommand = new LinkMoveDownCommand(KeyBoardController, link);
             linkMoveRightCommand = new LinkMoveRightCommand(KeyBoardController, link);
             linkDamageCommand = new LinkDamageCommand(KeyBoardController, link);
-            linkAttackingCommand = new LinkAttackingCommand(KeyBoardController, link);
+            linkAttackingCommand = new LinkAttackingCommand(game1, KeyBoardController, link); // SOUND
+            linkSwordBeamCommand = new LinkSwordBeamCommand(game1, KeyBoardController, link); // SOUND
             linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(KeyBoardController, link);
             linkThrowFireCommand = new LinkThrowFireCommand(KeyBoardController, link);
             linkThrowBombCommand = new LinkThrowBombCommand(KeyBoardController, link);
             linkThrowBlueArrowCommand = new LinkThrowBlueArrowCommand(KeyBoardController, link);
-            linkSwordBeamCommand = new LinkSwordBeamCommand(KeyBoardController, link);
         }
 
         public Dictionary<Keys, ICommand> GetControllerMapping(Dictionary<Keys, ICommand> controllerMapping)

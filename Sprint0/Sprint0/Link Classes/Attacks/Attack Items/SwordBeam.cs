@@ -58,22 +58,22 @@ namespace Sprint0
             if (direction == GameConstants.Down)
             {
                 finalPos = (int)location.Y + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Left)
             {
                 finalPos = (int)location.X - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Right)
             {
                 finalPos = (int)location.X + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Up)
             {
                 finalPos = (int)location.Y - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange2;
             }
         }
 

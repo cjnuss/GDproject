@@ -16,6 +16,7 @@ namespace Sprint0
         //private SpriteFont font;
 
         public BackgroundAudio backgroundAudio;
+        public SoundEffects soundEffects;
 
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
@@ -51,8 +52,10 @@ namespace Sprint0
             ItemsTextureStorage.Instance.Load(Content);
             UITextureStorage.Instance.Load(Content);
 
-            // background music (press M to start)
-            backgroundAudio = new BackgroundAudio(this);
+            // music / sounds
+            backgroundAudio = new BackgroundAudio();
+            backgroundAudio.LoadSound(this);
+            soundEffects = new SoundEffects();
 
             // controller setup
             Kcontroller = new KeyBoardController(this, _spriteBatch);
