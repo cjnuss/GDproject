@@ -17,7 +17,7 @@ namespace Sprint0
         public Boolean toDraw = false, explodeKey = false;
         private int expOffsetX = GameConstants.Zero, expOffsetY = GameConstants.Zero;
         private int count = GameConstants.Zero;
-        Rectangle source;
+        Rectangle source, source1, source2, source3;
         Rectangle dest;
 
         private Texture2D texture;
@@ -58,22 +58,22 @@ namespace Sprint0
             if (direction == GameConstants.Down)
             {
                 finalPos = (int)location.Y + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Left)
             {
                 finalPos = (int)location.X - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Right)
             {
                 finalPos = (int)location.X + LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos + LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos + LinkConstants.SwordBeamPosChange2;
             }
             if (direction == GameConstants.Up)
             {
                 finalPos = (int)location.Y - LinkConstants.SwordBeamPosChange * LinkConstants.SwordBeamMultiplier;
-                explodePos = finalPos - LinkConstants.SwordBeamPosChange;
+                explodePos = finalPos - LinkConstants.SwordBeamPosChange2;
             }
         }
 
@@ -98,6 +98,15 @@ namespace Sprint0
                 if (direction == GameConstants.Up)
                     currentY -= LinkConstants.SwordBeamPosChange;
 
+                // overall frame updates
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = GameConstants.Zero;
+
+                FrameUpdate();
+            }
+            if (explodeKey)
+            {
                 // overall frame updates
                 currentFrame++;
                 if (currentFrame == totalFrames)
@@ -174,21 +183,34 @@ namespace Sprint0
                 expOffsetX += LinkConstants.SwordBeamOffsetIncrease;
                 expOffsetY += LinkConstants.SwordBeamOffsetIncrease;
 
+                // frame adj
+                if (frame != GameConstants.Frame0)
+                {
+                    source = explode[GameConstants.Frame0];
+                    source1 = explode[GameConstants.Frame1];
+                    source2 = explode[GameConstants.Frame2];
+                    source3 = explode[GameConstants.Frame3];
+                }
+                else
+                {
+                    source = flashing; source1 = flashing; source2 = flashing; source3 = flashing;
+                }
+
                 // top left
                 dest = new Rectangle((int)currentX - expOffsetX, (int)currentY - expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
-                spriteBatch.Draw(_texture, dest, explode[GameConstants.Frame0], Color.White);
+                spriteBatch.Draw(_texture, dest, source, Color.White);
 
                 // top right
                 dest = new Rectangle((int)currentX + expOffsetX, (int)currentY - expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
-                spriteBatch.Draw(_texture, dest, explode[GameConstants.Frame1], Color.White);
+                spriteBatch.Draw(_texture, dest, source1, Color.White);
 
                 // bottom left
                 dest = new Rectangle((int)currentX - expOffsetX, (int)currentY + expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
-                spriteBatch.Draw(_texture2, dest, explode[GameConstants.Frame2], Color.White);
+                spriteBatch.Draw(_texture2, dest, source2, Color.White);
 
                 // bottom right
                 dest = new Rectangle((int)currentX + expOffsetX, (int)currentY + expOffsetY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
-                spriteBatch.Draw(_texture2, dest, explode[GameConstants.Frame3], Color.White);
+                spriteBatch.Draw(_texture2, dest, source3, Color.White);
 
                 if (count > LinkConstants.SwordBeamCount)
                     explodeKey = false;

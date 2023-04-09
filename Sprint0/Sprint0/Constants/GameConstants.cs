@@ -15,12 +15,15 @@ namespace Sprint0
 {
     static class GameConstants
     {
+        // height adj
+        public const int HeightAdj = 150;
         // numbers
         public const int Zero = 0;
         public const int One = 1;
         public const int Ten = 10;
         // size multiplier
         public const int Sizing = 3;
+        public const int Sizing2 = 4;
         // directions
         public const int Down = 0;
         public const int Left = 1;
@@ -31,6 +34,9 @@ namespace Sprint0
         public const int Frame1 = 1;
         public const int Frame2 = 2;
         public const int Frame3 = 3;
+        // graphics
+        public const int BufferHeight = 630;
+        public const int BufferWidth = 800;
         // levels
         public const int NumRooms = 17;
         public const int LevelState1 = 0;

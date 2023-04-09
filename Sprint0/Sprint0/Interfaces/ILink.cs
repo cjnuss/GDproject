@@ -12,5 +12,8 @@ namespace Sprint0
     {
         void Draw(SpriteBatch spriteBatch);
         void Update(int linkState, int dir, Vector2 location);
+
+        int UpdateSprite(int linkState);
+        void UpdateDirection(int dir);
     }
 }

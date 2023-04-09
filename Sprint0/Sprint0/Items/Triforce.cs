@@ -15,7 +15,7 @@ namespace Sprint0
         Rectangle sourceRect = ItemsTextureStorage.triforce1;
         Rectangle destRect;
         int currentFrame;
-        int totalFrames = 20;
+        int totalFrames = ItemConstants.TriforceTotalFrames;
 
         Vector2 location;
 
@@ -24,12 +24,12 @@ namespace Sprint0
             location = position;
 
             destRect = new Rectangle((int)location.X, (int)location.Y + 150,  sourceRect.Width * 4, sourceRect.Height * 4);
-            currentFrame = 0;
+            currentFrame = GameConstants.Zero;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < 10)
+            if (currentFrame < ItemConstants.TriforcePhase)
             {
                 sourceRect = ItemsTextureStorage.triforce1;
             }
@@ -45,7 +45,7 @@ namespace Sprint0
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
             }
         }
     }

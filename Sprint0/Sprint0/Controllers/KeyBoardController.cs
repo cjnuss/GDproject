@@ -66,8 +66,8 @@ namespace Sprint0
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            Array.Sort(pressedKeys);
-            Array.Reverse(pressedKeys);
+            //Array.Sort(pressedKeys);
+            //Array.Reverse(pressedKeys);
 
             if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
                 controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
@@ -78,8 +78,8 @@ namespace Sprint0
             
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
+            
             //temp
-
             testingText.Draw(_spriteBatch);
             mainHUD.Draw(_spriteBatch);
             testingHearts.Draw(_spriteBatch);
