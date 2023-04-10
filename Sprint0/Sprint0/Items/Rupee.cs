@@ -11,13 +11,13 @@ namespace Sprint0
 {
     public class Rupee : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.rupee1;
-        Rectangle destRect;
-        int currentFrame;
-        int totalFrames = 20;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.rupee1;
+        private Rectangle destRect;
+        private int currentFrame;
+        private int totalFrames = 20;
 
-        Vector2 location;
+        public Vector2 location;
 
         public Rupee(Vector2 position)
         {
@@ -29,15 +29,20 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < ItemConstants.RupeePhase)
+            if (sourceRect == new Rectangle(0,0,0,0))
+            {
+                // nothing
+            }
+            else if (currentFrame < ItemConstants.RupeePhase)
             {
                 sourceRect = ItemsTextureStorage.rupee1;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
             else
             {
                 sourceRect = ItemsTextureStorage.rupee2;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
         public void Update()
@@ -47,6 +52,11 @@ namespace Sprint0
             {
                 currentFrame = GameConstants.Zero;
             }
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

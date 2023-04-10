@@ -151,11 +151,23 @@
 /processorParam:Quality=Best
 /build:LOZ_Bomb_Drop.wav;bombdrop.wav
 
+#begin LOZ_Get_Heart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Heart.wav;getheartorkey.wav
+
 #begin LOZ_Get_Item.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Get_Item.wav;getitem.wav
+
+#begin LOZ_Get_Rupee.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Rupee.wav;getrupee.wav
 
 #begin LOZ_Link_Die.wav
 /importer:WavImporter
