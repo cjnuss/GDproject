@@ -11,6 +11,10 @@ namespace Sprint0
 {
     static class ItemConstants
     {
+        // arrow
+        public const int ArrowWidth = 5, ArrowHeight = 16;
+        // bomb
+        public const int BombWidth = 8, BombHeight = 16;
         // fairy
         public const int FairyTotalFrames = 20;
         public const int FairyPhase = FairyTotalFrames / 2;

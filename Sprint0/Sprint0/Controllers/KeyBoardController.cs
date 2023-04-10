@@ -38,6 +38,8 @@ namespace Sprint0
 
         public BlockCollisionCheck blockCollisionCheck;
         public TriforceCollisionCheck triforceCollisionCheck;
+        public ArrowCollisionCheck arrowCollisionCheck;
+        public BombCollisionCheck bombCollisionCheck;
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {
@@ -58,6 +60,8 @@ namespace Sprint0
 
             blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
             triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
+            arrowCollisionCheck = new ArrowCollisionCheck(this, new LinkArrowCollision(game1, this, linkSprite), game1, linkSprite);
+            bombCollisionCheck = new BombCollisionCheck(this, new LinkBombCollision(game1, this, linkSprite), game1, linkSprite);
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
@@ -73,7 +77,10 @@ namespace Sprint0
 
             // collision checks
             blockCollisionCheck.CheckCollision();
-            triforceCollisionCheck.CheckCollision(); // debug, testing purposes
+            // debug, testing purposes (refactor later)
+            triforceCollisionCheck.CheckCollision();
+            arrowCollisionCheck.CheckCollision();
+            bombCollisionCheck.CheckCollision();
             // more to follow..
             
             linkSprite.Update(linkState, dir, location);
