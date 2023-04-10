@@ -10,30 +10,30 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class BlockCollisionCheck
+    public class EnemyCollisionCheck
     {
         public KeyBoardController KeyBoardController;
-        public LinkBlockCollision linkBlockCollision;
+        public LinkEnemyCollision linkEnemyCollision;
         public Game1 game1;
         public Link link;
         public int roomType;
 
-        public BlockCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
+        public EnemyCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             this.game1 = game1;
-            linkBlockCollision = new LinkBlockCollision(this.KeyBoardController, this.link);
+            linkEnemyCollision = new LinkEnemyCollision(this.KeyBoardController, this.link);
         }
 
         public void CheckCollision()
         {
-            foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
+        /*    foreach (var enemy in game1.currentRoom.GetEnemies())
             {
-                if ((block.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && block.location.X - KeyBoardController.linkSprite.location.X <= 
-                    LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - block.location.X >= 0 && KeyBoardController.linkSprite.location.X - block.location.X <= block.width))
+                if ((enemy.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && enemy.location.X - KeyBoardController.linkSprite.location.X <= 
+                    LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - enemy.location.X >= 0 && KeyBoardController.linkSprite.location.X - enemy.location.X <= enemy.width))
                 {
-                    linkBlockCollision.Update(block);
+                    linkEnemyCollision.Update(enemy);
                 }
 
                 if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
@@ -41,7 +41,7 @@ namespace Sprint0
                     KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
                     break;
                 }
-            }
+            }*/
         }
     }
 }

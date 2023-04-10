@@ -38,6 +38,9 @@ namespace Sprint0
 
         public BlockCollisionCheck blockCollisionCheck;
         public TriforceCollisionCheck triforceCollisionCheck;
+        public RoomCollisionCheck roomCollisionCheck;
+        public EnemyCollisionCheck enemyCollisionCheck;
+
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {
@@ -56,11 +59,15 @@ namespace Sprint0
             mappingCommands.CreateCommands();
             controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
 
-            blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
+            blockCollisionCheck = new BlockCollisionCheck(this, game1, linkSprite);
             triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
+            roomCollisionCheck = new RoomCollisionCheck(this, linkSprite);
+            enemyCollisionCheck = new EnemyCollisionCheck(this, game1,linkSprite);
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
+
+            roomCollisionCheck.roomType = 0; //Sets room type to dugeon (placeholder)
         }
         public void Update(GameTime gameTime)
         {
@@ -73,7 +80,10 @@ namespace Sprint0
 
             // collision checks
             blockCollisionCheck.CheckCollision();
-            triforceCollisionCheck.CheckCollision(); // debug, testing purposes
+            triforceCollisionCheck.CheckCollision(); 
+            roomCollisionCheck.CheckCollision(); 
+            enemyCollisionCheck.CheckCollision();
+            // debug, testing purposes
             // more to follow..
             
             linkSprite.Update(linkState, dir, location);

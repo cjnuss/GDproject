@@ -1,9 +1,4 @@
-﻿BLOCKS
-wideWall,0,150
-wideWall,0,548
-tallWall,0,150
-tallWall,705,150 
-ITEMS
+﻿ITEMS
 arrow,250,330
 bomb,300,330
 bow,350,330
