@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Sprint0
 {
@@ -26,6 +27,7 @@ namespace Sprint0
             currentFrame = EnemyConstants.Zero;
             textureFrame = EnemyConstants.Zero;
             location = coords;
+            location.X += EnemyConstants.GelXOffset;
             random = EnemyConstants.Left;
             totalFrames = EnemyConstants.GelTotalFrames;
         }
@@ -44,7 +46,14 @@ namespace Sprint0
                 if (random == EnemyConstants.GelStatic)
                 {
                     random = RNG.Next(EnemyConstants.Down, EnemyConstants.GelStatic);
-                    totalFrames = RNG.Next(EnemyConstants.GelMinFrame, EnemyConstants.GelMaxFrame);
+                    if (random == 1 | random == 2)
+                    {
+                        totalFrames = RNG.Next(EnemyConstants.GelMinFrame, EnemyConstants.GelMaxFrame) * EnemyConstants.GelXFrames;
+                    }
+                    else
+                    {
+                        totalFrames = RNG.Next(EnemyConstants.GelMinFrame, EnemyConstants.GelMaxFrame) * EnemyConstants.GelYFrames;
+                    }
                 }
                 else
                 {

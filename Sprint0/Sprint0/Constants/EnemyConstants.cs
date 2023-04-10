@@ -64,36 +64,43 @@ namespace Sprint0
 
 
         public const int GelTextureFrames = 10;
-        public const int GelTotalFrames = 40;
+        public const int GelTotalFrames = 100;
         public const int GelStatic = 5;
         public const int GelDisplacement = 5;
-        public const int GelMinFrame = 50;
-        public const int GelMaxFrame = 120;
+        public const int GelMinFrame = 1;
+        public const int GelMaxFrame = 4;
+        public const int GelXFrames = 100;
+        public const int GelYFrames = 90;
         public const int GelFrameChange = 10;
         public const int GelStaticTime = 80;
+        public const int GelXOffset = 13;
 
         public const int GoriyaTextureFrames = 20;
-        public const int GoriyaTotalFrames = 40;
-        public const int GoriyaMinFrame = 30;
-        public const int GoriyaMaxFrame = 60;
-        public const int GoriyaFrameChange = 15;
+        public const int GoriyaTotalFrames = 100;
+        public const int GoriyaMinFrame = 1;
+        public const int GoriyaMaxFrame = 3;
+        public const int GoriyaXFrames = 100;
+        public const int GoriyaYFrames = 90;
+        public const int GoriyaFrameChange = 10;
+        public const int GoriyaDisplacement = 5;
 
         public const int GoriyaProjXAdjustment = 12;
         public const int GoriyaProjTextureFrames = 20;
         public const int GoriyaProjTotalFrames = 40;
         public const int GoriyaProjCount = 500;
         public const int GoriyaProjTime = 150;
-        public const int GoriyaDisplacement = 6;
         public const int GoriyaProjDisplacement = 5;
         public const int GoriyaProjFrameChange = 5;
         public const int GoriyaProjChange = 75;
 
-        public const int SkeletonTotalFrames = 60;
+        public const int SkeletonTotalFrames = 100;
         public const int SkeletonTextureFrames = 14;
-        public const int SkeletonDisplacement = 6;
+        public const int SkeletonDisplacement = 5;
         public const int SkeletonTexture1 = 7;
-        public const int SkeletonMinFrame = 30;
-        public const int SkeletonMaxFrame = 60;
-        public const int SkeletonFrameChange = 15;
+        public const int SkeletonMinFrame = 1;
+        public const int SkeletonMaxFrame = 3;
+        public const int SkeletonXFrames = 100;
+        public const int SkeletonYFrames = 90;
+        public const int SkeletonFrameChange = 10;
     }
 }
