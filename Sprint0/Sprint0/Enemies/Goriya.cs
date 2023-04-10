@@ -80,7 +80,14 @@ namespace Sprint0
             {
                 currentFrame = EnemyConstants.Zero;
                 direction = RNG.Next(EnemyConstants.Zero, EnemyConstants.Up + EnemyConstants.One);
-                totalFrames = RNG.Next(EnemyConstants.GoriyaMinFrame, EnemyConstants.GoriyaMaxFrame);
+                if (direction == 1 | direction == 2)
+                {
+                    totalFrames = RNG.Next(EnemyConstants.GoriyaMinFrame, EnemyConstants.GoriyaMaxFrame) * EnemyConstants.GoriyaXFrames;
+                }
+                else
+                {
+                    totalFrames = RNG.Next(EnemyConstants.GoriyaMinFrame, EnemyConstants.GoriyaMaxFrame) * EnemyConstants.GoriyaYFrames;
+                }
             }
 
             boomerangCount++;

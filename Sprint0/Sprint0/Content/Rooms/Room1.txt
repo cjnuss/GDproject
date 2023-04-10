@@ -18,4 +18,4 @@ triforce,475,400
 ENEMIES
 bat,150,281
 bat,100,368
-bat,500,499
+bat,500,499  

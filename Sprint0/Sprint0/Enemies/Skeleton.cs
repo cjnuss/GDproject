@@ -49,7 +49,13 @@ namespace Sprint0
             {
                 currentFrame = EnemyConstants.Zero;
                 random = RNG.Next(EnemyConstants.Zero, EnemyConstants.Up + EnemyConstants.One);
-                totalFrames = RNG.Next(EnemyConstants.SkeletonMinFrame, EnemyConstants.SkeletonMaxFrame);
+                if (random == 1 | random == 2)
+                {
+                    totalFrames = RNG.Next(EnemyConstants.SkeletonMinFrame, EnemyConstants.SkeletonMaxFrame) * EnemyConstants.SkeletonXFrames;
+                } else
+                {
+                    totalFrames = RNG.Next(EnemyConstants.SkeletonMinFrame, EnemyConstants.SkeletonMaxFrame) * EnemyConstants.SkeletonYFrames;
+                }
             }
             if (currentFrame % EnemyConstants.SkeletonFrameChange == EnemyConstants.Zero)
             {
