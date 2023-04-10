@@ -23,7 +23,7 @@ namespace Sprint0
         {
             location = position;
 
-            destRect = new Rectangle((int)location.X, (int)location.Y + GameConstants.HeightAdj, sourceRect.Width * GameConstants.Sizing2, sourceRect.Height * GameConstants.Sizing2);
+            destRect = new Rectangle((int)location.X, (int)location.Y, sourceRect.Width * GameConstants.Sizing2, sourceRect.Height * GameConstants.Sizing2);
             currentFrame = GameConstants.Zero;
         }
 
