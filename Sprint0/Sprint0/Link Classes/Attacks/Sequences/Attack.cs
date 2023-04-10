@@ -15,6 +15,7 @@ namespace Sprint0
 {
     public class Attack
     {
+        private Game1 game;
         private LinkAttacking linkAttacking;
         private GreenArrow greenArrow;
         private Fire fire;
@@ -24,8 +25,9 @@ namespace Sprint0
 
         // attack keys
         private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
-        public Attack(LinkAttacking linkAttacking, GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow, SwordBeam swordBeam)
+        public Attack(Game1 game, LinkAttacking linkAttacking, GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow, SwordBeam swordBeam)
         {
+            this.game = game; 
             this.linkAttacking = linkAttacking;
             this.greenArrow = greenArrow;
             this.fire = fire;
@@ -52,7 +54,7 @@ namespace Sprint0
             }
             if (linkState == LinkConstants.Bomb && !bombKey)
             {
-                bomb = new Bomb();
+                bomb = new Bomb(game);
                 bombKey = true;
                 bomb.direction = dir;
                 bomb.UpdatePos(location);

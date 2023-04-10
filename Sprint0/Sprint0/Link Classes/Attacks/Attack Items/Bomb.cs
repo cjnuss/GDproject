@@ -10,9 +10,10 @@ namespace Sprint0.Link_Classes.Item_Usage
 {
     public class Bomb : ISprite
     {
+        public Game1 game;
         public int frame, currentFrame, totalFrames, direction;
         public Vector2 location1;
-        public Boolean toDraw = true;
+        public Boolean toDraw = true, playSound = true;
         Rectangle source;
         Rectangle dest;
 
@@ -28,8 +29,9 @@ namespace Sprint0.Link_Classes.Item_Usage
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
-        public Bomb()
+        public Bomb(Game1 game)
         {
+            this.game = game;
             direction = GameConstants.Down;
             currentFrame = GameConstants.Zero;
             totalFrames = LinkConstants.BombTotalFrames;
@@ -97,6 +99,12 @@ namespace Sprint0.Link_Classes.Item_Usage
                 source = BombList[frame];
                 dest = new Rectangle((int)location1.X, (int)location1.Y, source.Width*GameConstants.Sizing, source.Height*GameConstants.Sizing);
                 spriteBatch.Draw(texture, dest, source, Color.White);
+            }
+            if (frame == GameConstants.Frame2 && playSound)
+            {
+                game.soundEffects.LoadSound(game, "BombBlow", "bombblow");
+                game.soundEffects.PlaySound("BombBlow");
+                playSound = false;
             }
         }
     }
