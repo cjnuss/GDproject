@@ -1,8 +1,17 @@
 ﻿BLOCKS
-wideWall,99,150
-wideWall,99,540
-tallWall,24,246
-tallWall, 700,240 
+wideWall,0,150
+wideWall,0,548
+tallWall,0,150
+tallWall,705,150
+tenByOne,155,286
+oneByFour,155,330
+oneByFour,605,330
+threeByOne,205,461
+threeByOne,455,461
+oneByOne,255,373
+oneByOne,305,330
+oneByOne,455,330
+oneByOne,505,373
 ITEMS
-triforce,375,200
+triforce,385,382
 ENEMIES

@@ -79,43 +79,40 @@ namespace Sprint0.Levels
             String[] all = line.Split(",");
             IBlock block;
 
-            int x = Int32.Parse(all[RoomConstants.YInt]);
-            int y = Int32.Parse(all[RoomConstants.XInt]);
+            int x = Int32.Parse(all[RoomConstants.XInt]);
+            int y = Int32.Parse(all[RoomConstants.YInt]);
 
             switch (all[GameConstants.Zero])
             {
                 case "tallWall":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TallWallWidth * GameConstants.Sizing, RoomConstants.TallWallHeight * GameConstants.Sizing); // debug * 3
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TallWallWidth, RoomConstants.TallWallHeight);
                     break;
                 case "wideWall":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.WideWallWidth * GameConstants.Sizing, RoomConstants.WideWallHeight * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.WideWallWidth, RoomConstants.WideWallHeight);
                     break;
                 case "twoByThree":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TwoThreeWidth * GameConstants.Sizing, RoomConstants.TwoThreeHeight * GameConstants.Sizing);
-                    break;
-                case "singleBlock":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.SingleWidth * GameConstants.Sizing, RoomConstants.SingleHeight * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TwoThreeWidth, RoomConstants.TwoThreeHeight);
                     break;
                 case "oneByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.OneOneWidth * GameConstants.Sizing, RoomConstants.OneOneHeight * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.OneOneWidth, RoomConstants.OneOneHeight);
                     break;
                 case "twoByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TwoOneWidth * GameConstants.Sizing, RoomConstants.TwoOneHeight * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TwoOneWidth, RoomConstants.TwoOneHeight);
                     break;
-                case "sixByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.SixOneWidth * GameConstants.Sizing, RoomConstants.SixOneHeight * RoomConstants.SizeAdj);
+                case "fiveByOne":
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.FiveOneWidth, RoomConstants.FiveOneHeight);
+                    break;
+                case "oneByFour":
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.OneFourWidth, RoomConstants.OneFourHeight);
+                    break;
+                case "oneByTwo":
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.OneTwoWidth, RoomConstants.OneTwoHeight);
                     break;
                 case "threeByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.ThreeOneWidth * GameConstants.Sizing, RoomConstants.ThreeOneHeight * RoomConstants.SizeAdj);
-                    break;
-                case "oneByThree":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.OneThreeWidth * GameConstants.Sizing, RoomConstants.OneThreeHeight * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.ThreeOneWidth, RoomConstants.ThreeOneHeight);
                     break;
                 case "tenByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TenOneWidth * GameConstants.Sizing, RoomConstants.TenOneWidth * GameConstants.Sizing);
-                    break;
-                case "fourByOne":
-                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.FourOneWidth * GameConstants.Sizing, RoomConstants.FourOneWidth * GameConstants.Sizing);
+                    block = new CollisionBlock(new Vector2(x, y), RoomConstants.TenOneWidth, RoomConstants.TenOneHeight);
                     break;
                 default:
                     block = new CollisionBlock(new Vector2(GameConstants.Zero, GameConstants.Zero), GameConstants.Zero, GameConstants.Zero);

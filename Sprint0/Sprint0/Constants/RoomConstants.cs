@@ -18,27 +18,35 @@ namespace Sprint0
         public const int SizeAdj = 2;
         public const int XInt = 1;
         public const int YInt = 2;
-        public const int TallWallWidth = 25;
-        public const int TallWallHeight = 113;
-        public const int WideWallWidth = 190;
-        public const int WideWallHeight = 25;
-        public const int TwoThreeWidth = 32;
-        public const int TwoThreeHeight = 40;
-        public const int SingleWidth = 16;
-        public const int SingleHeight = 16;
-        public const int OneOneWidth = 16;
-        public const int OneOneHeight = 16;
-        public const int TwoOneWidth = 32;
-        public const int TwoOneHeight = 16;
-        public const int SixOneWidth = 96;
-        public const int SixOneHeight = 16;
-        public const int ThreeOneWidth = 48;
-        public const int ThreeOneHeight = 16;
-        public const int OneThreeWidth = 16;
-        public const int OneThreeHeight = 48;
-        public const int TenOneWidth = 160;
-        public const int TenOneHeight = 16;
-        public const int FourOneWidth = 64;
-        public const int FourOneHeight = 16;
+
+        public const int TallWallWidth = 95;
+        public const int TallWallHeight = 480;
+
+        public const int WideWallWidth = 800;
+        public const int WideWallHeight = 82;
+
+        public const int OneOneWidth = 40;
+        public const int OneOneHeight = 29;
+
+        public const int TwoThreeWidth = 90;
+        public const int TwoThreeHeight = 116;
+
+        public const int TwoOneWidth = 90;
+        public const int TwoOneHeight = 29;
+
+        public const int FiveOneWidth = 240;
+        public const int FiveOneHeight = 29;
+
+        public const int OneFourWidth = 40;
+        public const int OneFourHeight = 159;
+
+        public const int OneTwoWidth = 40;
+        public const int OneTwoHeight = 72;
+
+        public const int ThreeOneWidth = 140;
+        public const int ThreeOneHeight = 29;
+
+        public const int TenOneWidth = 490;
+        public const int TenOneHeight = 29;
     }
 }

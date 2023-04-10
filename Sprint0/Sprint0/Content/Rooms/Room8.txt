@@ -1,8 +1,8 @@
 ﻿BLOCKS
-wideWall,99,150
-wideWall,99,540
-tallWall,24,246
-tallWall, 700,240 
+wideWall,0,150
+wideWall,0,548
+tallWall,0,150
+tallWall,705,150
 ITEMS
 ENEMIES
-oldman,375,150
+oldman,375,325
