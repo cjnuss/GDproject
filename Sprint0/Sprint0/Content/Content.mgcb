@@ -21,7 +21,7 @@
 
 #begin 09 Catch Triforce Fanfare.mp3
 /importer:Mp3Importer
-/processor:SongProcessor
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:09 Catch Triforce Fanfare.mp3;triforcefanfare.mp3
 
@@ -150,6 +150,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LOZ_Bomb_Drop.wav;bombdrop.wav
+
+#begin LOZ_Get_Item.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Item.wav;getitem.wav
 
 #begin LOZ_Link_Die.wav
 /importer:WavImporter

@@ -17,6 +17,7 @@ namespace Sprint0
         // rupee
         public const int RupeePhase = 10;
         // triforce
+        public const int TriforceHeight = 10, TriforceWidth = 10;
         public const int TriforceTotalFrames = 20;
         public const int TriforcePhase = TriforceTotalFrames / 2;
     }

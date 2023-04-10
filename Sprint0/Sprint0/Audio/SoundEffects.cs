@@ -45,6 +45,17 @@ namespace Sprint0
             }
         }
 
+        public void StopSound(String sound)
+        {
+            SoundEffectInstance soundEffectInstance;
+            if (soundEffectInstances.TryGetValue(sound, out soundEffectInstance))
+            {
+                soundEffectInstance.Stop(false);
+                soundEffectInstance.Dispose();
+                soundEffectInstance = null;
+            }
+        }
+
         public bool IsPlaying(String sound)
         {
             SoundEffectInstance soundEffectInstance;

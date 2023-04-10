@@ -11,13 +11,13 @@ namespace Sprint0
 {
     public class Triforce : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.triforce1;
-        Rectangle destRect;
-        int currentFrame;
-        int totalFrames = ItemConstants.TriforceTotalFrames;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.triforce1;
+        private Rectangle destRect;
+        private int currentFrame;
+        private int totalFrames = ItemConstants.TriforceTotalFrames;
 
-        Vector2 location;
+        public Vector2 location;
 
         public Triforce(Vector2 position)
         {
@@ -29,7 +29,11 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < ItemConstants.TriforcePhase)
+            if (sourceRect == new Rectangle(0,0,0,0))
+            {
+                // do nothing
+            }
+            else if (currentFrame < ItemConstants.TriforcePhase)
             {
                 sourceRect = ItemsTextureStorage.triforce1;
             }
@@ -47,6 +51,11 @@ namespace Sprint0
             {
                 currentFrame = GameConstants.Zero;
             }
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

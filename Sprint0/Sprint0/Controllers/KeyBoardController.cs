@@ -37,6 +37,7 @@ namespace Sprint0
         public Dictionary<Keys, ICommand> controllerMapping;
 
         public BlockCollisionCheck blockCollisionCheck;
+        public TriforceCollisionCheck triforceCollisionCheck;
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {
@@ -56,6 +57,7 @@ namespace Sprint0
             controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
 
             blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
+            triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
@@ -66,14 +68,12 @@ namespace Sprint0
 
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            //Array.Sort(pressedKeys);
-            //Array.Reverse(pressedKeys);
-
             if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
                 controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
 
             // collision checks
             blockCollisionCheck.CheckCollision();
+            triforceCollisionCheck.CheckCollision(); // debug, testing purposes
             // more to follow..
             
             linkSprite.Update(linkState, dir, location);
