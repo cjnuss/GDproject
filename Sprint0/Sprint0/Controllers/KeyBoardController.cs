@@ -36,8 +36,12 @@ namespace Sprint0
         public MapCommands mappingCommands;
         public Dictionary<Keys, ICommand> controllerMapping;
 
+        // DEBUG: refactor later
         public BlockCollisionCheck blockCollisionCheck;
         public TriforceCollisionCheck triforceCollisionCheck;
+        public ArrowCollisionCheck arrowCollisionCheck;
+        public BombCollisionCheck bombCollisionCheck;
+        public RupeeCollisionCheck rupeeCollisionCheck;
         public RoomCollisionCheck roomCollisionCheck;
         public EnemyCollisionCheck enemyCollisionCheck;
 
@@ -61,6 +65,9 @@ namespace Sprint0
 
             blockCollisionCheck = new BlockCollisionCheck(this, game1, linkSprite);
             triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
+            arrowCollisionCheck = new ArrowCollisionCheck(this, new LinkArrowCollision(game1, this, linkSprite), game1, linkSprite);
+            bombCollisionCheck = new BombCollisionCheck(this, new LinkBombCollision(game1, this, linkSprite), game1, linkSprite);
+            rupeeCollisionCheck = new RupeeCollisionCheck(this, new LinkRupeeCollision(game1, this, linkSprite), game1, linkSprite);
             roomCollisionCheck = new RoomCollisionCheck(this, linkSprite);
             enemyCollisionCheck = new EnemyCollisionCheck(this, game1,linkSprite);
 
@@ -78,8 +85,12 @@ namespace Sprint0
             if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
                 controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
 
-            // collision checks
+            // collision checks - DEBUG: testing purposes (refactor later)
             blockCollisionCheck.CheckCollision();
+            triforceCollisionCheck.CheckCollision();
+            arrowCollisionCheck.CheckCollision();
+            bombCollisionCheck.CheckCollision();
+            rupeeCollisionCheck.CheckCollision();
             triforceCollisionCheck.CheckCollision(); 
             roomCollisionCheck.CheckCollision(); 
             enemyCollisionCheck.CheckCollision();

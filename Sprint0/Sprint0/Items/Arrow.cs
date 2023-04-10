@@ -11,11 +11,11 @@ namespace Sprint0
 {
     public class Arrow : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.arrow;
-        Rectangle destRect;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.arrow;
+        private Rectangle destRect;
 
-        Vector2 location;
+        public Vector2 location;
 
         public Arrow(Vector2 position)
         {
@@ -26,12 +26,20 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
+            if (sourceRect != new Rectangle(0, 0, 0, 0))
+            {
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
+            }   
         }
 
         public void Update()
         {
 
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

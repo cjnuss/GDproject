@@ -36,12 +36,13 @@ namespace Sprint0
             else if (currentFrame < ItemConstants.TriforcePhase)
             {
                 sourceRect = ItemsTextureStorage.triforce1;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
             else
             {
                 sourceRect = ItemsTextureStorage.triforce2;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
         public void Update()
