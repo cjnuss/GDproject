@@ -127,6 +127,24 @@
 /processorParam:TextureFormat=Color
 /build:level1.png
 
+#begin LOZ_Arrow_Boomerang.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Arrow_Boomerang.wav;arrowandboomerang.wav
+
+#begin LOZ_Bomb_Blow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Blow.wav;bombblow.wav
+
+#begin LOZ_Bomb_Drop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Drop.wav;bombdrop.wav
+
 #begin LOZ_Sword_Shoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

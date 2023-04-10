@@ -15,7 +15,7 @@ namespace Sprint0
 {
     public class Link : ILink
     {
-        private Game1 game1;
+        private Game1 game;
 
         private int currentSprite = LinkConstants.Default;
         public Vector2 location;
@@ -37,9 +37,9 @@ namespace Sprint0
 
         private ILinkSprite[] sprites;
 
-        public Link(Game1 game1)
+        public Link(Game1 game)
         {
-            this.game1 = game1;
+            this.game = game;
             location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY);
 
             linkLooking = new LinkLooking();
@@ -50,12 +50,12 @@ namespace Sprint0
 
             greenArrow = new GreenArrow();
             fire = new Fire();
-            bomb = new Bomb();
+            bomb = new Bomb(game);
             blueArrow = new BlueArrow();
             swordBeam = new SwordBeam();
 
             sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
-            attack = new Attack(linkAttacking, greenArrow, fire, bomb, blueArrow, swordBeam);
+            attack = new Attack(game, linkAttacking, greenArrow, fire, bomb, blueArrow, swordBeam);
         }
 
         public void Draw(SpriteBatch spriteBatch)
