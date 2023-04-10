@@ -1,8 +1,14 @@
 ﻿BLOCKS
-wideWall,99,150
-wideWall,99,540
-tallWall,24,246
-tallWall, 700,240 
+wideWall,0,150
+wideWall,0,548
+tallWall,0,150
+tallWall,705,150
+twoByOne,455,243
+twoByOne,455,504
+oneByOne,555,286
+oneByOne,555,461
+twoByOne,605,330
+twoByOne,605,417
 ITEMS
 ENEMIES
-aquamentus,400,200
+aquamentus,550,325

@@ -1,16 +1,18 @@
 ﻿BLOCKS
-wideWall,99,150
-wideWall,99,540
-tallWall,24,246
-tallWall, 700,240 
-threeByOne, 150, 280
-threeByOne, 150, 450
-threeByOne, 500, 280
-threeByOne, 500, 450
-oneByThree, 150, 325
-oneByThree, 600, 325
-sixByOne, 250, 370
+wideWall,0,150
+wideWall,0,548
+tallWall,0,150
+tallWall,705,150
+threeByOne,155,286
+threeByOne,155,461
+threeByOne,505,286
+threeByOne,505,461
+threeByOne,250,373
+threeByOne,400,373
+oneByFour,155,325
+oneByFour,605,325
 ITEMS
 ENEMIES
-goriya,400,100
-goriya,300,100
+goriya,300,325
+goriya,450,325
+goriya,500,238

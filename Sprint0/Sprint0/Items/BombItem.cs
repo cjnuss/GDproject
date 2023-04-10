@@ -21,7 +21,7 @@ namespace Sprint0
         {
             location = position;
 
-            destRect = new Rectangle((int)location.X, (int)location.Y + GameConstants.HeightAdj, sourceRect.Width * GameConstants.Sizing, sourceRect.Height * GameConstants.Sizing);
+            destRect = new Rectangle((int)location.X, (int)location.Y, sourceRect.Width * GameConstants.Sizing, sourceRect.Height * GameConstants.Sizing);
         }
 
         public void Draw(SpriteBatch spriteBatch)
