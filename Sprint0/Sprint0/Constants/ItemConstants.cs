@@ -19,6 +19,8 @@ namespace Sprint0
         public const int RupeeWidth = 8, RupeeHeight = 16;
         // heart
         public const int HeartWidth = 13, HeartHeight = 13;
+        // key
+        public const int KeyWidth = 8, KeyHeight = 16;
         // fairy
         public const int FairyTotalFrames = 20;
         public const int FairyPhase = FairyTotalFrames / 2;

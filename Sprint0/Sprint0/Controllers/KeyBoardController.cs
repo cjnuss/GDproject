@@ -45,6 +45,7 @@ namespace Sprint0
         public RoomCollisionCheck roomCollisionCheck;
         public EnemyCollisionCheck enemyCollisionCheck;
         public HeartCollisionCheck heartCollisionCheck;
+        public KeyCollisionCheck keyCollisionCheck;
 
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
@@ -72,6 +73,8 @@ namespace Sprint0
             roomCollisionCheck = new RoomCollisionCheck(this, linkSprite);
             enemyCollisionCheck = new EnemyCollisionCheck(this, game1,linkSprite);
             heartCollisionCheck = new HeartCollisionCheck(this, new LinkHeartCollision(game1, this, linkSprite), game1, linkSprite);
+            keyCollisionCheck = new KeyCollisionCheck(this, new LinkKeyCollision(game1, this, linkSprite), game1, linkSprite);
+
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
@@ -97,6 +100,7 @@ namespace Sprint0
             roomCollisionCheck.CheckCollision(); 
             enemyCollisionCheck.CheckCollision();
             heartCollisionCheck.CheckCollision();
+            keyCollisionCheck.CheckCollision();
             // debug, testing purposes
             // more to follow..
             
