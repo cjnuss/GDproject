@@ -10,10 +10,28 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Skeleton : ISprite
+    public class Skeleton : IEnemy
     {
+        public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
         public int currentFrame, textureFrame, totalFrames, frame, random;
-        private Vector2 location;
+
         private Texture2D texture;
         public System.Random RNG = new System.Random();
 
@@ -35,6 +53,8 @@ namespace Sprint0
             location = coords;
             random = EnemyConstants.Left;
             totalFrames = EnemyConstants.SkeletonTotalFrames;
+            width = 20;
+            height = 20;
         }
 
         public void Update()

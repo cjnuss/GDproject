@@ -6,15 +6,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0;
+using System.Xml.Linq;
 
 namespace Sprint0
 {
-    public class Aquamentus : ISprite
+    public class Aquamentus : IEnemy
     {
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
         public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
         public int frame, currentFrame, totalFrames, textureFrame, random, projCount;
         public bool projectile;
-        private ISprite projectileSprite;
+        private IEnemy projectileSprite;
         public System.Random RNG = new System.Random();
 
         private static List<Rectangle> frames = new List<Rectangle>
@@ -34,6 +53,8 @@ namespace Sprint0
             location = coords;
             random = EnemyConstants.Left;
             projectile = true;
+            width = 20;
+            height = 20;
         }
 
         public void Update()

@@ -9,13 +9,29 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class Bat : ISprite
+    public class Bat : IEnemy
     {
-        public int currentFrame, textureFrame, frame, random, totalFrames;
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
         public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
+        public int currentFrame, textureFrame, frame, random, totalFrames;
         public System.Random RNG = new System.Random();
-        public int height;
-        public int width;
 
         private static List<Rectangle> frames = new List<Rectangle>
         {

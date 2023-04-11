@@ -10,9 +10,27 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class GoriyaProjectile : ISprite
+    public class GoriyaProjectile : IEnemy
     {
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
         public Vector2 location1;
+        public Vector2 GetLocation()
+        {
+            return location1;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            location1 = location;
+        }
+
         public int frame, textureFrame, currentFrame, direction1;
         public int totalFrames = EnemyConstants.GoriyaProjTime;
         private Boolean toDraw;
@@ -29,6 +47,8 @@ namespace Sprint0
             location1 = new Vector2(location.X + EnemyConstants.GoriyaProjXAdjustment, location.Y);
             direction1 = direction;
             toDraw = true;
+            width = 20;
+            height = 20;
         }
 
         public void Update()
