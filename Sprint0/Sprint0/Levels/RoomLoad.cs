@@ -21,7 +21,7 @@ namespace Sprint0.Levels
         int roomNum;
         List<IBlock> blocks = new List<IBlock>();
         List<ISprite> items = new List<ISprite>();
-        List<ISprite> enemies = new List<ISprite>();
+        List<IEnemy> enemies = new List<IEnemy>();
 
         public RoomLoad()
         {
@@ -32,7 +32,7 @@ namespace Sprint0.Levels
         {
             blocks = new List<IBlock>();
             items = new List<ISprite>();
-            enemies = new List<ISprite>();
+            enemies = new List<IEnemy>();
             roomNum = GameConstants.One;
             loadin(sourcefile);
             return new Room(blocks, items, enemies, roomNum);
@@ -175,7 +175,7 @@ namespace Sprint0.Levels
         void addEnemy(String line)
         {
             String[] all = line.Split(",");
-            ISprite enemy;
+            IEnemy enemy;
 
             int x = Int32.Parse(all[RoomConstants.XInt]);
             int y = Int32.Parse(all[RoomConstants.YInt]);

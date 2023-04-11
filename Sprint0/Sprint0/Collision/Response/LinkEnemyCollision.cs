@@ -21,23 +21,23 @@ namespace Sprint0
             this.KeyBoardController = KeyBoardController;
         }
 
-        public void Update(ISprite collisionEnemy)
+        public void Update(IEnemy collisionEnemy)
         {
-           /*     linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size*LinkConstants.Size, LinkConstants.Size *GameConstants.Sizing);
-                enemyRectangle = new Rectangle((int)collisionEnemy.location.X, (int)collisionEnemy.location.Y, collisionEnemy.width, collisionEnemy.height);
+                linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size*LinkConstants.Size, LinkConstants.Size *GameConstants.Sizing);
+                enemyRectangle = new Rectangle((int)collisionEnemy.GetLocation().X, (int)collisionEnemy.GetLocation().Y, (int)collisionEnemy.GetSize().X, (int)collisionEnemy.GetSize().Y);
 
             if (enemyRectangle.Intersects(linkRectangle))
             {
                 link.velocity = GameConstants.Zero;
                 if(KeyBoardController.dir == GameConstants.Left)
-                    link.location.X = link.location.X + LinkConstants.Correction;
+                    link.location.X = link.location.X + 80;
                 else if(KeyBoardController.dir == GameConstants.Right)
-                    link.location.X = link.location.X - LinkConstants.Correction;
+                    link.location.X = link.location.X - 80;
                 else if(KeyBoardController.dir == GameConstants.Up)
-                    link.location.Y = link.location.Y + LinkConstants.Correction;
+                    link.location.Y = link.location.Y + 80;
                 else if (KeyBoardController.dir == GameConstants.Down)
-                    link.location.Y = link.location.Y - LinkConstants.Correction;
-            } */
+                    link.location.Y = link.location.Y - 80;
+            }
         }
     }
 }

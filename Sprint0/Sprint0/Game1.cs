@@ -21,6 +21,9 @@ namespace Sprint0
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
 
+        private CollisionManager collisionManager;
+        private Link linkSprite;
+
         public IRoom currentRoom;
         public Game1()
         {
@@ -58,8 +61,13 @@ namespace Sprint0
             soundEffects = new SoundEffects();
 
             // controller setup
-            Kcontroller = new KeyBoardController(this, _spriteBatch);
+            linkSprite = new Link(this);
+            Kcontroller = new KeyBoardController(this, _spriteBatch, linkSprite);
             Mcontroller = new MouseController(this, level, _spriteBatch);
+
+            // collision setup
+            collisionManager = new CollisionManager(Kcontroller, this, linkSprite);
+            collisionManager.Create();
         }
 
         protected override void Update(GameTime gameTime)
@@ -77,6 +85,7 @@ namespace Sprint0
             // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
 
             Mcontroller.Update(gameTime);
+            collisionManager.Check();
             Kcontroller.Update(gameTime);
 
             _spriteBatch.End();

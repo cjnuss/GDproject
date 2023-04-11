@@ -14,6 +14,7 @@ namespace Sprint0
     {
         public KeyBoardController KeyBoardController;
         public LinkEnemyCollision linkEnemyCollision;
+        public EnemyRoomCollisionCheck enemyRoomCollisionCheck;
         public Game1 game1;
         public Link link;
         public int roomType;
@@ -28,10 +29,10 @@ namespace Sprint0
 
         public void CheckCollision()
         {
-        /*    foreach (var enemy in game1.currentRoom.GetEnemies())
+            foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
             {
-                if ((enemy.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && enemy.location.X - KeyBoardController.linkSprite.location.X <= 
-                    LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - enemy.location.X >= 0 && KeyBoardController.linkSprite.location.X - enemy.location.X <= enemy.width))
+                if ((enemy.GetLocation().X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && enemy.GetLocation().X - KeyBoardController.linkSprite.location.X <= 
+                    LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - enemy.GetLocation().X >= 0 && KeyBoardController.linkSprite.location.X - enemy.GetLocation().X <= enemy.GetSize().X))
                 {
                     linkEnemyCollision.Update(enemy);
                 }
@@ -41,7 +42,13 @@ namespace Sprint0
                     KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
                     break;
                 }
-            }*/
+            }
+
+            foreach(IEnemy enemy in game1.currentRoom.GetEnemies())
+            {
+                enemyRoomCollisionCheck = new EnemyRoomCollisionCheck(this.KeyBoardController, enemy);
+                enemyRoomCollisionCheck.CheckCollision();
+            }
         }
     }
 }

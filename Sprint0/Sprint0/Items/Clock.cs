@@ -11,11 +11,10 @@ namespace Sprint0
 {
     public class Clock : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.clock;
-        Rectangle destRect;
-
-        Vector2 location;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.clock;
+        private Rectangle destRect;
+        public Vector2 location;
 
         public Clock(Vector2 position)
         {
@@ -26,12 +25,18 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
+            if (sourceRect != new Rectangle(0,0,0,0))
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
         public void Update()
         {
 
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

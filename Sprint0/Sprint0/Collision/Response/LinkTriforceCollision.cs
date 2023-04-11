@@ -15,6 +15,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle triforceRectangle;
+        private bool playSound = true;
 
         public LinkTriforceCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
@@ -32,11 +33,11 @@ namespace Sprint0
             {
                 triforce.Dispose();
                 game.soundEffects.LoadSound(game, "Triforce", "triforcefanfare");
-                if (!game.soundEffects.IsPlaying("Triforce"))
+                if (!game.soundEffects.IsPlaying("Triforce") && playSound)
                 {
                     game.backgroundAudio.StopSound();
                     game.soundEffects.PlaySound("Triforce");
-                    
+                    playSound = false;
                 }            
             }
         }
