@@ -19,6 +19,11 @@ namespace Sprint0
         public const int XInt = 1;
         public const int YInt = 2;
 
+        public const int DungeonWallXR = 655;
+        public const int DungeonWallXL = 100;
+        public const int DungeonWallYU = 215;
+        public const int DungeonWalYD = 495;
+
         public const int TallWallWidth = 95;
         public const int TallWallHeight = 480;
 

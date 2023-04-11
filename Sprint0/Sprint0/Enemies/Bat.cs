@@ -14,6 +14,8 @@ namespace Sprint0
         public int currentFrame, textureFrame, frame, random, totalFrames;
         public Vector2 location;
         public System.Random RNG = new System.Random();
+        public int height;
+        public int width;
 
         private static List<Rectangle> frames = new List<Rectangle>
         {
@@ -28,6 +30,8 @@ namespace Sprint0
             location = coords;
             random = EnemyConstants.Right;
             totalFrames = EnemyConstants.BatTotalFrames;
+            height = 10;
+            width = 10;
         }
 
         public void Update()

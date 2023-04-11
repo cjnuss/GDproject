@@ -1,8 +1,4 @@
 ﻿BLOCKS
-wideWall,0,150
-wideWall,0,548
-tallWall,0,150
-tallWall,705,150
 oneByOne,205,330
 oneByOne,205,417
 oneByOne,555,330

@@ -42,6 +42,9 @@ namespace Sprint0
         public ArrowCollisionCheck arrowCollisionCheck;
         public BombCollisionCheck bombCollisionCheck;
         public RupeeCollisionCheck rupeeCollisionCheck;
+        public RoomCollisionCheck roomCollisionCheck;
+        public EnemyCollisionCheck enemyCollisionCheck;
+
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
         {
@@ -60,14 +63,18 @@ namespace Sprint0
             mappingCommands.CreateCommands();
             controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
 
-            blockCollisionCheck = new BlockCollisionCheck(this, new LinkBlockCollision(this, linkSprite), game1, linkSprite);
+            blockCollisionCheck = new BlockCollisionCheck(this, game1, linkSprite);
             triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
             arrowCollisionCheck = new ArrowCollisionCheck(this, new LinkArrowCollision(game1, this, linkSprite), game1, linkSprite);
             bombCollisionCheck = new BombCollisionCheck(this, new LinkBombCollision(game1, this, linkSprite), game1, linkSprite);
             rupeeCollisionCheck = new RupeeCollisionCheck(this, new LinkRupeeCollision(game1, this, linkSprite), game1, linkSprite);
+            roomCollisionCheck = new RoomCollisionCheck(this, linkSprite);
+            enemyCollisionCheck = new EnemyCollisionCheck(this, game1,linkSprite);
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
+
+            roomCollisionCheck.roomType = 0; //Sets room type to dugeon (placeholder)
         }
         public void Update(GameTime gameTime)
         {
@@ -84,6 +91,10 @@ namespace Sprint0
             arrowCollisionCheck.CheckCollision();
             bombCollisionCheck.CheckCollision();
             rupeeCollisionCheck.CheckCollision();
+            triforceCollisionCheck.CheckCollision(); 
+            roomCollisionCheck.CheckCollision(); 
+            enemyCollisionCheck.CheckCollision();
+            // debug, testing purposes
             // more to follow..
             
             linkSprite.Update(linkState, dir, location);
