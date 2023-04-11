@@ -14,7 +14,6 @@ namespace Sprint0
         private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
         private Rectangle sourceRect = ItemsTextureStorage.key;
         private Rectangle destRect;
-        public bool toDraw = true;
 
         public Vector2 location;
 
@@ -27,7 +26,7 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (sourceRect != new Rectangle(0, 0, 0, 0) && toDraw)
+            if (sourceRect != new Rectangle(0, 0, 0, 0))
                 spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
@@ -39,7 +38,6 @@ namespace Sprint0
         public void Dispose()
         {
             sourceRect = new Rectangle(0, 0, 0, 0);
-            toDraw = false;
         }
     }
 }

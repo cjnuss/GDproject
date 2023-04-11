@@ -14,7 +14,6 @@ namespace Sprint0
         private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
         private Rectangle sourceRect = ItemsTextureStorage.bomb;
         private Rectangle destRect;
-
         public Vector2 location;
 
         public BombItem(Vector2 position)

@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkKeyCollision
+    public class LinkClockCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle keyRectangle;
+        private Rectangle clockRectangle;
         private bool playSound = true;
 
-        public LinkKeyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkClockCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Key key)
+        public void Update(Clock clock)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            keyRectangle = new Rectangle((int)key.location.X, (int)key.location.Y, ItemConstants.KeyWidth * GameConstants.Sizing, ItemConstants.KeyHeight * GameConstants.Sizing);
+            clockRectangle = new Rectangle((int)clock.location.X, (int)clock.location.Y, ItemConstants.ClockWidth * GameConstants.Sizing, ItemConstants.ClockHeight * GameConstants.Sizing);
 
-            if (keyRectangle.Intersects(linkRectangle))
+            if (clockRectangle.Intersects(linkRectangle))
             {
-                key.Dispose();
-                game.soundEffects.LoadSound(game, "GetKey", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetKey") && playSound)
+                clock.Dispose();
+                game.soundEffects.LoadSound(game, "GetItem", "getitem");
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetKey");
+                    game.soundEffects.PlaySound("GetItem");
                     playSound = false;
-                }     
+                }
             }
         }
     }

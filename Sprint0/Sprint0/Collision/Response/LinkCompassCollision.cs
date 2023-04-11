@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkKeyCollision
+    public class LinkCompassCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle keyRectangle;
+        private Rectangle compassRectangle;
         private bool playSound = true;
 
-        public LinkKeyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkCompassCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Key key)
+        public void Update(Compass compass)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            keyRectangle = new Rectangle((int)key.location.X, (int)key.location.Y, ItemConstants.KeyWidth * GameConstants.Sizing, ItemConstants.KeyHeight * GameConstants.Sizing);
+            compassRectangle = new Rectangle((int)compass.location.X, (int)compass.location.Y, ItemConstants.CompassWidth * GameConstants.Sizing, ItemConstants.CompassHeight * GameConstants.Sizing);
 
-            if (keyRectangle.Intersects(linkRectangle))
+            if (compassRectangle.Intersects(linkRectangle))
             {
-                key.Dispose();
-                game.soundEffects.LoadSound(game, "GetKey", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetKey") && playSound)
+                compass.Dispose();
+                game.soundEffects.LoadSound(game, "GetItem", "getitem");
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetKey");
+                    game.soundEffects.PlaySound("GetItem");
                     playSound = false;
-                }     
+                }
             }
         }
     }

@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkKeyCollision
+    public class LinkBowCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle keyRectangle;
+        private Rectangle bowRectangle;
         private bool playSound = true;
 
-        public LinkKeyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkBowCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Key key)
+        public void Update(Bow bow)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            keyRectangle = new Rectangle((int)key.location.X, (int)key.location.Y, ItemConstants.KeyWidth * GameConstants.Sizing, ItemConstants.KeyHeight * GameConstants.Sizing);
+            bowRectangle = new Rectangle((int)bow.location.X, (int)bow.location.Y, ItemConstants.BowWidth * GameConstants.Sizing, ItemConstants.BowHeight * GameConstants.Sizing);
 
-            if (keyRectangle.Intersects(linkRectangle))
+            if (bowRectangle.Intersects(linkRectangle))
             {
-                key.Dispose();
-                game.soundEffects.LoadSound(game, "GetKey", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetKey") && playSound)
+                bow.Dispose();
+                game.soundEffects.LoadSound(game, "GetItem", "getitem");
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetKey");
+                    game.soundEffects.PlaySound("GetItem");
                     playSound = false;
-                }     
+                }
             }
         }
     }

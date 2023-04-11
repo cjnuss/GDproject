@@ -16,6 +16,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle arrowRectangle;
+        private bool playSound = true;
 
         public LinkArrowCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
@@ -33,9 +34,10 @@ namespace Sprint0
             {
                 arrow.Dispose();
                 game.soundEffects.LoadSound(game, "GetItem", "getitem");
-                if (!game.soundEffects.IsPlaying("GetItem"))
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
                     game.soundEffects.PlaySound("GetItem");
+                    playSound = false;
                 }
             }
         }

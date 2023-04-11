@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkKeyCollision
+    public class LinkFairyCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle keyRectangle;
+        private Rectangle fairyRectangle;
         private bool playSound = true;
 
-        public LinkKeyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkFairyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Key key)
+        public void Update(Fairy fairy)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            keyRectangle = new Rectangle((int)key.location.X, (int)key.location.Y, ItemConstants.KeyWidth * GameConstants.Sizing, ItemConstants.KeyHeight * GameConstants.Sizing);
+            fairyRectangle = new Rectangle((int)fairy.location.X, (int)fairy.location.Y, ItemConstants.FairyWidth * GameConstants.Sizing, ItemConstants.FairyHeight * GameConstants.Sizing);
 
-            if (keyRectangle.Intersects(linkRectangle))
+            if (fairyRectangle.Intersects(linkRectangle))
             {
-                key.Dispose();
-                game.soundEffects.LoadSound(game, "GetKey", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetKey") && playSound)
+                fairy.Dispose();
+                game.soundEffects.LoadSound(game, "GetFairy", "getitem");
+                if (!game.soundEffects.IsPlaying("GetFairy") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetKey");
+                    game.soundEffects.PlaySound("GetFairy");
                     playSound = false;
-                }     
+                }
             }
         }
     }

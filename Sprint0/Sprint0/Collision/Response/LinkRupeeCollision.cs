@@ -16,6 +16,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle rupeeRectangle;
+        private bool playSound = true;
 
         public LinkRupeeCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
@@ -33,9 +34,10 @@ namespace Sprint0
             {
                 rupee.Dispose();
                 game.soundEffects.LoadSound(game, "GetRupee", "getrupee");
-                if (!game.soundEffects.IsPlaying("GetRupee"))
+                if (!game.soundEffects.IsPlaying("GetRupee") && playSound)
                 {
                     game.soundEffects.PlaySound("GetRupee");
+                    playSound = false;
                 }
             }
         }
