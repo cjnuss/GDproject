@@ -29,7 +29,7 @@ namespace Sprint0.UI
             halfRect = UITextureStorage.halfHeart;
             emptyRect = UITextureStorage.emptyHeart;
             blackRect = UITextureStorage.AnnoyingAssBoxes;
-            hp = 1;
+            hp = 8;
             first = 533;
             second = 532 + (8 * 3);
             third = 531 + 2 * (8 * 3);
