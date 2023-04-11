@@ -11,12 +11,14 @@ namespace Sprint0
     // throw green arrow
     public class LinkThrowBlueArrowCommand : ICommand
     {
+        private Game1 game;
         private Link link;
         private LinkThrowing linkThrowing;
         private KeyBoardController KeyBoardController;
 
-        public LinkThrowBlueArrowCommand(KeyBoardController KeyBoardController, Link link)
+        public LinkThrowBlueArrowCommand(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
+            this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkThrowing = new LinkThrowing();
@@ -24,8 +26,12 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 7;
+            KeyBoardController.linkState = LinkConstants.BlueArrow;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
+
+            game.soundEffects.LoadSound(game, "ArrowAndBoomerang", "arrowandboomerang");
+            if (!game.soundEffects.IsPlaying("ArrowAndBoomerang"))
+                game.soundEffects.PlaySound("ArrowAndBoomerang");
         }
     }
 }

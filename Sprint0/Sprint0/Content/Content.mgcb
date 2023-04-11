@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 03 Underworld BGM.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:03 Underworld BGM.mp3;dungeontheme.mp3
+
+#begin 09 Catch Triforce Fanfare.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:09 Catch Triforce Fanfare.mp3;triforcefanfare.mp3
+
 #begin blockSet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -120,6 +132,66 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:level1.png
+
+#begin LOZ_Arrow_Boomerang.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Arrow_Boomerang.wav;arrowandboomerang.wav
+
+#begin LOZ_Bomb_Blow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Blow.wav;bombblow.wav
+
+#begin LOZ_Bomb_Drop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Bomb_Drop.wav;bombdrop.wav
+
+#begin LOZ_Get_Heart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Heart.wav;getheartorkey.wav
+
+#begin LOZ_Get_Item.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Item.wav;getitem.wav
+
+#begin LOZ_Get_Rupee.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Get_Rupee.wav;getrupee.wav
+
+#begin LOZ_Link_Die.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Link_Die.wav;linkdie.wav
+
+#begin LOZ_Link_Hurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Link_Hurt.wav;linkhurt.wav
+
+#begin LOZ_Sword_Shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Sword_Shoot.wav;swordbeam.wav
+
+#begin LOZ_Sword_Slash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Sword_Slash.wav;woodensword.wav
 
 #begin mario-luigi.gif
 /importer:TextureImporter

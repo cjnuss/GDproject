@@ -11,10 +11,8 @@ namespace Sprint0
 {
     public class Aquamentus : ISprite
     {
-        public int totalFrames = 20;
-        public int textureFrame1 = 20;
         public Vector2 location;
-        public int frame, currentFrame, textureFrame, random, projectileCount;
+        public int frame, currentFrame, totalFrames, textureFrame, random, projCount;
         public bool projectile;
         private ISprite projectileSprite;
         public System.Random RNG = new System.Random();
@@ -29,66 +27,67 @@ namespace Sprint0
 
         public Aquamentus(Vector2 coords)
         {
-            currentFrame = 0;
-            textureFrame = 0;
-            projectileCount = 0;
+            currentFrame = EnemyConstants.Zero;
+            textureFrame = EnemyConstants.Zero;
+            projCount = EnemyConstants.Zero;
+            totalFrames = EnemyConstants.AquaTotalFrames;
             location = coords;
-            random = 2;
+            random = EnemyConstants.Left;
             projectile = true;
         }
 
         public void Update()
         {
-            if (projectileCount == 0)
+            if (projCount == EnemyConstants.Zero)
             {
                 projectileSprite = new AquamentusProjectile(location);
             }
-            projectileCount++;
+            projCount++;
             textureFrame++;
             currentFrame++;
-            if (textureFrame == textureFrame1)
+            if (textureFrame == EnemyConstants.AquaTextureFrames)
             {
-                textureFrame = 0;
+                textureFrame = EnemyConstants.Zero;
             }
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
-                random = RNG.Next(1, 3);
-                totalFrames = RNG.Next(20, 50);
+                currentFrame = EnemyConstants.Zero;
+                random = RNG.Next(EnemyConstants.Left, EnemyConstants.Right + EnemyConstants.One);
+                totalFrames = RNG.Next(EnemyConstants.AquaMinFrame, EnemyConstants.AquaMaxFrame);
             }
-            if (currentFrame % 10 == 0)
+            if (currentFrame % EnemyConstants.AquaFrameChange == EnemyConstants.Zero)
             {
                 switch (random)
                 {
-                    case 1:
-                        location.X -= 5;
+                    case EnemyConstants.Left:
+                        location.X -= EnemyConstants.AquaDisplacement;
                         break;
-                    case 2:
-                        location.X += 5;
+                    case EnemyConstants.Right:
+                        location.X += EnemyConstants.AquaDisplacement;
                         break;
                 }
             }
-            if (projectileCount == 250)
+            if (projCount == EnemyConstants.AquaProjCount)
             {
-                projectileCount = 0;
+                projCount = EnemyConstants.Zero;
             }
             projectileSprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame < 5)
-                frame = 0;
-            else if (textureFrame >= 5 && textureFrame < 10)
-                frame = 1;
-            else if (textureFrame >= 10 && textureFrame < 15)
-                frame = 2;
-            else if (textureFrame >= 20)
-                frame = 3;
+            if (textureFrame < EnemyConstants.Texture1)
+                frame = EnemyConstants.Frame1;
+            else if (textureFrame < EnemyConstants.Texture2)
+                frame = EnemyConstants.Frame2;
+            else if (textureFrame < EnemyConstants.Texture3)
+                frame = EnemyConstants.Frame3;
+            else if (textureFrame >= EnemyConstants.Texture3)
+                frame = EnemyConstants.Frame4;
 
             Texture2D texture = EnemyTextureStorage.Instance.GetEnemies();
             Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * 3, source.Height * 3);
+            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
             spriteBatch.Draw(texture, destinaton, source, Color.White);
             projectileSprite.Draw(spriteBatch);
         }

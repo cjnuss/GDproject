@@ -121,15 +121,15 @@ namespace Sprint0
                     texture = _texture2; 
                     if (currentY <= finalPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame0];
+                        source = thisDirectionArrows[GameConstants.Frame0];
                     }
                     else if (currentY <= poofPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame1];
+                        source = thisDirectionArrows[GameConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame2];
+                        source = thisDirectionArrows[GameConstants.Frame2];
                         toDraw = false;
                     }
                 }
@@ -140,15 +140,15 @@ namespace Sprint0
                     texture = _texture;
                     if (currentX >= finalPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame0];
+                        source = thisDirectionArrows[GameConstants.Frame0];
                     }
                     else if (currentX >= poofPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame1];
+                        source = thisDirectionArrows[GameConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame2];
+                        source = thisDirectionArrows[GameConstants.Frame2];
                         toDraw = false;
                     }
                 }
@@ -159,15 +159,15 @@ namespace Sprint0
                     texture = _texture;
                     if (currentX <= finalPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame0];
+                        source = thisDirectionArrows[GameConstants.Frame0];
                     }
                     else if (currentX <= poofPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame1];
+                        source = thisDirectionArrows[GameConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame2];
+                        source = thisDirectionArrows[GameConstants.Frame2];
                         toDraw = false;
                     }
 
@@ -178,15 +178,15 @@ namespace Sprint0
                     texture = _texture;
                     if (currentY >= finalPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame0];
+                        source = thisDirectionArrows[GameConstants.Frame0];
                     }
                     else if (currentY >= poofPos)
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame1];
+                        source = thisDirectionArrows[GameConstants.Frame1];
                     }
                     else
                     {
-                        source = thisDirectionArrows[LinkConstants.Frame2];
+                        source = thisDirectionArrows[GameConstants.Frame2];
                         toDraw = false;
                     }
                 }

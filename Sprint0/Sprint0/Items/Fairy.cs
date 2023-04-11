@@ -15,7 +15,7 @@ namespace Sprint0
         Rectangle sourceRect = ItemsTextureStorage.fairy1;
         Rectangle destRect;
         int currentFrame;
-        int totalFrames = 20;
+        int totalFrames = ItemConstants.FairyTotalFrames;
 
         Vector2 location;
 
@@ -23,13 +23,13 @@ namespace Sprint0
         {
             location = position;
 
-            destRect = new Rectangle((int)location.X, (int)location.Y + 150, sourceRect.Width * 4, sourceRect.Height * 4);
-            currentFrame = 0;
+            destRect = new Rectangle((int)location.X, (int)location.Y, sourceRect.Width * GameConstants.Sizing2, sourceRect.Height * GameConstants.Sizing2);
+            currentFrame = GameConstants.Zero;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < 10)
+            if (currentFrame < ItemConstants.FairyPhase)
             {
                 sourceRect = ItemsTextureStorage.fairy1;
             } else
@@ -44,7 +44,7 @@ namespace Sprint0
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
             }
         }
     }

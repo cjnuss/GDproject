@@ -15,21 +15,28 @@ namespace Sprint0
 {
     public class Attack
     {
+        private Game1 game;
+        private LinkAttacking linkAttacking;
         private GreenArrow greenArrow;
         private Fire fire;
         private Bomb bomb;
         private BlueArrow blueArrow;
+        private SwordBeam swordBeam;
 
-        public Attack(GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow)
+        // attack keys
+        private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
+        public Attack(Game1 game, LinkAttacking linkAttacking, GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow, SwordBeam swordBeam)
         {
+            this.game = game; 
+            this.linkAttacking = linkAttacking;
             this.greenArrow = greenArrow;
             this.fire = fire;
             this.bomb = bomb;
             this.blueArrow = blueArrow;
+            this.swordBeam = swordBeam;
         }
 
-        public void Update(int linkState, int dir, Vector2 location,
-                                 ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
+        public void Update(int linkState, ref int currentSprite, int dir, Vector2 location)
         {
             if (linkState == LinkConstants.GreenArrow && !arrowKey)
             {
@@ -47,7 +54,7 @@ namespace Sprint0
             }
             if (linkState == LinkConstants.Bomb && !bombKey)
             {
-                bomb = new Bomb();
+                bomb = new Bomb(game);
                 bombKey = true;
                 bomb.direction = dir;
                 bomb.UpdatePos(location);
@@ -59,28 +66,63 @@ namespace Sprint0
                 blueArrow.direction = dir;
                 blueArrow.RegisterPos(location);
             }
+            // update attack state
+            if ((linkState == LinkConstants.WoodenSword || linkState == LinkConstants.SwordBeam) && !attackKey)
+            {
+                linkAttacking.toDraw = true;
+                attackKey = true;
+                linkAttacking.direction = dir;
+            }
+            if (attackKey)
+            {
+                currentSprite = LinkConstants.Attacking;
+                linkAttacking.Update();
+            }
+            if (!linkAttacking.toDraw)
+                attackKey = false;
 
-            if (arrowKey)
-                greenArrow.Update();
-            if (fireKey)
-                fire.Update();
-            if (bombKey)
-                bomb.Update();
-            if (blueArrowKey)
-                blueArrow.Update();
+            if (DrawNewSwordBeam(linkState))
+            {
+                swordBeamKey = true;
+                swordBeam = new SwordBeam();
+                swordBeam.direction = dir;
+            }
+            if (RegisterSwordBeam())
+            {
+                swordBeam.toDraw = true;
+                swordBeam.RegisterPos(location);
+            }
+
+            greenArrow.Update();
+            fire.Update();
+            bomb.Update();
+            blueArrow.Update();
+            swordBeam.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, ref bool arrowKey, ref bool fireKey, ref bool bombKey, ref bool blueArrowKey)
+        public bool DrawNewSwordBeam(int linkState)
+        {
+            return (linkState == LinkConstants.SwordBeam && !swordBeamKey && !swordBeam.explodeKey);
+        }
+
+        public bool RegisterSwordBeam()
+        {
+            return (!swordBeam.toDraw && swordBeamKey/* && linkAttacking.frame == LinkConstants.PeakAnimation*/);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             if (arrowKey) greenArrow.Draw(spriteBatch);
             if (fireKey) fire.Draw(spriteBatch);
             if (bombKey) bomb.Draw(spriteBatch);
             if (blueArrowKey) blueArrow.Draw(spriteBatch);
+            if (swordBeamKey || swordBeam.explodeKey) swordBeam.Draw(spriteBatch);
 
             if (!greenArrow.toDraw) arrowKey = false;
             if (!fire.toDraw) fireKey = false;
             if (!bomb.toDraw) bombKey = false;
             if (!blueArrow.toDraw) blueArrowKey = false;
+            if (!swordBeam.toDraw) swordBeamKey = false;
         }
     }
 }

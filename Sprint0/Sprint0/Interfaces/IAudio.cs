@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    //public interface ISprite
-    //{
-    //    //implement
-    //    void Update();
-    //    void Draw(SpriteBatch spriteBatch, Vector2 location);
-    //}
+    public interface IAudio
+    {
+        void LoadSound(Game1 game);
+        void PlaySound();
+        void StopSound();
+        bool IsPlaying();
+        bool NotPlaying();
+    }
 }

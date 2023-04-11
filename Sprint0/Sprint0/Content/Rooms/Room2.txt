@@ -1,7 +1,15 @@
 ﻿BLOCKS
-wideWall,99,150
-wideWall,99,540
-tallWall,24,246
-tallWall, 700,240 
+oneByOne,155,286
+oneByOne,155,373
+oneByOne,155,461
+oneByOne,305,286
+oneByOne,305,373
+oneByOne,305,461
+oneByOne,455,286
+oneByOne,455,373
+oneByOne,455,461
+oneByOne,605,286
+oneByOne,605,373
+oneByOne,605,461
 ITEMS
 ENEMIES

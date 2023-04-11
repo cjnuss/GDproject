@@ -11,33 +11,38 @@ namespace Sprint0
 {
     public class Triforce : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.triforce1;
-        Rectangle destRect;
-        int currentFrame;
-        int totalFrames = 20;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.triforce1;
+        private Rectangle destRect;
+        private int currentFrame;
+        private int totalFrames = ItemConstants.TriforceTotalFrames;
 
-        Vector2 location;
+        public Vector2 location;
 
         public Triforce(Vector2 position)
         {
             location = position;
 
-            destRect = new Rectangle((int)location.X, (int)location.Y + 150,  sourceRect.Width * 4, sourceRect.Height * 4);
-            currentFrame = 0;
+            destRect = new Rectangle((int)location.X, (int)location.Y,  sourceRect.Width * GameConstants.Sizing, sourceRect.Height * GameConstants.Sizing);
+            currentFrame = GameConstants.Zero;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < 10)
+            if (sourceRect == new Rectangle(0,0,0,0))
+            {
+                // do nothing
+            }
+            else if (currentFrame < ItemConstants.TriforcePhase)
             {
                 sourceRect = ItemsTextureStorage.triforce1;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
             else
             {
                 sourceRect = ItemsTextureStorage.triforce2;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
         public void Update()
@@ -45,8 +50,13 @@ namespace Sprint0
             currentFrame++;
             if (currentFrame == totalFrames)
             {
-                currentFrame = 0;
+                currentFrame = GameConstants.Zero;
             }
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

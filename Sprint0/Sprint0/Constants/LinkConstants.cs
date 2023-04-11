@@ -16,6 +16,12 @@ namespace Sprint0
 {
     static class LinkConstants
     {
+        // size
+        public const int Size = 16;
+        // collision
+        public const int YChange = 7;
+        public const int CollisionSize = 14;
+        public const int Correction = 2;
         // locations
         public const int InitialX = 200;
         public const int InitialY = 400;
@@ -39,11 +45,6 @@ namespace Sprint0
         public const int SwordBeam = 8;
         // sword beam trigger frame
         public const int PeakAnimation = 2;
-        // frames
-        public const int Frame0 = 0;
-        public const int Frame1 = 1;
-        public const int Frame2 = 2;
-        public const int Frame3 = 3;
         // link attacking
         public const int TotalSwordFrames = 20;
         public const int SwordPhase1 = TotalSwordFrames / 4;
@@ -88,8 +89,9 @@ namespace Sprint0
         public const int StillCount = 20;
         // sword beam
         public const int SwordBeamTotalFrames = 10;
-        public const int SwordBeamPosChange = 7;
-        public const int SwordBeamMultiplier = 32;
+        public const int SwordBeamPosChange = 12;
+        public const int SwordBeamPosChange2 = 5;
+        public const int SwordBeamMultiplier = 20;
         public const int SwordBeamPhase = (SwordBeamTotalFrames / 2) + 1;
         public const int SwordBeamXOffset1 = 15;
         public const int SwordBeamXOffset2 = -18;
@@ -99,7 +101,7 @@ namespace Sprint0
         public const int SwordBeamYOffset2 = 17;
         public const int SwordBeamYOffset3 = 16;
         public const int SwordBeamYOffset4 = -19;
-        public const int SwordBeamOffsetIncrease = 2;
-        public const int SwordBeamCount = 30;
+        public const int SwordBeamOffsetIncrease = 3; // changed from 2
+        public const int SwordBeamCount = 20; // changed from 30
     }
 }

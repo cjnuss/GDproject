@@ -19,6 +19,7 @@ namespace Sprint0
         // list of commands
         public ExitCommand exitCommand;
         public ResetCommand resetCommand;
+        public BackgroundMusicCommand backgroundMusicCommand;
         public LinkMoveLeftCommand linkMoveLeftCommand;
         public LinkMoveRightCommand linkMoveRightCommand;
         public LinkMoveUpCommand linkMoveUpCommand;
@@ -43,23 +44,25 @@ namespace Sprint0
         {
             exitCommand = new ExitCommand(game1);
             resetCommand = new ResetCommand(KeyBoardController, link, game1);
+            backgroundMusicCommand = new BackgroundMusicCommand(game1);
             linkMoveLeftCommand = new LinkMoveLeftCommand(KeyBoardController, link);
             linkMoveUpCommand = new LinkMoveUpCommand(KeyBoardController, link);
             linkMoveDownCommand = new LinkMoveDownCommand(KeyBoardController, link);
             linkMoveRightCommand = new LinkMoveRightCommand(KeyBoardController, link);
             linkDamageCommand = new LinkDamageCommand(KeyBoardController, link);
-            linkAttackingCommand = new LinkAttackingCommand(KeyBoardController, link);
-            linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(KeyBoardController, link);
+            linkAttackingCommand = new LinkAttackingCommand(game1, KeyBoardController, link); // SOUND
+            linkSwordBeamCommand = new LinkSwordBeamCommand(game1, KeyBoardController, link); // SOUND
+            linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(game1, KeyBoardController, link);
             linkThrowFireCommand = new LinkThrowFireCommand(KeyBoardController, link);
-            linkThrowBombCommand = new LinkThrowBombCommand(KeyBoardController, link);
-            linkThrowBlueArrowCommand = new LinkThrowBlueArrowCommand(KeyBoardController, link);
-            linkSwordBeamCommand = new LinkSwordBeamCommand(KeyBoardController, link);
+            linkThrowBombCommand = new LinkThrowBombCommand(game1, KeyBoardController, link);
+            linkThrowBlueArrowCommand = new LinkThrowBlueArrowCommand(game1, KeyBoardController, link);
         }
 
         public Dictionary<Keys, ICommand> GetControllerMapping(Dictionary<Keys, ICommand> controllerMapping)
         {
             controllerMapping.Add(Keys.Q, exitCommand);
             controllerMapping.Add(Keys.R, resetCommand);
+            controllerMapping.Add(Keys.M, backgroundMusicCommand);
 
             controllerMapping.Add(Keys.W, linkMoveUpCommand);
             controllerMapping.Add(Keys.S, linkMoveDownCommand);
@@ -73,7 +76,7 @@ namespace Sprint0
             controllerMapping.Add(Keys.E, linkDamageCommand);
             controllerMapping.Add(Keys.Z, linkAttackingCommand);
             controllerMapping.Add(Keys.N, linkAttackingCommand);
-            controllerMapping.Add(Keys.X, linkSwordBeamCommand); // DEBUG: NEW AND X??
+            controllerMapping.Add(Keys.X, linkSwordBeamCommand);
             controllerMapping.Add(Keys.D1, linkThrowGreenArrowCommand);
             controllerMapping.Add(Keys.D2, linkThrowFireCommand);
             controllerMapping.Add(Keys.D3, linkThrowBombCommand);

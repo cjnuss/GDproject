@@ -11,12 +11,14 @@ namespace Sprint0
     // sword attack
     public class LinkSwordBeamCommand : ICommand
     {
+        private Game1 game;
         private Link link;
         private LinkAttacking linkAttacking;
         private KeyBoardController KeyBoardController;
 
-        public LinkSwordBeamCommand(KeyBoardController KeyBoardController, Link link)
+        public LinkSwordBeamCommand(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
+            this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkAttacking = new LinkAttacking();
@@ -24,8 +26,12 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            KeyBoardController.linkState = 8;
+            KeyBoardController.linkState = LinkConstants.SwordBeam;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
+
+            game.soundEffects.LoadSound(game, "SwordBeam", "swordbeam");
+            if (!game.soundEffects.IsPlaying("SwordBeam"))
+                game.soundEffects.PlaySound("SwordBeam");
         }
     }
 }
