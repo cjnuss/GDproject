@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace Sprint0
     public interface IEnemy
     {
         void Draw(SpriteBatch spriteBatch);
-        void Update(int enemyState);
+        void SetLocation(Vector2 location);
+        Vector2 GetLocation();
+        Vector2 GetSize();
+        void Update();
     }
 }

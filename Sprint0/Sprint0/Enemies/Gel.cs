@@ -10,10 +10,28 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Sprint0
 {
-    public class Gel : ISprite
+    public class Gel : IEnemy
     {
-        public int currentFrame, frame, random, textureFrame, totalFrames;
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
         public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
+        public int currentFrame, frame, random, textureFrame, totalFrames;
         public System.Random RNG = new System.Random();
 
         private static List<Rectangle> frames = new List<Rectangle>
@@ -30,6 +48,8 @@ namespace Sprint0
             location.X += EnemyConstants.GelXOffset;
             random = EnemyConstants.Left;
             totalFrames = EnemyConstants.GelTotalFrames;
+            width = 20;
+            height = 20;
         }
 
         public void Update()

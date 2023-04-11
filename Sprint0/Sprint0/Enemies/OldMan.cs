@@ -9,14 +9,33 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class OldMan : ISprite
+    public class OldMan : IEnemy
     {
-        private Texture2D texture;
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
         public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+        private Texture2D texture;
 
         public OldMan(Vector2 coords)
         {
             location = coords;
+            width = 20;
+            height = 20;
         }
 
         public void Update()

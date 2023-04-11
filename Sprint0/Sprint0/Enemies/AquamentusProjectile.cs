@@ -10,8 +10,27 @@ using Sprint0;
 
 namespace Sprint0
 {
-    public class AquamentusProjectile : ISprite
+    public class AquamentusProjectile : IEnemy
     {
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
+        public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
         public Vector2 location1, location2, location3;
         public int frame, textureFrame, currentFrame;
         public int totalFrames = EnemyConstants.AquaProjTotalFrames;
@@ -29,6 +48,8 @@ namespace Sprint0
             location1 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
             location2 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
             location3 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
+            width = 20;
+            height = 20;
         }
 
         public void Update()

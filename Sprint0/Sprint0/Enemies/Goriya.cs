@@ -10,14 +10,32 @@ using System.Security.Principal;
 
 namespace Sprint0
 {
-    public class Goriya : ISprite
+    public class Goriya : IEnemy
     {
-        public int frame, textureFrame, currentFrame, direction, boomerangCount, totalFrames;
+        private int width;
+        private int height;
+
+        public Vector2 GetSize()
+        {
+            return new Vector2(width, height);
+        }
+
         public Vector2 location;
+        public Vector2 GetLocation()
+        {
+            return location;
+        }
+
+        public void SetLocation(Vector2 location)
+        {
+            this.location = location;
+        }
+
+        public int frame, textureFrame, currentFrame, direction, boomerangCount, totalFrames;
         private Texture2D texture;
         public System.Random RNG = new System.Random();
         public Boolean boomerang;
-        ISprite projectileSprite;
+        IEnemy projectileSprite;
 
         private static List<Rectangle> GoriyaUp = new List<Rectangle>
         {
@@ -66,6 +84,8 @@ namespace Sprint0
             location = coords;
             boomerangCount = EnemyConstants.Zero;
             totalFrames = EnemyConstants.GoriyaTotalFrames;
+            width = 20;
+            height = 20;
         }
 
         public void Update()
