@@ -9,33 +9,35 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkBombCollision
+    public class LinkClockCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle bombRectangle;
+        private Rectangle clockRectangle;
+        private bool playSound = true;
 
-        public LinkBombCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkClockCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(BombItem bomb)
+        public void Update(Clock clock)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            bombRectangle = new Rectangle((int)bomb.location.X, (int)bomb.location.Y, ItemConstants.BombWidth * GameConstants.Sizing, ItemConstants.BombHeight * GameConstants.Sizing);
+            clockRectangle = new Rectangle((int)clock.location.X, (int)clock.location.Y, ItemConstants.ClockWidth * GameConstants.Sizing, ItemConstants.ClockHeight * GameConstants.Sizing);
 
-            if (bombRectangle.Intersects(linkRectangle))
+            if (clockRectangle.Intersects(linkRectangle))
             {
-                bomb.Dispose();
+                clock.Dispose();
                 game.soundEffects.LoadSound(game, "GetItem", "getitem");
-                if (!game.soundEffects.IsPlaying("GetItem"))
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
                     game.soundEffects.PlaySound("GetItem");
+                    playSound = false;
                 }
             }
         }
