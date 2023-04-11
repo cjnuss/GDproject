@@ -9,34 +9,34 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkRupeeCollision
+    public class LinkBowCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle rupeeRectangle;
+        private Rectangle bowRectangle;
         private bool playSound = true;
 
-        public LinkRupeeCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkBowCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Rupee rupee)
+        public void Update(Bow bow)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            rupeeRectangle = new Rectangle((int)rupee.location.X, (int)rupee.location.Y, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+            bowRectangle = new Rectangle((int)bow.location.X, (int)bow.location.Y, ItemConstants.BowWidth * GameConstants.Sizing, ItemConstants.BowHeight * GameConstants.Sizing);
 
-            if (rupeeRectangle.Intersects(linkRectangle))
+            if (bowRectangle.Intersects(linkRectangle))
             {
-                rupee.Dispose();
-                game.soundEffects.LoadSound(game, "GetRupee", "getrupee");
-                if (!game.soundEffects.IsPlaying("GetRupee") && playSound)
+                bow.Dispose();
+                game.soundEffects.LoadSound(game, "GetItem", "getitem");
+                if (!game.soundEffects.IsPlaying("GetItem") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetRupee");
+                    game.soundEffects.PlaySound("GetItem");
                     playSound = false;
                 }
             }

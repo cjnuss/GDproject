@@ -11,13 +11,13 @@ namespace Sprint0
 {
     public class Fairy : ISprite
     {
-        Texture2D texture = ItemsTextureStorage.Instance.GetItems();
-        Rectangle sourceRect = ItemsTextureStorage.fairy1;
-        Rectangle destRect;
+        private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
+        private Rectangle sourceRect = ItemsTextureStorage.fairy1;
+        private Rectangle destRect;
         int currentFrame;
         int totalFrames = ItemConstants.FairyTotalFrames;
 
-        Vector2 location;
+        public Vector2 location;
 
         public Fairy(Vector2 position)
         {
@@ -29,14 +29,19 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (currentFrame < ItemConstants.FairyPhase)
+            if (sourceRect == new Rectangle(0,0,0,0))
+            {
+                // nothing
+            }
+            else if (currentFrame < ItemConstants.FairyPhase)
             {
                 sourceRect = ItemsTextureStorage.fairy1;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             } else
             {
                 sourceRect = ItemsTextureStorage.fairy2;
+                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
             }
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
         }
 
         public void Update()
@@ -46,6 +51,11 @@ namespace Sprint0
             {
                 currentFrame = GameConstants.Zero;
             }
+        }
+
+        public void Dispose()
+        {
+            sourceRect = new Rectangle(0, 0, 0, 0);
         }
     }
 }

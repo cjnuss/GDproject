@@ -22,6 +22,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle heartRectangle;
+        private bool playSound = true;
 
         public LinkHeartCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
@@ -39,9 +40,10 @@ namespace Sprint0
             {
                 heart.Dispose();
                 game.soundEffects.LoadSound(game, "GetHeart", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetHeart"))
+                if (!game.soundEffects.IsPlaying("GetHeart") && playSound)
                 {
                     game.soundEffects.PlaySound("GetHeart");
+                    playSound = false;
                 }
             }
         }

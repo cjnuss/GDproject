@@ -36,22 +36,12 @@ namespace Sprint0
         public MapCommands mappingCommands;
         public Dictionary<Keys, ICommand> controllerMapping;
 
-        // DEBUG: refactor later
-        public BlockCollisionCheck blockCollisionCheck;
-        public TriforceCollisionCheck triforceCollisionCheck;
-        public ArrowCollisionCheck arrowCollisionCheck;
-        public BombCollisionCheck bombCollisionCheck;
-        public RupeeCollisionCheck rupeeCollisionCheck;
-        public RoomCollisionCheck roomCollisionCheck;
-        public EnemyCollisionCheck enemyCollisionCheck;
-        public HeartCollisionCheck heartCollisionCheck;
-
-
-        public KeyBoardController(Game1 game1, SpriteBatch spriteBatch)
+        public KeyBoardController(Game1 game1, SpriteBatch spriteBatch, Link linkSprite)
         {
             this.game1 = game1;
+            this.linkSprite = linkSprite;
 
-            linkSprite = new Link(game1);
+            //linkSprite = new Link(game1);
             //temp
             testingText = new StaticText(game1);
             testingHearts = new HpHearts(game1);
@@ -64,19 +54,10 @@ namespace Sprint0
             mappingCommands.CreateCommands();
             controllerMapping = mappingCommands.GetControllerMapping(controllerMapping);
 
-            blockCollisionCheck = new BlockCollisionCheck(this, game1, linkSprite);
-            triforceCollisionCheck = new TriforceCollisionCheck(this, new LinkTriforceCollision(game1, this, linkSprite), game1, linkSprite);
-            arrowCollisionCheck = new ArrowCollisionCheck(this, new LinkArrowCollision(game1, this, linkSprite), game1, linkSprite);
-            bombCollisionCheck = new BombCollisionCheck(this, new LinkBombCollision(game1, this, linkSprite), game1, linkSprite);
-            rupeeCollisionCheck = new RupeeCollisionCheck(this, new LinkRupeeCollision(game1, this, linkSprite), game1, linkSprite);
-            roomCollisionCheck = new RoomCollisionCheck(this, linkSprite);
-            enemyCollisionCheck = new EnemyCollisionCheck(this, game1,linkSprite);
-            heartCollisionCheck = new HeartCollisionCheck(this, new LinkHeartCollision(game1, this, linkSprite), game1, linkSprite);
-
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
 
-            roomCollisionCheck.roomType = 0; //Sets room type to dugeon (placeholder)
+            //roomCollisionCheck.roomType = 0; //Sets room type to dugeon (placeholder)
         }
         public void Update(GameTime gameTime)
         {
@@ -87,19 +68,6 @@ namespace Sprint0
             if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
                 controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
 
-            // collision checks - DEBUG: testing purposes (refactor later)
-            blockCollisionCheck.CheckCollision();
-            triforceCollisionCheck.CheckCollision();
-            arrowCollisionCheck.CheckCollision();
-            bombCollisionCheck.CheckCollision();
-            rupeeCollisionCheck.CheckCollision();
-            triforceCollisionCheck.CheckCollision(); 
-            roomCollisionCheck.CheckCollision(); 
-            enemyCollisionCheck.CheckCollision();
-            heartCollisionCheck.CheckCollision();
-            // debug, testing purposes
-            // more to follow..
-            
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
             

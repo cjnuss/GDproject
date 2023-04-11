@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class LinkRupeeCollision
+    public class LinkKeyCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
-        private Rectangle rupeeRectangle;
+        private Rectangle keyRectangle;
         private bool playSound = true;
 
-        public LinkRupeeCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public LinkKeyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Rupee rupee)
+        public void Update(Key key)
         {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
-            rupeeRectangle = new Rectangle((int)rupee.location.X, (int)rupee.location.Y, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+            keyRectangle = new Rectangle((int)key.location.X, (int)key.location.Y, ItemConstants.KeyWidth * GameConstants.Sizing, ItemConstants.KeyHeight * GameConstants.Sizing);
 
-            if (rupeeRectangle.Intersects(linkRectangle))
+            if (keyRectangle.Intersects(linkRectangle))
             {
-                rupee.Dispose();
-                game.soundEffects.LoadSound(game, "GetRupee", "getrupee");
-                if (!game.soundEffects.IsPlaying("GetRupee") && playSound)
+                key.Dispose();
+                game.soundEffects.LoadSound(game, "GetKey", "getheartorkey");
+                if (!game.soundEffects.IsPlaying("GetKey") && playSound)
                 {
-                    game.soundEffects.PlaySound("GetRupee");
+                    game.soundEffects.PlaySound("GetKey");
                     playSound = false;
-                }
+                }     
             }
         }
     }
