@@ -20,12 +20,6 @@ namespace Sprint0
     {
         private Game1 game1;
         public Link linkSprite;
-        //test
-        private StaticText testingText;
-        private HpHearts testingHearts;
-        private MainHUD mainHUD;
-        private PlayerMap playerMap;
-        private Counts HUDnumbers;
 
         public Texture2D Texture { get; set; }
         public SpriteBatch _spriteBatch;
@@ -41,14 +35,6 @@ namespace Sprint0
             this.game1 = game1;
             this.linkSprite = linkSprite;
 
-            //linkSprite = new Link(game1);
-            //temp
-            testingText = new StaticText(game1);
-            testingHearts = new HpHearts(game1);
-            mainHUD = new MainHUD(game1);
-            playerMap = new PlayerMap(game1);
-            HUDnumbers = new Counts(game1); 
-
             controllerMapping = new Dictionary<Keys, ICommand>();
             mappingCommands = new MapCommands(this, controllerMapping, game1, linkSprite);
             mappingCommands.CreateCommands();
@@ -56,9 +42,8 @@ namespace Sprint0
 
             dir = GameConstants.Down; linkState = LinkConstants.Default;
             _spriteBatch = spriteBatch;
-
-            //roomCollisionCheck.roomType = 0; //Sets room type to dugeon (placeholder)
         }
+
         public void Update(GameTime gameTime)
         {
             linkState = LinkConstants.Default; // reset link state
@@ -68,15 +53,9 @@ namespace Sprint0
             if (pressedKeys.Length != GameConstants.Zero && controllerMapping.ContainsKey(pressedKeys[GameConstants.Zero]))
                 controllerMapping[pressedKeys[GameConstants.Zero]].Execute(gameTime);
 
+            // DEBUG: factor out link into Game1.cs?
             linkSprite.Update(linkState, dir, location);
             linkSprite.Draw(_spriteBatch);
-            
-            //temp
-            testingText.Draw(_spriteBatch);
-            mainHUD.Draw(_spriteBatch);
-            testingHearts.Draw(_spriteBatch);
-            playerMap.Draw(_spriteBatch);
-            HUDnumbers.Draw(_spriteBatch);
         }
 
     }
