@@ -25,6 +25,7 @@ namespace Sprint0.Levels
         Texture2D texture;
         List<IRoom> rooms = new List<IRoom>();
         private RoomLoad roomLoad;
+        private Camera camera;
 
         private static List<Rectangle> levels = new List<Rectangle>
         {
@@ -46,17 +47,10 @@ namespace Sprint0.Levels
             LevelsTextureStorage.level16,
             LevelsTextureStorage.level17,
         };
+
         Boolean lastRightMouseState;
         Boolean lastLeftMouseState;
 
-        /*
-        //reading xml
-        XmlDocument levelDoc;
-        string XMLpath;
-        XmlNodeList Typelist;
-        XmlNodeList Namelist;
-        XmlNodeList Loclist;
-        */
         public MouseController(Game1 game1, Texture2D atlas, SpriteBatch spriteBatch)
         {
             this.game1 = game1;
@@ -65,14 +59,6 @@ namespace Sprint0.Levels
             texture = atlas;
             lastLeftMouseState = false;
             lastRightMouseState = false;
-            /*
-            levelDoc = new XmlDocument();
-            XMLpath = Directory.GetCurrentDirectory + @"\1.xml";
-            levelDoc.Load(XMLpath);
-            Typelist = levelDoc.GetElementsByTagName("Type");
-            Namelist = levelDoc.GetElementsByTagName("Name");
-            Loclist = levelDoc.GetElementsByTagName("Location");
-            */
             roomLoad = new RoomLoad();
             for (int i = GameConstants.One; i <= GameConstants.NumRooms; i++)
             {
@@ -82,13 +68,6 @@ namespace Sprint0.Levels
 
         public void Update(GameTime gameTime)
         {
-            /*all xml level logic
-            for (int i = 0; i < Typelist.Count; i++)
-            {
-                if (Typelist[i].InnerText.ToString() == "Enemy") set an object based on this;
-            }
-            */
-
             if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed) && lastRightMouseState != true)
             {
                 if (levelState == GameConstants.LevelState2)

@@ -12,6 +12,7 @@ namespace Sprint0
 {
     public class Game1 : Game
     {
+        // DEBUG
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         //private SpriteFont font;
@@ -41,7 +42,6 @@ namespace Sprint0
 
     protected override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -91,15 +91,13 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin();
-
-            // Texture2D level = Content.Load<Texture2D>("level1");
-            // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
+            _spriteBatch.Begin(/*transformMatrix: camera.GetViewMatrix()*/);
 
             // DEBUG: remove draw calls from update methods?
             Mcontroller.Update(gameTime);
             collisionManager.Check();
             Kcontroller.Update(gameTime);
+            // END
 
             testingText.Draw(_spriteBatch);
             mainHUD.Draw(_spriteBatch);

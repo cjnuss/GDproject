@@ -21,14 +21,14 @@ namespace Sprint0
         private Game1 game1;
         public Link linkSprite;
 
-        public Texture2D Texture { get; set; }
-        public SpriteBatch _spriteBatch;
+        private Texture2D Texture { get; set; }
+        private SpriteBatch _spriteBatch;
 
         public int dir, linkState;
         public Vector2 location;
 
-        public MapCommands mappingCommands;
-        public Dictionary<Keys, ICommand> controllerMapping;
+        private MapCommands mappingCommands;
+        private Dictionary<Keys, ICommand> controllerMapping;
 
         public KeyBoardController(Game1 game1, SpriteBatch spriteBatch, Link linkSprite)
         {
