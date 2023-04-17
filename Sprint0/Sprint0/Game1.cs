@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Levels;
+using Sprint0.UI;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -11,6 +12,7 @@ namespace Sprint0
 {
     public class Game1 : Game
     {
+        // DEBUG
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         //private SpriteFont font;
@@ -24,6 +26,12 @@ namespace Sprint0
         private CollisionManager collisionManager;
         private Link linkSprite;
 
+        private StaticText testingText;
+        private HpHearts testingHearts;
+        private MainHUD mainHUD;
+        private PlayerMap playerMap;
+        private Counts HUDnumbers;
+
         public IRoom currentRoom;
         public Game1()
         {
@@ -34,7 +42,6 @@ namespace Sprint0
 
     protected override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -45,17 +52,15 @@ namespace Sprint0
             _graphics.PreferredBackBufferHeight = GameConstants.BufferHeight;
             _graphics.PreferredBackBufferWidth = GameConstants.BufferWidth;
             _graphics.ApplyChanges();
-            // sprite factory
-            //BlockSpriteFactory.Instance.LoadBlockTextures(Content);
 
-            // load in objects
+            // sprite setup
             Texture2D level = Content.Load<Texture2D>("level1");
             EnemyTextureStorage.Instance.Load(Content);
             LinkTextureStorage.Instance.Load(Content);
             ItemsTextureStorage.Instance.Load(Content);
             UITextureStorage.Instance.Load(Content);
 
-            // music / sounds
+            // audio setup
             backgroundAudio = new BackgroundAudio();
             backgroundAudio.LoadSound(this);
             soundEffects = new SoundEffects();
@@ -68,6 +73,13 @@ namespace Sprint0
             // collision setup
             collisionManager = new CollisionManager(Kcontroller, this, linkSprite);
             collisionManager.Create();
+
+            // hud setup
+            testingText = new StaticText(this);
+            testingHearts = new HpHearts(this);
+            mainHUD = new MainHUD(this);
+            playerMap = new PlayerMap(this);
+            HUDnumbers = new Counts(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -79,14 +91,19 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(/*transformMatrix: camera.GetViewMatrix()*/);
 
-            // Texture2D level = Content.Load<Texture2D>("level1");
-            // _spriteBatch.Draw(level, new Rectangle(0, 0, 1200, 600), Color.LightSlateGray); 
-
+            // DEBUG: remove draw calls from update methods?
             Mcontroller.Update(gameTime);
             collisionManager.Check();
             Kcontroller.Update(gameTime);
+            // END
+
+            testingText.Draw(_spriteBatch);
+            mainHUD.Draw(_spriteBatch);
+            testingHearts.Draw(_spriteBatch);
+            playerMap.Draw(_spriteBatch);
+            HUDnumbers.Draw(_spriteBatch);
 
             _spriteBatch.End();
             base.Draw(gameTime);
