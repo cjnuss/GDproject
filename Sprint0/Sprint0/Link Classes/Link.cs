@@ -21,12 +21,12 @@ namespace Sprint0
         public Vector2 location;
         public float velocity = LinkConstants.Velocity;
 
-        private Attack attack;
+        public Attack attack; // debug - public?
 
         private LinkLooking linkLooking;
         private LinkMoving linkMoving;
         private LinkDamaged linkDamaged;
-        private LinkAttacking linkAttacking;
+        public LinkAttacking linkAttacking; // debug - public?
         private LinkThrowing linkThrowing;
 
         private GreenArrow greenArrow;
@@ -36,7 +36,7 @@ namespace Sprint0
         private SwordBeam swordBeam;
 
         private ILinkSprite[] sprites;
-
+        
         public Link(Game1 game)
         {
             this.game = game;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0;
+using System.Data.Common;
 
 namespace Sprint0
 {
@@ -13,6 +14,9 @@ namespace Sprint0
     {
         private int width;
         private int height;
+        public bool toDraw = true;
+        private Rectangle source;
+        private Rectangle destination;
 
         public Vector2 GetSize()
         {
@@ -112,10 +116,13 @@ namespace Sprint0
                 frame = EnemyConstants.Frame2;
             }
 
-            Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
-            Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
-            spriteBatch.Draw(texture, destinaton, source, Color.White);
+            if (toDraw)
+            {
+                Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
+                source = frames[frame];
+                destination = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                spriteBatch.Draw(texture, destination, source, Color.White);
+            }
         }
     }
 }

@@ -17,14 +17,14 @@ namespace Sprint0
     {
         private Game1 game;
         private LinkAttacking linkAttacking;
-        private GreenArrow greenArrow;
+        public GreenArrow greenArrow; // debug - public?
         private Fire fire;
         private Bomb bomb;
         private BlueArrow blueArrow;
         private SwordBeam swordBeam;
 
         // attack keys
-        private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
+        public bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
         public Attack(Game1 game, LinkAttacking linkAttacking, GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow, SwordBeam swordBeam)
         {
             this.game = game; 
