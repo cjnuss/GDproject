@@ -8,16 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0
+namespace Sprint0.Collision.Response.Enemies
 {
-    public class BatGreenArrowCollision
+    public class BatBombCollision
     {
         public Game1 game;
         private KeyBoardController KeyBoardController;
-        private Rectangle arrowRectangle;
+        private Rectangle bombRectangle;
         private Rectangle batRectangle;
 
-        public BatGreenArrowCollision(Game1 game, KeyBoardController KeyBoardController)
+        public BatBombCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
@@ -25,10 +25,10 @@ namespace Sprint0
 
         public void Update(Bat bat)
         {
-            arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.greenArrow.currentX, KeyBoardController.linkSprite.attack.greenArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+            bombRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.bomb.location1.X, (int)KeyBoardController.linkSprite.attack.bomb.location1.Y, ItemConstants.BombWidth * GameConstants.Sizing, ItemConstants.BombHeight * GameConstants.Sizing);
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(arrowRectangle))
+            if (batRectangle.Intersects(bombRectangle) && KeyBoardController.linkSprite.attack.bomb.frame == GameConstants.Two)
             {
                 bat.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 bat.toDraw = false;

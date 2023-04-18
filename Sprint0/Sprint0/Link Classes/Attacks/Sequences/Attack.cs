@@ -18,10 +18,10 @@ namespace Sprint0
         private Game1 game;
         private LinkAttacking linkAttacking;
         public GreenArrow greenArrow; // debug - public?
-        private Fire fire;
-        private Bomb bomb;
-        private BlueArrow blueArrow;
-        private SwordBeam swordBeam;
+        public Fire fire;
+        public Bomb bomb;
+        public BlueArrow blueArrow;
+        public SwordBeam swordBeam;
 
         // attack keys
         public bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;

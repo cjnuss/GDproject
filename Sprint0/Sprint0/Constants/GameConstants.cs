@@ -20,6 +20,7 @@ namespace Sprint0
         // numbers
         public const int Zero = 0;
         public const int One = 1;
+        public const int Two = 2;
         public const int Ten = 10;
         // size multiplier
         public const int Sizing = 3;

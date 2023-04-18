@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class BatGreenArrowCollision
+    public class BatBlueArrowCollision
     {
         public Game1 game;
         private KeyBoardController KeyBoardController;
         private Rectangle arrowRectangle;
         private Rectangle batRectangle;
 
-        public BatGreenArrowCollision(Game1 game, KeyBoardController KeyBoardController)
+        public BatBlueArrowCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
@@ -25,7 +25,7 @@ namespace Sprint0
 
         public void Update(Bat bat)
         {
-            arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.greenArrow.currentX, KeyBoardController.linkSprite.attack.greenArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+            arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.blueArrow.currentX, KeyBoardController.linkSprite.attack.blueArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
             if (batRectangle.Intersects(arrowRectangle))
