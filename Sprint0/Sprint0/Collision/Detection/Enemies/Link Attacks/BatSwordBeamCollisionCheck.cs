@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class BatSwordCollisionCheck
+    public class BatSwordBeamCollisionCheck
     {
         private KeyBoardController KeyBoardController;
-        private BatSwordCollision batSwordCollision;
+        private BatSwordBeamCollision batSwordBeamCollision;
         private Game1 game;
         private Link link;
         private Bat bat;
 
-        public BatSwordCollisionCheck(KeyBoardController KeyBoardController, BatSwordCollision batSwordCollision, Game1 game, Link link)
+        public BatSwordBeamCollisionCheck(KeyBoardController KeyBoardController, BatSwordBeamCollision batSwordBeamCollision, Game1 game, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.game = game;
             this.link = link;
-            this.batSwordCollision = new BatSwordCollision(this.game, this.KeyBoardController, this.link);
+            this.batSwordBeamCollision = new BatSwordBeamCollision(this.game, this.KeyBoardController, this.link);
         }
 
         public void CheckCollision()
@@ -34,10 +34,10 @@ namespace Sprint0
                 if (enemy.GetType() == typeof(Bat))
                 {
                     bat = (Bat)enemy;
-                    if (bat.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && bat.location.X - KeyBoardController.linkSprite.location.X <=
-                        LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - bat.location.X >= 0 && KeyBoardController.linkSprite.location.X - bat.location.X <= LinkConstants.Size * GameConstants.Sizing)
+                    if (bat.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX >= GameConstants.Zero && bat.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX <=
+                        LinkConstants.SwordBeamWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.swordBeam.currentX - bat.location.X >= 0 && KeyBoardController.linkSprite.attack.swordBeam.currentX - bat.location.X <= LinkConstants.SwordBeamWidth * GameConstants.Sizing)
                     {
-                        batSwordCollision.Update(bat);
+                        batSwordBeamCollision.Update(bat);
                     }
                 }
             }

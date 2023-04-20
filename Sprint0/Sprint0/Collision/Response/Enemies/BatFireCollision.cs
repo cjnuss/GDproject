@@ -28,16 +28,10 @@ namespace Sprint0.Collision.Response.Enemies
             fireRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.fire.currentX, (int)KeyBoardController.linkSprite.attack.fire.currentY, ItemConstants.FireWidth * GameConstants.Sizing, ItemConstants.FireHeight * GameConstants.Sizing);
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(fireRectangle))
+            if (batRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
             {
-                bat.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
-                bat.toDraw = false;
-                // DEBUG : HURT?
-                game.soundEffects.LoadSound(game, "EnemyDie", "enemydie");
-                if (!game.soundEffects.IsPlaying("EnemyDie"))
-                {
-                    game.soundEffects.PlaySound("EnemyDie");
-                }
+                bat.Dispose();
+                game.soundEffects.PlaySound("EnemyDie"); // DEBUG : ERROR??? PLAYS SOUND FOREVER..ALWAYS INTERSECTING
             }
         }
     }

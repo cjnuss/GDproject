@@ -33,7 +33,6 @@ namespace Sprint0.Collision.Response.Items
             {
                 rupee.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 rupee.Dispose();
-                game.soundEffects.LoadSound(game, "GetRupee", "getrupee");
                 if (!game.soundEffects.IsPlaying("GetRupee"))
                 {
                     game.soundEffects.PlaySound("GetRupee");

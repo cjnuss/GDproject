@@ -39,10 +39,9 @@ namespace Sprint0.Collision.Response.Items
             {
                 heart.location = new Vector2(GameConstants.Zero, GameConstants.Zero); 
                 heart.Dispose();
-                game.soundEffects.LoadSound(game, "GetHeart", "getheartorkey");
-                if (!game.soundEffects.IsPlaying("GetHeart"))
+                if (!game.soundEffects.IsPlaying("GetHeartOrKey"))
                 {
-                    game.soundEffects.PlaySound("GetHeart");
+                    game.soundEffects.PlaySound("GetHeartOrKey");
                 }
             }
         }

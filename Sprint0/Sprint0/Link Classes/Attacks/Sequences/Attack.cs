@@ -16,7 +16,7 @@ namespace Sprint0
     public class Attack
     {
         private Game1 game;
-        private LinkAttacking linkAttacking;
+        public LinkAttacking linkAttacking;
         public GreenArrow greenArrow; // debug - public?
         public Fire fire;
         public Bomb bomb;
@@ -50,6 +50,7 @@ namespace Sprint0
                 fire = new Fire();
                 fireKey = true;
                 fire.direction = dir;
+                fire.toDraw = true;
                 fire.RegisterPos(location);
             }
             if (linkState == LinkConstants.Bomb && !bombKey)

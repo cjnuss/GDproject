@@ -12,9 +12,12 @@ namespace Sprint0
 {
     public class Bat : IEnemy
     {
+        private Texture2D texture;
+        private Vector2 deathLoc;
         private int width;
         private int height;
-        public bool toDraw = true;
+        public bool toDraw = true; // debug : public?
+        private bool death = false;
         private Rectangle source;
         private Rectangle destination;
 
@@ -43,6 +46,15 @@ namespace Sprint0
             EnemyTextureStorage.Bat2
         };
 
+        private static List<Rectangle> deathFrames = new List<Rectangle>
+        {
+            EnemyTextureStorage.EnemyDeath1,
+            EnemyTextureStorage.EnemyDeath2,
+            EnemyTextureStorage.EnemyDeath3,
+            EnemyTextureStorage.EnemyDeath4,
+            new Rectangle(0,0,0,0)
+        };
+
         public Bat(Vector2 coords)
         {
             currentFrame = EnemyConstants.Zero;
@@ -56,73 +68,114 @@ namespace Sprint0
 
         public void Update()
         {
-            textureFrame++;
-            if (textureFrame == EnemyConstants.BatTextureFrames)
+            if (toDraw)
             {
-                textureFrame = EnemyConstants.Zero;
-            }
-            currentFrame++;
-            if (currentFrame == totalFrames)
-            {
-                currentFrame = EnemyConstants.Zero;
-                random = RNG.Next(EnemyConstants.Zero, EnemyConstants.NW + EnemyConstants.One);
-                totalFrames = RNG.Next(EnemyConstants.BatMinFrame, EnemyConstants.BatMaxFrame);
-            }
-            if (currentFrame % EnemyConstants.BatFrameChange == EnemyConstants.Zero)
-            {
-                switch (random)
+                textureFrame++;
+                if (textureFrame == EnemyConstants.BatTextureFrames)
                 {
-                    case EnemyConstants.Down:
-                        location.Y += EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.Left:
-                        location.X -= EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.Right:
-                        location.X += EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.Up:
-                        location.Y -= EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.NE:
-                        location.X += EnemyConstants.BatDisplacement;
-                        location.Y -= EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.SE:
-                        location.X += EnemyConstants.BatDisplacement;
-                        location.Y += EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.SW:
-                        location.X -= EnemyConstants.BatDisplacement;
-                        location.Y += EnemyConstants.BatDisplacement;
-                        break;
-                    case EnemyConstants.NW:
-                        location.X -= EnemyConstants.BatDisplacement;
-                        location.Y -= EnemyConstants.BatDisplacement;
-                        break;
+                    textureFrame = EnemyConstants.Zero;
                 }
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = EnemyConstants.Zero;
+                    random = RNG.Next(EnemyConstants.Zero, EnemyConstants.NW + EnemyConstants.One);
+                    totalFrames = RNG.Next(EnemyConstants.BatMinFrame, EnemyConstants.BatMaxFrame);
+                }
+                if (currentFrame % EnemyConstants.BatFrameChange == EnemyConstants.Zero)
+                {
+                    switch (random)
+                    {
+                        case EnemyConstants.Down:
+                            location.Y += EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.Left:
+                            location.X -= EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.Right:
+                            location.X += EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.Up:
+                            location.Y -= EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.NE:
+                            location.X += EnemyConstants.BatDisplacement;
+                            location.Y -= EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.SE:
+                            location.X += EnemyConstants.BatDisplacement;
+                            location.Y += EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.SW:
+                            location.X -= EnemyConstants.BatDisplacement;
+                            location.Y += EnemyConstants.BatDisplacement;
+                            break;
+                        case EnemyConstants.NW:
+                            location.X -= EnemyConstants.BatDisplacement;
+                            location.Y -= EnemyConstants.BatDisplacement;
+                            break;
+                    }
+                }
+            }
+
+            if (death)
+            {
+                currentFrame++;
+                if (currentFrame == 37)
+                {
+                    death = false;
+                }
+
             }
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame <= EnemyConstants.Texture1)
-            {
-                frame = EnemyConstants.Frame1;
-            }
-            else if (textureFrame > EnemyConstants.Texture1)
-            {
-                frame = EnemyConstants.Frame2;
-            }
-
             if (toDraw)
             {
-                Texture2D texture = EnemyTextureStorage.Instance.GetEnemies1();
+                if (textureFrame <= EnemyConstants.Texture1)
+                {
+                    frame = EnemyConstants.Frame1;
+                }
+                else if (textureFrame > EnemyConstants.Texture1)
+                {
+                    frame = EnemyConstants.Frame2;
+                }
+
+                texture = EnemyTextureStorage.Instance.GetEnemies1();
                 source = frames[frame];
                 destination = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
                 spriteBatch.Draw(texture, destination, source, Color.White);
             }
+
+            if (death)
+            {
+                if (currentFrame <= 5 || currentFrame > 30 && currentFrame < 35)
+                    frame = EnemyConstants.Frame1;
+                else if (currentFrame <= 10 || currentFrame > 25 && currentFrame <= 30)
+                    frame = EnemyConstants.Frame2;
+                else if (currentFrame <= 15 || currentFrame > 20 && currentFrame <= 25)
+                    frame = EnemyConstants.Frame3;
+                else if (currentFrame <= 20 && currentFrame > 15 && currentFrame <= 20)
+                    frame = EnemyConstants.Frame4;
+                else if (currentFrame == 35)
+                    frame = 4; // magic
+
+                texture = EnemyTextureStorage.Instance.GetEnemyDeath();
+                source = deathFrames[frame];
+                destination = new Rectangle((int)deathLoc.X, (int)deathLoc.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                spriteBatch.Draw(texture, destination, source, Color.White);
+            }
+        }
+
+        public void Dispose()
+        {
+            currentFrame = GameConstants.Zero;
+            deathLoc = location;
+            location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
+            toDraw = false;
+            death = true;
         }
     }
 }

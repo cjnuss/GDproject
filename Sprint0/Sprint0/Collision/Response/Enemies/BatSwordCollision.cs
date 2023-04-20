@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Collision.Response.Enemies
+namespace Sprint0
 {
     public class BatSwordCollision
     {
@@ -32,14 +32,8 @@ namespace Sprint0.Collision.Response.Enemies
 
             if (batRectangle.Intersects(linkRectangle) && KeyBoardController.linkState == LinkConstants.WoodenSword)
             {
-                bat.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
-                bat.toDraw = false;
-                // DEBUG : HURT?
-                game.soundEffects.LoadSound(game, "EnemyDie", "enemydie");
-                if (!game.soundEffects.IsPlaying("EnemyDie"))
-                {
-                    game.soundEffects.PlaySound("EnemyDie");
-                }
+                bat.Dispose();
+                game.soundEffects.PlaySound("EnemyDie");
             }
         }
     }

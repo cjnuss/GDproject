@@ -12,7 +12,7 @@ namespace Sprint0
     public class Fire : ISprite
     {
         public int frame, currentFrame, totalFrames, count, direction, currentX, currentY, finalPos, stillPos;
-        public Boolean toDraw = true, updatePos = true;
+        public Boolean toDraw = false, updatePos = true;
         Rectangle source;
         Rectangle dest;
 

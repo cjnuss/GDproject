@@ -102,7 +102,6 @@ namespace Sprint0.Link_Classes.Item_Usage
             }
             if (frame == GameConstants.Frame2 && playSound)
             {
-                game.soundEffects.LoadSound(game, "BombBlow", "bombblow");
                 game.soundEffects.PlaySound("BombBlow");
                 playSound = false;
             }

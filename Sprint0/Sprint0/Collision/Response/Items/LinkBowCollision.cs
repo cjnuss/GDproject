@@ -33,7 +33,6 @@ namespace Sprint0.Collision.Response.Items
             {
                 bow.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 bow.Dispose();
-                game.soundEffects.LoadSound(game, "GetItem", "getitem");
                 if (!game.soundEffects.IsPlaying("GetItem"))
                 {
                     game.soundEffects.PlaySound("GetItem");

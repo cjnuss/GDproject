@@ -25,19 +25,17 @@ namespace Sprint0
 
         public void Update(Bat bat)
         {
-            arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.blueArrow.currentX, KeyBoardController.linkSprite.attack.blueArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+            if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
+                arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.blueArrow.currentX, KeyBoardController.linkSprite.attack.blueArrow.currentY, ItemConstants.ArrowHeight * GameConstants.Sizing, ItemConstants.ArrowWidth * GameConstants.Sizing);
+            else
+                arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.blueArrow.currentX, KeyBoardController.linkSprite.attack.blueArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
+
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(arrowRectangle))
+            if (batRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
             {
-                bat.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
-                bat.toDraw = false;
-                // DEBUG : HURT?
-                game.soundEffects.LoadSound(game, "EnemyDie", "enemydie");
-                if (!game.soundEffects.IsPlaying("EnemyDie"))
-                {
-                    game.soundEffects.PlaySound("EnemyDie");
-                }
+                bat.Dispose();
+                game.soundEffects.PlaySound("EnemyDie");
             }
         }
     }

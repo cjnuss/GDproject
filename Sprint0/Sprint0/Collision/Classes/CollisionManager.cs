@@ -38,6 +38,7 @@ namespace Sprint0
         private BatBombCollisionCheck batBombCollisionCheck;
         private BatFireCollisionCheck batFireCollisionCheck;
         private BatBlueArrowCollisionCheck batBlueArrowCollisionCheck;
+        private BatSwordBeamCollisionCheck batSwordBeamCollisionCheck;
 
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
@@ -69,7 +70,7 @@ namespace Sprint0
             batBombCollisionCheck = new BatBombCollisionCheck(this.KeyBoardController, new BatBombCollision(this.game1, this.KeyBoardController), this.game1);
             batFireCollisionCheck = new BatFireCollisionCheck(this.KeyBoardController, new BatFireCollision(this.game1, this.KeyBoardController), this.game1);
             batBlueArrowCollisionCheck = new BatBlueArrowCollisionCheck(this.KeyBoardController, new BatBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
-
+            batSwordBeamCollisionCheck = new BatSwordBeamCollisionCheck(this.KeyBoardController, new BatSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
         }
 
         public void Check()
@@ -95,6 +96,7 @@ namespace Sprint0
             batBombCollisionCheck.CheckCollision();
             batFireCollisionCheck.CheckCollision();
             batBlueArrowCollisionCheck.CheckCollision();
+            batSwordBeamCollisionCheck.CheckCollision();
         }
     }
 }

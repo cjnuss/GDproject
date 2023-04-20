@@ -32,7 +32,6 @@ namespace Sprint0.Collision.Response.Items
             {
                 triforce.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 triforce.Dispose();
-                game.soundEffects.LoadSound(game, "Triforce", "triforcefanfare");
                 if (!game.soundEffects.IsPlaying("Triforce"))
                 {
                     game.backgroundAudio.StopSound();

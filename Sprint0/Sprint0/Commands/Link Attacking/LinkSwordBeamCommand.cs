@@ -29,7 +29,6 @@ namespace Sprint0
             KeyBoardController.linkState = LinkConstants.SwordBeam;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
 
-            game.soundEffects.LoadSound(game, "SwordBeam", "swordbeam");
             if (!game.soundEffects.IsPlaying("SwordBeam"))
                 game.soundEffects.PlaySound("SwordBeam");
         }

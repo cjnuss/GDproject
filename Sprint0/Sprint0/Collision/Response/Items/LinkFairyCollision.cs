@@ -33,10 +33,9 @@ namespace Sprint0.Collision.Response.Items
             {
                 fairy.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 fairy.Dispose();
-                game.soundEffects.LoadSound(game, "GetFairy", "getitem");
-                if (!game.soundEffects.IsPlaying("GetFairy"))
+                if (!game.soundEffects.IsPlaying("GetItem"))
                 {
-                    game.soundEffects.PlaySound("GetFairy");
+                    game.soundEffects.PlaySound("GetItem");
                 }
             }
         }

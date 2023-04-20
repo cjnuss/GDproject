@@ -30,6 +30,7 @@ namespace Sprint0
         private static Texture2D enemies1 = null;
         private static Texture2D enemies1Flipped = null;
         private static Texture2D npc = null;
+        private static Texture2D enemyDeath = null;
 
         public void Load(ContentManager content)
         {
@@ -38,6 +39,7 @@ namespace Sprint0
             enemies1 = content.Load<Texture2D>("enemies2v2");
             enemies1Flipped = content.Load<Texture2D>("enemies2 flippedv2");
             npc = content.Load<Texture2D>("npc sheetv2");
+            enemyDeath = content.Load<Texture2D>("enemydeath");
         }
 
         public Texture2D GetEnemies()
@@ -63,6 +65,11 @@ namespace Sprint0
         public Texture2D GetNPC()
         {
             return npc;
+        }
+
+        public Texture2D GetEnemyDeath()
+        {
+            return enemyDeath;
         }
 
         public static Rectangle SkeletonSource = new Rectangle(1, 59, 16, 16);
@@ -99,5 +106,10 @@ namespace Sprint0
         public static Rectangle AquamentusProjectile2 = new Rectangle(101, 14, 8, 10);
         public static Rectangle AquamentusProjectile3 = new Rectangle(110, 14, 8, 10);
         public static Rectangle AquamentusProjectile4 = new Rectangle(119, 14, 8, 10);
+
+        public static Rectangle EnemyDeath1 = new Rectangle(51, 9, 3, 10);
+        public static Rectangle EnemyDeath2 = new Rectangle(35, 3, 9, 10);
+        public static Rectangle EnemyDeath3 = new Rectangle(16, 0, 15, 16);
+        public static Rectangle EnemyDeath4 = new Rectangle(0, 0, 15, 16);
     }
 }

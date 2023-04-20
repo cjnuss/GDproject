@@ -49,7 +49,7 @@ namespace Sprint0
             linkMoveUpCommand = new LinkMoveUpCommand(KeyBoardController, link);
             linkMoveDownCommand = new LinkMoveDownCommand(KeyBoardController, link);
             linkMoveRightCommand = new LinkMoveRightCommand(KeyBoardController, link);
-            linkDamageCommand = new LinkDamageCommand(KeyBoardController, link);
+            linkDamageCommand = new LinkDamageCommand(KeyBoardController, link, game1);
             linkAttackingCommand = new LinkAttackingCommand(game1, KeyBoardController, link); // SOUND
             linkSwordBeamCommand = new LinkSwordBeamCommand(game1, KeyBoardController, link); // SOUND
             linkThrowGreenArrowCommand = new LinkThrowGreenArrowCommand(game1, KeyBoardController, link);
