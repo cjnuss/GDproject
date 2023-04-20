@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (compassRectangle.Intersects(linkRectangle))
             {
-                compass.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 compass.Dispose();
-                if (!game.soundEffects.IsPlaying("GetItem"))
-                {
-                    game.soundEffects.PlaySound("GetItem");
-                }
+                game.soundEffects.PlaySound("GetItem");
             }
         }
     }

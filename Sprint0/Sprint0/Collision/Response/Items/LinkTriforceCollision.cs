@@ -30,13 +30,9 @@ namespace Sprint0.Collision.Response.Items
 
             if (triforceRectangle.Intersects(linkRectangle))
             {
-                triforce.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 triforce.Dispose();
-                if (!game.soundEffects.IsPlaying("Triforce"))
-                {
-                    game.backgroundAudio.StopSound();
-                    game.soundEffects.PlaySound("Triforce");
-                }
+                game.backgroundAudio.StopSound();
+                game.soundEffects.PlaySound("Triforce");
             }
         }
     }

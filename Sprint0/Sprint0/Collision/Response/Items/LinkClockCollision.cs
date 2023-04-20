@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (clockRectangle.Intersects(linkRectangle))
             {
-                clock.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 clock.Dispose();
-                if (!game.soundEffects.IsPlaying("GetItem"))
-                {
-                    game.soundEffects.PlaySound("GetItem");
-                }
+                game.soundEffects.PlaySound("GetItem");
             }
         }
     }

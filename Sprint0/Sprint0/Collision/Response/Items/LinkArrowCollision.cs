@@ -30,13 +30,10 @@ namespace Sprint0.Collision.Response.Items
             arrowRectangle = new Rectangle((int)arrow.location.X, (int)arrow.location.Y, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
 
             if (arrowRectangle.Intersects(linkRectangle))
-            {
-                arrow.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
+            { 
                 arrow.Dispose();
-                if (!game.soundEffects.IsPlaying("GetItem"))
-                {
-                    game.soundEffects.PlaySound("GetItem");
-                }
+                // if sound is playing, stop it, start new?
+                game.soundEffects.PlaySound("GetItem");
             }
         }
     }

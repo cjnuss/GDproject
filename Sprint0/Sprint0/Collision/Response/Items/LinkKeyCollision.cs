@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (keyRectangle.Intersects(linkRectangle))
             {
-                key.location = new Vector2(GameConstants.Zero);
                 key.Dispose();
-                if (!game.soundEffects.IsPlaying("GetHeartOrKey"))
-                {
-                    game.soundEffects.PlaySound("GetHeartOrKey");
-                }
+                game.soundEffects.PlaySound("GetHeartOrKey");
             }
         }
     }

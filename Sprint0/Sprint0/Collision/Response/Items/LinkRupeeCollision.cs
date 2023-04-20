@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (rupeeRectangle.Intersects(linkRectangle))
             {
-                rupee.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 rupee.Dispose();
-                if (!game.soundEffects.IsPlaying("GetRupee"))
-                {
-                    game.soundEffects.PlaySound("GetRupee");
-                }
+                game.soundEffects.PlaySound("GetRupee");
             }
         }
     }

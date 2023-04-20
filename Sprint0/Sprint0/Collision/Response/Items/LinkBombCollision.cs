@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (bombRectangle.Intersects(linkRectangle))
             {
-                bomb.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 bomb.Dispose();         
-                if (!game.soundEffects.IsPlaying("GetItem"))
-                {
-                    game.soundEffects.PlaySound("GetItem");
-                }
+                game.soundEffects.PlaySound("GetItem");
             }
         }
     }

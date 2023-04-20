@@ -31,12 +31,8 @@ namespace Sprint0.Collision.Response.Items
 
             if (fairyRectangle.Intersects(linkRectangle))
             {
-                fairy.location = new Vector2(GameConstants.Zero, GameConstants.Zero);
                 fairy.Dispose();
-                if (!game.soundEffects.IsPlaying("GetItem"))
-                {
-                    game.soundEffects.PlaySound("GetItem");
-                }
+                game.soundEffects.PlaySound("GetItem");
             }
         }
     }
