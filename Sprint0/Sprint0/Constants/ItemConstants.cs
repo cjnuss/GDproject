@@ -38,5 +38,7 @@ namespace Sprint0
         public const int TriforceHeight = 10, TriforceWidth = 10;
         public const int TriforceTotalFrames = 20;
         public const int TriforcePhase = TriforceTotalFrames / 2;
+        // fire
+        public const int FireWidth = 16, FireHeight = 16;
     }
 }

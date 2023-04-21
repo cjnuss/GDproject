@@ -56,6 +56,7 @@ namespace Sprint0
         public const int AquaProjYDisplacement = 3;
 
         public const int BatDisplacement = 6;
+        public const int BatSize = 16;
         public const int BatTextureFrames = 10;
         public const int BatTotalFrames = 40;
         public const int BatMinFrame = 45;

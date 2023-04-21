@@ -151,6 +151,18 @@
 /processorParam:Quality=Best
 /build:LOZ_Bomb_Drop.wav;bombdrop.wav
 
+#begin LOZ_Enemy_Die.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Enemy_Die.wav;enemydie.wav
+
+#begin LOZ_Enemy_Hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Enemy_Hit.wav;enemyhit.wav
+
 #begin LOZ_Get_Heart.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -204,6 +216,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:mario-luigi.gif;mario.gif
+
+#begin NES - The Legend of Zelda - Enemy Death.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NES - The Legend of Zelda - Enemy Death.png;enemydeath.png
 
 #begin NES - The Legend of Zelda - HUD & Pause Screen.png
 /importer:TextureImporter

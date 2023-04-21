@@ -28,8 +28,6 @@ namespace Sprint0
         {
             KeyBoardController.linkState = LinkConstants.BlueArrow;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
-
-            game.soundEffects.LoadSound(game, "ArrowAndBoomerang", "arrowandboomerang");
             if (!game.soundEffects.IsPlaying("ArrowAndBoomerang"))
                 game.soundEffects.PlaySound("ArrowAndBoomerang");
         }

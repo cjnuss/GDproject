@@ -26,8 +26,6 @@ namespace Sprint0
         public void Execute(GameTime gameTime)
         {
             KeyBoardController.linkState = LinkConstants.WoodenSword;
-
-            game.soundEffects.LoadSound(game, "WoodenSword", "woodensword");
             if (!game.soundEffects.IsPlaying("WoodenSword"))
                 game.soundEffects.PlaySound("WoodenSword");
         }

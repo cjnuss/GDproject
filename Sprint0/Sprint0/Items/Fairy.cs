@@ -56,6 +56,7 @@ namespace Sprint0
         public void Dispose()
         {
             sourceRect = new Rectangle(0, 0, 0, 0);
+            location = new Vector2(GameConstants.Zero, GameConstants.Zero);
         }
     }
 }
