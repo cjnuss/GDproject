@@ -30,8 +30,6 @@ namespace Sprint0
         {
             KeyBoardController.linkState = LinkConstants.Bomb;
             KeyBoardController.location = KeyBoardController.linkSprite.location;
-            
-            game.soundEffects.LoadSound(game, "BombDrop", "bombdrop");
             if (!game.soundEffects.IsPlaying("BombDrop"))
                 game.soundEffects.PlaySound("BombDrop");
         }

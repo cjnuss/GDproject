@@ -16,15 +16,15 @@ namespace Sprint0
     public class Attack
     {
         private Game1 game;
-        private LinkAttacking linkAttacking;
-        private GreenArrow greenArrow;
-        private Fire fire;
-        private Bomb bomb;
-        private BlueArrow blueArrow;
-        private SwordBeam swordBeam;
+        public LinkAttacking linkAttacking;
+        public GreenArrow greenArrow; // debug - public?
+        public Fire fire;
+        public Bomb bomb;
+        public BlueArrow blueArrow;
+        public SwordBeam swordBeam;
 
         // attack keys
-        private bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
+        public bool attackKey = false, arrowKey = false, fireKey = false, bombKey = false, blueArrowKey = false, swordBeamKey = false;
         public Attack(Game1 game, LinkAttacking linkAttacking, GreenArrow greenArrow, Fire fire, Bomb bomb, BlueArrow blueArrow, SwordBeam swordBeam)
         {
             this.game = game; 
@@ -50,6 +50,7 @@ namespace Sprint0
                 fire = new Fire();
                 fireKey = true;
                 fire.direction = dir;
+                fire.toDraw = true;
                 fire.RegisterPos(location);
             }
             if (linkState == LinkConstants.Bomb && !bombKey)

@@ -10,12 +10,14 @@ namespace Sprint0
     // link taking damage
     public class LinkDamageCommand : ICommand
     {
+        private Game1 game;
         private Link link;
         private LinkDamaged linkDamaged;
         private KeyBoardController KeyBoardController;
 
-        public LinkDamageCommand(KeyBoardController KeyBoardController, Link link)
+        public LinkDamageCommand(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
+            this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkDamaged = new LinkDamaged();
@@ -23,8 +25,9 @@ namespace Sprint0
 
         public void Execute(GameTime gameTime)
         {
-            // no direction change necessary
             KeyBoardController.linkState = LinkConstants.Damage; // non-moving sprite
+            if (!game.soundEffects.IsPlaying("LinkHurt"))
+                game.soundEffects.PlaySound("LinkHurt");
         }
     }
 }

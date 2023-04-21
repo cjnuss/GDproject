@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Collision.Detection.Items;
+using Sprint0.Collision.Detection.Enemies;
+using Sprint0.Collision.Response.Enemies;
+using Sprint0.Collision.Response.Items;
+using Sprint0.Collision.Response.Blocks;
 
 namespace Sprint0
 {
@@ -27,6 +32,13 @@ namespace Sprint0
         private ClockCollisionCheck clockCollisionCheck;
         private CompassCollisionCheck compassCollisionCheck;
         private FairyCollisionCheck fairyCollisionCheck;
+
+        private BatSwordCollisionCheck batSwordCollisionCheck;
+        private BatGreenArrowCollisionCheck batGreenArrowCollisionCheck;
+        private BatBombCollisionCheck batBombCollisionCheck;
+        private BatFireCollisionCheck batFireCollisionCheck;
+        private BatBlueArrowCollisionCheck batBlueArrowCollisionCheck;
+        private BatSwordBeamCollisionCheck batSwordBeamCollisionCheck;
 
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
@@ -52,6 +64,13 @@ namespace Sprint0
             compassCollisionCheck = new CompassCollisionCheck(this.KeyBoardController, new LinkCompassCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             fairyCollisionCheck = new FairyCollisionCheck(this.KeyBoardController, new LinkFairyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             roomCollisionCheck.roomType = GameConstants.Zero;
+
+            batSwordCollisionCheck = new BatSwordCollisionCheck(this.KeyBoardController, new BatSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            batGreenArrowCollisionCheck = new BatGreenArrowCollisionCheck(this.KeyBoardController, new BatGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            batBombCollisionCheck = new BatBombCollisionCheck(this.KeyBoardController, new BatBombCollision(this.game1, this.KeyBoardController), this.game1);
+            batFireCollisionCheck = new BatFireCollisionCheck(this.KeyBoardController, new BatFireCollision(this.game1, this.KeyBoardController), this.game1);
+            batBlueArrowCollisionCheck = new BatBlueArrowCollisionCheck(this.KeyBoardController, new BatBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            batSwordBeamCollisionCheck = new BatSwordBeamCollisionCheck(this.KeyBoardController, new BatSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
         }
 
         public void Check()
@@ -71,6 +90,13 @@ namespace Sprint0
             clockCollisionCheck.CheckCollision();
             compassCollisionCheck.CheckCollision();
             fairyCollisionCheck.CheckCollision();
+
+            batSwordCollisionCheck.CheckCollision();
+            batGreenArrowCollisionCheck.CheckCollision();
+            batBombCollisionCheck.CheckCollision();
+            batFireCollisionCheck.CheckCollision();
+            batBlueArrowCollisionCheck.CheckCollision();
+            batSwordBeamCollisionCheck.CheckCollision();
         }
     }
 }

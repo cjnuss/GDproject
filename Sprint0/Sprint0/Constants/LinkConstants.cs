@@ -88,6 +88,7 @@ namespace Sprint0
         public const int FirePhase = FireTotalFrames / 2;
         public const int StillCount = 20;
         // sword beam
+        public const int SwordBeamWidth = 7, SwordBeamHeight = 16;
         public const int SwordBeamTotalFrames = 10;
         public const int SwordBeamPosChange = 12;
         public const int SwordBeamPosChange2 = 5;

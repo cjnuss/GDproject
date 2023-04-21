@@ -19,6 +19,7 @@ namespace Sprint0
 
         public BackgroundAudio backgroundAudio;
         public SoundEffects soundEffects;
+        public SoundManager soundManager;
 
         private KeyBoardController Kcontroller;
         private MouseController Mcontroller;
@@ -42,6 +43,7 @@ namespace Sprint0
 
     protected override void Initialize()
         {
+
             base.Initialize();
         }
 
@@ -64,6 +66,8 @@ namespace Sprint0
             backgroundAudio = new BackgroundAudio();
             backgroundAudio.LoadSound(this);
             soundEffects = new SoundEffects();
+            soundManager = new SoundManager(this);
+            soundManager.LoadAllSounds();
 
             // controller setup
             linkSprite = new Link(this);
@@ -99,6 +103,7 @@ namespace Sprint0
             Kcontroller.Update(gameTime);
             // END
 
+            // DEBUG: refactor this into HUD manager class..
             testingText.Draw(_spriteBatch);
             mainHUD.Draw(_spriteBatch);
             testingHearts.Draw(_spriteBatch);
