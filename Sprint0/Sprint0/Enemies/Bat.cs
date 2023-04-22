@@ -16,7 +16,7 @@ namespace Sprint0
         private Vector2 deathLoc;
         private int width;
         private int height;
-        public bool toDraw = true; // debug : public?
+        public bool toDraw = true;
         private bool death = false;
         private Rectangle source;
         private Rectangle destination;
@@ -121,11 +121,10 @@ namespace Sprint0
             if (death)
             {
                 currentFrame++;
-                if (currentFrame == 37)
+                if (currentFrame == EnemyConstants.DeathFrames)
                 {
                     death = false;
                 }
-
             }
 
         }
@@ -151,16 +150,16 @@ namespace Sprint0
 
             if (death)
             {
-                if (currentFrame <= 5 || currentFrame > 30 && currentFrame < 35)
+                if (currentFrame <= EnemyConstants.DeathFrame1 || currentFrame > EnemyConstants.DeathFrame6 && currentFrame < EnemyConstants.DeathFrame7)
                     frame = EnemyConstants.Frame1;
-                else if (currentFrame <= 10 || currentFrame > 25 && currentFrame <= 30)
+                else if (currentFrame <= EnemyConstants.DeathFrame2 || currentFrame > EnemyConstants.DeathFrame5 && currentFrame <= EnemyConstants.DeathFrame6)
                     frame = EnemyConstants.Frame2;
-                else if (currentFrame <= 15 || currentFrame > 20 && currentFrame <= 25)
+                else if (currentFrame <= EnemyConstants.DeathFrame3 || currentFrame > EnemyConstants.DeathFrame4 && currentFrame <= EnemyConstants.DeathFrame5)
                     frame = EnemyConstants.Frame3;
-                else if (currentFrame <= 20 && currentFrame > 15 && currentFrame <= 20)
+                else if (currentFrame <= EnemyConstants.DeathFrame4 && currentFrame > EnemyConstants.DeathFrame3 && currentFrame <= EnemyConstants.DeathFrame4)
                     frame = EnemyConstants.Frame4;
-                else if (currentFrame == 35)
-                    frame = 4; // magic
+                else if (currentFrame == EnemyConstants.DeathFrame7)
+                    frame = EnemyConstants.Frame5;
 
                 texture = EnemyTextureStorage.Instance.GetEnemyDeath();
                 source = deathFrames[frame];

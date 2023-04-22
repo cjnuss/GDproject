@@ -29,6 +29,11 @@ namespace Sprint0
         public const int SW = 6;
         public const int NW = 7;
 
+        public const int DeathFrames = 37;
+        public const int HitFrames = 16;
+
+        public const int DeathFrame1 = 5, DeathFrame2 = 10, DeathFrame3 = 15, DeathFrame4 = 20,
+                         DeathFrame5 = 25, DeathFrame6 = 30, DeathFrame7 = 35;
 
         public const int Texture1 = 5;
         public const int Texture2 = 10;
@@ -38,6 +43,7 @@ namespace Sprint0
         public const int Frame2 = 1;
         public const int Frame3 = 2;
         public const int Frame4 = 3;
+        public const int Frame5 = 4;
 
         public const int AquaTotalFrames = 20;
         public const int AquaTextureFrames = 20;
@@ -103,5 +109,7 @@ namespace Sprint0
         public const int SkeletonXFrames = 100;
         public const int SkeletonYFrames = 90;
         public const int SkeletonFrameChange = 10;
+        public const int SkeletonSize = 16;
+        public const int SkeletonHP = 2;
     }
 }

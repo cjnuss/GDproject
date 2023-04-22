@@ -31,7 +31,7 @@ namespace Sprint0.Collision.Response.Enemies
             if (batRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
             {
                 bat.Dispose();
-                game.soundEffects.PlaySound("EnemyDie"); // DEBUG : ERROR??? PLAYS SOUND FOREVER..ALWAYS INTERSECTING
+                game.soundEffects.PlaySound("EnemyDie");
             }
         }
     }

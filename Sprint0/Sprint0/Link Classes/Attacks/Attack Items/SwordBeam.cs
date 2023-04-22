@@ -17,6 +17,7 @@ namespace Sprint0
         public Boolean toDraw = false, explodeKey = false;
         private int expOffsetX = GameConstants.Zero, expOffsetY = GameConstants.Zero;
         private int count = GameConstants.Zero;
+        private bool disposed = false;
         Rectangle source, source1, source2, source3;
         Rectangle dest;
 
@@ -216,6 +217,14 @@ namespace Sprint0
                     explodeKey = false;
                 count++;
             }
+        }
+
+        public void Dispose()
+        {
+            toDraw = false;
+            explodeKey = true;
+            //disposed = true;
+            //currentX = GameConstants.Zero; currentY = GameConstants.Zero;
         }
     }
 }
