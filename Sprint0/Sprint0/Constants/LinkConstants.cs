@@ -21,7 +21,7 @@ namespace Sprint0
         // collision
         public const int YChange = 7;
         public const int CollisionSize = 14;
-        public const int Correction = 2;
+        public const int Correction = 1;
         // locations
         public const int InitialX = 200;
         public const int InitialY = 400;

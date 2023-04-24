@@ -1,6 +1,6 @@
 ﻿BLOCKS
-twoByThree,205,330
-twoByThree,505,330
+twoByThree,205,324
+twoByThree,505,324
 ITEMS
 ENEMIES
 skeleton,250,237
