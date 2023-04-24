@@ -32,6 +32,7 @@ namespace Sprint0
         private HpHearts testingHearts;
         private MainHUD mainHUD;
         private PlayerMap playerMap;
+        public LinkItems linkItems;
         private Counts HUDnumbers;
 
         public IRoom currentRoom;
@@ -40,9 +41,10 @@ namespace Sprint0
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-    }
+            linkItems = new LinkItems();
+        }
 
-    protected override void Initialize()
+        protected override void Initialize()
         {
 
             base.Initialize();
@@ -84,7 +86,8 @@ namespace Sprint0
             testingHearts = new HpHearts(this);
             mainHUD = new MainHUD(this);
             playerMap = new PlayerMap(this);
-            HUDnumbers = new Counts(this);
+            
+            HUDnumbers = new Counts(this, linkItems);
         }
 
         protected override void Update(GameTime gameTime)
@@ -109,6 +112,8 @@ namespace Sprint0
             mainHUD.Draw(_spriteBatch);
             testingHearts.Draw(_spriteBatch);
             playerMap.Draw(_spriteBatch);
+
+            HUDnumbers.Update();
             HUDnumbers.Draw(_spriteBatch);
 
             _spriteBatch.End();

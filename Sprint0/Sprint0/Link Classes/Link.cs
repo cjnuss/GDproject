@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Link_Classes;
 using Sprint0.Link_Classes.Item_Usage;
+using Sprint0.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,8 @@ namespace Sprint0
         private SwordBeam swordBeam;
 
         private ILinkSprite[] sprites;
-        
+        public LinkItems linkItems;
+        private Counts itemCounts;
         public Link(Game1 game)
         {
             this.game = game;
@@ -56,12 +58,15 @@ namespace Sprint0
 
             sprites = new ILinkSprite[] {linkLooking, linkMoving, linkDamaged, linkAttacking, linkThrowing};
             attack = new Attack(game, linkAttacking, greenArrow, fire, bomb, blueArrow, swordBeam);
-        }
 
+            linkItems = new LinkItems();
+            itemCounts = new Counts(this.game, linkItems);
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprites[currentSprite].Draw(spriteBatch, location);
             attack.Draw(spriteBatch, location);
+            //itemCounts.Draw(spriteBatch);
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
