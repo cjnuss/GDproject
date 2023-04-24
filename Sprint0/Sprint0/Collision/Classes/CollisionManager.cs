@@ -62,6 +62,13 @@ namespace Sprint0
         private GelBlueArrowCollisionCheck gelBlueArrowCollisionCheck;
         private GelSwordBeamCollisionCheck gelSwordBeamCollisionCheck;
 
+        private AquamentusSwordCollisionCheck aquamentusSwordCollisionCheck;
+        private AquamentusGreenArrowCollisionCheck aquamentusGreenArrowCollisionCheck;
+        private AquamentusBombCollisionCheck aquamentusBombCollisionCheck;
+        private AquamentusFireCollisionCheck aquamentusFireCollisionCheck;
+        private AquamentusBlueArrowCollisionCheck aquamentusBlueArrowCollisionCheck;
+        private AquamentusSwordBeamCollisionCheck aquamentusSwordBeamCollisionCheck;
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -114,6 +121,14 @@ namespace Sprint0
             gelBombCollisionCheck = new GelBombCollisionCheck(this.KeyBoardController, new GelBombCollision(this.game1, this.KeyBoardController), this.game1);
             gelSwordCollisionCheck = new GelSwordCollisionCheck(this.KeyBoardController, new GelSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             gelSwordBeamCollisionCheck = new GelSwordBeamCollisionCheck(this.KeyBoardController, new GelSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
+            aquamentusGreenArrowCollisionCheck = new AquamentusGreenArrowCollisionCheck(this.KeyBoardController, new AquamentusGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusBlueArrowCollisionCheck = new AquamentusBlueArrowCollisionCheck(this.KeyBoardController, new AquamentusBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusFireCollisionCheck = new AquamentusFireCollisionCheck(this.KeyBoardController, new AquamentusFireCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusBombCollisionCheck = new AquamentusBombCollisionCheck(this.KeyBoardController, new AquamentusBombCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusSwordCollisionCheck = new AquamentusSwordCollisionCheck(this.KeyBoardController, new AquamentusSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            aquamentusSwordBeamCollisionCheck = new AquamentusSwordBeamCollisionCheck(this.KeyBoardController, new AquamentusSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
 
         }
 
@@ -168,6 +183,12 @@ namespace Sprint0
             gelSwordCollisionCheck.CheckCollision();
             gelSwordBeamCollisionCheck.CheckCollision();
 
+            aquamentusGreenArrowCollisionCheck.CheckCollision();
+            aquamentusBlueArrowCollisionCheck.CheckCollision();
+            aquamentusFireCollisionCheck.CheckCollision();
+            aquamentusBombCollisionCheck.CheckCollision();
+            aquamentusSwordCollisionCheck.CheckCollision();
+            aquamentusSwordBeamCollisionCheck.CheckCollision();
             #endregion
 
         }
