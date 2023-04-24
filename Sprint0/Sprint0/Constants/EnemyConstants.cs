@@ -45,6 +45,8 @@ namespace Sprint0
         public const int Frame4 = 3;
         public const int Frame5 = 4;
 
+        public const int AquaWidth = 24, AquaHeight = 32;
+        public const int AquaHP = 6;
         public const int AquaTotalFrames = 20;
         public const int AquaTextureFrames = 20;
         public const int AquaDisplacement = 5;
@@ -69,7 +71,7 @@ namespace Sprint0
         public const int BatMaxFrame = 75;
         public const int BatFrameChange = 10;
 
-
+        public const int GelWidth = 8, GelHeight = 16;
         public const int GelTextureFrames = 10;
         public const int GelTotalFrames = 100;
         public const int GelStatic = 5;
@@ -91,6 +93,8 @@ namespace Sprint0
         public const int GoriyaFrameChange = 10;
         public const int GoriyaDisplacement = 5;
 
+        public const int GoriyaSize = 16;
+        public const int GoriyaHP = 3;
         public const int GoriyaProjXAdjustment = 12;
         public const int GoriyaProjTextureFrames = 20;
         public const int GoriyaProjTotalFrames = 40;

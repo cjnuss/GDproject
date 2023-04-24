@@ -30,13 +30,13 @@ namespace Sprint0.Collision.Response.Enemies
             {
                 link.velocity = GameConstants.Zero;
                 if (KeyBoardController.dir == GameConstants.Left)
-                    link.location.X = link.location.X + 80;
+                    link.location.X = link.location.X + 40;
                 else if (KeyBoardController.dir == GameConstants.Right)
-                    link.location.X = link.location.X - 80;
+                    link.location.X = link.location.X - 40;
                 else if (KeyBoardController.dir == GameConstants.Up)
-                    link.location.Y = link.location.Y + 80;
+                    link.location.Y = link.location.Y + 40;
                 else if (KeyBoardController.dir == GameConstants.Down)
-                    link.location.Y = link.location.Y - 80;
+                    link.location.Y = link.location.Y - 40;
             }
         }
     }
