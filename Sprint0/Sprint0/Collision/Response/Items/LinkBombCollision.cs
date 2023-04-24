@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Link_Classes;
+using Sprint0.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,14 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle bombRectangle;
+        private LinkItems linkItems;
 
         public LinkBombCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(BombItem bomb)
@@ -33,6 +36,8 @@ namespace Sprint0.Collision.Response.Items
             {
                 bomb.Dispose();         
                 game.soundEffects.PlaySound("GetItem");
+                linkItems.increaseBomb();
+
             }
         }
     }

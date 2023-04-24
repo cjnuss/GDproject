@@ -16,12 +16,13 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle rupeeRectangle;
-
+        private LinkItems linkItems;
         public LinkRupeeCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(Rupee rupee)
@@ -33,6 +34,7 @@ namespace Sprint0.Collision.Response.Items
             {
                 rupee.Dispose();
                 game.soundEffects.PlaySound("GetRupee");
+                linkItems.increaseRupee();
             }
         }
     }
