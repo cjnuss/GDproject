@@ -55,6 +55,13 @@ namespace Sprint0
         private GoriyaBombCollisionCheck goriyaBombCollisionCheck;
         private GoriyaSwordBeamCollisionCheck goriyaSwordBeamCollisionCheck;
 
+        private GelSwordCollisionCheck gelSwordCollisionCheck;
+        private GelGreenArrowCollisionCheck gelGreenArrowCollisionCheck;
+        private GelBombCollisionCheck gelBombCollisionCheck;
+        private GelFireCollisionCheck gelFireCollisionCheck;
+        private GelBlueArrowCollisionCheck gelBlueArrowCollisionCheck;
+        private GelSwordBeamCollisionCheck gelSwordBeamCollisionCheck;
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -101,6 +108,12 @@ namespace Sprint0
             goriyaBombCollisionCheck = new GoriyaBombCollisionCheck(this.KeyBoardController, new GoriyaBombCollision(this.game1, this.KeyBoardController), this.game1);
             goriyaSwordBeamCollisionCheck = new GoriyaSwordBeamCollisionCheck(this.KeyBoardController, new GoriyaSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
 
+            gelGreenArrowCollisionCheck = new GelGreenArrowCollisionCheck(this.KeyBoardController, new GelGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            gelBlueArrowCollisionCheck = new GelBlueArrowCollisionCheck(this.KeyBoardController, new GelBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            gelFireCollisionCheck = new GelFireCollisionCheck(this.KeyBoardController, new GelFireCollision(this.game1, this.KeyBoardController), this.game1);
+            gelBombCollisionCheck = new GelBombCollisionCheck(this.KeyBoardController, new GelBombCollision(this.game1, this.KeyBoardController), this.game1);
+            gelSwordCollisionCheck = new GelSwordCollisionCheck(this.KeyBoardController, new GelSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            gelSwordBeamCollisionCheck = new GelSwordBeamCollisionCheck(this.KeyBoardController, new GelSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
 
         }
 
@@ -147,6 +160,13 @@ namespace Sprint0
             goriyaFireCollisionCheck.CheckCollision();
             goriyaBombCollisionCheck.CheckCollision();
             goriyaSwordBeamCollisionCheck.CheckCollision();
+
+            gelGreenArrowCollisionCheck.CheckCollision();
+            gelBlueArrowCollisionCheck.CheckCollision();
+            gelFireCollisionCheck.CheckCollision();
+            gelBombCollisionCheck.CheckCollision();
+            gelSwordCollisionCheck.CheckCollision();
+            gelSwordBeamCollisionCheck.CheckCollision();
 
             #endregion
 
