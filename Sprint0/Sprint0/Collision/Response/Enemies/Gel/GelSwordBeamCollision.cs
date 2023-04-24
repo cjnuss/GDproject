@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class SkeletonSwordBeamCollision
+    public class GelSwordBeamCollision
     {
         public Game1 game;
         private Link link;
         private KeyBoardController KeyBoardController;
         private Rectangle swordBeamRectangle;
-        private Rectangle skeletonRectangle;
+        private Rectangle gelRectangle;
 
-        public SkeletonSwordBeamCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
+        public GelSwordBeamCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
         }
 
-        public void Update(Skeleton skeleton)
+        public void Update(Gel gel)
         {
             if (KeyBoardController.dir == GameConstants.Up || KeyBoardController.dir == GameConstants.Up)
                 swordBeamRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.swordBeam.currentX, (int)KeyBoardController.linkSprite.attack.swordBeam.currentY, LinkConstants.SwordBeamWidth * GameConstants.Sizing, LinkConstants.SwordBeamHeight * GameConstants.Sizing);
@@ -34,24 +34,13 @@ namespace Sprint0
                 swordBeamRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.swordBeam.currentX, (int)KeyBoardController.linkSprite.attack.swordBeam.currentY, LinkConstants.SwordBeamHeight * GameConstants.Sizing, LinkConstants.SwordBeamWidth * GameConstants.Sizing);
 
 
-            skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
+            gelRectangle = new Rectangle((int)gel.location.X, (int)gel.location.Y, EnemyConstants.GelWidth * GameConstants.Sizing, EnemyConstants.GelHeight * GameConstants.Sizing);
 
-            if (skeletonRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
+            if (gelRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
             {
                 //KeyBoardController.linkSprite.attack.swordBeam.Dispose(); debug??
-                if (skeleton.hits < EnemyConstants.SkeletonHP)
-                {
-                    if (!skeleton.hit)
-                        skeleton.Hit(KeyBoardController.linkSprite.attack.swordBeam.direction);
-
-                    if (!game.soundEffects.IsPlaying("EnemyHit"))
-                        game.soundEffects.PlaySound("EnemyHit");
-                }
-                else
-                {
-                    skeleton.Dispose();
-                    game.soundEffects.PlaySound("EnemyDie");
-                }
+                gel.Dispose();
+                game.soundEffects.PlaySound("EnemyDie");
             }
         }
     }

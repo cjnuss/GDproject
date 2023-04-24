@@ -19,7 +19,7 @@ namespace Sprint0
         private Link link;
         private Skeleton skeleton;
 
-        public SkeletonSwordBeamCollisionCheck(KeyBoardController KeyBoardController, BatSwordBeamCollision batSwordBeamCollision, Game1 game, Link link)
+        public SkeletonSwordBeamCollisionCheck(KeyBoardController KeyBoardController, SkeletonSwordBeamCollision skeletonSwordBeamCollision, Game1 game, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.game = game;
