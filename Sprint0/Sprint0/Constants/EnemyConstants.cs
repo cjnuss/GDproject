@@ -91,6 +91,8 @@ namespace Sprint0
         public const int GoriyaFrameChange = 10;
         public const int GoriyaDisplacement = 5;
 
+        public const int GoriyaSize = 16;
+        public const int GoriyaHP = 3;
         public const int GoriyaProjXAdjustment = 12;
         public const int GoriyaProjTextureFrames = 20;
         public const int GoriyaProjTotalFrames = 40;

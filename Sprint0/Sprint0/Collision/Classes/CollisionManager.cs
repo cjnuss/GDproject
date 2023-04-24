@@ -48,6 +48,13 @@ namespace Sprint0
         private SkeletonSwordCollisionCheck skeletonSwordCollisionCheck;
         private SkeletonSwordBeamCollisionCheck skeletonSwordBeamCollisionCheck;
 
+        private GoriyaGreenArrowCollisionCheck goriyaGreenArrowCollisionCheck;
+        private GoriyaSwordCollisionCheck goriyaSwordCollisionCheck;
+        private GoriyaBlueArrowCollisionCheck goriyaBlueArrowCollisionCheck;
+        private GoriyaFireCollisionCheck goriyaFireCollisionCheck;
+        private GoriyaBombCollisionCheck goriyaBombCollisionCheck;
+        private GoriyaSwordBeamCollisionCheck goriyaSwordBeamCollisionCheck;
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -85,7 +92,15 @@ namespace Sprint0
             skeletonFireCollisionCheck = new SkeletonFireCollisionCheck(this.KeyBoardController, new SkeletonFireCollision(this.game1, this.KeyBoardController), this.game1);
             skeletonBombCollisionCheck = new SkeletonBombCollisionCheck(this.KeyBoardController, new SkeletonBombCollision(this.game1, this.KeyBoardController), this.game1);
             skeletonSwordCollisionCheck = new SkeletonSwordCollisionCheck(this.KeyBoardController, new SkeletonSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
-            skeletonSwordBeamCollisionCheck = new SkeletonSwordBeamCollisionCheck(this.KeyBoardController, new BatSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            skeletonSwordBeamCollisionCheck = new SkeletonSwordBeamCollisionCheck(this.KeyBoardController, new SkeletonSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
+            goriyaGreenArrowCollisionCheck = new GoriyaGreenArrowCollisionCheck(this.KeyBoardController, new GoriyaGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            goriyaSwordCollisionCheck = new GoriyaSwordCollisionCheck(this.KeyBoardController, new GoriyaSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            goriyaBlueArrowCollisionCheck = new GoriyaBlueArrowCollisionCheck(this.KeyBoardController, new GoriyaBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            goriyaFireCollisionCheck = new GoriyaFireCollisionCheck(this.KeyBoardController, new GoriyaFireCollision(this.game1, this.KeyBoardController), this.game1);
+            goriyaBombCollisionCheck = new GoriyaBombCollisionCheck(this.KeyBoardController, new GoriyaBombCollision(this.game1, this.KeyBoardController), this.game1);
+            goriyaSwordBeamCollisionCheck = new GoriyaSwordBeamCollisionCheck(this.KeyBoardController, new GoriyaSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
 
         }
 
@@ -126,6 +141,12 @@ namespace Sprint0
             skeletonSwordCollisionCheck.CheckCollision();
             skeletonSwordBeamCollisionCheck.CheckCollision();
 
+            goriyaGreenArrowCollisionCheck.CheckCollision();
+            goriyaSwordCollisionCheck.CheckCollision();
+            goriyaBlueArrowCollisionCheck.CheckCollision();
+            goriyaFireCollisionCheck.CheckCollision();
+            goriyaBombCollisionCheck.CheckCollision();
+            goriyaSwordBeamCollisionCheck.CheckCollision();
 
             #endregion
 
