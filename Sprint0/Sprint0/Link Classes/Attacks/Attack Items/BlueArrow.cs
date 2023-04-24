@@ -195,5 +195,11 @@ namespace Sprint0
             dest = new Rectangle(currentX, currentY, source.Width * GameConstants.Sizing, source.Height * GameConstants.Sizing);
             spriteBatch.Draw(texture, dest, source, Color.White);
         }
+
+        public void Dispose()
+        {
+            toDraw = false;
+            currentX = GameConstants.Zero; currentY = GameConstants.Zero;
+        }
     }
 }
