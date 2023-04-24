@@ -7,37 +7,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Sprint0
 {
-    public class BatGreenArrowCollision
+    public class SkeletonGreenArrowCollision
     {
         public Game1 game;
         private KeyBoardController KeyBoardController;
         private Rectangle arrowRectangle;
-        private Rectangle batRectangle;
+        private Rectangle skeletonRectangle;
 
-        public BatGreenArrowCollision(Game1 game, KeyBoardController KeyBoardController)
+        public SkeletonGreenArrowCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
         }
 
-        public void Update(Bat bat)
+        public void Update(Skeleton skeleton)
         {
-            // DEBUG : MAIN ISSUE -> DIRECTION OF ARROW RELATIVE TO HEIGHT AND WIDTH (CHANGES BASED ON DIR)
             if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
                 arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.greenArrow.currentX, KeyBoardController.linkSprite.attack.greenArrow.currentY, ItemConstants.ArrowHeight * GameConstants.Sizing, ItemConstants.ArrowWidth * GameConstants.Sizing);
             else
                 arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.greenArrow.currentX, KeyBoardController.linkSprite.attack.greenArrow.currentY, ItemConstants.ArrowWidth * GameConstants.Sizing, ItemConstants.ArrowHeight * GameConstants.Sizing);
 
-            batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
+            skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
+            if (skeletonRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
             {
                 KeyBoardController.linkSprite.attack.greenArrow.Dispose();
-                bat.Dispose();
-                game.soundEffects.PlaySound("EnemyDie");
+                if (skeleton.hits < EnemyConstants.SkeletonHP)
+                {
+                    if (!skeleton.hit)
+                        skeleton.Hit(KeyBoardController.linkSprite.attack.greenArrow.direction);
+
+                    if (!game.soundEffects.IsPlaying("EnemyHit"))
+                        game.soundEffects.PlaySound("EnemyHit");
+                }
+                else
+                {
+                    skeleton.Dispose();
+                    game.soundEffects.PlaySound("EnemyDie");
+                }
             }
         }
     }

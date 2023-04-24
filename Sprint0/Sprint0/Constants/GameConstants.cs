@@ -43,5 +43,8 @@ namespace Sprint0
         public const int LevelState1 = 0;
         public const int LevelState2 = 16;
         // DEBUG: target rectangle in MouseController?
+
+        // pushback for enemies
+        public const int EnemyPushBack = 4;
     }
 }

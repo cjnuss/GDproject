@@ -18,6 +18,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Game1 game1;
         private Link linkSprite;
+
         private BlockCollisionCheck blockCollisionCheck;
         private TriforceCollisionCheck triforceCollisionCheck;
         private ArrowCollisionCheck arrowCollisionCheck;
@@ -39,6 +40,13 @@ namespace Sprint0
         private BatFireCollisionCheck batFireCollisionCheck;
         private BatBlueArrowCollisionCheck batBlueArrowCollisionCheck;
         private BatSwordBeamCollisionCheck batSwordBeamCollisionCheck;
+
+        private SkeletonGreenArrowCollisionCheck skeletonGreenArrowCollisionCheck;
+        private SkeletonBlueArrowCollisionCheck skeletonBlueArrowCollisionCheck;
+        private SkeletonFireCollisionCheck skeletonFireCollisionCheck;
+        private SkeletonBombCollisionCheck skeletonBombCollisionCheck;
+        private SkeletonSwordCollisionCheck skeletonSwordCollisionCheck;
+        private SkeletonSwordBeamCollisionCheck skeletonSwordBeamCollisionCheck;
 
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
@@ -71,18 +79,29 @@ namespace Sprint0
             batFireCollisionCheck = new BatFireCollisionCheck(this.KeyBoardController, new BatFireCollision(this.game1, this.KeyBoardController), this.game1);
             batBlueArrowCollisionCheck = new BatBlueArrowCollisionCheck(this.KeyBoardController, new BatBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
             batSwordBeamCollisionCheck = new BatSwordBeamCollisionCheck(this.KeyBoardController, new BatSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
+            skeletonGreenArrowCollisionCheck = new SkeletonGreenArrowCollisionCheck(this.KeyBoardController, new SkeletonGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            skeletonBlueArrowCollisionCheck = new SkeletonBlueArrowCollisionCheck(this.KeyBoardController, new SkeletonBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            skeletonFireCollisionCheck = new SkeletonFireCollisionCheck(this.KeyBoardController, new SkeletonFireCollision(this.game1, this.KeyBoardController), this.game1);
+            skeletonBombCollisionCheck = new SkeletonBombCollisionCheck(this.KeyBoardController, new SkeletonBombCollision(this.game1, this.KeyBoardController), this.game1);
+            skeletonSwordCollisionCheck = new SkeletonSwordCollisionCheck(this.KeyBoardController, new SkeletonSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            skeletonSwordBeamCollisionCheck = new SkeletonSwordBeamCollisionCheck(this.KeyBoardController, new BatSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
         }
 
         public void Check()
         {
+            #region Top Level Game Collisions
             blockCollisionCheck.CheckCollision();
+            enemyCollisionCheck.CheckCollision();
+            roomCollisionCheck.CheckCollision();
+            #endregion
+
+            #region Link Item Collisions
             triforceCollisionCheck.CheckCollision();
             arrowCollisionCheck.CheckCollision();
             bombCollisionCheck.CheckCollision();
             rupeeCollisionCheck.CheckCollision();
-            triforceCollisionCheck.CheckCollision();
-            roomCollisionCheck.CheckCollision();
-            enemyCollisionCheck.CheckCollision();
             heartCollisionCheck.CheckCollision();
             keyCollisionCheck.CheckCollision();
             mapCollisionCheck.CheckCollision();
@@ -90,13 +109,26 @@ namespace Sprint0
             clockCollisionCheck.CheckCollision();
             compassCollisionCheck.CheckCollision();
             fairyCollisionCheck.CheckCollision();
+            #endregion
 
+            #region Enemy & Link Attack Collisions
             batSwordCollisionCheck.CheckCollision();
             batGreenArrowCollisionCheck.CheckCollision();
             batBombCollisionCheck.CheckCollision();
             batFireCollisionCheck.CheckCollision();
             batBlueArrowCollisionCheck.CheckCollision();
             batSwordBeamCollisionCheck.CheckCollision();
+
+            skeletonGreenArrowCollisionCheck.CheckCollision();
+            skeletonBlueArrowCollisionCheck.CheckCollision();
+            skeletonFireCollisionCheck.CheckCollision();
+            skeletonBombCollisionCheck.CheckCollision();
+            skeletonSwordCollisionCheck.CheckCollision();
+            skeletonSwordBeamCollisionCheck.CheckCollision();
+
+
+            #endregion
+
         }
     }
 }

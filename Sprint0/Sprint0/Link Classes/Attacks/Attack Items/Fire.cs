@@ -120,5 +120,11 @@ namespace Sprint0
                 spriteBatch.Draw(texture, dest, source, Color.White);
             }
         }
+
+        public void Dispose()
+        {
+            toDraw = false;
+            currentX = GameConstants.Zero; currentY = GameConstants.Zero;
+        }
     }
 }
