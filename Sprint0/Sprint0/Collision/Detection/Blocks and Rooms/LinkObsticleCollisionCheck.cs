@@ -40,9 +40,6 @@ namespace Sprint0
                     LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - block.location.X >= 0 && KeyBoardController.linkSprite.location.X - block.location.X <= block.width))
                 {
                     linkBlockCollision.Update(block);
-                } else
-                {
-                    linkWallCollision.Update();
                 }
 
                 if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
@@ -51,11 +48,8 @@ namespace Sprint0
                     break;
                 }
             }
-
-            if (game1.currentRoom.GetBlocks().Count == 0)
-            {
-                linkWallCollision.Update();
-            }
+            
+            linkWallCollision.Update();
         }
     }
 }
