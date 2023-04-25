@@ -16,12 +16,13 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle compassRectangle;
-
+        private LinkItems linkItems;
         public LinkCompassCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(Compass compass)
@@ -33,6 +34,7 @@ namespace Sprint0.Collision.Response.Items
             {
                 compass.Dispose();
                 game.soundEffects.PlaySound("GetItem");
+                linkItems.compass = true;
             }
         }
     }

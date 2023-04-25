@@ -16,12 +16,13 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle bowRectangle;
-
+        private LinkItems linkItems;
         public LinkBowCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(Bow bow)
@@ -33,6 +34,7 @@ namespace Sprint0.Collision.Response.Items
             {
                 bow.Dispose();
                 game.soundEffects.PlaySound("GetItem");
+                linkItems.clock = true;
             }
         }
     }
