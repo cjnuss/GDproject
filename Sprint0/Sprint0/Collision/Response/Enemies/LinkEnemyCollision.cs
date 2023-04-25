@@ -14,11 +14,12 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle enemyRectangle;
-
-        public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link)
+        private LinkHP linkHP;
+        public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
             this.link = link;
             this.KeyBoardController = KeyBoardController;
+            linkHP = game.linkHealth;
         }
 
         public void Update(IEnemy collisionEnemy)
@@ -28,6 +29,10 @@ namespace Sprint0.Collision.Response.Enemies
 
             if (enemyRectangle.Intersects(linkRectangle))
             {
+                if (linkHP.health > 0)
+                {
+                    linkHP.health--;
+                }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);
                 link.velocity = GameConstants.Zero;
