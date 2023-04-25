@@ -33,15 +33,13 @@ namespace Sprint0.Collision.Response.Enemies
                 {
                     linkHP.health--;
                 }
+                link.UpdateDirection(KeyBoardController.dir);
+                link.UpdateSprite(LinkConstants.Damage);
                 link.velocity = GameConstants.Zero;
-                if (KeyBoardController.dir == GameConstants.Left)
-                    link.location.X = link.location.X + 40;
-                else if (KeyBoardController.dir == GameConstants.Right)
-                    link.location.X = link.location.X - 40;
-                else if (KeyBoardController.dir == GameConstants.Up)
-                    link.location.Y = link.location.Y + 40;
-                else if (KeyBoardController.dir == GameConstants.Down)
-                    link.location.Y = link.location.Y - 40;
+            } else
+            {
+                link.UpdateSprite(LinkConstants.Default);
+                link.velocity = LinkConstants.Velocity;
             }
         }
     }

@@ -13,8 +13,8 @@ namespace Sprint0
 {
     public class Gel : IEnemy
     {
-        private int width;
-        private int height;
+        private int width = EnemyConstants.GelWidth;
+        private int height = EnemyConstants.GelHeight;
         private Texture2D texture;
         private Vector2 deathLoc;
         //private int width;

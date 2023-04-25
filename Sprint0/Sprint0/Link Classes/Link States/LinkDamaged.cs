@@ -14,7 +14,6 @@ namespace Sprint0
     {
         public int frame, currentFrame, totalFrames, direction;
         private Texture2D texture;
-        public int damageCounter { get; set; }
 
         private static List<Rectangle> LinkTakingDamage = new List<Rectangle>()
         {
@@ -32,7 +31,6 @@ namespace Sprint0
             direction = GameConstants.Down;
             currentFrame = GameConstants.Zero;
             totalFrames = LinkConstants.TotalDamageFrames;
-            damageCounter = 0;  
         }
 
         public void Update()

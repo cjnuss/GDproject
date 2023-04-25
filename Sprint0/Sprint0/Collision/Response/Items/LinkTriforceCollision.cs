@@ -35,7 +35,6 @@ namespace Sprint0.Collision.Response.Items
                 game.backgroundAudio.StopSound();
                 game.soundEffects.PlaySound("Triforce");
                 linkItems.triforce = true;
-                game.win = true;
             }
         }
     }

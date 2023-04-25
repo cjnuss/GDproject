@@ -15,7 +15,6 @@ namespace Sprint0
         // DEBUG
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public bool win = false;
         //private SpriteFont font;
 
         public BackgroundAudio backgroundAudio;
