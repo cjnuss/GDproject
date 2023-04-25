@@ -21,6 +21,7 @@ namespace Sprint0
         private int currentSprite = LinkConstants.Default;
         public Vector2 location;
         public float velocity = LinkConstants.Velocity;
+        public int damageCounter { get; set; }
 
         public Attack attack; // debug - public?
 
@@ -39,6 +40,8 @@ namespace Sprint0
         private ILinkSprite[] sprites;
         public LinkItems linkItems;
         private Counts itemCounts;
+
+        private int linkDirection;
         public Link(Game1 game)
         {
             this.game = game;
@@ -61,6 +64,8 @@ namespace Sprint0
 
             linkItems = new LinkItems();
             itemCounts = new Counts(this.game, linkItems);
+
+            damageCounter = 0;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -70,15 +75,35 @@ namespace Sprint0
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
-            UpdateDirection(dir);
-            currentSprite = UpdateSprite(linkState);
-            linkMoving.Update();
-            attack.Update(linkState, ref currentSprite, dir, location);
+            if(damageCounter == 0)
+            {
+                UpdateDirection(dir);
+                currentSprite = UpdateSprite(linkState);
+                linkMoving.Update();
+                attack.Update(linkState, ref currentSprite, dir, location);
+            } else
+            {
+                damageCounter--;
+                currentSprite = LinkConstants.Damage;
+                if (linkDirection == GameConstants.Left)
+                    this.location.X = this.location.X + 10;
+                else if (linkDirection == GameConstants.Right)
+                    this.location.X = this.location.X - 10;
+                else if (linkDirection == GameConstants.Up)
+                    this.location.Y = this.location.Y + 10;
+                else if (linkDirection == GameConstants.Down)
+                    this.location.Y = this.location.Y - 10;
+            }
         }
 
         public int UpdateSprite(int linkState)
         {
-            if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire ||
+            if (linkState == LinkConstants.Damage && damageCounter == 0)
+            {
+                damageCounter = 10;
+                return linkState;
+            }
+            else if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire ||
                     linkState == LinkConstants.Bomb || linkState == LinkConstants.BlueArrow)
                 return LinkConstants.Throwing;
             else if (linkState != LinkConstants.SwordBeam)
@@ -94,6 +119,8 @@ namespace Sprint0
             linkMoving.direction = dir;
             //linkAttacking.direction = dir;
             linkThrowing.direction = dir;
+
+            linkDirection = dir;
         }
     }
 }
