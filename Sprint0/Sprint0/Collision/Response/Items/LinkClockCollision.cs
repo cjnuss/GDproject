@@ -16,12 +16,15 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle clockRectangle;
+        private LinkItems linkItems;
 
         public LinkClockCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
+
         }
 
         public void Update(Clock clock)
@@ -33,6 +36,7 @@ namespace Sprint0.Collision.Response.Items
             {
                 clock.Dispose();
                 game.soundEffects.PlaySound("GetItem");
+                linkItems.clock = true;
             }
         }
     }

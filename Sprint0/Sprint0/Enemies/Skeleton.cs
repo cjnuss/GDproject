@@ -213,6 +213,7 @@ namespace Sprint0
             direction = dir;
             hit = true;
             currentFrame = GameConstants.Zero;
+            count = GameConstants.Zero;
         }
 
         public void Dispose()

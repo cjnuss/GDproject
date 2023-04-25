@@ -16,12 +16,13 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle fairyRectangle;
-
+        private LinkItems linkItems;
         public LinkFairyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(Fairy fairy)
@@ -33,6 +34,7 @@ namespace Sprint0.Collision.Response.Items
             {
                 fairy.Dispose();
                 game.soundEffects.PlaySound("GetItem");
+                linkItems.fairy = true;
             }
         }
     }

@@ -19,6 +19,7 @@ namespace Sprint0.UI
         Rectangle halfRect;
         Rectangle emptyRect;
         Rectangle blackRect;
+        LinkHP linkHP;
         private int hp;
         private int first, second, third, fourth, height;
         public HpHearts(Game1 game) 
@@ -29,6 +30,7 @@ namespace Sprint0.UI
             halfRect = UITextureStorage.halfHeart;
             emptyRect = UITextureStorage.emptyHeart;
             blackRect = UITextureStorage.AnnoyingAssBoxes;
+            linkHP = game1.linkHealth;
             hp = 8;
             first = 533;
             second = 532 + (8 * 3);
@@ -89,6 +91,7 @@ namespace Sprint0.UI
         }
         public void Update()
         {
+            hp = game1.linkHealth.health;
         }
     }
 }

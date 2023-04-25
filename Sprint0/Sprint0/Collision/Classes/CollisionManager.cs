@@ -54,6 +54,20 @@ namespace Sprint0
         private GoriyaBombCollisionCheck goriyaBombCollisionCheck;
         private GoriyaSwordBeamCollisionCheck goriyaSwordBeamCollisionCheck;
 
+        private GelSwordCollisionCheck gelSwordCollisionCheck;
+        private GelGreenArrowCollisionCheck gelGreenArrowCollisionCheck;
+        private GelBombCollisionCheck gelBombCollisionCheck;
+        private GelFireCollisionCheck gelFireCollisionCheck;
+        private GelBlueArrowCollisionCheck gelBlueArrowCollisionCheck;
+        private GelSwordBeamCollisionCheck gelSwordBeamCollisionCheck;
+
+        private AquamentusSwordCollisionCheck aquamentusSwordCollisionCheck;
+        private AquamentusGreenArrowCollisionCheck aquamentusGreenArrowCollisionCheck;
+        private AquamentusBombCollisionCheck aquamentusBombCollisionCheck;
+        private AquamentusFireCollisionCheck aquamentusFireCollisionCheck;
+        private AquamentusBlueArrowCollisionCheck aquamentusBlueArrowCollisionCheck;
+        private AquamentusSwordBeamCollisionCheck aquamentusSwordBeamCollisionCheck;
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -97,6 +111,20 @@ namespace Sprint0
             goriyaFireCollisionCheck = new GoriyaFireCollisionCheck(this.KeyBoardController, new GoriyaFireCollision(this.game1, this.KeyBoardController), this.game1);
             goriyaBombCollisionCheck = new GoriyaBombCollisionCheck(this.KeyBoardController, new GoriyaBombCollision(this.game1, this.KeyBoardController), this.game1);
             goriyaSwordBeamCollisionCheck = new GoriyaSwordBeamCollisionCheck(this.KeyBoardController, new GoriyaSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
+            gelGreenArrowCollisionCheck = new GelGreenArrowCollisionCheck(this.KeyBoardController, new GelGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            gelBlueArrowCollisionCheck = new GelBlueArrowCollisionCheck(this.KeyBoardController, new GelBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            gelFireCollisionCheck = new GelFireCollisionCheck(this.KeyBoardController, new GelFireCollision(this.game1, this.KeyBoardController), this.game1);
+            gelBombCollisionCheck = new GelBombCollisionCheck(this.KeyBoardController, new GelBombCollision(this.game1, this.KeyBoardController), this.game1);
+            gelSwordCollisionCheck = new GelSwordCollisionCheck(this.KeyBoardController, new GelSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            gelSwordBeamCollisionCheck = new GelSwordBeamCollisionCheck(this.KeyBoardController, new GelSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+
+            aquamentusGreenArrowCollisionCheck = new AquamentusGreenArrowCollisionCheck(this.KeyBoardController, new AquamentusGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusBlueArrowCollisionCheck = new AquamentusBlueArrowCollisionCheck(this.KeyBoardController, new AquamentusBlueArrowCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusFireCollisionCheck = new AquamentusFireCollisionCheck(this.KeyBoardController, new AquamentusFireCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusBombCollisionCheck = new AquamentusBombCollisionCheck(this.KeyBoardController, new AquamentusBombCollision(this.game1, this.KeyBoardController), this.game1);
+            aquamentusSwordCollisionCheck = new AquamentusSwordCollisionCheck(this.KeyBoardController, new AquamentusSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            aquamentusSwordBeamCollisionCheck = new AquamentusSwordBeamCollisionCheck(this.KeyBoardController, new AquamentusSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
 
 
         }
@@ -144,6 +172,19 @@ namespace Sprint0
             goriyaBombCollisionCheck.CheckCollision();
             goriyaSwordBeamCollisionCheck.CheckCollision();
 
+            gelGreenArrowCollisionCheck.CheckCollision();
+            gelBlueArrowCollisionCheck.CheckCollision();
+            gelFireCollisionCheck.CheckCollision();
+            gelBombCollisionCheck.CheckCollision();
+            gelSwordCollisionCheck.CheckCollision();
+            gelSwordBeamCollisionCheck.CheckCollision();
+
+            aquamentusGreenArrowCollisionCheck.CheckCollision();
+            aquamentusBlueArrowCollisionCheck.CheckCollision();
+            aquamentusFireCollisionCheck.CheckCollision();
+            aquamentusBombCollisionCheck.CheckCollision();
+            aquamentusSwordCollisionCheck.CheckCollision();
+            aquamentusSwordBeamCollisionCheck.CheckCollision();
             #endregion
 
         }

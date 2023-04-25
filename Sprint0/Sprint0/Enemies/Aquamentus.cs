@@ -14,13 +14,22 @@ namespace Sprint0
     {
         private int width;
         private int height;
+        private Texture2D texture;
+        private Vector2 deathLoc;
+        private int direction;
+        public bool toDraw = true;
+        private bool death = false;
+        private Rectangle source;
+        private Rectangle destination;
+        public Vector2 location;
+        public int hits = GameConstants.Zero, count = GameConstants.Zero;
+        public bool hit = false;
 
         public Vector2 GetSize()
         {
             return new Vector2(width, height);
         }
 
-        public Vector2 location;
         public Vector2 GetLocation()
         {
             return location;
@@ -42,6 +51,16 @@ namespace Sprint0
             EnemyTextureStorage.Aquamentus2,
             EnemyTextureStorage.Aquamentus3,
             EnemyTextureStorage.Aquamentus4,
+            new Rectangle(0,0,0,0)
+        };
+
+        private static List<Rectangle> deathFrames = new List<Rectangle>
+        {
+            EnemyTextureStorage.EnemyDeath1,
+            EnemyTextureStorage.EnemyDeath2,
+            EnemyTextureStorage.EnemyDeath3,
+            EnemyTextureStorage.EnemyDeath4,
+            new Rectangle(0,0,0,0)
         };
 
         public Aquamentus(Vector2 coords)
@@ -59,58 +78,139 @@ namespace Sprint0
 
         public void Update()
         {
-            if (projCount == EnemyConstants.Zero)
+            if (toDraw)
             {
-                projectileSprite = new AquamentusProjectile(location);
-            }
-            projCount++;
-            textureFrame++;
-            currentFrame++;
-            if (textureFrame == EnemyConstants.AquaTextureFrames)
-            {
-                textureFrame = EnemyConstants.Zero;
-            }
-            if (currentFrame == totalFrames)
-            {
-                currentFrame = EnemyConstants.Zero;
-                random = RNG.Next(EnemyConstants.Left, EnemyConstants.Right + EnemyConstants.One);
-                totalFrames = RNG.Next(EnemyConstants.AquaMinFrame, EnemyConstants.AquaMaxFrame);
-            }
-            if (currentFrame % EnemyConstants.AquaFrameChange == EnemyConstants.Zero)
-            {
-                switch (random)
+                if (projCount == EnemyConstants.Zero)
                 {
-                    case EnemyConstants.Left:
-                        location.X -= EnemyConstants.AquaDisplacement;
-                        break;
-                    case EnemyConstants.Right:
-                        location.X += EnemyConstants.AquaDisplacement;
-                        break;
+                    projectileSprite = new AquamentusProjectile(location);
+                }
+                projCount++;
+                textureFrame++;
+                currentFrame++;
+                if (textureFrame == EnemyConstants.AquaTextureFrames)
+                {
+                    textureFrame = EnemyConstants.Zero;
+                }
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = EnemyConstants.Zero;
+                    random = RNG.Next(EnemyConstants.Left, EnemyConstants.Right + EnemyConstants.One);
+                    totalFrames = RNG.Next(EnemyConstants.AquaMinFrame, EnemyConstants.AquaMaxFrame);
+                }
+                if (currentFrame % EnemyConstants.AquaFrameChange == EnemyConstants.Zero)
+                {
+                    switch (random)
+                    {
+                        case EnemyConstants.Left:
+                            location.X -= EnemyConstants.AquaDisplacement;
+                            break;
+                        case EnemyConstants.Right:
+                            location.X += EnemyConstants.AquaDisplacement;
+                            break;
+                    }
+                }
+                if (projCount == EnemyConstants.AquaProjCount)
+                {
+                    projCount = EnemyConstants.Zero;
+                }
+                projectileSprite.Update();
+            }
+
+            if (hit)
+            {
+                // aquamentus does not get pushed back when hit
+                currentFrame++;
+                if (count == 20)
+                {
+                    hit = false;
                 }
             }
-            if (projCount == EnemyConstants.AquaProjCount)
+
+            if (death)
             {
-                projCount = EnemyConstants.Zero;
+                currentFrame++;
+                if (currentFrame == EnemyConstants.DeathFrames)
+                {
+                    death = false;
+                }
             }
-            projectileSprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (textureFrame < EnemyConstants.Texture1)
-                frame = EnemyConstants.Frame1;
-            else if (textureFrame < EnemyConstants.Texture2)
-                frame = EnemyConstants.Frame2;
-            else if (textureFrame < EnemyConstants.Texture3)
-                frame = EnemyConstants.Frame3;
-            else if (textureFrame >= EnemyConstants.Texture3)
-                frame = EnemyConstants.Frame4;
+            if (toDraw)
+            {
+                if (textureFrame < EnemyConstants.Texture1)
+                    frame = EnemyConstants.Frame1;
+                else if (textureFrame < EnemyConstants.Texture2)
+                    frame = EnemyConstants.Frame2;
+                else if (textureFrame < EnemyConstants.Texture3)
+                    frame = EnemyConstants.Frame3;
+                else if (textureFrame >= EnemyConstants.Texture3)
+                    frame = EnemyConstants.Frame4;
 
-            Texture2D texture = EnemyTextureStorage.Instance.GetEnemies();
-            Rectangle source = frames[frame];
-            Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
-            spriteBatch.Draw(texture, destinaton, source, Color.White);
-            projectileSprite.Draw(spriteBatch);
+                texture = EnemyTextureStorage.Instance.GetEnemies();
+                Rectangle source = frames[frame];
+                Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                spriteBatch.Draw(texture, destinaton, source, Color.White);
+                projectileSprite.Draw(spriteBatch);
+            }
+
+            if (hit)
+            {
+                count++;
+
+                // add flipped source?
+                if (count <= 10 && count >= 7 || count <= 18 && count >= 15)
+                {
+                    System.Diagnostics.Debug.WriteLine("drawing flashing");
+                    source = frames[EnemyConstants.Frame5];
+
+                }
+                else
+                    source = frames[EnemyConstants.Frame1];
+
+                texture = EnemyTextureStorage.Instance.GetEnemies();
+                Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                spriteBatch.Draw(texture, destinaton, source, Color.DimGray);
+            }
+
+            if (death)
+            {
+                if (currentFrame <= EnemyConstants.DeathFrame1 || currentFrame > EnemyConstants.DeathFrame6 && currentFrame < EnemyConstants.DeathFrame7)
+                    frame = EnemyConstants.Frame1;
+                else if (currentFrame <= EnemyConstants.DeathFrame2 || currentFrame > EnemyConstants.DeathFrame5 && currentFrame <= EnemyConstants.DeathFrame6)
+                    frame = EnemyConstants.Frame2;
+                else if (currentFrame <= EnemyConstants.DeathFrame3 || currentFrame > EnemyConstants.DeathFrame4 && currentFrame <= EnemyConstants.DeathFrame5)
+                    frame = EnemyConstants.Frame3;
+                else if (currentFrame <= EnemyConstants.DeathFrame4 && currentFrame > EnemyConstants.DeathFrame3 && currentFrame <= EnemyConstants.DeathFrame4)
+                    frame = EnemyConstants.Frame4;
+                else if (currentFrame == EnemyConstants.DeathFrame7)
+                    frame = EnemyConstants.Frame5;
+
+                texture = EnemyTextureStorage.Instance.GetEnemyDeath();
+                source = deathFrames[frame];
+                destination = new Rectangle((int)deathLoc.X, (int)deathLoc.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
+                spriteBatch.Draw(texture, destination, source, Color.White);
+            }
+        }
+        public void Hit(int dir)
+        {
+            hits++;
+            direction = dir;
+            hit = true;
+            currentFrame = GameConstants.Zero;
+            count = GameConstants.Zero;
+        }
+
+        public void Dispose()
+        {
+            currentFrame = GameConstants.Zero;
+            deathLoc = location;
+            location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
+            toDraw = false;
+            death = true;
+            projectile = false;
         }
     }
 }

@@ -14,15 +14,17 @@ namespace Sprint0.UI
     {
 
         private Game1 game1;
-        Texture2D texture;
+        Texture2D texture, mapTexture;
         Rectangle mainRect;
         Rectangle linkRect;
         public PlayerMap(Game1 game) 
         {
             this.game1 = game;
             texture = UITextureStorage.Instance.GetImage();
+            mapTexture = UITextureStorage.Instance.GetImage2();
             mainRect = UITextureStorage.AnnoyingAssBoxes;
             linkRect = UITextureStorage.linkLocation;
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
