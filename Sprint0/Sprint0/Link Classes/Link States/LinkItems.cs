@@ -13,7 +13,7 @@ namespace Sprint0
     public class LinkItems : ILinkSprite
     {
         public int bombs, keys, rupies, heart;
-        public Boolean triforce, map, clock, fairy, compass, bow, arrow;
+        public bool triforce, map, clock, fairy, compass, bow, arrow;
         private Texture2D texture;
 
 
