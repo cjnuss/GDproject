@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class EnemyCollisionCheck
+    public class LinkEnemyCollisionCheck
     {
         public KeyBoardController KeyBoardController;
         public LinkEnemyCollision linkEnemyCollision;
@@ -21,7 +21,7 @@ namespace Sprint0
         public Link link;
         public int roomType;
 
-        public EnemyCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
+        public LinkEnemyCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;

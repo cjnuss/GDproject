@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0
+namespace Sprint0.Collision.Response.Walls
 {
-    public class RoomCollisionCheck
+    public class LinkWallCollision
     {
         private Link link;
         private KeyBoardController KeyBoardController;
 
         public int roomType;
 
-        public RoomCollisionCheck(KeyBoardController KeyBoardController, Link link)
+        public LinkWallCollision(KeyBoardController KeyBoardController, Link link)
         {
             this.link = link;
             this.KeyBoardController = KeyBoardController;
@@ -24,29 +24,30 @@ namespace Sprint0
             this.roomType = roomType;
         }
 
-        public void CheckCollision()
+        public void Update()
         {
             if (roomType == 0)
             {
                 if (KeyBoardController.linkSprite.location.X >= RoomConstants.DungeonWallXR)
                 {
                     link.velocity = GameConstants.Zero;
-                    link.location.X = link.location.X - LinkConstants.Correction;
-                } else if (KeyBoardController.linkSprite.location.X <= RoomConstants.DungeonWallXL)
+                    link.location.X = RoomConstants.DungeonWallXR;
+                }
+                else if (KeyBoardController.linkSprite.location.X <= RoomConstants.DungeonWallXL)
                 {
                     link.velocity = GameConstants.Zero;
-                    link.location.X = link.location.X + LinkConstants.Correction;
+                    link.location.X = RoomConstants.DungeonWallXL;
                 }
 
-                if(KeyBoardController.linkSprite.location.Y >= RoomConstants.DungeonWalYD)
+                if (KeyBoardController.linkSprite.location.Y >= RoomConstants.DungeonWalYD)
                 {
                     link.velocity = GameConstants.Zero;
-                    link.location.Y = link.location.Y - LinkConstants.Correction;
+                    link.location.Y = RoomConstants.DungeonWalYD;
                 }
-                else if(KeyBoardController.linkSprite.location.Y <= RoomConstants.DungeonWallYU)
+                else if (KeyBoardController.linkSprite.location.Y <= RoomConstants.DungeonWallYU)
                 {
                     link.velocity = GameConstants.Zero;
-                    link.location.Y = link.location.Y + LinkConstants.Correction;
+                    link.location.Y = RoomConstants.DungeonWallYU;
                 }
             }
 

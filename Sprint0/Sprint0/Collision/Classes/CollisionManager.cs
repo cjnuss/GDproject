@@ -19,13 +19,12 @@ namespace Sprint0
         private Game1 game1;
         private Link linkSprite;
 
-        private BlockCollisionCheck blockCollisionCheck;
+        private LinkObsticleCollisionCheck linkObsticleCollisionCheck;
         private TriforceCollisionCheck triforceCollisionCheck;
         private ArrowCollisionCheck arrowCollisionCheck;
         private BombCollisionCheck bombCollisionCheck;
         private RupeeCollisionCheck rupeeCollisionCheck;
-        private RoomCollisionCheck roomCollisionCheck;
-        private EnemyCollisionCheck enemyCollisionCheck;
+        private LinkEnemyCollisionCheck enemyCollisionCheck;
         private HeartCollisionCheck heartCollisionCheck;
         private KeyCollisionCheck keyCollisionCheck;
         private MapCollisionCheck mapCollisionCheck;
@@ -64,13 +63,12 @@ namespace Sprint0
 
         public void Create()
         {
-            blockCollisionCheck = new BlockCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkObsticleCollisionCheck = new LinkObsticleCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
             triforceCollisionCheck = new TriforceCollisionCheck(this.KeyBoardController, new LinkTriforceCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             arrowCollisionCheck = new ArrowCollisionCheck(this.KeyBoardController, new LinkArrowCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             bombCollisionCheck = new BombCollisionCheck(this.KeyBoardController, new LinkBombCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             rupeeCollisionCheck = new RupeeCollisionCheck(this.KeyBoardController, new LinkRupeeCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
-            roomCollisionCheck = new RoomCollisionCheck(this.KeyBoardController, this.linkSprite);
-            enemyCollisionCheck = new EnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            enemyCollisionCheck = new LinkEnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
             heartCollisionCheck = new HeartCollisionCheck(this.KeyBoardController, new LinkHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             keyCollisionCheck = new KeyCollisionCheck(this.KeyBoardController, new LinkKeyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             mapCollisionCheck = new MapCollisionCheck(this.KeyBoardController, new LinkMapCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
@@ -78,7 +76,6 @@ namespace Sprint0
             clockCollisionCheck = new ClockCollisionCheck(this.KeyBoardController, new LinkClockCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             compassCollisionCheck = new CompassCollisionCheck(this.KeyBoardController, new LinkCompassCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             fairyCollisionCheck = new FairyCollisionCheck(this.KeyBoardController, new LinkFairyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
-            roomCollisionCheck.roomType = GameConstants.Zero;
 
             batSwordCollisionCheck = new BatSwordCollisionCheck(this.KeyBoardController, new BatSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             batGreenArrowCollisionCheck = new BatGreenArrowCollisionCheck(this.KeyBoardController, new BatGreenArrowCollision(this.game1, this.KeyBoardController), this.game1);
@@ -107,9 +104,8 @@ namespace Sprint0
         public void Check()
         {
             #region Top Level Game Collisions
-            blockCollisionCheck.CheckCollision();
+            linkObsticleCollisionCheck.CheckCollision();
             enemyCollisionCheck.CheckCollision();
-            roomCollisionCheck.CheckCollision();
             #endregion
 
             #region Link Item Collisions
