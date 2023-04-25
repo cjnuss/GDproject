@@ -149,5 +149,8 @@ namespace Sprint0
         public static Rectangle LinkSwordBeamExplode2 = new Rectangle(62, 143, 8, 10); // FLIP: bottom left
         public static Rectangle LinkSwordBeamExplode3 = new Rectangle(672, 143, 8, 10); // FLIP: bottom right
         #endregion
+
+        public static Rectangle LinkPickingUpTriforce = new Rectangle(231, 11, 14, 16);
+        public static Rectangle LinkPickingUpItem = new Rectangle(214, 11, 13, 16);
     }
 }
