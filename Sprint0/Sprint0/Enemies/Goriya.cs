@@ -12,8 +12,8 @@ namespace Sprint0
 {
     public class Goriya : IEnemy
     {
-        private int width;
-        private int height;
+        private int width = EnemyConstants.GoriyaSize;
+        private int height = EnemyConstants.GoriyaSize;
         private Texture2D texture;
         private Vector2 deathLoc;
         private int direction;
