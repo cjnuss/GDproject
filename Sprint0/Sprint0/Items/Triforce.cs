@@ -11,6 +11,7 @@ namespace Sprint0
 {
     public class Triforce : ISprite
     {
+        public bool pickup = false;
         private Texture2D texture = ItemsTextureStorage.Instance.GetItems();
         private Rectangle sourceRect = ItemsTextureStorage.triforce1;
         private Rectangle destRect;
