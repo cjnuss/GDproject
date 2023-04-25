@@ -15,12 +15,13 @@ namespace Sprint0.Collision.Response.Items
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle triforceRectangle;
-
+        private LinkItems linkItems;
         public LinkTriforceCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            linkItems = game.linkItems;
         }
 
         public void Update(Triforce triforce)
@@ -33,6 +34,7 @@ namespace Sprint0.Collision.Response.Items
                 triforce.Dispose();
                 game.backgroundAudio.StopSound();
                 game.soundEffects.PlaySound("Triforce");
+                linkItems.triforce = true;
                 game.win = true;
             }
         }

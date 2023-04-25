@@ -31,20 +31,20 @@ namespace Sprint0.Collision.Detection.Enemies.Room
             {
                 if (enemy.GetLocation().X >= RoomConstants.DungeonWallXR)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X - 20, enemy.GetLocation().Y));
+                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXR, enemy.GetLocation().Y));
                 }
                 else if (enemy.GetLocation().X <= RoomConstants.DungeonWallXL)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X + 20, enemy.GetLocation().Y));
+                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXL, enemy.GetLocation().Y));
                 }
 
                 if (enemy.GetLocation().Y >= RoomConstants.DungeonWalYD)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, enemy.GetLocation().Y - 20));
+                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWalYD));
                 }
                 else if (enemy.GetLocation().Y <= RoomConstants.DungeonWallYU)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, enemy.GetLocation().Y + 20));
+                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWallYU));
                 }
             }
 

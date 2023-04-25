@@ -12,55 +12,33 @@ namespace Sprint0
 {
     public class LinkHP : ILinkSprite
     {
-        public int bombs, keys, rupies;
+        public int health, maxhealth;
+        const int baseHp = 3;
         private Texture2D texture;
-
-        private static List<Rectangle> LinkTakingDamage = new List<Rectangle>()
-        {
-            LinkTextureStorage.LinkTakingDamage,
-            LinkTextureStorage.LinkTakingDamage1,
-            LinkTextureStorage.LinkTakingDamage2
-        };
+        private LinkItems linkItems;
 
         // implement damage in different directions later..
 
         private Texture2D _texture = LinkTextureStorage.Instance.GetLinkTextures();
 
-        public LinkHP()
+        public LinkHP(Game1 game)
         {
-            bombs = 0;
-            keys = 0;
-            rupies = 0;
+            linkItems = game.linkItems;
+            maxhealth = 3;
+            health = 6;
         }
 
+        public void moreHealth()
+        {
+            if ((health + 1) / 2 < maxhealth) {
+                health++;
+            }
+        }
         public void Update()
         {
-            // overall frame updates
+            // update max health
+            maxhealth = baseHp + linkItems.heart;
             
-        }
-        public void increaseBomb()
-        {
-            bombs++;
-        }
-        public void increaseRupee()
-        {
-            rupies++;
-        }
-        public void increaseKey()
-        {
-            keys++;
-        }
-        public void decreaseBomb()
-        {
-            bombs--;
-        }
-        public void decreaseRupee()
-        {
-            rupies--;
-        }
-        public void decreaseKey()
-        {
-            keys--;
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {

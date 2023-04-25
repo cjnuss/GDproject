@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Collision.Response.Blocks;
+using Sprint0.Collision.Response.Items;
+using Sprint0.Collision.Response.Walls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +13,23 @@ using System.Threading.Tasks;
 
 namespace Sprint0
 {
-    public class BlockCollisionCheck
+    public class LinkObsticleCollisionCheck
     {
         public KeyBoardController KeyBoardController;
         public LinkBlockCollision linkBlockCollision;
+        private LinkWallCollision linkWallCollision;
         public Game1 game1;
         public Link link;
         public int roomType;
 
-        public BlockCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
+        public LinkObsticleCollisionCheck(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             this.game1 = game1;
             linkBlockCollision = new LinkBlockCollision(this.KeyBoardController, this.link);
+            linkWallCollision = new LinkWallCollision(this.KeyBoardController, this.link);
+            linkWallCollision.roomType = GameConstants.Zero;
         }
 
         public void CheckCollision()
@@ -35,6 +40,9 @@ namespace Sprint0
                     LinkConstants.Size * GameConstants.Sizing) || (KeyBoardController.linkSprite.location.X - block.location.X >= 0 && KeyBoardController.linkSprite.location.X - block.location.X <= block.width))
                 {
                     linkBlockCollision.Update(block);
+                } else
+                {
+                    linkWallCollision.Update();
                 }
 
                 if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
@@ -42,6 +50,11 @@ namespace Sprint0
                     KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
                     break;
                 }
+            }
+
+            if (game1.currentRoom.GetBlocks().Count == 0)
+            {
+                linkWallCollision.Update();
             }
         }
     }
