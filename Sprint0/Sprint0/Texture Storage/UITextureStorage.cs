@@ -62,7 +62,8 @@ namespace Sprint0
         public static Rectangle emptyHeart = new Rectangle(627, 117, 9, 9);
         public static Rectangle basicMap = new Rectangle(1383, 131, 47, 23);
         public static Rectangle singleBlock = new Rectangle(1391, 131, 7, 3);
-
+        public static Rectangle woodSword = new Rectangle(555, 137, 8, 16);
+        public static Rectangle nothing = new Rectangle(250, 136, 8, 16);
 
         public static Rectangle Num0 = new Rectangle(528, 117, 8, 8);
         public static Rectangle Num1 = new Rectangle(537, 117, 8, 8);
