@@ -34,8 +34,8 @@ namespace Sprint0
             this.location = location;
         }
 
-        private int width;
-        private int height;
+        private int width = EnemyConstants.SkeletonSize;
+        private int height = EnemyConstants.SkeletonSize;
 
         public Vector2 GetSize()
         {
