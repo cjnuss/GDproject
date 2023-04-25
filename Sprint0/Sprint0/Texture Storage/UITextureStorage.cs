@@ -27,6 +27,7 @@ namespace Sprint0
         }
 
         private static Texture2D render;
+        private static Texture2D mapTexture;
         private static SpriteFont text;
 
 
@@ -34,6 +35,8 @@ namespace Sprint0
         {
             text = content.Load<SpriteFont>("Desc");
             render = content.Load<Texture2D>("HUDsheet");
+            mapTexture = content.Load<Texture2D>("level1");
+
         }
 
         public SpriteFont GetText()
@@ -45,6 +48,10 @@ namespace Sprint0
         {
             return render;
         }
+        public Texture2D GetImage2()
+        {
+            return mapTexture;
+        }
         public static Rectangle HPheart = new Rectangle(645, 117, 9, 9);
         public static Rectangle MainHUD = new Rectangle(256, 16, 256, 50);
         public static Rectangle MapKey = new Rectangle(584, 1, 65, 41);
@@ -53,6 +60,9 @@ namespace Sprint0
         public static Rectangle linkLocation = new Rectangle(519, 126, 2, 2);
         public static Rectangle halfHeart = new Rectangle(636, 117, 9, 9);
         public static Rectangle emptyHeart = new Rectangle(627, 117, 9, 9);
+        public static Rectangle basicMap = new Rectangle(1383, 131, 47, 23);
+        public static Rectangle singleBlock = new Rectangle(1391, 131, 7, 3);
+
 
         public static Rectangle Num0 = new Rectangle(528, 117, 8, 8);
         public static Rectangle Num1 = new Rectangle(537, 117, 8, 8);

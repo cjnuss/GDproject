@@ -20,11 +20,14 @@ namespace Sprint0.UI
         Rectangle mapRect;
         Rectangle oneRect, twoRect, threeRect, fourRect, fiveRect, sixRect, sevenRect, eightRect, nineRect, zeroRect, XRect;
         Rectangle boxRect;
+        public Link link;
+        public LinkItems linkItems;
         private int ruppee, key, bomb;
         private int first, second, height1, height2, height3;
-        public Counts(Game1 game) 
+        public Counts(Game1 game, LinkItems linkItems1) 
         {
             this.game1 = game;
+            this.linkItems = linkItems1;
             texture = UITextureStorage.Instance.GetImage();
             oneRect = UITextureStorage.Num1;
             zeroRect = UITextureStorage.Num0;
@@ -38,9 +41,9 @@ namespace Sprint0.UI
             nineRect = UITextureStorage.Num9;
             boxRect = UITextureStorage.NumBox;
             XRect = UITextureStorage.NumX;
-            ruppee = 99;
-            bomb = 99;
-            key = 99;
+            ruppee = 0;
+            bomb = 0;
+            key = 0;
 
             first = 318;
             second = 342;
@@ -52,7 +55,7 @@ namespace Sprint0.UI
         {
             //bomb
             spriteBatch.Draw(texture, new Rectangle(294, 106, XRect.Width * 3, XRect.Height * 3), XRect, Color.White);
-            //spriteBatch.Draw(texture, new Rectangle(342, 106, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
+
             switch (firstDigit(bomb)) {
                 case 0:
                 spriteBatch.Draw(texture, new Rectangle(first, height1, zeroRect.Width * 3, zeroRect.Height * 3), zeroRect, Color.White);
@@ -194,8 +197,7 @@ namespace Sprint0.UI
                     spriteBatch.Draw(texture, new Rectangle(second, height2, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
                     break;
             }
-            //spriteBatch.Draw(texture, new Rectangle(318, 82, zeroRect.Width * 3, zeroRect.Height * 3), zeroRect, Color.White);
-            //spriteBatch.Draw(texture, new Rectangle(342, 82, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
+
 
             //for ruppee
             spriteBatch.Draw(texture, new Rectangle(294, 34, XRect.Width * 3, XRect.Height * 3), XRect, Color.White);
@@ -269,12 +271,13 @@ namespace Sprint0.UI
                     spriteBatch.Draw(texture, new Rectangle(second, height3, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
                     break;
             }
-            //spriteBatch.Draw(texture, new Rectangle(318, 34, zeroRect.Width * 3, zeroRect.Height * 3), zeroRect, Color.White);
-            //spriteBatch.Draw(texture, new Rectangle(342, 34, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
-            //spriteBatch.Draw(texture, new Rectangle(230, 8, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
+
         }
         public void Update()
         {
+            ruppee = linkItems.rupies;
+            bomb = linkItems.bombs;
+            key = linkItems.keys;
         }
         private int firstDigit(int check)
         {
