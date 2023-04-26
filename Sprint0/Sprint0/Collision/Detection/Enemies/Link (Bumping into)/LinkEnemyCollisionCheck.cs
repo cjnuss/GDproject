@@ -26,7 +26,7 @@ namespace Sprint0
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             this.game1 = game1;
-            linkEnemyCollision = new LinkEnemyCollision(this.KeyBoardController, this.link);
+            linkEnemyCollision = new LinkEnemyCollision(this.KeyBoardController, this.link, this.game1);
         }
 
         public void CheckCollision()

@@ -57,8 +57,13 @@ namespace Sprint0
         public const int UpOffset1 = 29;
         public const int UpOffset2 = 28;
         public const int UpOffset3 = 8;
-        // link damaged
+        // link damaged / death numbers
         public const int TotalDamageFrames = 30;
+        public const int DeathFrame1 = 8;
+        public const int DeathFrame2 = 16;
+        public const int DeathFrame3 = 24;
+        public const int TotalDeathFrames = 32;
+
         // link moving
         public const int TotalMovingFrames = 20;
         public const int MovingPhase = TotalMovingFrames / 2;

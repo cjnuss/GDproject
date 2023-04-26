@@ -46,5 +46,11 @@ namespace Sprint0
 
         // pushback for enemies
         public const int EnemyPushBack = 4;
+
+        // death
+        public const int DeathIndicator = 4;
+
+        // win
+        public const int WinFrame = 5;
     }
 }

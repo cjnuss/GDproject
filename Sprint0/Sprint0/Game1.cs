@@ -35,6 +35,9 @@ namespace Sprint0
         public LinkHP linkHealth;
         private Counts HUDnumbers;
 
+        private WinningState WinningState;
+        private LosingState LosingState;
+
         public IRoom currentRoom;
         public Game1()
         {
@@ -89,6 +92,9 @@ namespace Sprint0
             playerMap = new PlayerMap(this);
             
             HUDnumbers = new Counts(this, linkItems);
+
+            WinningState = new WinningState(this, _spriteBatch);
+            LosingState = new LosingState(this, _spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -100,15 +106,23 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin(/*transformMatrix: camera.GetViewMatrix()*/);
+            _spriteBatch.Begin();
 
-            // DEBUG: remove draw calls from update methods?
             Mcontroller.Update(gameTime);
-            collisionManager.Check();
-            Kcontroller.Update(gameTime);
-            // END
+            if (!linkItems.triforce && linkHealth.health > GameConstants.Zero)
+            {
+                collisionManager.Check();
+                Kcontroller.Update(gameTime);
+            }
+            else if (linkHealth.health == GameConstants.Zero)
+            {
+                LosingState.Update(Kcontroller);
+            }
+            else
+            {
+                WinningState.Update(this, Kcontroller);
+            }
 
-            // DEBUG: refactor this into HUD manager class..
             testingText.Draw(_spriteBatch);
             mainHUD.Draw(_spriteBatch);
             testingHearts.Update();
