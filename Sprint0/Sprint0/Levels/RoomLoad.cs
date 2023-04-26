@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Link_Classes.Item_Usage;
 using System.Data;
+using System.Threading;
 
 namespace Sprint0.Levels
 {
@@ -22,6 +23,8 @@ namespace Sprint0.Levels
         List<IBlock> blocks = new List<IBlock>();
         List<ISprite> items = new List<ISprite>();
         List<IEnemy> enemies = new List<IEnemy>();
+        List<Door> doors = new List<Door>();
+        List<int> rooms = new List<int>();
 
         public RoomLoad()
         {
@@ -35,7 +38,7 @@ namespace Sprint0.Levels
             enemies = new List<IEnemy>();
             roomNum = GameConstants.One;
             loadin(sourcefile);
-            return new Room(blocks, items, enemies, roomNum);
+            return new Room(blocks, items, enemies, doors, rooms, roomNum);
         }
 
         public void loadin(String sourcefile)
@@ -56,9 +59,6 @@ namespace Sprint0.Levels
                 {
                     switch (type)
                     {
-                        case "ROOM":
-                            roomNum = Int32.Parse(line);
-                            break;
                         case "BLOCKS":
                             addBlock(line);
                             break;
@@ -67,6 +67,15 @@ namespace Sprint0.Levels
                             break;
                         case "ENEMIES":
                             addEnemy(line);
+                            break;
+                        case "DOORS":
+                            addDoor(line);
+                            break;
+                        case "ROOMS":
+                            addRoom(line);
+                            break;
+                        case "WALLS":
+                            addWalls(line);
                             break;
                     }
                 }
@@ -79,8 +88,8 @@ namespace Sprint0.Levels
             String[] all = line.Split(",");
             IBlock block;
 
-            int x = Int32.Parse(all[RoomConstants.XInt]);
-            int y = Int32.Parse(all[RoomConstants.YInt]);
+            int x = int.Parse(all[RoomConstants.XInt]);
+            int y = int.Parse(all[RoomConstants.YInt]);
 
             switch (all[GameConstants.Zero])
             {
@@ -127,8 +136,8 @@ namespace Sprint0.Levels
             String[] all = line.Split(",");
             ISprite item;
 
-            int x = Int32.Parse(all[RoomConstants.XInt]);
-            int y = Int32.Parse(all[RoomConstants.YInt]);
+            int x = int.Parse(all[RoomConstants.XInt]);
+            int y = int.Parse(all[RoomConstants.YInt]);
 
             switch (all[0])
             {
@@ -177,8 +186,8 @@ namespace Sprint0.Levels
             String[] all = line.Split(",");
             IEnemy enemy;
 
-            int x = Int32.Parse(all[RoomConstants.XInt]);
-            int y = Int32.Parse(all[RoomConstants.YInt]);
+            int x = int.Parse(all[RoomConstants.XInt]);
+            int y = int.Parse(all[RoomConstants.YInt]);
 
             switch (all[GameConstants.Zero])
             {
@@ -206,6 +215,101 @@ namespace Sprint0.Levels
             }
             enemies.Add(enemy);
         }
-    }
+        void addDoor(String line)
+        {
+            String[] all = line.Split(",");
+            Door door;
 
+            int type = int.Parse(all[1]);
+
+            switch (all[0])
+            {
+                case "north":
+                    door = new Door(new Vector2(395, 207), type);
+                    break;
+                case "south":
+                    door = new Door(new Vector2(395, 563), type);
+                    break;
+                case "east":
+                    door = new Door(new Vector2(65, 385), type);
+                    break;
+                case "west":
+                    door = new Door(new Vector2(725, 385), type);
+                    break;
+                default:
+                    door = null;
+                    break;
+            }
+            doors.Add(door);
+        }
+
+        void addRoom(String line)
+        {
+            rooms = line.Split(",").Select(int.Parse).ToList();
+        }
+
+        void addWalls(String line)
+        {
+            String[] all = line.Split(",");
+
+            IBlock blockW1, blockN1, blockE1, blockS1;
+
+            int W = int.Parse(all[0]);
+            int N = int.Parse(all[1]);
+            int E = int.Parse(all[2]);
+            int S = int.Parse(all[3]);
+
+            if (W == 0)
+            {
+                blockW1 = new CollisionBlock(new Vector2(0, 150), 95, 480);
+                blocks.Add(blockW1);
+            }
+            else
+            {
+                blockW1 = new CollisionBlock(new Vector2(0, 150), 95, 206);
+                IBlock blockW2 = new CollisionBlock(new Vector2(0, 424), 95, 196);
+                blocks.Add(blockW1);
+                blocks.Add(blockW2);
+            }
+
+            if (N == 0)
+            {
+                blockN1 = new CollisionBlock(new Vector2(0, 150), 800, 82);
+                blocks.Add(blockN1);
+            }
+            else
+            {
+                blockN1 = new CollisionBlock(new Vector2(0, 150), 360, 82);
+                IBlock blockN2 = new CollisionBlock(new Vector2(440, 150), 350, 82);
+                blocks.Add(blockN1);
+                blocks.Add(blockN2);
+            }
+
+            if (E == 0)
+            {
+                blockE1 = new CollisionBlock(new Vector2(705, 150), 95, 480);
+                blocks.Add(blockE1);
+            }
+            else
+            {
+                blockE1 = new CollisionBlock(new Vector2(705, 150), 95, 206);
+                IBlock blockE2 = new CollisionBlock(new Vector2(705, 424), 95, 196);
+                blocks.Add(blockE1);
+                blocks.Add(blockE2);
+            }
+
+            if (S == 0)
+            {
+                blockS1 = new CollisionBlock(new Vector2(0, 548), 800, 82);
+                blocks.Add(blockS1);
+            }
+            else
+            {
+                blockS1 = new CollisionBlock(new Vector2(0, 548), 360, 82);
+                IBlock blockS2 = new CollisionBlock(new Vector2(440, 548), 350, 82);
+                blocks.Add(blockS1);
+                blocks.Add(blockS2);
+            }
+        }
+    }
 }

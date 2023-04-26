@@ -17,95 +17,16 @@ namespace Sprint0.Levels
     public class MouseController : IController
     {
         private Game1 game1;
-        //ISprite sprite;
-        //get sprites and needed classes ready
-        public Texture2D Texture { get; set; }
         private SpriteBatch _spriteBatch;
-        private int levelState;
-        Texture2D texture;
-        List<IRoom> rooms = new List<IRoom>();
-        private RoomLoad roomLoad;
-        private Camera camera;
 
-        private static List<Rectangle> levels = new List<Rectangle>
-        {
-            LevelsTextureStorage.level1,
-            LevelsTextureStorage.level2,
-            LevelsTextureStorage.level3,
-            LevelsTextureStorage.level4,
-            LevelsTextureStorage.level5,
-            LevelsTextureStorage.level6,
-            LevelsTextureStorage.level7,
-            LevelsTextureStorage.level8,
-            LevelsTextureStorage.level9,
-            LevelsTextureStorage.level10,
-            LevelsTextureStorage.level11,
-            LevelsTextureStorage.level12,
-            LevelsTextureStorage.level13,
-            LevelsTextureStorage.level14,
-            LevelsTextureStorage.level15,
-            LevelsTextureStorage.level16,
-            LevelsTextureStorage.level17,
-        };
-
-        Boolean lastRightMouseState;
-        Boolean lastLeftMouseState;
-
-        public MouseController(Game1 game1, Texture2D atlas, SpriteBatch spriteBatch)
+        public MouseController(Game1 game1, SpriteBatch spriteBatch)
         {
             this.game1 = game1;
             _spriteBatch = spriteBatch;
-            levelState = GameConstants.LevelState1;
-            texture = atlas;
-            lastLeftMouseState = false;
-            lastRightMouseState = false;
-            roomLoad = new RoomLoad();
-            for (int i = GameConstants.One; i <= GameConstants.NumRooms; i++)
-            {
-                rooms.Add(roomLoad.load("Room" + i.ToString() + ".txt"));
-            }
         }
 
         public void Update(GameTime gameTime)
         {
-            if (Mouse.GetState().RightButton.Equals(ButtonState.Pressed) && lastRightMouseState != true)
-            {
-                if (levelState == GameConstants.LevelState2)
-                {
-                    levelState = GameConstants.LevelState1;
-                }
-                else
-                {
-                    levelState++;
-                }
-                lastRightMouseState = true;
-            }
-            else if (Mouse.GetState().LeftButton.Equals(ButtonState.Pressed) && lastLeftMouseState != true)
-            {
-                if (levelState == GameConstants.LevelState1)
-                {
-                    levelState = GameConstants.LevelState2;
-                }
-                else
-                {
-                    levelState--;
-                }
-                lastLeftMouseState = true;
-            }
-            if (!Mouse.GetState().LeftButton.Equals(ButtonState.Pressed)) lastLeftMouseState = false;
-            if (!Mouse.GetState().RightButton.Equals(ButtonState.Pressed)) lastRightMouseState = false;
-
-
-            Rectangle source = levels[levelState];
-            Rectangle target = new Rectangle(0,150, 800, 480); // magic?
-            _spriteBatch.Draw(texture, target, source, Color.White);
-
-            game1.currentRoom = rooms[levelState];
-            rooms[levelState].Update();
-            rooms[levelState].Draw(_spriteBatch);
-
-            //sprite.Update();
-            //sprite.Draw(_spriteBatch, new Vector2(390, 210));
         }
     }
 

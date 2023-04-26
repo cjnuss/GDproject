@@ -18,15 +18,19 @@ namespace Sprint0.Levels
         List<IBlock> blocks;
         List<ISprite> items;
         List<IEnemy> enemies;
+        List<Door> doors;
+        List<int> rooms;
 
         Rectangle roomSource;
 
-        public Room(List<IBlock> blocks1, List<ISprite> items1, List<IEnemy> enemies1, int roomNum1)
+        public Room(List<IBlock> blocks1, List<ISprite> items1, List<IEnemy> enemies1, List<Door> doors1, List<int> rooms1, int roomNum1)
         {
             blocks = blocks1;
             items = items1;
             enemies = enemies1;
+            doors = doors1;
             roomNum = roomNum1;
+            rooms = rooms1;
             string room = roomNum.ToString();
             roomSource = LevelsTextureStorage.Sources[room];
         }
@@ -81,6 +85,16 @@ namespace Sprint0.Levels
         public List<IEnemy> GetEnemies()
         {
             return enemies;
+        }
+
+        public List<Door> GetDoors()
+        {
+            return doors;
+        }
+
+        public List<int> GetRooms()
+        {
+            return rooms;
         }
     }
 }
