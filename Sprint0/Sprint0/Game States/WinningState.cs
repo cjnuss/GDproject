@@ -14,17 +14,27 @@ namespace Sprint0
     {
         Game1 game;
         SpriteBatch spriteBatch;
+        int currentFrames = GameConstants.Zero;
+        int totalFrames = GameConstants.Ten;
         public WinningState(Game1 game, SpriteBatch spriteBatch)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;
         }
 
-        public void FinishGame(Game1 game, KeyBoardController Kcontroller)
+        public void Update(Game1 game, KeyBoardController Kcontroller)
         {
+            Rectangle triforce;
+            currentFrames++;
+            if (currentFrames <= totalFrames)
+                currentFrames = GameConstants.Zero;
+            if (currentFrames <= 5)
+                triforce = ItemsTextureStorage.triforce1;
+            else
+                triforce = ItemsTextureStorage.triforce2;
+
             Texture2D triTexture = ItemsTextureStorage.Instance.GetItems();
             Texture2D linkTexture = LinkTextureStorage.Instance.GetLinkTextures();
-            Rectangle triforce = ItemsTextureStorage.triforce1;
             Rectangle linkRect = LinkTextureStorage.LinkPickingUpTriforce;
             Rectangle dest = new Rectangle((int)Kcontroller.linkSprite.location.X + 7, (int)Kcontroller.linkSprite.location.Y - 32, triforce.Width * GameConstants.Sizing, triforce.Height * GameConstants.Sizing);
             Rectangle dest2 = new Rectangle((int)Kcontroller.linkSprite.location.X, (int)Kcontroller.linkSprite.location.Y, linkRect.Width * GameConstants.Sizing, linkRect.Height * GameConstants.Sizing);

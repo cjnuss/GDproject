@@ -40,7 +40,8 @@ namespace Sprint0.Collision.Response.Enemies
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);
                 link.velocity = GameConstants.Zero;
-            } else
+            } 
+            else
             {
                 link.UpdateSprite(LinkConstants.Default);
                 link.velocity = LinkConstants.Velocity;

@@ -19,6 +19,7 @@ namespace Sprint0
         int totalFrames = LinkConstants.TotalDeathFrames;
         public int indicator = GameConstants.Zero;
         Rectangle linkRect;
+        private bool check = false;
 
         public LosingState(Game1 game, SpriteBatch spriteBatch)
         {
@@ -28,8 +29,11 @@ namespace Sprint0
 
         public void Update(KeyBoardController Kcontroller)
         {
-            if (!game.soundEffects.IsPlaying("LinkDie"))
+            if (!check)
+            {
                 game.soundEffects.PlaySound("LinkDie");
+                check = true;
+            }
 
             currentFrame++;
             if (currentFrame == totalFrames)
@@ -51,14 +55,10 @@ namespace Sprint0
             Rectangle dest = new Rectangle((int)Kcontroller.linkSprite.location.X, (int)Kcontroller.linkSprite.location.Y, linkRect.Width * GameConstants.Sizing, linkRect.Height * GameConstants.Sizing);
             spriteBatch.Draw(linkTexture, dest, linkRect, Color.White);
 
-            if (indicator > GameConstants.DeathIndicator)
-                this.LoseGame(this.game);
-        }
-
-        private void LoseGame(Game1 game)
-        {
-            game.Exit();
-            // game over?
+            if (!game.soundEffects.IsPlaying("LinkDie") && check)
+            {
+                game.Exit();
+            }
         }
     }
 }

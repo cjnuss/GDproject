@@ -120,7 +120,7 @@ namespace Sprint0
             }
             else
             {
-                WinningState.FinishGame(this, Kcontroller);
+                WinningState.Update(this, Kcontroller);
             }
 
             testingText.Draw(_spriteBatch);
