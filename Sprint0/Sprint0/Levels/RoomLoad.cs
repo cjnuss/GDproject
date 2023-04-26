@@ -230,10 +230,10 @@ namespace Sprint0.Levels
                 case "south":
                     door = new Door(new Vector2(395, 563), type);
                     break;
-                case "east":
+                case "west":
                     door = new Door(new Vector2(65, 385), type);
                     break;
-                case "west":
+                case "east":
                     door = new Door(new Vector2(725, 385), type);
                     break;
                 default:

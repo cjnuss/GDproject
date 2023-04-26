@@ -19,3 +19,9 @@ ENEMIES
 skeleton,150,281
 skeleton,600,281
 skeleton,500,412
+DOORS
+south,1
+ROOMS
+20,16,20,9
+WALLS
+0,0,0,1

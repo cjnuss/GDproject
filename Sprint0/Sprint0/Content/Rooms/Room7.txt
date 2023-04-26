@@ -14,3 +14,9 @@ bat,500,412
 bat,600,281
 bat,600,456
 bat,650,368
+DOORS
+west,1
+ROOMS
+5,20,20,20
+WALLS
+1,0,0,0

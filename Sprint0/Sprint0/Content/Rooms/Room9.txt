@@ -5,3 +5,9 @@ ENEMIES
 gel,500,238
 gel,450,325
 gel,400,368
+DOORS
+west,1
+ROOMS
+7,20,9,4
+WALLS
+0,0,1,0

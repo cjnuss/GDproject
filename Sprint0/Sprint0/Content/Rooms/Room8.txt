@@ -2,3 +2,9 @@
 ITEMS
 ENEMIES
 oldman,375,325
+DOORS
+east,1
+ROOMS
+20,20,8,20
+WALLS
+0,0,1,0

@@ -5,3 +5,9 @@ ENEMIES
 skeleton,250,238
 skeleton,250,412
 skeleton,300,325
+DOORS
+north,1
+ROOMS
+20,5,20,1
+WALLS
+0,1,0,0

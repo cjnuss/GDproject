@@ -13,3 +13,10 @@ oneByOne,605,373
 oneByOne,605,461
 ITEMS
 ENEMIES
+DOORS
+east,1
+west,1
+ROOMS
+0,3,2,20
+WALLS
+1,0,1,0

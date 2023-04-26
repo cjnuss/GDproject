@@ -11,3 +11,9 @@ oneByOne,505,373
 ITEMS
 triforce,385,382
 ENEMIES
+DOORS
+west,1
+ROOMS
+13,20,20,20
+WALLS
+1,0,0,0

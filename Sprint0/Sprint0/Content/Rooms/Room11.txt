@@ -8,3 +8,9 @@ ENEMIES
 goriya,600,281
 goriya,600,368
 goriya,650,456
+DOORS
+west,1
+ROOMS
+9,20,11,20
+WALLS
+0,0,1,0
