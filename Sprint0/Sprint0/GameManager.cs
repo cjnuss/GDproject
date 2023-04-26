@@ -94,22 +94,27 @@ namespace Sprint0
 
         public void Update()
         {
+            // start screen
             if (state == 0)
             {
                 startScreen.Update();
             }
+            // playing
             else if (state == 1)
             {
                 roomList[roomNum].Update();
             }
+            // pause
             else if (state == 2)
             {
 
             }
+            // inventory
             else if (state == 3)
             {
 
             }
+            // transition
             else if (state == 4)
             {
                 transition.MoveScreen();
@@ -118,10 +123,12 @@ namespace Sprint0
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            // start screen
             if (state == 0)
             {
                 startScreen.Draw(spriteBatch);
             }
+            // playing
             else if (state == 1)
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
@@ -163,14 +170,17 @@ namespace Sprint0
                     transition.StartTransition(checkDoor, roomList[roomNum].GetRooms());
                 }
             }
+            // pause
             else if (state == 2)
             {
 
             }
+            // inventory
             else if (state == 3)
             {
 
             }
+            // transition
             else if (state == 4)
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
