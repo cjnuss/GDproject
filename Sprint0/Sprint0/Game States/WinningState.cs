@@ -26,9 +26,9 @@ namespace Sprint0
         {
             Rectangle triforce;
             currentFrames++;
-            if (currentFrames <= totalFrames)
+            if (currentFrames == totalFrames)
                 currentFrames = GameConstants.Zero;
-            if (currentFrames <= 5)
+            if (currentFrames <= GameConstants.WinFrame)
                 triforce = ItemsTextureStorage.triforce1;
             else
                 triforce = ItemsTextureStorage.triforce2;

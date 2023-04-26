@@ -49,5 +49,8 @@ namespace Sprint0
 
         // death
         public const int DeathIndicator = 4;
+
+        // win
+        public const int WinFrame = 5;
     }
 }
