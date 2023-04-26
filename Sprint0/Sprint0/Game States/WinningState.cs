@@ -31,7 +31,7 @@ namespace Sprint0
 
             spriteBatch.Draw(triTexture, dest, triforce, Color.White);
             spriteBatch.Draw(linkTexture, dest2, linkRect, Color.White);
-
+            
             if (!game.soundEffects.IsPlaying("Triforce"))
             {
                 game.Exit();

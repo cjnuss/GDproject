@@ -36,6 +36,7 @@ namespace Sprint0
         private Counts HUDnumbers;
 
         private WinningState WinningState;
+        private LosingState LosingState;
 
         public IRoom currentRoom;
         public Game1()
@@ -91,7 +92,9 @@ namespace Sprint0
             playerMap = new PlayerMap(this);
             
             HUDnumbers = new Counts(this, linkItems);
+
             WinningState = new WinningState(this, _spriteBatch);
+            LosingState = new LosingState(this, _spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -106,10 +109,14 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             Mcontroller.Update(gameTime);
-            if (!linkItems.triforce)
+            if (!linkItems.triforce && linkHealth.health > GameConstants.Zero)
             {
                 collisionManager.Check();
                 Kcontroller.Update(gameTime);
+            }
+            else if (linkHealth.health == GameConstants.Zero)
+            {
+                LosingState.Update(Kcontroller);
             }
             else
             {
