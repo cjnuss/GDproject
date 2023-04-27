@@ -31,7 +31,7 @@ namespace Sprint0
         {
             foreach (Door door in game1.currentRoom.GetDoors())
             {
-                linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, 50, 50);
+                linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, LinkConstants.Size*GameConstants.Sizing, LinkConstants.Size * GameConstants.Sizing);
                 doorRectangle = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
 
                 if (doorRectangle.Intersects(linkRectangle))
