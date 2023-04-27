@@ -36,7 +36,18 @@ namespace Sprint0
 
                 if (doorRectangle.Intersects(linkRectangle))
                 {
-                    return door;
+                    if (door.type == 1)
+                    {
+                        return door;
+                    }
+                    else if (door.type == 0)
+                    {
+                        if (game1.linkItems.keys > 0)
+                        {
+                            game1.linkItems.keys--;
+                            return door;
+                        }
+                    }
                 }
             }
             return null;

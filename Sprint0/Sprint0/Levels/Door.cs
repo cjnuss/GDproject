@@ -22,22 +22,25 @@ namespace Sprint0
             this.type = type;
             width = 10;
             height = 10;
-            
-            if (location.X < 75)
+
+            if (type == 0)
             {
-                width = 10;
-            }
-            else if (location.Y < 215)
-            {
-                
-            }
-            else if (location.X > 715)
-            {
-                
-            }
-            else if (location.Y > 550)
-            {
-                
+                if (location.X < 75)
+                {
+                    width = 36;
+                }
+                else if (location.Y < 215)
+                {
+                    height = 31;
+                }
+                else if (location.X > 650)
+                {
+                    location.X = 699;
+                }
+                else if (location.Y > 500)
+                {
+                    location.Y = 542;
+                }
             }
         }
 

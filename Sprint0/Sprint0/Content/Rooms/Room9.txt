@@ -7,6 +7,7 @@ gel,450,325
 gel,400,368
 DOORS
 west,1
+south,0
 ROOMS
 7,20,9,4
 WALLS

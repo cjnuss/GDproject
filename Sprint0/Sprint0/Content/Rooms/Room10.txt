@@ -15,6 +15,7 @@ gel,650,368
 DOORS
 west,1
 north,1
+east,0
 ROOMS
 8,12,10,20
 WALLS
