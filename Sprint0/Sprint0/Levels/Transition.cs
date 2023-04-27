@@ -68,7 +68,7 @@ namespace Sprint0
                     {
                         transition = false;
                         gameManager.SetState(1);
-                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(650, 365);
+                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(645, 365);
                         gameManager.roomNum = rooms[0];
                     } else
                     {
@@ -93,7 +93,7 @@ namespace Sprint0
                     {
                         transition = false;
                         gameManager.SetState(1);
-                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(100, 365);
+                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(105, 365);
                         gameManager.roomNum = rooms[2];
                     }
                     else
