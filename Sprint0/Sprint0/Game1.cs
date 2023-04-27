@@ -109,6 +109,7 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             Mcontroller.Update(gameTime);
+
             if (!linkItems.triforce && linkHealth.health > GameConstants.Zero)
             {
                 collisionManager.Check();
