@@ -39,7 +39,7 @@ namespace Sprint0
                 }
                 else if (location.Y > 500)
                 {
-                    location.Y = 541a;
+                    location.Y = 541;
                 }
             }
         }
