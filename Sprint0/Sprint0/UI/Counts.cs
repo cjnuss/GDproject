@@ -54,6 +54,7 @@ namespace Sprint0.UI
         public void Draw(SpriteBatch spriteBatch)
         {
             //bomb
+            spriteBatch.Draw(texture, new Rectangle(294, 32, boxRect.Width * 10, boxRect.Height * 12), boxRect, Color.White);
             spriteBatch.Draw(texture, new Rectangle(294, 106, XRect.Width * 3, XRect.Height * 3), XRect, Color.White);
 
             switch (firstDigit(bomb)) {
@@ -200,6 +201,7 @@ namespace Sprint0.UI
 
 
             //for ruppee
+            
             spriteBatch.Draw(texture, new Rectangle(294, 34, XRect.Width * 3, XRect.Height * 3), XRect, Color.White);
 
             switch (firstDigit(ruppee))
