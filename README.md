@@ -1,6 +1,6 @@
 # GD Project - Team 2
 
-## Program Controls
+## Program Controls - Press N to start.
 ### HUD
 We are currently in progress of completing the HUD and dungeon layout for our game, this is a top priority and is currently being addressed.
 
