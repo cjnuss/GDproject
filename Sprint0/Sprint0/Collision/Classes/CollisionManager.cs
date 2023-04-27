@@ -18,6 +18,7 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Game1 game1;
         private Link linkSprite;
+        private IEnemy enemy;
 
         private LinkObsticleCollisionCheck linkObsticleCollisionCheck;
         private TriforceCollisionCheck triforceCollisionCheck;
@@ -32,6 +33,7 @@ namespace Sprint0
         private ClockCollisionCheck clockCollisionCheck;
         private CompassCollisionCheck compassCollisionCheck;
         private FairyCollisionCheck fairyCollisionCheck;
+        private EnemyObsticleCollisionCheck enemyObsticleCollisionCheck;
 
         private BatSwordCollisionCheck batSwordCollisionCheck;
         private BatGreenArrowCollisionCheck batGreenArrowCollisionCheck;
@@ -126,7 +128,7 @@ namespace Sprint0
             aquamentusSwordCollisionCheck = new AquamentusSwordCollisionCheck(this.KeyBoardController, new AquamentusSwordCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             aquamentusSwordBeamCollisionCheck = new AquamentusSwordBeamCollisionCheck(this.KeyBoardController, new AquamentusSwordBeamCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
 
-
+            enemyObsticleCollisionCheck = new EnemyObsticleCollisionCheck(KeyBoardController, game1, enemy);
         }
 
         public void Check()
@@ -134,6 +136,7 @@ namespace Sprint0
             #region Top Level Game Collisions
             linkObsticleCollisionCheck.CheckCollision();
             enemyCollisionCheck.CheckCollision();
+            enemyObsticleCollisionCheck.CheckCollision();
             #endregion
 
             #region Link Item Collisions

@@ -39,7 +39,7 @@ namespace Sprint0.Collision.Response.Blocks
                 if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
                 {
                     if ((int)link.location.X < blockCenterX)
-                        link.location.X = (int)collisionBlock.location.X - LinkConstants.Size * GameConstants.Sizing - LinkConstants.Correction;
+                        link.location.X = (int)collisionBlock.location.X - LinkConstants.Size * GameConstants.Sizing;
                     else if ((int)link.location.X > blockCenterX)
                         link.location.X = (int)collisionBlock.location.X + collisionBlock.width + LinkConstants.Correction;
                 }
