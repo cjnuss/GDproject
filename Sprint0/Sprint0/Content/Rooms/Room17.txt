@@ -12,3 +12,8 @@ ENEMIES
 goriya,300,325
 goriya,450,325
 goriya,500,238
+DOORS
+ROOMS
+15,20,20,12
+WALLS
+0,0,0,0

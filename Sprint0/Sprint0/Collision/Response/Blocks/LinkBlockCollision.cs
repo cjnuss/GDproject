@@ -27,7 +27,7 @@ namespace Sprint0.Collision.Response.Blocks
 
         public void Update(CollisionBlock collisionBlock)
         {
-            linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
+            linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * GameConstants.Sizing, LinkConstants.CollisionSize * GameConstants.Sizing);
             obstacleRectangle = new Rectangle((int)collisionBlock.location.X, (int)collisionBlock.location.Y, collisionBlock.width, collisionBlock.height);
 
             if (obstacleRectangle.Intersects(linkRectangle))
@@ -39,7 +39,7 @@ namespace Sprint0.Collision.Response.Blocks
                 if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
                 {
                     if ((int)link.location.X < blockCenterX)
-                        link.location.X = (int)collisionBlock.location.X - LinkConstants.Size * GameConstants.Sizing - LinkConstants.Correction;
+                        link.location.X = (int)collisionBlock.location.X - LinkConstants.Size * GameConstants.Sizing;
                     else if ((int)link.location.X > blockCenterX)
                         link.location.X = (int)collisionBlock.location.X + collisionBlock.width + LinkConstants.Correction;
                 }

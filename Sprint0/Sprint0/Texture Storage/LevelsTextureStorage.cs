@@ -26,15 +26,22 @@ namespace Sprint0
         }
 
         private static Texture2D levels;
+        private static Texture2D TitleScreen;
 
         public void Load(ContentManager content)
         {
             levels = content.Load<Texture2D>("level1");
+            TitleScreen = content.Load<Texture2D>("TItleScreenlinksprites");
         }
 
         public Texture2D GetLevels()
         {
             return levels;
+        }
+
+        public Texture2D GetTitleScreen()
+        {
+            return TitleScreen;
         }
 
         public static Dictionary<string, Rectangle> Sources = new Dictionary<string, Rectangle>()

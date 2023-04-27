@@ -49,7 +49,7 @@ namespace Sprint0
                 }
             }
             
-            linkWallCollision.Update();
+            // linkWallCollision.Update();
         }
     }
 }

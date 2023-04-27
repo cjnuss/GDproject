@@ -10,3 +10,11 @@ skeleton,300,325
 skeleton,400,368
 skeleton,450,325
 skeleton,500,238
+DOORS
+east,1
+south,1
+west,1
+ROOMS
+4,20,6,3
+WALLS
+1,0,1,1

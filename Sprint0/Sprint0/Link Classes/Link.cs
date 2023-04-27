@@ -45,7 +45,7 @@ namespace Sprint0
         public Link(Game1 game)
         {
             this.game = game;
-            location = new Vector2(LinkConstants.InitialX, LinkConstants.InitialY);
+            location = new Vector2(375, 493);
 
             linkLooking = new LinkLooking();
             linkMoving = new LinkMoving();

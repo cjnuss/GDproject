@@ -12,3 +12,10 @@ gel,250,499
 gel,500,325
 gel,500,412
 gel,650,368
+DOORS
+west,1
+north,1
+ROOMS
+8,12,10,20
+WALLS
+1,1,0,0
