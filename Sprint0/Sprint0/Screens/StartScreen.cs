@@ -9,7 +9,7 @@ using System.Transactions;
 
 namespace Sprint0
 {
-    class StartScreen
+    public class StartScreen : IGameScreen
     {
         Texture2D texture = LevelsTextureStorage.Instance.GetTitleScreen();
         Rectangle source = new Rectangle(1, 11, 256, 244);
@@ -24,7 +24,7 @@ namespace Sprint0
             this.gameManager = gameManager;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(texture, target, source, Color.White);
         }
@@ -35,7 +35,7 @@ namespace Sprint0
 
             if (keyboardState.IsKeyDown(Keys.N))
             {
-                gameManager.SetState(1);
+                gameManager.SetState(GameConstants.One);
             }
         }
     }

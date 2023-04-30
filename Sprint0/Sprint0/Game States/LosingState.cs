@@ -31,6 +31,7 @@ namespace Sprint0
         {
             if (!check)
             {
+                game.backgroundAudio.StopSound();
                 game.soundEffects.PlaySound("LinkDie");
                 check = true;
             }

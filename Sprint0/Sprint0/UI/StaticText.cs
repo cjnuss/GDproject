@@ -10,22 +10,21 @@ using System.Threading.Tasks;
 
 namespace Sprint0.UI
 {
-    internal class StaticText : IUserInterface
+    public class StaticText : IUserInterface
     {
-        SpriteFont font;
+        private SpriteFont font;
         private Game1 game1;
         public StaticText(Game1 game) 
         {
             this.game1 = game;
             font = UITextureStorage.Instance.GetText();
-            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font, "LEVEL-1", new Vector2(100, 25), Color.White);
             spriteBatch.DrawString(font, "-LIFE-", new Vector2(600, 50), Color.DarkRed);
-
         }
+
         public void Update()
         {
         }
