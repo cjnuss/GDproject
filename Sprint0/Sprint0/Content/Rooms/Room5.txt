@@ -9,6 +9,7 @@ bat,250,412
 bat,500,238
 bat,500,499
 DOORS
+north,0
 ROOMS
 20,8,5,20
 WALLS
