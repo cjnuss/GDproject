@@ -18,10 +18,9 @@ namespace Sprint0.Collision.Response.Walls
         public Link link;
         public int roomType;
         public Rectangle linkRectangle;
-        public Rectangle[] doorRectangle;
+        public Rectangle doorRectangle;
+        private Dictionary<Rectangle, Door> doors;
         int numDoors;
-
-
 
         public DoorCollisions(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
@@ -29,19 +28,16 @@ namespace Sprint0.Collision.Response.Walls
             this.link = link;
             this.game1 = game1;
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, LinkConstants.Size * GameConstants.Sizing, LinkConstants.Size * GameConstants.Sizing);
+            doors = new Dictionary<Rectangle, Door>();
         }
 
         public void UpdateCollisionBlocks()
         {
-
-            numDoors = game1.currentRoom.GetDoors().Count;
-            doorRectangle = new Rectangle[numDoors];
-
-            int i = 0;
             foreach (Door door in game1.currentRoom.GetDoors())
             {
-                doorRectangle[i] = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
-                i++;
+                doorRectangle = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
+                if (!doors.ContainsKey(doorRectangle))
+                    doors.Add(doorRectangle, door);
             }
         }
 
@@ -50,28 +46,15 @@ namespace Sprint0.Collision.Response.Walls
             linkRectangle.X = (int)link.location.X;
             linkRectangle.Y = (int)link.location.Y;
 
-            int i = 0;
-            foreach (Door door in game1.currentRoom.GetDoors())
+            foreach (KeyValuePair<Rectangle, Door> door in doors)
             {
-                if (doorRectangle[i].Intersects(linkRectangle))
+                if (door.Key.Intersects(linkRectangle))
                 {
                     {
-                        if (door.type == 1)
-                        {
-                            return door;
-                        }
-                        else if (door.type == 0)
-                        {
-                            if (game1.linkItems.keys > 0)
-                            {
-                                game1.linkItems.keys--;
-                                return door;
-                            }
-                        }
+                        return door.Value;
                     }
 
                 }
-                i++;
             }
             return null;
         }
