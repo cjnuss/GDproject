@@ -52,5 +52,14 @@ namespace Sprint0
 
         // win
         public const int WinFrame = 5;
+
+        // pause screen
+        public const int XPause = 350, YPause = 150;
+
+        public const int rupeeDrop = 1;
+        public const int clockDrop = 2;
+        public const int fairyDrop = 3;
+        public const int heartDrop = 4;
+        public const int bombDrop = 5;
     }
 }

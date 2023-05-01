@@ -75,24 +75,16 @@ namespace Sprint0
         }
         public void Update(int linkState, int dir, Vector2 location)
         {
-            if(damageCounter == 0)
+            if(damageCounter == GameConstants.Zero)
             {
                 UpdateDirection(dir);
                 currentSprite = UpdateSprite(linkState);
                 linkMoving.Update();
                 attack.Update(linkState, ref currentSprite, dir, location);
-            } else
+            } 
+            else
             {
-                damageCounter--;
-                currentSprite = LinkConstants.Damage;
-                if (linkDirection == GameConstants.Left)
-                    this.location.X = this.location.X + 10;
-                else if (linkDirection == GameConstants.Right)
-                    this.location.X = this.location.X - 10;
-                else if (linkDirection == GameConstants.Up)
-                    this.location.Y = this.location.Y + 10;
-                else if (linkDirection == GameConstants.Down)
-                    this.location.Y = this.location.Y - 10;
+                UpdateDamage();
             }
         }
 
@@ -100,7 +92,7 @@ namespace Sprint0
         {
             if (linkState == LinkConstants.Damage && damageCounter == 0)
             {
-                damageCounter = 10;
+                damageCounter = GameConstants.Ten;
                 return linkState;
             }
             else if (linkState == LinkConstants.GreenArrow || linkState == LinkConstants.Fire ||
@@ -119,8 +111,21 @@ namespace Sprint0
             linkMoving.direction = dir;
             //linkAttacking.direction = dir;
             linkThrowing.direction = dir;
-
             linkDirection = dir;
+        }
+
+        public void UpdateDamage()
+        {
+            damageCounter--;
+            currentSprite = LinkConstants.Damage;
+            if (linkDirection == GameConstants.Left)
+                this.location.X = this.location.X + GameConstants.Ten;
+            else if (linkDirection == GameConstants.Right)
+                this.location.X = this.location.X - GameConstants.Ten;
+            else if (linkDirection == GameConstants.Up)
+                this.location.Y = this.location.Y + GameConstants.Ten;
+            else if (linkDirection == GameConstants.Down)
+                this.location.Y = this.location.Y - GameConstants.Ten;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Collision.Response;
 using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,20 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle fireRectangle;
         private Rectangle skeletonRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public SkeletonFireCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Skeleton skeleton)
+        public ISprite Update(Skeleton skeleton)
         {
+            itemDrop = null;
+
             if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
                 fireRectangle = new Rectangle(KeyBoardController.linkSprite.attack.fire.currentX, KeyBoardController.linkSprite.attack.fire.currentY, ItemConstants.FireHeight * GameConstants.Sizing, ItemConstants.FireWidth * GameConstants.Sizing);
             else
@@ -42,13 +48,18 @@ namespace Sprint0
 
                     if (!game.soundEffects.IsPlaying("EnemyHit"))
                         game.soundEffects.PlaySound("EnemyHit");
+
+                    itemDrop = null;
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(skeleton.location);
                     skeleton.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+
+            return itemDrop;
         }
     }
 }

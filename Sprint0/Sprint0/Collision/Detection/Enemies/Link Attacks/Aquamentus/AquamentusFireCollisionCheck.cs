@@ -22,10 +22,10 @@ namespace Sprint0
         {
             this.KeyBoardController = KeyBoardController;
             this.game = game;
-            this.aquamentusFireCollision = new AquamentusFireCollision(this.game, this.KeyBoardController);
+            this.aquamentusFireCollision = aquamentusFireCollision;
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -35,10 +35,12 @@ namespace Sprint0
                     if (aquamentus.location.X - KeyBoardController.linkSprite.attack.fire.currentX >= GameConstants.Zero && aquamentus.location.X - KeyBoardController.linkSprite.attack.fire.currentX <=
                         ItemConstants.ArrowWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.fire.currentX - aquamentus.location.X >= 0 && KeyBoardController.linkSprite.attack.fire.currentX - aquamentus.location.X <= ItemConstants.ArrowWidth * GameConstants.Sizing)
                     {
-                        aquamentusFireCollision.Update(aquamentus);
+                        return aquamentusFireCollision.Update(aquamentus);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

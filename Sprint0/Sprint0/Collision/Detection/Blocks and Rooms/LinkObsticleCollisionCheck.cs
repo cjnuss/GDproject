@@ -17,7 +17,6 @@ namespace Sprint0
     {
         public KeyBoardController KeyBoardController;
         public LinkBlockCollision linkBlockCollision;
-        private LinkWallCollision linkWallCollision;
         public Game1 game1;
         public Link link;
         public int roomType;
@@ -28,8 +27,6 @@ namespace Sprint0
             this.link = link;
             this.game1 = game1;
             linkBlockCollision = new LinkBlockCollision(this.KeyBoardController, this.link);
-            linkWallCollision = new LinkWallCollision(this.KeyBoardController, this.link);
-            linkWallCollision.roomType = GameConstants.Zero;
         }
 
         public void CheckCollision()
@@ -48,8 +45,6 @@ namespace Sprint0
                     break;
                 }
             }
-            
-            // linkWallCollision.Update();
         }
     }
 }
