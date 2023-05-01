@@ -25,6 +25,11 @@ namespace Sprint0.Collision.Response.Blocks
             this.KeyBoardController = KeyBoardController;
         }
 
+        public void UpdateCollisionBlocks()
+        {
+
+        }
+
         public void Update(CollisionBlock collisionBlock)
         {
             enemyRectangle = new Rectangle((int)enemy.GetLocation().X, (int)enemy.GetLocation().Y, (int)enemy.GetSize().X, (int)enemy.GetSize().Y);

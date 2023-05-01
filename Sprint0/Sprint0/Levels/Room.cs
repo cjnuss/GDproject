@@ -96,5 +96,10 @@ namespace Sprint0.Levels
         {
             return rooms;
         }
+
+        public void AddItems(ISprite item)
+        {
+            items.Add(item);
+        }
     }
 }
