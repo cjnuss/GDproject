@@ -55,7 +55,21 @@ namespace Sprint0.Collision.Response.Walls
             {
                 if (doorRectangle[i].Intersects(linkRectangle))
                 {
-                    return door;
+                    {
+                        if (door.type == 1)
+                        {
+                            return door;
+                        }
+                        else if (door.type == 0)
+                        {
+                            if (game1.linkItems.keys > 0)
+                            {
+                                game1.linkItems.keys--;
+                                return door;
+                            }
+                        }
+                    }
+
                 }
                 i++;
             }
