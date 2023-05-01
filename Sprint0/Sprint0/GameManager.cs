@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
 using Sprint0.Levels;
 using Sprint0.UI;
-using Sprint0;
-using System.Numerics;
-using System.Xml.Linq;
-using System.Reflection.Emit;
-using System.Net;
-using System.ComponentModel.Design;
+using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
-using System.Threading;
 
 namespace Sprint0
 {
@@ -54,6 +46,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
 
         private StartScreen startScreen;
+        private PauseScreen pauseScreen;
 
 
         public GameManager(Game1 game, SpriteBatch spriteBatch)
@@ -83,6 +76,7 @@ namespace Sprint0
             HUDnumbers = new Counts(game, game.linkItems);
 
             startScreen = new StartScreen(this);
+            pauseScreen = new PauseScreen(this);
 
             winningState = new WinningState(game, _spriteBatch);
             losingState = new LosingState(game, _spriteBatch);
@@ -103,11 +97,12 @@ namespace Sprint0
             else if (state == 1)
             {
                 roomList[roomNum].Update();
+                pauseScreen.Update(); // check for pause
             }
             // pause
             else if (state == 2)
             {
-
+                pauseScreen.Update();
             }
             // inventory
             else if (state == 3)
@@ -126,7 +121,7 @@ namespace Sprint0
             // start screen
             if (state == 0)
             {
-                startScreen.Draw(spriteBatch);
+                startScreen.Draw(spriteBatch, gameTime);
             }
             // playing
             else if (state == 1)
@@ -173,7 +168,7 @@ namespace Sprint0
             // pause
             else if (state == 2)
             {
-
+                pauseScreen.Draw(_spriteBatch, gameTime);
             }
             // inventory
             else if (state == 3)
