@@ -70,6 +70,8 @@ namespace Sprint0
         private AquamentusBlueArrowCollisionCheck aquamentusBlueArrowCollisionCheck;
         private AquamentusSwordBeamCollisionCheck aquamentusSwordBeamCollisionCheck;
 
+        private List<ISprite> dropedItems = new List<ISprite>();
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -161,12 +163,12 @@ namespace Sprint0
             batBlueArrowCollisionCheck.CheckCollision();
             batSwordBeamCollisionCheck.CheckCollision();
 
-            skeletonGreenArrowCollisionCheck.CheckCollision();
-            skeletonBlueArrowCollisionCheck.CheckCollision();
-            skeletonFireCollisionCheck.CheckCollision();
-            skeletonBombCollisionCheck.CheckCollision();
-            skeletonSwordCollisionCheck.CheckCollision();
-            skeletonSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(skeletonGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(skeletonBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(skeletonFireCollisionCheck.CheckCollision());
+            dropedItems.Add(skeletonBombCollisionCheck.CheckCollision());
+            dropedItems.Add(skeletonSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(skeletonSwordBeamCollisionCheck.CheckCollision());
 
             goriyaGreenArrowCollisionCheck.CheckCollision();
             goriyaSwordCollisionCheck.CheckCollision();
@@ -182,14 +184,19 @@ namespace Sprint0
             gelSwordCollisionCheck.CheckCollision();
             gelSwordBeamCollisionCheck.CheckCollision();
 
-            aquamentusGreenArrowCollisionCheck.CheckCollision();
-            aquamentusBlueArrowCollisionCheck.CheckCollision();
-            aquamentusFireCollisionCheck.CheckCollision();
-            aquamentusBombCollisionCheck.CheckCollision();
-            aquamentusSwordCollisionCheck.CheckCollision();
-            aquamentusSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(aquamentusGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(aquamentusBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(aquamentusFireCollisionCheck.CheckCollision());
+            dropedItems.Add(aquamentusBombCollisionCheck.CheckCollision());
+            dropedItems.Add(aquamentusSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(aquamentusSwordBeamCollisionCheck.CheckCollision());
             #endregion
 
+        }
+
+        public List<ISprite> DropedItems()
+        {
+            return dropedItems;
         }
     }
 }

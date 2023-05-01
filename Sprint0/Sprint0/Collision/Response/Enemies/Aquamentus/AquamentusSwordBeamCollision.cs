@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Collision.Response;
 using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,17 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle swordBeamRectangle;
         private Rectangle aquamentusRectangle;
-
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
         public AquamentusSwordBeamCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Aquamentus aquamentus)
+        public ISprite Update(Aquamentus aquamentus)
         {
             if (KeyBoardController.dir == GameConstants.Up || KeyBoardController.dir == GameConstants.Up)
                 swordBeamRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.swordBeam.currentX, (int)KeyBoardController.linkSprite.attack.swordBeam.currentY, LinkConstants.SwordBeamWidth * GameConstants.Sizing, LinkConstants.SwordBeamHeight * GameConstants.Sizing);
@@ -46,13 +49,16 @@ namespace Sprint0
 
                     if (!game.soundEffects.IsPlaying("EnemyHit"))
                         game.soundEffects.PlaySound("EnemyHit");
+                    itemDrop = null;
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(aquamentus.location);
                     aquamentus.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

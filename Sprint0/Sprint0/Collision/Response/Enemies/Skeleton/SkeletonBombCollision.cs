@@ -16,6 +16,8 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle bombRectangle;
         private Rectangle skeletonRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public SkeletonBombCollision(Game1 game, KeyBoardController KeyBoardController)
         {
@@ -23,8 +25,10 @@ namespace Sprint0.Collision.Response.Enemies
             this.KeyBoardController = KeyBoardController;
         }
 
-        public void Update(Skeleton skeleton)
+        public ISprite Update(Skeleton skeleton)
         {
+            itemDrop = null;
+
             bombRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.bomb.location1.X, (int)KeyBoardController.linkSprite.attack.bomb.location1.Y, ItemConstants.BombWidth * GameConstants.Sizing, ItemConstants.BombHeight * GameConstants.Sizing);
             skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
 
@@ -37,13 +41,17 @@ namespace Sprint0.Collision.Response.Enemies
 
                     if (!game.soundEffects.IsPlaying("EnemyHit"))
                         game.soundEffects.PlaySound("EnemyHit");
+
+                    itemDrop = null;
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(skeleton.location);
                     skeleton.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

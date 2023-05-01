@@ -35,6 +35,8 @@ namespace Sprint0
 
             if (keyboardState.IsKeyDown(Keys.N))
             {
+                gameManager.SetState(1);
+                gameManager.gameStart();
                 gameManager.SetState(GameConstants.One);
             }
         }
