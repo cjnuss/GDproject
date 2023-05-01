@@ -72,7 +72,7 @@ namespace Sprint0
             testingText = new StaticText(game);
             testingHearts = new HpHearts(game);
             mainHUD = new MainHUD(game);
-            playerMap = new PlayerMap(game);
+            playerMap = new PlayerMap(game, this);
             HUDnumbers = new Counts(game, game.linkItems);
 
             startScreen = new StartScreen(this);
