@@ -131,6 +131,11 @@ namespace Sprint0
             enemyObsticleCollisionCheck = new EnemyObsticleCollisionCheck(KeyBoardController, game1, enemy);
         }
 
+        public void UpdateCollisionBlocks()
+        {
+            
+        }
+
         public void Check()
         {
             #region Top Level Game Collisions

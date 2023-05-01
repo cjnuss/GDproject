@@ -15,6 +15,7 @@ using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using System.Threading;
+using Sprint0.Collision.Response.Walls;
 
 namespace Sprint0
 {
@@ -39,7 +40,7 @@ namespace Sprint0
         private MouseController Mcontroller;
 
         private CollisionManager collisionManager;
-        private DoorCollisionCheck doorCollision;
+        private DoorCollisions doorCollision;
         private Link linkSprite;
 
         private StaticText testingText;
@@ -88,7 +89,7 @@ namespace Sprint0
             losingState = new LosingState(game, _spriteBatch);
 
             collisionManager = new CollisionManager(Kcontroller, game, linkSprite);
-            doorCollision = new DoorCollisionCheck(Kcontroller, game1, linkSprite);
+            doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite);
             collisionManager.Create();
         }
 
@@ -118,6 +119,8 @@ namespace Sprint0
             else if (state == 4)
             {
                 transition.MoveScreen();
+                collisionManager.UpdateCollisionBlocks();
+                doorCollision.UpdateCollisionBlocks();
             }
         }
 
@@ -162,7 +165,7 @@ namespace Sprint0
 
                 collisionManager.Check();
 
-                checkDoor = doorCollision.CheckCollision();
+                checkDoor = doorCollision.Check();
 
                 if (checkDoor != null)
                 {
@@ -190,6 +193,13 @@ namespace Sprint0
         public void SetState(int newState)
         {
             state = newState;
+        }
+
+        public void gameStart()
+        {
+            game1.currentRoom = roomList[roomNum];
+            doorCollision.UpdateCollisionBlocks();
+            collisionManager.UpdateCollisionBlocks();
         }
     }
 }
