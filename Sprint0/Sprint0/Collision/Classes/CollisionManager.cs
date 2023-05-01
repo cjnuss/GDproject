@@ -70,6 +70,8 @@ namespace Sprint0
         private AquamentusBlueArrowCollisionCheck aquamentusBlueArrowCollisionCheck;
         private AquamentusSwordBeamCollisionCheck aquamentusSwordBeamCollisionCheck;
 
+        private List<ISprite> dropedItems = new List<ISprite>();
+
         public CollisionManager(KeyBoardController keyBoardController, Game1 game1, Link linkSprite)
         {
             KeyBoardController = keyBoardController;
@@ -131,11 +133,6 @@ namespace Sprint0
             enemyObsticleCollisionCheck = new EnemyObsticleCollisionCheck(KeyBoardController, game1, enemy);
         }
 
-        public void UpdateCollisionBlocks()
-        {
-            
-        }
-
         public void Check()
         {
             #region Top Level Game Collisions
@@ -171,7 +168,7 @@ namespace Sprint0
             skeletonFireCollisionCheck.CheckCollision();
             skeletonBombCollisionCheck.CheckCollision();
             skeletonSwordCollisionCheck.CheckCollision();
-            skeletonSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(skeletonSwordBeamCollisionCheck.CheckCollision());
 
             goriyaGreenArrowCollisionCheck.CheckCollision();
             goriyaSwordCollisionCheck.CheckCollision();
@@ -195,6 +192,11 @@ namespace Sprint0
             aquamentusSwordBeamCollisionCheck.CheckCollision();
             #endregion
 
+        }
+
+        public List<ISprite> DropedItems()
+        {
+            return dropedItems;
         }
     }
 }

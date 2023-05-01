@@ -19,7 +19,6 @@ namespace Sprint0.Collision.Response.Walls
         public int roomType;
         public Rectangle linkRectangle;
         public Rectangle[] doorRectangle;
-        int i;
         int numDoors;
 
 
@@ -38,7 +37,7 @@ namespace Sprint0.Collision.Response.Walls
             numDoors = game1.currentRoom.GetDoors().Count;
             doorRectangle = new Rectangle[numDoors];
 
-            i = 0;
+            int i = 0;
             foreach (Door door in game1.currentRoom.GetDoors())
             {
                 doorRectangle[i] = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
@@ -51,7 +50,7 @@ namespace Sprint0.Collision.Response.Walls
             linkRectangle.X = (int)link.location.X;
             linkRectangle.Y = (int)link.location.Y;
 
-            i = 0;
+            int i = 0;
             foreach (Door door in game1.currentRoom.GetDoors())
             {
                 if (doorRectangle[i].Intersects(linkRectangle))

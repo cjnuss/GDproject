@@ -7,12 +7,8 @@ using Sprint0.UI;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-<<<<<<< HEAD
-using Microsoft.Xna.Framework;
 using System.Threading;
 using Sprint0.Collision.Response.Walls;
-=======
->>>>>>> 19e7e474ce2f0879b66bbf4272bac017ae1b7cd9
 
 namespace Sprint0
 {
@@ -27,7 +23,7 @@ namespace Sprint0
         public Door checkDoor;
 
         private RoomLoad roomLoad;
-        List<Room> roomList = new List<Room>();
+        public List<Room> roomList = new List<Room>();
 
         private Transition transition;
 
@@ -53,6 +49,8 @@ namespace Sprint0
 
         private StartScreen startScreen;
         private PauseScreen pauseScreen;
+
+        private List<ISprite> dropedItems;
 
 
         public GameManager(Game1 game, SpriteBatch spriteBatch)
@@ -87,8 +85,10 @@ namespace Sprint0
             winningState = new WinningState(game, _spriteBatch);
             losingState = new LosingState(game, _spriteBatch);
 
-            collisionManager = new CollisionManager(Kcontroller, game, linkSprite);
+            dropedItems = new List<ISprite>();
+
             doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite);
+            collisionManager = new CollisionManager(Kcontroller, game1, linkSprite);
             collisionManager.Create();
         }
 
@@ -119,7 +119,6 @@ namespace Sprint0
             else if (state == 4)
             {
                 transition.MoveScreen();
-                collisionManager.UpdateCollisionBlocks();
                 doorCollision.UpdateCollisionBlocks();
             }
         }
@@ -164,8 +163,15 @@ namespace Sprint0
                 HUDnumbers.Draw(_spriteBatch);
 
                 collisionManager.Check();
+                dropedItems = collisionManager.DropedItems();
 
                 checkDoor = doorCollision.Check();
+
+                foreach(ISprite item in dropedItems)
+                {
+                    if(item != null)
+                        roomList[roomNum].AddItems(item);
+                }
 
                 if (checkDoor != null)
                 {
@@ -199,7 +205,6 @@ namespace Sprint0
         {
             game1.currentRoom = roomList[roomNum];
             doorCollision.UpdateCollisionBlocks();
-            collisionManager.UpdateCollisionBlocks();
         }
     }
 }

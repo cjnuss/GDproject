@@ -22,7 +22,7 @@ namespace Sprint0
         {
             this.KeyBoardController = KeyBoardController;
             this.game = game;
-            this.aquamentusFireCollision = new AquamentusFireCollision(this.game, this.KeyBoardController);
+            this.aquamentusFireCollision = aquamentusFireCollision;
         }
 
         public void CheckCollision()

@@ -35,12 +35,9 @@ namespace Sprint0
 
             if (keyboardState.IsKeyDown(Keys.N))
             {
-<<<<<<< HEAD:Sprint0/Sprint0/StartScreen.cs
                 gameManager.SetState(1);
                 gameManager.gameStart();
-=======
                 gameManager.SetState(GameConstants.One);
->>>>>>> 19e7e474ce2f0879b66bbf4272bac017ae1b7cd9:Sprint0/Sprint0/Screens/StartScreen.cs
             }
         }
     }
