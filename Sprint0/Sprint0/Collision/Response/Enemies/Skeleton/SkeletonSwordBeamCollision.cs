@@ -53,7 +53,7 @@ namespace Sprint0
                     if (!game.soundEffects.IsPlaying("EnemyHit"))
                         game.soundEffects.PlaySound("EnemyHit");
 
-                    return null;
+                    itemDrop = null;
                 }
                 else
                 {
@@ -62,7 +62,6 @@ namespace Sprint0
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
-
             return itemDrop;
         }
     }

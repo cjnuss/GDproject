@@ -25,7 +25,7 @@ namespace Sprint0
             this.skeletonBlueArrowCollision = new SkeletonBlueArrowCollision(this.game, this.KeyBoardController);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -35,10 +35,12 @@ namespace Sprint0
                     if (skeleton.location.X - KeyBoardController.linkSprite.attack.blueArrow.currentX >= GameConstants.Zero && skeleton.location.X - KeyBoardController.linkSprite.attack.blueArrow.currentX <=
                         ItemConstants.ArrowWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.blueArrow.currentX - skeleton.location.X >= 0 && KeyBoardController.linkSprite.attack.blueArrow.currentX - skeleton.location.X <= ItemConstants.ArrowWidth * GameConstants.Sizing)
                     {
-                        skeletonBlueArrowCollision.Update(skeleton);
+                        return skeletonBlueArrowCollision.Update(skeleton);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

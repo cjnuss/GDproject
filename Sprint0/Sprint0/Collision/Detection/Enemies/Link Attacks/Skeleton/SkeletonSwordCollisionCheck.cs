@@ -27,7 +27,7 @@ namespace Sprint0
             this.skeletonSwordCollision = new SkeletonSwordCollision(this.game, this.KeyBoardController, this.link);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -37,10 +37,12 @@ namespace Sprint0
                     if (skeleton.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && skeleton.location.X - KeyBoardController.linkSprite.location.X <=
                         LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - skeleton.location.X >= 0 && KeyBoardController.linkSprite.location.X - skeleton.location.X <= LinkConstants.Size * GameConstants.Sizing)
                     {
-                        skeletonSwordCollision.Update(skeleton);
+                        return skeletonSwordCollision.Update(skeleton);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

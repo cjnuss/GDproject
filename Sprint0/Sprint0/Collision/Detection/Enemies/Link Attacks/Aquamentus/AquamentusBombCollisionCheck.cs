@@ -25,7 +25,7 @@ namespace Sprint0
             this.aquamentusBombCollision = new AquamentusBombCollision(this.game, this.KeyBoardController);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -35,10 +35,12 @@ namespace Sprint0
                     if (aquamentus.location.X - (int)KeyBoardController.linkSprite.attack.bomb.location1.X >= GameConstants.Zero && aquamentus.location.X - (int)KeyBoardController.linkSprite.attack.bomb.location1.X <=
                         ItemConstants.BombWidth * GameConstants.Sizing || (int)KeyBoardController.linkSprite.attack.bomb.location1.X - aquamentus.location.X >= 0 && (int)KeyBoardController.linkSprite.attack.bomb.location1.X - aquamentus.location.X <= ItemConstants.BombWidth * GameConstants.Sizing)
                     {
-                        aquamentusBombCollision.Update(aquamentus);
+                        return aquamentusBombCollision.Update(aquamentus);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

@@ -16,15 +16,20 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle bombRectangle;
         private Rectangle aquamentusRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public AquamentusBombCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Aquamentus aquamentus)
+        public ISprite Update(Aquamentus aquamentus)
         {
+            itemDrop = null;
+
             bombRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.bomb.location1.X, (int)KeyBoardController.linkSprite.attack.bomb.location1.Y, ItemConstants.BombWidth * GameConstants.Sizing, ItemConstants.BombHeight * GameConstants.Sizing);
             aquamentusRectangle = new Rectangle((int)aquamentus.location.X, (int)aquamentus.location.Y, EnemyConstants.AquaWidth * GameConstants.Sizing, EnemyConstants.AquaHeight * GameConstants.Sizing);
 
@@ -40,10 +45,12 @@ namespace Sprint0.Collision.Response.Enemies
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(aquamentus.location);
                     aquamentus.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

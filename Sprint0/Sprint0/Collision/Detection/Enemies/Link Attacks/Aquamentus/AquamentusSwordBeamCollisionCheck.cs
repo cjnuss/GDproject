@@ -27,7 +27,7 @@ namespace Sprint0
             this.aquamentusSwordBeamCollision = new AquamentusSwordBeamCollision(this.game, this.KeyBoardController, this.link);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -37,10 +37,12 @@ namespace Sprint0
                     if (aquamentus.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX >= GameConstants.Zero && aquamentus.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX <=
                         LinkConstants.SwordBeamWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.swordBeam.currentX - aquamentus.location.X >= 0 && KeyBoardController.linkSprite.attack.swordBeam.currentX - aquamentus.location.X <= LinkConstants.SwordBeamWidth * GameConstants.Sizing)
                     {
-                        aquamentusSwordBeamCollision.Update(aquamentus);
+                        return aquamentusSwordBeamCollision.Update(aquamentus);
                     }
                 }
             }
+
+            return null;
         }
     }
 }
