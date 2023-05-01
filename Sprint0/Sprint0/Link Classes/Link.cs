@@ -88,7 +88,7 @@ namespace Sprint0
             }
         }
 
-        public int UpdateSprite(int linkState)
+        private int UpdateSprite(int linkState)
         {
             if (linkState == LinkConstants.Damage && damageCounter == 0)
             {
@@ -104,7 +104,7 @@ namespace Sprint0
                 return GameConstants.Zero;
         }
 
-        public void UpdateDirection(int dir)
+        private void UpdateDirection(int dir)
         {
             // dir adjustments
             linkLooking.direction = dir;
@@ -114,7 +114,7 @@ namespace Sprint0
             linkDirection = dir;
         }
 
-        public void UpdateDamage()
+        private void UpdateDamage()
         {
             damageCounter--;
             currentSprite = LinkConstants.Damage;
