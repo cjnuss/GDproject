@@ -16,6 +16,7 @@ ENEMIES
 DOORS
 east,1
 west,1
+north,0
 ROOMS
 0,3,2,20
 WALLS

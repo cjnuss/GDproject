@@ -14,6 +14,8 @@ namespace Sprint0
     {
         int direction;
 
+        private List<int> rooms;
+
         int X;
         int Y;
 
@@ -34,28 +36,26 @@ namespace Sprint0
         {
             transition = true;
 
+            this.rooms = rooms;
+
             X = gameManager.source.X;
             Y = gameManager.source.Y;
 
             if (door.location.X < 75)
             {
                 direction = 0;
-                gameManager.roomNum = rooms[0];
             }
             else if (door.location.Y < 215)
             {
                 direction = 1;
-                gameManager.roomNum = rooms[1];
             }
-            else if (door.location.X > 715)
+            else if (door.location.X > 650)
             {
                 direction = 2;
-                gameManager.roomNum = rooms[2];
             }   
-            else if (door.location.Y > 550)
+            else if (door.location.Y > 500)
             {
                 direction = 3;
-                gameManager.roomNum = rooms[3];
             }
         }
 
@@ -68,7 +68,8 @@ namespace Sprint0
                     {
                         transition = false;
                         gameManager.SetState(1);
-                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(650, 365);
+                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(645, 365);
+                        gameManager.roomNum = rooms[0];
                     } else
                     {
                         gameManager.source.X -= 2;
@@ -80,6 +81,7 @@ namespace Sprint0
                         transition = false;
                         gameManager.SetState(1);
                         linkSprite.location = new Microsoft.Xna.Framework.Vector2(375, 493);
+                        gameManager.roomNum = rooms[1];
                     }
                     else
                     {
@@ -91,7 +93,8 @@ namespace Sprint0
                     {
                         transition = false;
                         gameManager.SetState(1);
-                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(100, 365);
+                        linkSprite.location = new Microsoft.Xna.Framework.Vector2(105, 365);
+                        gameManager.roomNum = rooms[2];
                     }
                     else
                     {
@@ -104,6 +107,7 @@ namespace Sprint0
                         transition = false;
                         gameManager.SetState(1);
                         linkSprite.location = new Microsoft.Xna.Framework.Vector2(375, 238);
+                        gameManager.roomNum = rooms[3];
                     }
                     else
                     {

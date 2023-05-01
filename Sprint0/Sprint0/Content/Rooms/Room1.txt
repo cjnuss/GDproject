@@ -1,4 +1,16 @@
 ﻿ITEMS
+bomb,300,330
+compass,450,330
+heart,275,400
+key,325,400
+map,375,400
+rupee,425,400
+triforce,475,400
+key,150,495
+key,200,495
+key,250,495
+key,300,495
+key,350,495
 ENEMIES
 bat,150,281
 bat,100,368

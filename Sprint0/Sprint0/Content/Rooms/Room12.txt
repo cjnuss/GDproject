@@ -19,6 +19,7 @@ key,463,499
 ENEMIES
 DOORS
 west,1
+north,0
 ROOMS
 10,13,20,20
 WALLS

@@ -21,6 +21,7 @@ skeleton,600,281
 skeleton,500,412
 DOORS
 south,1
+north,0
 ROOMS
 20,16,20,9
 WALLS

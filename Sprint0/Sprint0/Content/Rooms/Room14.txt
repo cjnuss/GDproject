@@ -9,6 +9,8 @@ ITEMS
 ENEMIES
 aquamentus,550,325
 DOORS
+south,0
+east,0
 ROOMS
 20,20,14,11
 WALLS
