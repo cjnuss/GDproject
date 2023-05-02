@@ -35,7 +35,7 @@ namespace Sprint0.Collision.Response.Enemies
             {
                 if (game.linkHealth.health > GameConstants.One)
                     game.soundEffects.PlaySound("LinkHurt");
-                if (linkHP.health > 0 && canDamage)
+                if (linkHP.health > GameConstants.Zero && canDamage)
                 {
                     canDamage = false;
                     linkHP.health--;
