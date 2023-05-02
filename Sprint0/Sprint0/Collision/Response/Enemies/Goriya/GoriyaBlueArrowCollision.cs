@@ -38,7 +38,7 @@ namespace Sprint0
 
             goriyaRectangle = new Rectangle((int)goriya.location.X, (int)goriya.location.Y, EnemyConstants.GoriyaSize * GameConstants.Sizing, EnemyConstants.GoriyaSize * GameConstants.Sizing);
 
-            if (goriyaRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
+            if (!goriya.death && goriyaRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
             {
                 KeyBoardController.linkSprite.attack.blueArrow.Dispose();
                 if (goriya.hits < EnemyConstants.GoriyaHP)

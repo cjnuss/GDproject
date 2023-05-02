@@ -42,7 +42,8 @@ namespace Sprint0
 
             skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
 
-            if (skeletonRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
+
+            if (!skeleton.death && skeletonRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
             {
                 //KeyBoardController.linkSprite.attack.swordBeam.Dispose(); debug??
                 if (skeleton.hits < EnemyConstants.SkeletonHP)

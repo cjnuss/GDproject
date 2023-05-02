@@ -37,9 +37,9 @@ namespace Sprint0
 
             skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
 
-            if (skeletonRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
+            if (!skeleton.death && skeletonRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
             {
-                KeyBoardController.linkSprite.attack.blueArrow.Dispose();
+                //KeyBoardController.linkSprite.attack.blueArrow.Dispose();
                 if (skeleton.hits < EnemyConstants.SkeletonHP)
                 {
                     if (!skeleton.hit)
