@@ -19,6 +19,7 @@ namespace Sprint0
         private int direction;
         public bool toDraw = true;
         public bool death = false;
+        public bool proj = false;
         private Rectangle source;
         private Rectangle destination;
         public Vector2 location;
@@ -83,6 +84,7 @@ namespace Sprint0
                 if (projCount == EnemyConstants.Zero)
                 {
                     projectileSprite = new AquamentusProjectile(location);
+                    proj = true;
                 }
                 projCount++;
                 textureFrame++;
@@ -113,7 +115,10 @@ namespace Sprint0
                 {
                     projCount = EnemyConstants.Zero;
                 }
-                projectileSprite.Update();
+                if (proj)
+                {
+                    projectileSprite.Update();
+                }
             }
 
             if (hit)
@@ -153,7 +158,10 @@ namespace Sprint0
                 Rectangle source = frames[frame];
                 Rectangle destinaton = new Rectangle((int)location.X, (int)location.Y, source.Width * EnemyConstants.Sizing, source.Height * EnemyConstants.Sizing);
                 spriteBatch.Draw(texture, destinaton, source, Color.White);
-                projectileSprite.Draw(spriteBatch);
+                if (proj)
+                {
+                    projectileSprite.Draw(spriteBatch);
+                }
             }
 
             if (hit)
