@@ -51,7 +51,8 @@ namespace Sprint0
         public static Rectangle bomb = new Rectangle(136, 0, 8, 16);
         public static Rectangle fairy1 = new Rectangle(40, 0, 8, 16);
         public static Rectangle fairy2 = new Rectangle(48, 0, 8, 16);
-        public static Rectangle healthHeart = new Rectangle(0, 0, 8, 8);
+        public static Rectangle healthHeart1 = new Rectangle(0, 0, 8, 8);
+        public static Rectangle healthHeart2 = new Rectangle(8, 0, 8, 8);
 
     }
 }
