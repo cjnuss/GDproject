@@ -38,7 +38,10 @@ namespace Sprint0.Collision.Response.Items
 
             if (heartRectangle.Intersects(linkRectangle))
             {
+                if (game.linkHealth.health < game.linkHealth.maxhealth * 2)
+                { 
                 game.linkHealth.health++;
+                }
                 heart.Dispose();
                 game.soundEffects.PlaySound("GetHeartOrKey");
             }
