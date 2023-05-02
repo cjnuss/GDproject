@@ -33,6 +33,7 @@ namespace Sprint0
 
 
         private HeartCollisionCheck heartCollisionCheck;
+        private HealthHeartCollisionCheck healthHeartCollisionCheck;
         private KeyCollisionCheck keyCollisionCheck;
         private MapCollisionCheck mapCollisionCheck;
         private BowCollisionCheck bowCollisionCheck;
@@ -100,6 +101,7 @@ namespace Sprint0
             linkGoriyaCollisionCheck = new LinkGoriyaCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
 
             heartCollisionCheck = new HeartCollisionCheck(this.KeyBoardController, new LinkHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            healthHeartCollisionCheck = new HealthHeartCollisionCheck(this.KeyBoardController, new LinkHealthHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             keyCollisionCheck = new KeyCollisionCheck(this.KeyBoardController, new LinkKeyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             mapCollisionCheck = new MapCollisionCheck(this.KeyBoardController, new LinkMapCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             bowCollisionCheck = new BowCollisionCheck(this.KeyBoardController, new LinkBowCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
@@ -165,6 +167,7 @@ namespace Sprint0
             bombCollisionCheck.CheckCollision();
             rupeeCollisionCheck.CheckCollision();
             heartCollisionCheck.CheckCollision();
+            healthHeartCollisionCheck.CheckCollision();
             keyCollisionCheck.CheckCollision();
             mapCollisionCheck.CheckCollision();
             bowCollisionCheck.CheckCollision();
