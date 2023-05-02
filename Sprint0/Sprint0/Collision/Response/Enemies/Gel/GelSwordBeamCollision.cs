@@ -36,7 +36,7 @@ namespace Sprint0
 
             gelRectangle = new Rectangle((int)gel.location.X, (int)gel.location.Y, EnemyConstants.GelWidth * GameConstants.Sizing, EnemyConstants.GelHeight * GameConstants.Sizing);
 
-            if (gelRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
+            if (!gel.death && gelRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
             {
                 //KeyBoardController.linkSprite.attack.swordBeam.Dispose(); debug??
                 gel.Dispose();

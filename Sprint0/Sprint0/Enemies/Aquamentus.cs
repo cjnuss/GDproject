@@ -18,7 +18,7 @@ namespace Sprint0
         private Vector2 deathLoc;
         private int direction;
         public bool toDraw = true;
-        private bool death = false;
+        public bool death = false;
         private Rectangle source;
         private Rectangle destination;
         public Vector2 location;
@@ -60,7 +60,7 @@ namespace Sprint0
             EnemyTextureStorage.EnemyDeath2,
             EnemyTextureStorage.EnemyDeath3,
             EnemyTextureStorage.EnemyDeath4,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         public Aquamentus(Vector2 coords)

@@ -39,7 +39,7 @@ namespace Sprint0
 
             aquamentusRectangle = new Rectangle((int)aquamentus.location.X, (int)aquamentus.location.Y, EnemyConstants.AquaWidth * GameConstants.Sizing, EnemyConstants.AquaHeight * GameConstants.Sizing);
 
-            if (aquamentusRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
+            if (!aquamentus.death && aquamentusRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
             {
                 //KeyBoardController.linkSprite.attack.swordBeam.Dispose(); debug??
                 if (aquamentus.hits < EnemyConstants.AquaHP)

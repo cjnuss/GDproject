@@ -25,7 +25,14 @@ namespace Sprint0
         private ArrowCollisionCheck arrowCollisionCheck;
         private BombCollisionCheck bombCollisionCheck;
         private RupeeCollisionCheck rupeeCollisionCheck;
-        private LinkEnemyCollisionCheck enemyCollisionCheck;
+        //private LinkEnemyCollisionCheck enemyCollisionCheck;
+        private LinkSkeletonCollisionCheck linkSkeletonCollisionCheck;
+        private LinkBatCollisionCheck linkBatCollisionCheck;
+        private LinkGoriyaCollisionCheck linkGoriyaCollisionCheck;
+        private LinkAquamentusCollisionCheck linkAquamentusCollisionCheck;
+        private LinkGelCollisionCheck linkGelCollisionCheck;
+
+
         private HeartCollisionCheck heartCollisionCheck;
         private KeyCollisionCheck keyCollisionCheck;
         private MapCollisionCheck mapCollisionCheck;
@@ -86,7 +93,13 @@ namespace Sprint0
             arrowCollisionCheck = new ArrowCollisionCheck(this.KeyBoardController, new LinkArrowCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             bombCollisionCheck = new BombCollisionCheck(this.KeyBoardController, new LinkBombCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             rupeeCollisionCheck = new RupeeCollisionCheck(this.KeyBoardController, new LinkRupeeCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
-            enemyCollisionCheck = new LinkEnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            //enemyCollisionCheck = new LinkEnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkSkeletonCollisionCheck = new LinkSkeletonCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkBatCollisionCheck = new LinkBatCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkGelCollisionCheck = new LinkGelCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkAquamentusCollisionCheck = new LinkAquamentusCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkGoriyaCollisionCheck = new LinkGoriyaCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+
             heartCollisionCheck = new HeartCollisionCheck(this.KeyBoardController, new LinkHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             keyCollisionCheck = new KeyCollisionCheck(this.KeyBoardController, new LinkKeyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             mapCollisionCheck = new MapCollisionCheck(this.KeyBoardController, new LinkMapCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
@@ -137,7 +150,13 @@ namespace Sprint0
         {
             #region Top Level Game Collisions
             linkObsticleCollisionCheck.CheckCollision();
-            enemyCollisionCheck.CheckCollision();
+            //enemyCollisionCheck.CheckCollision();
+            linkSkeletonCollisionCheck.CheckCollision();
+            linkBatCollisionCheck.CheckCollision();
+            linkGoriyaCollisionCheck.CheckCollision();
+            linkGelCollisionCheck.CheckCollision();
+            linkAquamentusCollisionCheck.CheckCollision();
+
             enemyObsticleCollisionCheck.CheckCollision();
             #endregion
 

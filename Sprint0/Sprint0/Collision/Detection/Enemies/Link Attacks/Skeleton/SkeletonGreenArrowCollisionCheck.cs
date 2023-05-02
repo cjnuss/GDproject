@@ -33,7 +33,7 @@ namespace Sprint0
                 {
                     skeleton = (Skeleton)enemy;
                     if (skeleton.location.X - KeyBoardController.linkSprite.attack.greenArrow.currentX >= GameConstants.Zero && skeleton.location.X - KeyBoardController.linkSprite.attack.greenArrow.currentX <=
-                        ItemConstants.ArrowWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.greenArrow.currentX - skeleton.location.X >= 0 && KeyBoardController.linkSprite.attack.greenArrow.currentX - skeleton.location.X <= ItemConstants.ArrowWidth * GameConstants.Sizing)
+                    ItemConstants.ArrowWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.greenArrow.currentX - skeleton.location.X >= 0 && KeyBoardController.linkSprite.attack.greenArrow.currentX - skeleton.location.X <= ItemConstants.ArrowWidth * GameConstants.Sizing)
                     {
                         return skeletonGreenArrowCollision.Update(skeleton);
                     }

@@ -32,7 +32,7 @@ namespace Sprint0
 
             gelRectangle = new Rectangle((int)gel.location.X, (int)gel.location.Y, EnemyConstants.GelWidth * GameConstants.Sizing, EnemyConstants.GelHeight * GameConstants.Sizing);
 
-            if (gelRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
+            if (!gel.death && gelRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
             {
                 KeyBoardController.linkSprite.attack.blueArrow.Dispose();
                 gel.Dispose();

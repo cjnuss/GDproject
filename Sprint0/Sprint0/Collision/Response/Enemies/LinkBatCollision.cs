@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Collision.Response.Enemies
 {
-    public class LinkEnemyCollision
+    public class LinkBatCollision
     {
         private Link link;
         private KeyBoardController KeyBoardController;
@@ -16,20 +16,20 @@ namespace Sprint0.Collision.Response.Enemies
         private Rectangle enemyRectangle;
         private LinkHP linkHP;
         private Game1 game;
-        public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
+        public LinkBatCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
             this.link = link;
             this.KeyBoardController = KeyBoardController;
-            this.game = game; 
+            this.game = game;
             linkHP = game.linkHealth;
         }
 
-        public void Update(IEnemy collisionEnemy)
-        { 
+        public void Update(Bat bat)
+        {
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.Size * GameConstants.Sizing);
-            enemyRectangle = new Rectangle((int)collisionEnemy.GetLocation().X, (int)collisionEnemy.GetLocation().Y, (int)collisionEnemy.GetSize().X, (int)collisionEnemy.GetSize().Y);
+            enemyRectangle = new Rectangle((int)bat.GetLocation().X, (int)bat.GetLocation().Y, (int)bat.GetSize().X, (int)bat.GetSize().Y);
 
-            if (enemyRectangle.Intersects(linkRectangle))
+            if (!bat.death && enemyRectangle.Intersects(linkRectangle))
             {
                 if (game.linkHealth.health > GameConstants.One)
                     game.soundEffects.PlaySound("LinkHurt");
@@ -40,7 +40,7 @@ namespace Sprint0.Collision.Response.Enemies
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);
                 link.velocity = GameConstants.Zero;
-            } 
+            }
             else
             {
                 link.UpdateSprite(LinkConstants.Default);
