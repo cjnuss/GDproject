@@ -18,6 +18,7 @@ namespace Sprint0
         public Rectangle source = LevelsTextureStorage.level2;
         public Rectangle target = new Rectangle(0, 150, 800, 480);
         public Texture2D texture = LevelsTextureStorage.Instance.GetLevels();
+        public Texture2D screen = LevelsTextureStorage.Instance.BlackScreen();
         public int roomNum = 1;
 
         public Door checkDoor;
@@ -49,8 +50,11 @@ namespace Sprint0
 
         private StartScreen startScreen;
         private PauseScreen pauseScreen;
+        private Inventory inventoryScreen;
 
         private List<ISprite> dropedItems;
+
+        public List<OpenedDoor> updatedDoors = new List<OpenedDoor>();
 
 
         public GameManager(Game1 game, SpriteBatch spriteBatch)
@@ -81,6 +85,7 @@ namespace Sprint0
 
             startScreen = new StartScreen(this);
             pauseScreen = new PauseScreen(this);
+            inventoryScreen = new Inventory(this, game);
 
             winningState = new WinningState(game, _spriteBatch);
             losingState = new LosingState(game, _spriteBatch);
@@ -104,6 +109,7 @@ namespace Sprint0
             {
                 roomList[roomNum].Update();
                 pauseScreen.Update(); // check for pause
+                inventoryScreen.Update(); // check for inventory
             }
             // pause
             else if (state == 2)
@@ -113,12 +119,17 @@ namespace Sprint0
             // inventory
             else if (state == 3)
             {
-
+                inventoryScreen.Update(); // check for inventory
             }
             // transition
             else if (state == 4)
             {
                 transition.MoveScreen();
+
+                foreach (OpenedDoor door in updatedDoors)
+                {
+                    door.Update();
+                }
             }
         }
 
@@ -133,6 +144,12 @@ namespace Sprint0
             else if (state == 1)
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
+                
+                foreach (OpenedDoor door in updatedDoors)
+                {
+                    door.Draw(_spriteBatch);
+                }
+
                 game1.currentRoom = roomList[roomNum];
 
                 Mcontroller.Update(gameTime);
@@ -186,12 +203,24 @@ namespace Sprint0
             // inventory
             else if (state == 3)
             {
-
+                inventoryScreen.Draw(_spriteBatch, gameTime);
+                mainHUD.Draw(_spriteBatch);
+                testingHearts.Update();
+                testingHearts.Draw(_spriteBatch);
+                playerMap.Draw(_spriteBatch);
+                HUDnumbers.Update();
+                HUDnumbers.Draw(_spriteBatch);
             }
             // transition
             else if (state == 4)
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
+
+                foreach (OpenedDoor door in updatedDoors)
+                {
+                    door.Draw(_spriteBatch);
+                }
+                spriteBatch.Draw(screen, new Rectangle(0, 0, 800, 150), InventoryTextureStorage.inv, Color.White);
             }
         }
 

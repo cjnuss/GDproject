@@ -8,9 +8,9 @@ twoByOne,605,417
 ENEMIES
 aquamentus,550,325
 DOORS
-south,0
+south,1
 east,0
 ROOMS
 20,20,14,11
 WALLS
-0,0,0,0
+0,0,0,1

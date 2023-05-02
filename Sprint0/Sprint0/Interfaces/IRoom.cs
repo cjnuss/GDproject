@@ -18,5 +18,7 @@ namespace Sprint0
         public List<Door> GetDoors();
 
         public List<int> GetRooms();
+
+        public bool GetState();
     }
 }

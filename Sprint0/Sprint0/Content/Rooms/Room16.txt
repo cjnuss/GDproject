@@ -10,8 +10,8 @@ oneByOne,505,373
 ITEMS
 bow,150,281
 DOORS
-east,0
+east,1
 ROOMS
 20,20,16,20
 WALLS
-0,0,0,0
+0,0,1,0

@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Levels
+namespace Sprint0
 {
     public class Room : IRoom
     {
@@ -20,6 +20,8 @@ namespace Sprint0.Levels
         List<IEnemy> enemies;
         List<Door> doors;
         List<int> rooms;
+
+        bool inside = false;
 
         Rectangle roomSource;
 
@@ -56,7 +58,7 @@ namespace Sprint0.Levels
 
         public void Update()
         {
-
+            inside = true;
 
             foreach (IBlock block in blocks)
             {
@@ -97,9 +99,19 @@ namespace Sprint0.Levels
             return rooms;
         }
 
+        public bool GetState()
+        {
+            return inside;
+        }
+
         public void AddItems(ISprite item)
         {
             items.Add(item);
+        }
+
+        public void AddBlock(IBlock block)
+        {
+            blocks.Add(block);
         }
     }
 }

@@ -51,6 +51,7 @@ namespace Sprint0.Collision.Response.Walls
                         if (game1.linkItems.keys > 0)
                         {
                             game1.linkItems.keys--;
+                            door.openDoor(gameManager);
                             return door;
                         }
                     }

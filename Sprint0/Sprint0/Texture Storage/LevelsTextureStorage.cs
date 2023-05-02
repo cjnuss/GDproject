@@ -27,11 +27,15 @@ namespace Sprint0
 
         private static Texture2D levels;
         private static Texture2D TitleScreen;
+        private static Texture2D doors;
+        private static Texture2D blackscreen;
 
         public void Load(ContentManager content)
         {
             levels = content.Load<Texture2D>("level1");
-            TitleScreen = content.Load<Texture2D>("TItleScreenlinksprites");
+            TitleScreen = content.Load<Texture2D>("TitleScreenlinksprites");
+            doors = content.Load<Texture2D>("LevelsLinksprites");
+            blackscreen = content.Load<Texture2D>("blackscreen");
         }
 
         public Texture2D GetLevels()
@@ -42,6 +46,16 @@ namespace Sprint0
         public Texture2D GetTitleScreen()
         {
             return TitleScreen;
+        }
+
+        public Texture2D Doors()
+        {
+            return doors;
+        }
+
+        public Texture2D BlackScreen()
+        {
+            return blackscreen;
         }
 
         public static Dictionary<string, Rectangle> Sources = new Dictionary<string, Rectangle>()
@@ -83,5 +97,12 @@ namespace Sprint0
         public static Rectangle level16 = new Rectangle(256, 0, 256, 176);
         public static Rectangle level17 = new Rectangle(512, 0, 256, 176);
 
+        public static Rectangle northDoor = new Rectangle(848, 11, 32, 32);
+        public static Rectangle westDoor = new Rectangle(848, 44, 32, 32);
+        public static Rectangle eastDoor = new Rectangle(848, 77, 32, 32);
+        public static Rectangle southDoor = new Rectangle(848, 110, 32, 32);
+
+        public static Rectangle brokenNorthDoor = new Rectangle(947, 11, 32, 32);
+        public static Rectangle brokenSouthDoor = new Rectangle(947, 110, 32, 32);
     }
 }

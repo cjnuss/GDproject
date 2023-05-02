@@ -14,8 +14,10 @@ namespace Sprint0
     {
         private GameManager gameManager;
         private SpriteFont font;
-        private KeyboardState keyboardState;
+        private KeyboardState previousKeyboardState;
         private bool paused = false;
+        private bool canPress = true;
+        TimeSpan delayTime = TimeSpan.FromSeconds(1);
 
         public PauseScreen(GameManager gameManager)
         {
@@ -35,22 +37,38 @@ namespace Sprint0
 
         public void Update()
         {
-            keyboardState = Keyboard.GetState();
+            KeyboardState currentKeyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.P) && !paused)
+            if (canPress && currentKeyboardState.IsKeyDown(Keys.P) && previousKeyboardState.IsKeyUp(Keys.P))
             {
-                paused = true;
-                gameManager.SetState(GameConstants.Two);
+                if (!paused)
+                {
+                    paused = true;
+                    gameManager.SetState(2);
+                }
+                else
+                {
+                    paused = false;
+                    gameManager.SetState(1);
+                }
+                canPress = false;
+                delayTime = TimeSpan.FromSeconds(2);
             }
-            else if (keyboardState.IsKeyDown(Keys.P) && paused)
-            {
-                paused = false;
-                gameManager.SetState(GameConstants.One);
-            }
-            else if (keyboardState.IsKeyDown(Keys.Q))
+            else if (currentKeyboardState.IsKeyDown(Keys.Q))
             {
                 gameManager.game1.Exit();
             }
+
+            if (!canPress)
+            {
+                delayTime -= TimeSpan.FromMilliseconds(30);
+
+                if (delayTime <= TimeSpan.Zero)
+                {
+                    canPress = true;
+                }
+            }
+            previousKeyboardState = currentKeyboardState;
         }
     }
 }

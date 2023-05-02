@@ -13,8 +13,8 @@ goriya,450,325
 goriya,500,238
 DOORS
 east,0
-south,0
+south,1
 ROOMS
 15,20,20,12
 WALLS
-0,0,0,0
+0,0,1,0

@@ -57,6 +57,11 @@ namespace Sprint0
             {
                 direction = 3;
             }
+
+            foreach (OpenedDoor openedDoor in gameManager.updatedDoors)
+            {
+                openedDoor.transition(direction);
+            }
         }
 
         public void MoveScreen()
