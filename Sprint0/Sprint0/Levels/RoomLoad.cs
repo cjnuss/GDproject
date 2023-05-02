@@ -37,6 +37,7 @@ namespace Sprint0.Levels
             items = new List<ISprite>();
             enemies = new List<IEnemy>();
             roomNum = GameConstants.One;
+            doors = new List<Door>();
             loadin(sourcefile);
             return new Room(blocks, items, enemies, doors, rooms, roomNum);
         }

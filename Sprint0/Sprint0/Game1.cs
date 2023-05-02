@@ -57,6 +57,7 @@ namespace Sprint0
             LinkTextureStorage.Instance.Load(Content);
             ItemsTextureStorage.Instance.Load(Content);
             UITextureStorage.Instance.Load(Content);
+            InventoryTextureStorage.Instance.Load(Content);
 
             // audio setup
             backgroundAudio = new BackgroundAudio();
