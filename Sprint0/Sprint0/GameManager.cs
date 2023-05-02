@@ -112,6 +112,7 @@ namespace Sprint0
                 pauseScreen.Update(); // check for pause
                 inventoryScreen.Update(); // check for inventory
                 mainHUD.Update();
+                CheckCheats();
             }
             // pause
             else if (state == 2)
@@ -227,6 +228,19 @@ namespace Sprint0
                 }
                 spriteBatch.Draw(screen, new Rectangle(0, 0, 800, 150), InventoryTextureStorage.inv, Color.White);
             }
+        }
+
+        public void CheckCheats()
+        {
+            // cheat codes
+            if (Keyboard.GetState().IsKeyDown(Keys.H) && game1.linkHealth.health <= 15)
+                game1.linkHealth.health++;
+            if (Keyboard.GetState().IsKeyDown(Keys.R) && game1.linkItems.rupies <= 98)
+                game1.linkItems.rupies++;
+            if (Keyboard.GetState().IsKeyDown(Keys.K) && game1.linkItems.keys <= 98)
+                game1.linkItems.keys++;
+            if (Keyboard.GetState().IsKeyDown(Keys.B) && game1.linkItems.bombs <= 98)
+                game1.linkItems.bombs++;
         }
 
         public void SetState(int newState)
