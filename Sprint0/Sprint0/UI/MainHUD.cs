@@ -41,7 +41,6 @@ namespace Sprint0.UI
             spriteBatch.Draw(texture, new Rectangle(230, 8, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
             spriteBatch.Draw(texture, new Rectangle(460, 56, (sword.Width * 3)+4, (sword.Height * 3) + 2), sword, Color.White);
             spriteBatch.Draw(texture, new Rectangle(388, 56, (notSword.Width * 3) + 8, (notSword.Height * 3) + 2), notSword, Color.White);
-
         }
         public void Update()
         {
