@@ -20,12 +20,14 @@ namespace Sprint0.Collision.Response.Walls
         public Rectangle linkRectangle;
         public Rectangle doorRectangle;
         private Dictionary<Rectangle, Door> doors;
+        public GameManager gameManager;
 
-        public DoorCollisions(KeyBoardController KeyBoardController, Game1 game1, Link link)
+        public DoorCollisions(KeyBoardController KeyBoardController, Game1 game1, Link link, GameManager gameManager)
         {
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             this.game1 = game1;
+            this.gameManager = gameManager;
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, LinkConstants.Size * GameConstants.Sizing, LinkConstants.Size * GameConstants.Sizing);
             doors = new Dictionary<Rectangle, Door>();
         }
@@ -57,6 +59,7 @@ namespace Sprint0.Collision.Response.Walls
                         if (game1.linkItems.keys > 0)
                         {
                             game1.linkItems.keys--;
+                            door.Value.openDoor(gameManager);
                             return door.Value;
                         }
                     }
