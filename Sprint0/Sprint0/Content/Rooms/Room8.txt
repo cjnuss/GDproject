@@ -1,6 +1,4 @@
-﻿BLOCKS
-ITEMS
-ENEMIES
+﻿ENEMIES
 oldman,375,325
 DOORS
 east,1

@@ -16,7 +16,6 @@ oneByOne,605,373
 oneByOne,605,461
 ITEMS
 key,463,499 
-ENEMIES
 DOORS
 west,1
 north,0

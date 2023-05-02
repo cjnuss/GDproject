@@ -43,10 +43,5 @@ namespace Sprint0
                 }
             }
         }
-
-        public int GetType()
-        {
-            return type;
-        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿BLOCKS
 oneByOne,355,373
-ITEMS
 ENEMIES
 gel,500,238
 gel,450,325
