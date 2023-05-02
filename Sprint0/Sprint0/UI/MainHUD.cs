@@ -21,9 +21,17 @@ namespace Sprint0.UI
         Rectangle boxRect;
         Rectangle sword; Rectangle notSword;
         Boolean map;
-        public MainHUD(Game1 game) 
+
+        Rectangle bomb = InventoryTextureStorage.bomb;
+        Rectangle bow = InventoryTextureStorage.bow;
+
+        Rectangle currentRect;
+        GameManager gameManager;
+
+        public MainHUD(Game1 game, GameManager gameManager) 
         {
             this.game1 = game;
+            this.gameManager = gameManager;
             texture = UITextureStorage.Instance.GetImage();
             sourceRect = UITextureStorage.MainHUD;
             mapRect = UITextureStorage.MapKey;
@@ -31,6 +39,7 @@ namespace Sprint0.UI
             boxRect = UITextureStorage.NumBox;
             sword = UITextureStorage.woodSword;
             notSword = UITextureStorage.nothing;
+            currentRect = notSword;
             map = true;
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -40,11 +49,20 @@ namespace Sprint0.UI
             spriteBatch.Draw(texture, new Rectangle(198, 8, oneRect.Width * 3, oneRect.Height * 3), oneRect, Color.White);
             spriteBatch.Draw(texture, new Rectangle(230, 8, boxRect.Width * 3, boxRect.Height * 3), boxRect, Color.White);
             spriteBatch.Draw(texture, new Rectangle(460, 56, (sword.Width * 3)+4, (sword.Height * 3) + 2), sword, Color.White);
-            spriteBatch.Draw(texture, new Rectangle(388, 56, (notSword.Width * 3) + 8, (notSword.Height * 3) + 2), notSword, Color.White);
+            spriteBatch.Draw(texture, new Rectangle(388, 56, 25, 50), currentRect, Color.White);
 
         }
         public void Update()
         {
+            switch(gameManager.currentItem)
+            {
+                case "bomb":
+                    currentRect = bomb;
+                    break;
+                case "bow":
+                    currentRect = bow;
+                    break;
+            }
         }
     }
 }
