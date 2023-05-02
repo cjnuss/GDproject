@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Collision.Detection.Items;
-using Sprint0.Collision.Detection.Enemies;
 using Sprint0.Collision.Response.Enemies;
 using Sprint0.Collision.Response.Items;
 using Sprint0.Collision.Response.Blocks;

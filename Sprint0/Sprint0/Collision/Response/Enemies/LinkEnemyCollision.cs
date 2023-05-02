@@ -16,6 +16,7 @@ namespace Sprint0.Collision.Response.Enemies
         private Rectangle enemyRectangle;
         private LinkHP linkHP;
         private Game1 game;
+
         public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
             this.link = link;
@@ -36,6 +37,7 @@ namespace Sprint0.Collision.Response.Enemies
                 if (linkHP.health > 0)
                 {
                     linkHP.health--;
+                    link.invisibilityFrames = 10;
                 }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);

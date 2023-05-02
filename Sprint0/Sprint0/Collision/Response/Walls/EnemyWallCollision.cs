@@ -25,33 +25,35 @@ namespace Sprint0.Collision.Response.Walls
             this.roomType = roomType;
         }
 
-        public void Update()
+        public bool Update()
         {
+            bool collision = false;
             if (roomType == 0)
             {
                 if (enemy.GetLocation().X >= RoomConstants.DungeonWallXR)
                 {
-                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXR, enemy.GetLocation().Y));
+                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXR - 5, enemy.GetLocation().Y));
+                    collision = true;
                 }
                 else if (enemy.GetLocation().X <= RoomConstants.DungeonWallXL)
                 {
-                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXL, enemy.GetLocation().Y));
+                    enemy.SetLocation(new Vector2(RoomConstants.DungeonWallXL + 5, enemy.GetLocation().Y));
+                    collision = true;
                 }
 
                 if (enemy.GetLocation().Y >= RoomConstants.DungeonWalYD)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWalYD));
+                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWalYD - 5));
+                    collision = true;
                 }
                 else if (enemy.GetLocation().Y <= RoomConstants.DungeonWallYU)
                 {
-                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWallYU));
+                    enemy.SetLocation(new Vector2(enemy.GetLocation().X, RoomConstants.DungeonWallYU + 5));
+                    collision = true;
                 }
             }
 
-            if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
-            {
-                KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
-            }
+            return collision;
         }
     }
 }

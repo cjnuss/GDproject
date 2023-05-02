@@ -36,24 +36,20 @@ namespace Sprint0
         {
             foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
             {
-                foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
+                enemyWallCollision = new EnemyWallCollision(KeyBoardController, enemy);
+                if(!enemyWallCollision.Update())
                 {
-                    enemyBlockCollision = new EnemyBlockCollision(KeyBoardController, enemy);
-
-                    if ((block.location.X - enemy.GetLocation().X >= GameConstants.Zero && block.location.X - enemy.GetLocation().X <=
-                        LinkConstants.Size * GameConstants.Sizing) || (enemy.GetLocation().X - block.location.X >= 0 && enemy.GetLocation().X - block.location.X <= block.width))
+                    foreach (CollisionBlock block in game1.currentRoom.GetBlocks())
                     {
-                        enemyBlockCollision.Update(block);
-                    }
+                        enemyBlockCollision = new EnemyBlockCollision(KeyBoardController, enemy);
 
-                    if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
-                    {
-                        KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
-                        break;
+                        if ((block.location.X - enemy.GetLocation().X >= GameConstants.Zero && block.location.X - enemy.GetLocation().X <=
+                            enemy.GetSize().X * GameConstants.Sizing) || (enemy.GetLocation().X - block.location.X >= 0 && enemy.GetLocation().X - block.location.X <= block.width))
+                        {
+                            enemyBlockCollision.Update(block);
+                        }
                     }
                 }
-                enemyWallCollision = new EnemyWallCollision(KeyBoardController, enemy);
-                enemyWallCollision.Update(); 
             }
         }
     }
