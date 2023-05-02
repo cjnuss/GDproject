@@ -8,7 +8,7 @@ goriya,600,281
 goriya,600,368
 goriya,650,456
 DOORS
-west,1
+west,0
 east,1
 ROOMS
 9,20,11,20

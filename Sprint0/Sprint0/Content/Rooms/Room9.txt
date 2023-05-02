@@ -8,7 +8,6 @@ DOORS
 west,1
 east,1
 south,0
-east,0
 ROOMS
 7,20,9,4
 WALLS

@@ -126,12 +126,14 @@ namespace Sprint0
                     if ((target == topRow) && (game.linkItems.bombs > 0))
                     {
                         spriteBatch.Draw(texture, higlight, bomb, Color.White);
+                        gameManager.currentItem = "bomb";
                     }
                     break;
                 case 2:
                     if ((target == topRow) && game.linkItems.bow)
                     {
                         spriteBatch.Draw(texture, higlight, bow, Color.White);
+                        gameManager.currentItem = "bow";
                     }
                     break;
             }

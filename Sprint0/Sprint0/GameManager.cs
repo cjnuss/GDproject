@@ -56,6 +56,7 @@ namespace Sprint0
 
         public List<OpenedDoor> updatedDoors = new List<OpenedDoor>();
 
+        public string currentItem;
 
         public GameManager(Game1 game, SpriteBatch spriteBatch)
         {
