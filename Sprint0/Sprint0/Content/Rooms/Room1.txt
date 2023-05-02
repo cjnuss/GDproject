@@ -1,5 +1,6 @@
 ﻿ITEMS
 bomb,300,330
+fairy,300,280
 compass,450,330
 heart,275,400
 key,325,400

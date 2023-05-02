@@ -6,6 +6,7 @@ gel,450,325
 gel,400,368
 DOORS
 west,1
+east,1
 south,0
 east,0
 ROOMS
