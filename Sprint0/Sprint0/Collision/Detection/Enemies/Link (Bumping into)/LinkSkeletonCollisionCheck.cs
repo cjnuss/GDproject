@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint0.Collision.Detection.Enemies.Room;
 using Sprint0.Collision.Response.Enemies;
+using Sprint0.Collision.Response.Walls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Sprint0
     {
         public KeyBoardController KeyBoardController;
         public LinkSkeletonCollision linkSkeletonCollision;
-        public EnemyRoomCollisionCheck enemyRoomCollisionCheck;
+        public EnemyWallCollision enemyRoomCollisionCheck;
         public Game1 game1;
         public Link link;
         public int roomType;
@@ -32,29 +32,30 @@ namespace Sprint0
         public void CheckCollision()
         {
             Skeleton skeleton;
-            foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
+            if (link.invisibilityFrames == 0)
             {
-                if (enemy.GetType() == typeof(Skeleton))
+                foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
                 {
-                    skeleton = (Skeleton)enemy;
-                    if (skeleton.GetLocation().X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && skeleton.GetLocation().X - KeyBoardController.linkSprite.location.X <=
+                    if (enemy.GetType() == typeof(Skeleton))
+                    {
+                        skeleton = (Skeleton)enemy;
+                        if (skeleton.GetLocation().X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && skeleton.GetLocation().X - KeyBoardController.linkSprite.location.X <=
                         LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - skeleton.GetLocation().X >= 0 && KeyBoardController.linkSprite.location.X - skeleton.GetLocation().X <= skeleton.GetSize().X)
-                    {
-                        linkSkeletonCollision.Update(skeleton);
-                    }
+                        {
+                            linkSkeletonCollision.Update(skeleton);
+                        }
 
-                    if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
-                    {
-                        KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
-                        break;
+                        if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
+                        {
+                            KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
+                            break;
+                        }
                     }
                 }
             }
-
-            foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
+            else
             {
-                enemyRoomCollisionCheck = new EnemyRoomCollisionCheck(KeyBoardController, enemy);
-                enemyRoomCollisionCheck.CheckCollision();
+                link.invisibilityFrames--;
             }
         }
     }

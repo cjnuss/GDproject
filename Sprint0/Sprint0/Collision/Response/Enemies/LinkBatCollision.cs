@@ -36,6 +36,7 @@ namespace Sprint0.Collision.Response.Enemies
                 if (linkHP.health > GameConstants.Zero)
                 {
                     linkHP.health--;
+                    link.invisibilityFrames = 10;
                 }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);
