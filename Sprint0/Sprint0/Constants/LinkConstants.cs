@@ -26,7 +26,7 @@ namespace Sprint0
         public const int InitialX = 200;
         public const int InitialY = 400;
         // velocity
-        public const float Velocity = 100f;
+        public const float Velocity = 150f;
         // link sprites
         public const int Looking = 0;
         public const int Moving = 1;

@@ -215,7 +215,7 @@ namespace Sprint0
         {
             currentFrame = GameConstants.Zero;
             deathLoc = location;
-            location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
+            //location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
             toDraw = false;
             death = true;
             projectile = false;
