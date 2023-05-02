@@ -156,12 +156,12 @@ namespace Sprint0
             #endregion
 
             #region Enemy & Link Attack Collisions
-            batSwordCollisionCheck.CheckCollision();
-            batGreenArrowCollisionCheck.CheckCollision();
-            batBombCollisionCheck.CheckCollision();
-            batFireCollisionCheck.CheckCollision();
-            batBlueArrowCollisionCheck.CheckCollision();
-            batSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(batSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(batGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(batBombCollisionCheck.CheckCollision());
+            dropedItems.Add(batFireCollisionCheck.CheckCollision());
+            dropedItems.Add(batBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(batSwordBeamCollisionCheck.CheckCollision());
 
             dropedItems.Add(skeletonGreenArrowCollisionCheck.CheckCollision());
             dropedItems.Add(skeletonBlueArrowCollisionCheck.CheckCollision());
@@ -170,19 +170,19 @@ namespace Sprint0
             dropedItems.Add(skeletonSwordCollisionCheck.CheckCollision());
             dropedItems.Add(skeletonSwordBeamCollisionCheck.CheckCollision());
 
-            goriyaGreenArrowCollisionCheck.CheckCollision();
-            goriyaSwordCollisionCheck.CheckCollision();
-            goriyaBlueArrowCollisionCheck.CheckCollision();
-            goriyaFireCollisionCheck.CheckCollision();
-            goriyaBombCollisionCheck.CheckCollision();
-            goriyaSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(goriyaGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaFireCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaBombCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaSwordBeamCollisionCheck.CheckCollision());
 
-            gelGreenArrowCollisionCheck.CheckCollision();
-            gelBlueArrowCollisionCheck.CheckCollision();
-            gelFireCollisionCheck.CheckCollision();
-            gelBombCollisionCheck.CheckCollision();
-            gelSwordCollisionCheck.CheckCollision();
-            gelSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(gelGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(gelBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(gelFireCollisionCheck.CheckCollision());
+            dropedItems.Add(gelBombCollisionCheck.CheckCollision());
+            dropedItems.Add(gelSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(gelSwordBeamCollisionCheck.CheckCollision());
 
             dropedItems.Add(aquamentusGreenArrowCollisionCheck.CheckCollision());
             dropedItems.Add(aquamentusBlueArrowCollisionCheck.CheckCollision());

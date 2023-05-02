@@ -25,7 +25,7 @@ namespace Sprint0
             this.gelGreenArrowCollision = new GelGreenArrowCollision(this.game, this.KeyBoardController);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -35,10 +35,11 @@ namespace Sprint0
                     if (gel.location.X - KeyBoardController.linkSprite.attack.greenArrow.currentX >= GameConstants.Zero && gel.location.X - KeyBoardController.linkSprite.attack.greenArrow.currentX <=
                         ItemConstants.ArrowWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.greenArrow.currentX - gel.location.X >= 0 && KeyBoardController.linkSprite.attack.greenArrow.currentX - gel.location.X <= ItemConstants.ArrowWidth * GameConstants.Sizing)
                     {
-                        gelGreenArrowCollision.Update(gel);
+                        return gelGreenArrowCollision.Update(gel);
                     }
                 }
             }
+            return null;
         }
     }
 }

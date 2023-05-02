@@ -71,7 +71,7 @@ namespace Sprint0
         public const int BatMaxFrame = 75;
         public const int BatFrameChange = 10;
 
-        public const int GelWidth = 8, GelHeight = 16;
+        public const int GelWidth = 8, GelHeight = 8;
         public const int GelTextureFrames = 10;
         public const int GelTotalFrames = 100;
         public const int GelStatic = 5;

@@ -20,7 +20,6 @@ namespace Sprint0.Collision.Response.Walls
         public Rectangle linkRectangle;
         public Rectangle doorRectangle;
         private Dictionary<Rectangle, Door> doors;
-        int numDoors;
 
         public DoorCollisions(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
@@ -33,11 +32,10 @@ namespace Sprint0.Collision.Response.Walls
 
         public void UpdateCollisionBlocks()
         {
+            doors.Clear();
             foreach (Door door in game1.currentRoom.GetDoors())
             {
-                doorRectangle = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
-                if (!doors.ContainsKey(doorRectangle))
-                    doors.Add(doorRectangle, door);
+                doors.Add(new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height), door);
             }
         }
 
@@ -53,7 +51,8 @@ namespace Sprint0.Collision.Response.Walls
                     if (door.Value.type == 1)
                     {
                         return door.Value;
-                    } else if (door.Value.type == 0)
+                    }
+                    else if (door.Value.type == 0)
                     {
                         if (game1.linkItems.keys > 0)
                         {
