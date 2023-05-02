@@ -119,6 +119,7 @@ namespace Sprint0
             else if (state == 4)
             {
                 transition.MoveScreen();
+                doorCollision.UpdateCollisionBlocks();
             }
         }
 
@@ -134,7 +135,6 @@ namespace Sprint0
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
                 game1.currentRoom = roomList[roomNum];
-
                 Mcontroller.Update(gameTime);
 
                 if (!game1.linkItems.triforce && game1.linkHealth.health > GameConstants.Zero)
@@ -161,7 +161,9 @@ namespace Sprint0
                 HUDnumbers.Update();
                 HUDnumbers.Draw(_spriteBatch);
 
+                doorCollision.UpdateCollisionBlocks();
                 collisionManager.Check();
+
                 dropedItems = collisionManager.DropedItems();
 
                 checkDoor = doorCollision.Check();
