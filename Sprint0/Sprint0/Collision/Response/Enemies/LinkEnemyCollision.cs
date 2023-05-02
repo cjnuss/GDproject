@@ -16,8 +16,7 @@ namespace Sprint0.Collision.Response.Enemies
         private Rectangle enemyRectangle;
         private LinkHP linkHP;
         private Game1 game;
-        private bool canDamage = true;
-        TimeSpan delay = TimeSpan.FromSeconds(1);
+
         public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
             this.link = link;
@@ -35,10 +34,10 @@ namespace Sprint0.Collision.Response.Enemies
             {
                 if (game.linkHealth.health > GameConstants.One)
                     game.soundEffects.PlaySound("LinkHurt");
-                if (linkHP.health > GameConstants.Zero && canDamage)
+                if (linkHP.health > GameConstants.Zero)
                 {
-                    canDamage = false;
                     linkHP.health--;
+                    link.invisibilityFrames = 10;
                 }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);
@@ -48,15 +47,6 @@ namespace Sprint0.Collision.Response.Enemies
             {
                 link.UpdateSprite(LinkConstants.Default);
                 link.velocity = LinkConstants.Velocity;
-            }
-            if (!canDamage)
-            {
-                delay -= TimeSpan.FromMilliseconds(100);
-                if (delay <= TimeSpan.Zero)
-                {
-                    canDamage = true;
-                    delay = TimeSpan.FromSeconds(1);
-                }
             }
         }
     }

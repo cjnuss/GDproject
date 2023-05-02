@@ -22,6 +22,7 @@ namespace Sprint0
         public Vector2 location;
         public float velocity = LinkConstants.Velocity;
         public int damageCounter { get; set; }
+        public int invisibilityFrames;
 
         public Attack attack; // debug - public?
 
@@ -66,6 +67,7 @@ namespace Sprint0
             itemCounts = new Counts(this.game, linkItems);
 
             damageCounter = 0;
+            invisibilityFrames = 0;
         }
         public void Draw(SpriteBatch spriteBatch)
         {

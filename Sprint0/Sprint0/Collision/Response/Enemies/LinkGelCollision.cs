@@ -35,7 +35,8 @@ namespace Sprint0.Collision.Response.Enemies
                     game.soundEffects.PlaySound("LinkHurt");
                 if (linkHP.health > GameConstants.Zero)
                 {
-                    //linkHP.health--;
+                    linkHP.health--;
+                    link.invisibilityFrames = 10;
                 }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);

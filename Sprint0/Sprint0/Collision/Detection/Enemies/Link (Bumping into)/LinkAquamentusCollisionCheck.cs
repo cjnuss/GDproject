@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint0.Collision.Detection.Enemies.Room;
 using Sprint0.Collision.Response.Enemies;
+using Sprint0.Collision.Response.Walls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Sprint0
     {
         public KeyBoardController KeyBoardController;
         public LinkAquamentusCollision linkAquamentusCollision;
-        public EnemyRoomCollisionCheck enemyRoomCollisionCheck;
+        public EnemyWallCollision enemyRoomCollisionCheck;
         public Game1 game1;
         public Link link;
         public int roomType;
@@ -32,29 +32,29 @@ namespace Sprint0
         public void CheckCollision()
         {
             Aquamentus aquamentus;
-            foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
+            if(link.invisibilityFrames == 0)
             {
-                if (enemy.GetType() == typeof(Aquamentus))
+                foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
                 {
-                    aquamentus = (Aquamentus)enemy;
-                    if (aquamentus.GetLocation().X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && aquamentus.GetLocation().X - KeyBoardController.linkSprite.location.X <=
-                    LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - aquamentus.GetLocation().X >= 0 && KeyBoardController.linkSprite.location.X - aquamentus.GetLocation().X <= aquamentus.GetSize().X)
+                    if (enemy.GetType() == typeof(Aquamentus))
                     {
-                        linkAquamentusCollision.Update(aquamentus);
-                    }
+                        aquamentus = (Aquamentus)enemy;
+                        if (aquamentus.GetLocation().X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && aquamentus.GetLocation().X - KeyBoardController.linkSprite.location.X <=
+                        LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - aquamentus.GetLocation().X >= 0 && KeyBoardController.linkSprite.location.X - aquamentus.GetLocation().X <= aquamentus.GetSize().X)
+                        {
+                            linkAquamentusCollision.Update(aquamentus);
+                        }
 
-                    if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
-                    {
-                        KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
-                        break;
+                        if (KeyBoardController.linkSprite.velocity == GameConstants.Zero)
+                        {
+                            KeyBoardController.linkSprite.velocity = LinkConstants.Velocity;
+                            break;
+                        }
                     }
                 }
-            }
-
-            foreach (IEnemy enemy in game1.currentRoom.GetEnemies())
+            } else
             {
-                enemyRoomCollisionCheck = new EnemyRoomCollisionCheck(KeyBoardController, enemy);
-                enemyRoomCollisionCheck.CheckCollision();
+                link.invisibilityFrames--;
             }
         }
     }
