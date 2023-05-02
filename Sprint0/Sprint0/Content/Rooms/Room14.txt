@@ -5,7 +5,6 @@ oneByOne,555,286
 oneByOne,555,461
 twoByOne,605,330
 twoByOne,605,417
-ITEMS
 ENEMIES
 aquamentus,550,325
 DOORS

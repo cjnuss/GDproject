@@ -14,8 +14,8 @@ namespace Sprint0
     {
         private Texture2D texture;
         private Vector2 deathLoc;
-        private int width = EnemyConstants.BatSize;
-        private int height = EnemyConstants.BatSize;
+        private int width = 16;
+        private int height = 9;
         public bool toDraw = true;
         public bool death = false;
         private Rectangle source;

@@ -16,15 +16,19 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle bombRectangle;
         private Rectangle goriyaRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public GoriyaBombCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Goriya goriya)
+        public ISprite Update(Goriya goriya)
         {
+            itemDrop = null;
             bombRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.bomb.location1.X, (int)KeyBoardController.linkSprite.attack.bomb.location1.Y, ItemConstants.BombWidth * GameConstants.Sizing, ItemConstants.BombHeight * GameConstants.Sizing);
             goriyaRectangle = new Rectangle((int)goriya.location.X, (int)goriya.location.Y, EnemyConstants.GoriyaSize * GameConstants.Sizing, EnemyConstants.GoriyaSize * GameConstants.Sizing);
 
@@ -40,10 +44,12 @@ namespace Sprint0.Collision.Response.Enemies
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(goriya.location);
                     goriya.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

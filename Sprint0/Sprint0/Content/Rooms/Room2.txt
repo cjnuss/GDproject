@@ -11,8 +11,6 @@ oneByOne,455,461
 oneByOne,605,286
 oneByOne,605,373
 oneByOne,605,461
-ITEMS
-ENEMIES
 DOORS
 east,1
 west,1

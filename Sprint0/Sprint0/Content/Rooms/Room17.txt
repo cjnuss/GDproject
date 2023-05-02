@@ -7,7 +7,6 @@ threeByOne,250,373
 threeByOne,400,373
 oneByFour,155,325
 oneByFour,605,325
-ITEMS
 ENEMIES
 goriya,300,325
 goriya,450,325

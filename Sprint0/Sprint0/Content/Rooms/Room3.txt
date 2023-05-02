@@ -1,7 +1,6 @@
 ﻿BLOCKS
 twoByThree,205,324
 twoByThree,505,324
-ITEMS
 ENEMIES
 skeleton,250,237
 skeleton,250,499
@@ -9,8 +8,7 @@ skeleton,400,325
 skeleton,400,412
 skeleton,650,368
 DOORS
-east,1
-south,0
+west,1
 ROOMS
 1,20,20,20
 WALLS
