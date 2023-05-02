@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Collision.Response;
 using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,24 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle linkRectangle;
         private Rectangle goriyaRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public GoriyaSwordCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Goriya goriya)
+        public ISprite Update(Goriya goriya)
         {
+            itemDrop = null;
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y + LinkConstants.YChange, LinkConstants.Size * LinkConstants.Size, LinkConstants.CollisionSize * GameConstants.Sizing);
             goriyaRectangle = new Rectangle((int)goriya.location.X, (int)goriya.location.Y, EnemyConstants.GoriyaSize * GameConstants.Sizing, EnemyConstants.GoriyaSize * GameConstants.Sizing);
 
-            if (goriyaRectangle.Intersects(linkRectangle) && KeyBoardController.linkState == LinkConstants.WoodenSword)
+            if (!goriya.death && goriyaRectangle.Intersects(linkRectangle) && KeyBoardController.linkState == LinkConstants.WoodenSword)
             {
                 if (goriya.hits < EnemyConstants.GoriyaHP)
                 {
@@ -42,10 +47,12 @@ namespace Sprint0
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(goriya.location);
                     goriya.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

@@ -16,23 +16,29 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle fireRectangle;
         private Rectangle gelRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public GelFireCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Gel gel)
+        public ISprite Update(Gel gel)
         {
+            itemDrop = null;
             fireRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.fire.currentX, (int)KeyBoardController.linkSprite.attack.fire.currentY, ItemConstants.FireWidth * GameConstants.Sizing, ItemConstants.FireHeight * GameConstants.Sizing);
             gelRectangle = new Rectangle((int)gel.location.X, (int)gel.location.Y, EnemyConstants.GelWidth * GameConstants.Sizing, EnemyConstants.GelHeight * GameConstants.Sizing);
 
-            if (gelRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
+            if (!gel.death && gelRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
             {
+                itemDrop = enemyDrops.dropItem(gel.location);
                 gel.Dispose();
                 game.soundEffects.PlaySound("EnemyDie");
             }
+            return itemDrop;
         }
     }
 }

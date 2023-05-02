@@ -38,7 +38,7 @@ namespace Sprint0.Collision.Response
                     return new Rupee(position);
                 } else if (dropArray[randomNum] == GameConstants.heartDrop)
                 {
-                    return new Heart(position);
+                    return new HealthHeart(position);
                 } else if (dropArray[randomNum] == GameConstants.fairyDrop)
                 {
                     return new Fairy(position);

@@ -17,7 +17,7 @@ namespace Sprint0
         private Vector2 deathLoc;
         private int direction;
         public bool toDraw = true;
-        private bool death = false;
+        public bool death = false;
         private Rectangle source;
         private Rectangle destination;
         public Vector2 location;
@@ -50,7 +50,7 @@ namespace Sprint0
         {
             EnemyTextureStorage.SkeletonSource,
             EnemyTextureStorage.SkeletonFlippedSource,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
         private static List<Texture2D> textures = new List<Texture2D>
         {
@@ -64,7 +64,7 @@ namespace Sprint0
             EnemyTextureStorage.EnemyDeath2,
             EnemyTextureStorage.EnemyDeath3,
             EnemyTextureStorage.EnemyDeath4,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         public Skeleton(Vector2 coords)
@@ -197,7 +197,7 @@ namespace Sprint0
                     frame = EnemyConstants.Frame3;
                 else if (currentFrame <= EnemyConstants.DeathFrame4 && currentFrame > EnemyConstants.DeathFrame3 && currentFrame <= EnemyConstants.DeathFrame4)
                     frame = EnemyConstants.Frame4;
-                else if (currentFrame == EnemyConstants.DeathFrame7)
+                else /*if (currentFrame == EnemyConstants.DeathFrame7)*/
                     frame = EnemyConstants.Frame5;
 
                 texture = EnemyTextureStorage.Instance.GetEnemyDeath();
@@ -218,11 +218,11 @@ namespace Sprint0
 
         public void Dispose()
         {
+            death = true;
             currentFrame = GameConstants.Zero;
             deathLoc = location;
-            location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
+            //location = new Vector2(GameConstants.Zero, GameConstants.Zero); // debug : can hit dead enemies when this is loc
             toDraw = false;
-            death = true;
         }
     }
 }

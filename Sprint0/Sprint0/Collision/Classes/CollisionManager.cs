@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Collision.Detection.Items;
-using Sprint0.Collision.Detection.Enemies;
 using Sprint0.Collision.Response.Enemies;
 using Sprint0.Collision.Response.Items;
 using Sprint0.Collision.Response.Blocks;
@@ -25,8 +24,16 @@ namespace Sprint0
         private ArrowCollisionCheck arrowCollisionCheck;
         private BombCollisionCheck bombCollisionCheck;
         private RupeeCollisionCheck rupeeCollisionCheck;
-        private LinkEnemyCollisionCheck enemyCollisionCheck;
+        //private LinkEnemyCollisionCheck enemyCollisionCheck;
+        private LinkSkeletonCollisionCheck linkSkeletonCollisionCheck;
+        private LinkBatCollisionCheck linkBatCollisionCheck;
+        private LinkGoriyaCollisionCheck linkGoriyaCollisionCheck;
+        private LinkAquamentusCollisionCheck linkAquamentusCollisionCheck;
+        private LinkGelCollisionCheck linkGelCollisionCheck;
+
+
         private HeartCollisionCheck heartCollisionCheck;
+        private HealthHeartCollisionCheck healthHeartCollisionCheck;
         private KeyCollisionCheck keyCollisionCheck;
         private MapCollisionCheck mapCollisionCheck;
         private BowCollisionCheck bowCollisionCheck;
@@ -86,8 +93,15 @@ namespace Sprint0
             arrowCollisionCheck = new ArrowCollisionCheck(this.KeyBoardController, new LinkArrowCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             bombCollisionCheck = new BombCollisionCheck(this.KeyBoardController, new LinkBombCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             rupeeCollisionCheck = new RupeeCollisionCheck(this.KeyBoardController, new LinkRupeeCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
-            enemyCollisionCheck = new LinkEnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            //enemyCollisionCheck = new LinkEnemyCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkSkeletonCollisionCheck = new LinkSkeletonCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkBatCollisionCheck = new LinkBatCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkGelCollisionCheck = new LinkGelCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkAquamentusCollisionCheck = new LinkAquamentusCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+            linkGoriyaCollisionCheck = new LinkGoriyaCollisionCheck(this.KeyBoardController, this.game1, this.linkSprite);
+
             heartCollisionCheck = new HeartCollisionCheck(this.KeyBoardController, new LinkHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
+            healthHeartCollisionCheck = new HealthHeartCollisionCheck(this.KeyBoardController, new LinkHealthHeartCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             keyCollisionCheck = new KeyCollisionCheck(this.KeyBoardController, new LinkKeyCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             mapCollisionCheck = new MapCollisionCheck(this.KeyBoardController, new LinkMapCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
             bowCollisionCheck = new BowCollisionCheck(this.KeyBoardController, new LinkBowCollision(this.game1, this.KeyBoardController, this.linkSprite), this.game1, this.linkSprite);
@@ -137,7 +151,13 @@ namespace Sprint0
         {
             #region Top Level Game Collisions
             linkObsticleCollisionCheck.CheckCollision();
-            enemyCollisionCheck.CheckCollision();
+            //enemyCollisionCheck.CheckCollision();
+            linkSkeletonCollisionCheck.CheckCollision();
+            linkBatCollisionCheck.CheckCollision();
+            linkGoriyaCollisionCheck.CheckCollision();
+            linkGelCollisionCheck.CheckCollision();
+            linkAquamentusCollisionCheck.CheckCollision();
+
             enemyObsticleCollisionCheck.CheckCollision();
             #endregion
 
@@ -147,6 +167,7 @@ namespace Sprint0
             bombCollisionCheck.CheckCollision();
             rupeeCollisionCheck.CheckCollision();
             heartCollisionCheck.CheckCollision();
+            healthHeartCollisionCheck.CheckCollision();
             keyCollisionCheck.CheckCollision();
             mapCollisionCheck.CheckCollision();
             bowCollisionCheck.CheckCollision();
@@ -156,12 +177,12 @@ namespace Sprint0
             #endregion
 
             #region Enemy & Link Attack Collisions
-            batSwordCollisionCheck.CheckCollision();
-            batGreenArrowCollisionCheck.CheckCollision();
-            batBombCollisionCheck.CheckCollision();
-            batFireCollisionCheck.CheckCollision();
-            batBlueArrowCollisionCheck.CheckCollision();
-            batSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(batSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(batGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(batBombCollisionCheck.CheckCollision());
+            dropedItems.Add(batFireCollisionCheck.CheckCollision());
+            dropedItems.Add(batBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(batSwordBeamCollisionCheck.CheckCollision());
 
             dropedItems.Add(skeletonGreenArrowCollisionCheck.CheckCollision());
             dropedItems.Add(skeletonBlueArrowCollisionCheck.CheckCollision());
@@ -170,19 +191,19 @@ namespace Sprint0
             dropedItems.Add(skeletonSwordCollisionCheck.CheckCollision());
             dropedItems.Add(skeletonSwordBeamCollisionCheck.CheckCollision());
 
-            goriyaGreenArrowCollisionCheck.CheckCollision();
-            goriyaSwordCollisionCheck.CheckCollision();
-            goriyaBlueArrowCollisionCheck.CheckCollision();
-            goriyaFireCollisionCheck.CheckCollision();
-            goriyaBombCollisionCheck.CheckCollision();
-            goriyaSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(goriyaGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaFireCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaBombCollisionCheck.CheckCollision());
+            dropedItems.Add(goriyaSwordBeamCollisionCheck.CheckCollision());
 
-            gelGreenArrowCollisionCheck.CheckCollision();
-            gelBlueArrowCollisionCheck.CheckCollision();
-            gelFireCollisionCheck.CheckCollision();
-            gelBombCollisionCheck.CheckCollision();
-            gelSwordCollisionCheck.CheckCollision();
-            gelSwordBeamCollisionCheck.CheckCollision();
+            dropedItems.Add(gelGreenArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(gelBlueArrowCollisionCheck.CheckCollision());
+            dropedItems.Add(gelFireCollisionCheck.CheckCollision());
+            dropedItems.Add(gelBombCollisionCheck.CheckCollision());
+            dropedItems.Add(gelSwordCollisionCheck.CheckCollision());
+            dropedItems.Add(gelSwordBeamCollisionCheck.CheckCollision());
 
             dropedItems.Add(aquamentusGreenArrowCollisionCheck.CheckCollision());
             dropedItems.Add(aquamentusBlueArrowCollisionCheck.CheckCollision());

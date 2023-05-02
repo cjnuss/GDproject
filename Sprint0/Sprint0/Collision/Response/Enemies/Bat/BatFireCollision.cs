@@ -16,23 +16,30 @@ namespace Sprint0.Collision.Response.Enemies
         private KeyBoardController KeyBoardController;
         private Rectangle fireRectangle;
         private Rectangle batRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public BatFireCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Bat bat)
+        public ISprite Update(Bat bat)
         {
+            itemDrop = null;
             fireRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.fire.currentX, (int)KeyBoardController.linkSprite.attack.fire.currentY, ItemConstants.FireWidth * GameConstants.Sizing, ItemConstants.FireHeight * GameConstants.Sizing);
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
+            if (!bat.death && batRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
             {
+                itemDrop = enemyDrops.dropItem(bat.location);
                 bat.Dispose();
                 game.soundEffects.PlaySound("EnemyDie");
             }
+
+            return itemDrop;
         }
     }
 }

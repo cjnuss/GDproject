@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Collision.Response;
 using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,20 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle swordBeamRectangle;
         private Rectangle batRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public BatSwordBeamCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Bat bat)
+        public ISprite Update(Bat bat)
         {
+            itemDrop = null;
             if (KeyBoardController.dir == GameConstants.Up || KeyBoardController.dir == GameConstants.Up)
                 swordBeamRectangle = new Rectangle((int)KeyBoardController.linkSprite.attack.swordBeam.currentX, (int)KeyBoardController.linkSprite.attack.swordBeam.currentY, LinkConstants.SwordBeamWidth * GameConstants.Sizing, LinkConstants.SwordBeamHeight * GameConstants.Sizing);
 
@@ -36,12 +41,14 @@ namespace Sprint0
 
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
+            if (!bat.death && batRectangle.Intersects(swordBeamRectangle) && KeyBoardController.linkSprite.attack.swordBeam.toDraw)
             {
+                itemDrop = enemyDrops.dropItem(bat.location);
                 //KeyBoardController.linkSprite.attack.swordBeam.Dispose(); debug??
                 bat.Dispose();
                 game.soundEffects.PlaySound("EnemyDie");
             }
+            return itemDrop;
         }
     }
 }

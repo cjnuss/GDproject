@@ -39,7 +39,7 @@ namespace Sprint0
 
             skeletonRectangle = new Rectangle((int)skeleton.location.X, (int)skeleton.location.Y, EnemyConstants.SkeletonSize * GameConstants.Sizing, EnemyConstants.SkeletonSize * GameConstants.Sizing);
 
-            if (skeletonRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
+            if (!skeleton.death && skeletonRectangle.Intersects(fireRectangle) && KeyBoardController.linkSprite.attack.fire.toDraw)
             {
                 if (skeleton.hits < EnemyConstants.SkeletonHP)
                 {

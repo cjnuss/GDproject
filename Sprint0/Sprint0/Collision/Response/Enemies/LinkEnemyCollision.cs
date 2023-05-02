@@ -16,6 +16,7 @@ namespace Sprint0.Collision.Response.Enemies
         private Rectangle enemyRectangle;
         private LinkHP linkHP;
         private Game1 game;
+
         public LinkEnemyCollision(KeyBoardController KeyBoardController, Link link, Game1 game)
         {
             this.link = link;
@@ -33,9 +34,10 @@ namespace Sprint0.Collision.Response.Enemies
             {
                 if (game.linkHealth.health > GameConstants.One)
                     game.soundEffects.PlaySound("LinkHurt");
-                if (linkHP.health > 0)
+                if (linkHP.health > GameConstants.Zero)
                 {
                     linkHP.health--;
+                    link.invisibilityFrames = 10;
                 }
                 link.UpdateDirection(KeyBoardController.dir);
                 link.UpdateSprite(LinkConstants.Damage);

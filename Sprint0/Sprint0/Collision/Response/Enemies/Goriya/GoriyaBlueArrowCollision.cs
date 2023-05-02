@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Collision.Response;
 using Sprint0.Link_Classes;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,19 @@ namespace Sprint0
         private KeyBoardController KeyBoardController;
         private Rectangle arrowRectangle;
         private Rectangle goriyaRectangle;
+        private EnemyDrops enemyDrops;
+        private ISprite itemDrop;
 
         public GoriyaBlueArrowCollision(Game1 game, KeyBoardController KeyBoardController)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
+            enemyDrops = new EnemyDrops();
         }
 
-        public void Update(Goriya goriya)
+        public ISprite Update(Goriya goriya)
         {
+            itemDrop = null;
             if (KeyBoardController.dir == GameConstants.Left || KeyBoardController.dir == GameConstants.Right)
                 arrowRectangle = new Rectangle(KeyBoardController.linkSprite.attack.blueArrow.currentX, KeyBoardController.linkSprite.attack.blueArrow.currentY, ItemConstants.ArrowHeight * GameConstants.Sizing, ItemConstants.ArrowWidth * GameConstants.Sizing);
             else
@@ -33,7 +38,7 @@ namespace Sprint0
 
             goriyaRectangle = new Rectangle((int)goriya.location.X, (int)goriya.location.Y, EnemyConstants.GoriyaSize * GameConstants.Sizing, EnemyConstants.GoriyaSize * GameConstants.Sizing);
 
-            if (goriyaRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
+            if (!goriya.death && goriyaRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.blueArrow.toDraw)
             {
                 KeyBoardController.linkSprite.attack.blueArrow.Dispose();
                 if (goriya.hits < EnemyConstants.GoriyaHP)
@@ -46,10 +51,12 @@ namespace Sprint0
                 }
                 else
                 {
+                    itemDrop = enemyDrops.dropItem(goriya.location);
                     goriya.Dispose();
                     game.soundEffects.PlaySound("EnemyDie");
                 }
             }
+            return itemDrop;
         }
     }
 }

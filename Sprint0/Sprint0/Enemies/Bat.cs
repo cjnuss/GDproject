@@ -14,10 +14,10 @@ namespace Sprint0
     {
         private Texture2D texture;
         private Vector2 deathLoc;
-        private int width = EnemyConstants.BatSize;
-        private int height = EnemyConstants.BatSize;
+        private int width = 16;
+        private int height = 9;
         public bool toDraw = true;
-        private bool death = false;
+        public bool death = false;
         private Rectangle source;
         private Rectangle destination;
 
@@ -52,7 +52,7 @@ namespace Sprint0
             EnemyTextureStorage.EnemyDeath2,
             EnemyTextureStorage.EnemyDeath3,
             EnemyTextureStorage.EnemyDeath4,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         public Bat(Vector2 coords)

@@ -19,6 +19,8 @@
     <None Remove="Sprite Factories\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Collision\Detection\Enemies\Link %28Bumping into%29\LinkEnemyCollisionCheck.cs" />
+    <Compile Remove="Collision\Response\Enemies\LinkEnemyCollision.cs" />
     <Compile Remove="Controllers\Chris_KeyBoardController.cs" />
     <Compile Remove="Enemies\Block.cs" />
     <Compile Remove="Enemies\EmptySprite.cs" />
@@ -35,6 +37,9 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Collision\Detection\Enemies\Room\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
