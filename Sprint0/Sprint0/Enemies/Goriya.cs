@@ -49,28 +49,28 @@ namespace Sprint0
         {
             EnemyTextureStorage.GoriyaUp,
             EnemyTextureStorage.GoriyaUp1,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         private static List<Rectangle> GoriyaDown = new List<Rectangle>
         {
             EnemyTextureStorage.GoriyaDown,
             EnemyTextureStorage.GoriyaDown1,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         private static List<Rectangle> GoriyaLeft = new List<Rectangle>
         {
             EnemyTextureStorage.GoriyaLeft,
             EnemyTextureStorage.GoriyaLeft1,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         private static List<Rectangle> GoriyaRight = new List<Rectangle>
         {
             EnemyTextureStorage.GoriyaRight,
             EnemyTextureStorage.GoriyaRight1,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         private static List<List<Rectangle>> frames = new List<List<Rectangle>>

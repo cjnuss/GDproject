@@ -52,7 +52,7 @@ namespace Sprint0
             EnemyTextureStorage.Aquamentus2,
             EnemyTextureStorage.Aquamentus3,
             EnemyTextureStorage.Aquamentus4,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         private static List<Rectangle> deathFrames = new List<Rectangle>
