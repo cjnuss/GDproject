@@ -80,7 +80,7 @@ namespace Sprint0
             // hud setup
             testingText = new StaticText(game);
             testingHearts = new HpHearts(game);
-            mainHUD = new MainHUD(game);
+            mainHUD = new MainHUD(game, this);
             playerMap = new PlayerMap(game, this);
             HUDnumbers = new Counts(game, game.linkItems);
 
@@ -111,6 +111,7 @@ namespace Sprint0
                 roomList[roomNum].Update();
                 pauseScreen.Update(); // check for pause
                 inventoryScreen.Update(); // check for inventory
+                mainHUD.Update();
             }
             // pause
             else if (state == 2)
