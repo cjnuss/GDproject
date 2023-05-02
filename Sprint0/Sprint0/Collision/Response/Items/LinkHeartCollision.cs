@@ -23,12 +23,14 @@ namespace Sprint0.Collision.Response.Items
         private Rectangle linkRectangle;
         private Rectangle heartRectangle;
         private LinkItems linkItems;
+        private LinkHP linkHP;
         public LinkHeartCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkItems = game.linkItems;
+            linkHP = game.linkHealth;
         }
 
         public void Update(Heart heart)
@@ -41,6 +43,7 @@ namespace Sprint0.Collision.Response.Items
                 heart.Dispose();
                 game.soundEffects.PlaySound("GetHeartOrKey");
                 linkItems.heart++;
+                linkHP.maxhealth++;
             }
         }
     }

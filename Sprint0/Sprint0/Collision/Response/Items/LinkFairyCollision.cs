@@ -17,12 +17,14 @@ namespace Sprint0.Collision.Response.Items
         private Rectangle linkRectangle;
         private Rectangle fairyRectangle;
         private LinkItems linkItems;
+        private LinkHP linkHP;
         public LinkFairyCollision(Game1 game, KeyBoardController KeyBoardController, Link link)
         {
             this.game = game;
             this.KeyBoardController = KeyBoardController;
             this.link = link;
             linkItems = game.linkItems;
+            linkHP = game.linkHealth;
         }
 
         public void Update(Fairy fairy)
@@ -35,6 +37,7 @@ namespace Sprint0.Collision.Response.Items
                 fairy.Dispose();
                 game.soundEffects.PlaySound("GetItem");
                 linkItems.fairy = true;
+                linkHP.health = linkHP.maxhealth * 2;
             }
         }
     }
