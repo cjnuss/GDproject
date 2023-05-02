@@ -38,7 +38,7 @@ namespace Sprint0
 
             gelRectangle = new Rectangle((int)gel.location.X, (int)gel.location.Y, EnemyConstants.GelWidth * GameConstants.Sizing, EnemyConstants.GelHeight * GameConstants.Sizing);
 
-            if (gelRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
+            if (!gel.death && gelRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
             {
                 itemDrop = enemyDrops.dropItem(gel.location);
                 KeyBoardController.linkSprite.attack.greenArrow.Dispose();

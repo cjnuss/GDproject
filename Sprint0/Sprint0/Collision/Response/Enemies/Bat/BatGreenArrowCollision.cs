@@ -37,7 +37,7 @@ namespace Sprint0
 
             batRectangle = new Rectangle((int)bat.location.X, (int)bat.location.Y, EnemyConstants.BatSize * GameConstants.Sizing, EnemyConstants.BatSize * GameConstants.Sizing);
 
-            if (batRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
+            if (!bat.death && batRectangle.Intersects(arrowRectangle) && KeyBoardController.linkSprite.attack.greenArrow.toDraw)
             {
                 itemDrop = enemyDrops.dropItem(bat.location);
                 KeyBoardController.linkSprite.attack.greenArrow.Dispose();

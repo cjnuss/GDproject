@@ -19,6 +19,8 @@
     <None Remove="Sprite Factories\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Collision\Detection\Enemies\Link %28Bumping into%29\LinkEnemyCollisionCheck.cs" />
+    <Compile Remove="Collision\Response\Enemies\LinkEnemyCollision.cs" />
     <Compile Remove="Controllers\Chris_KeyBoardController.cs" />
     <Compile Remove="Enemies\Block.cs" />
     <Compile Remove="Enemies\EmptySprite.cs" />

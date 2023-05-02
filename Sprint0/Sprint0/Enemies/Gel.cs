@@ -20,7 +20,7 @@ namespace Sprint0
         //private int width;
         //private int height;
         public bool toDraw = true;
-        private bool death = false;
+        public bool death = false;
         private Rectangle source;
         private Rectangle destination;
 
@@ -55,7 +55,7 @@ namespace Sprint0
             EnemyTextureStorage.EnemyDeath2,
             EnemyTextureStorage.EnemyDeath3,
             EnemyTextureStorage.EnemyDeath4,
-            new Rectangle(0,0,0,0)
+            Rectangle.Empty
         };
 
         public Gel(Vector2 coords)
