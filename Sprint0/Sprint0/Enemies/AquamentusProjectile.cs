@@ -48,8 +48,8 @@ namespace Sprint0
             location1 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
             location2 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
             location3 = new Vector2(location.X + EnemyConstants.AquaProjXAdjustment, location.Y + EnemyConstants.AquaProjYAdjustment);
-            width = 20;
-            height = 20;
+            width = 8;
+            height = 10;
         }
 
         public void Update()

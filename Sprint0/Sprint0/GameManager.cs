@@ -87,7 +87,7 @@ namespace Sprint0
 
             dropedItems = new List<ISprite>();
 
-            doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite, this);
+            doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite);
             collisionManager = new CollisionManager(Kcontroller, game1, linkSprite);
             collisionManager.Create();
         }
@@ -119,6 +119,7 @@ namespace Sprint0
             else if (state == 4)
             {
                 transition.MoveScreen();
+                game1.currentRoom = roomList[roomNum];
                 doorCollision.UpdateCollisionBlocks();
             }
         }
@@ -161,7 +162,6 @@ namespace Sprint0
                 HUDnumbers.Update();
                 HUDnumbers.Draw(_spriteBatch);
 
-                doorCollision.UpdateCollisionBlocks();
                 collisionManager.Check();
 
                 dropedItems = collisionManager.DropedItems();
@@ -205,6 +205,7 @@ namespace Sprint0
         public void gameStart()
         {
             game1.currentRoom = roomList[roomNum];
+            doorCollision.UpdateCollisionBlocks();
         }
     }
 }

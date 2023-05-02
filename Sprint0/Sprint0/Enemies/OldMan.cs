@@ -34,8 +34,8 @@ namespace Sprint0
         public OldMan(Vector2 coords)
         {
             location = coords;
-            width = 20;
-            height = 20;
+            width = 16;
+            height = 16;
         }
 
         public void Update()

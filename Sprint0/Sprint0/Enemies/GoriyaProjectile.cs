@@ -47,8 +47,8 @@ namespace Sprint0
             location1 = new Vector2(location.X + EnemyConstants.GoriyaProjXAdjustment, location.Y);
             direction1 = direction;
             toDraw = true;
-            width = 20;
-            height = 20;
+            width = 8;
+            height = 8;
         }
 
         public void Update()
