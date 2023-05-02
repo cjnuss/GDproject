@@ -20,7 +20,7 @@ namespace Sprint0.Collision.Response.Walls
         public Rectangle linkRectangle;
         public Rectangle doorRectangle;
         private Dictionary<Rectangle, Door> doors;
-        int numDoors;
+        IRoom roomNum;
 
         public DoorCollisions(KeyBoardController KeyBoardController, Game1 game1, Link link)
         {
@@ -29,15 +29,19 @@ namespace Sprint0.Collision.Response.Walls
             this.game1 = game1;
             linkRectangle = new Rectangle((int)link.location.X, (int)link.location.Y, LinkConstants.Size * GameConstants.Sizing, LinkConstants.Size * GameConstants.Sizing);
             doors = new Dictionary<Rectangle, Door>();
+            roomNum = game1.currentRoom;
         }
 
         public void UpdateCollisionBlocks()
         {
-            foreach (Door door in game1.currentRoom.GetDoors())
+            if(roomNum != game1.currentRoom)
             {
-                doorRectangle = new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height);
-                if (!doors.ContainsKey(doorRectangle))
-                    doors.Add(doorRectangle, door);
+                roomNum = game1.currentRoom;
+                doors = new Dictionary<Rectangle, Door>();
+                foreach (Door door in game1.currentRoom.GetDoors())
+                {
+                    doors.Add(new Rectangle((int)door.location.X, (int)door.location.Y, door.width, door.height), door);
+                }
             }
         }
 
@@ -50,10 +54,18 @@ namespace Sprint0.Collision.Response.Walls
             {
                 if (door.Key.Intersects(linkRectangle))
                 {
+                    if (door.Value.type == 1)
                     {
                         return door.Value;
                     }
-
+                    else if (door.Value.type == 0)
+                    {
+                        if (game1.linkItems.keys > 0)
+                        {
+                            game1.linkItems.keys--;
+                            return door.Value;
+                        }
+                    }
                 }
             }
             return null;

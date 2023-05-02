@@ -27,7 +27,7 @@ namespace Sprint0
             this.gelSwordCollision = new GelSwordCollision(this.game, this.KeyBoardController, this.link);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -37,10 +37,12 @@ namespace Sprint0
                     if (gel.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && gel.location.X - KeyBoardController.linkSprite.location.X <=
                         LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - gel.location.X >= 0 && KeyBoardController.linkSprite.location.X - gel.location.X <= LinkConstants.Size * GameConstants.Sizing)
                     {
-                        gelSwordCollision.Update(gel);
+                        return gelSwordCollision.Update(gel);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

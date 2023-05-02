@@ -27,7 +27,7 @@ namespace Sprint0
             this.goriyaSwordCollision = new GoriyaSwordCollision(this.game, this.KeyBoardController, this.link);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -37,10 +37,12 @@ namespace Sprint0
                     if (goriya.location.X - KeyBoardController.linkSprite.location.X >= GameConstants.Zero && goriya.location.X - KeyBoardController.linkSprite.location.X <=
                         LinkConstants.Size * GameConstants.Sizing || KeyBoardController.linkSprite.location.X - goriya.location.X >= 0 && KeyBoardController.linkSprite.location.X - goriya.location.X <= LinkConstants.Size * GameConstants.Sizing)
                     {
-                        goriyaSwordCollision.Update(goriya);
+                        return goriyaSwordCollision.Update(goriya);
                     }
                 }
             }
+
+            return null;
         }
     }
 }

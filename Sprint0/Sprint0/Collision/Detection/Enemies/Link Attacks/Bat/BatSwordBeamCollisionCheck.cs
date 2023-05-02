@@ -27,7 +27,7 @@ namespace Sprint0
             this.batSwordBeamCollision = new BatSwordBeamCollision(this.game, this.KeyBoardController, this.link);
         }
 
-        public void CheckCollision()
+        public ISprite CheckCollision()
         {
             foreach (IEnemy enemy in game.currentRoom.GetEnemies())
             {
@@ -37,10 +37,12 @@ namespace Sprint0
                     if (bat.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX >= GameConstants.Zero && bat.location.X - KeyBoardController.linkSprite.attack.swordBeam.currentX <=
                         LinkConstants.SwordBeamWidth * GameConstants.Sizing || KeyBoardController.linkSprite.attack.swordBeam.currentX - bat.location.X >= 0 && KeyBoardController.linkSprite.attack.swordBeam.currentX - bat.location.X <= LinkConstants.SwordBeamWidth * GameConstants.Sizing)
                     {
-                        batSwordBeamCollision.Update(bat);
+                        return batSwordBeamCollision.Update(bat);
                     }
                 }
             }
+
+            return null;
         }
     }
 }
