@@ -10,7 +10,6 @@ oneByOne,455,330
 oneByOne,505,373
 ITEMS
 triforce,385,382
-ENEMIES
 DOORS
 west,1
 ROOMS

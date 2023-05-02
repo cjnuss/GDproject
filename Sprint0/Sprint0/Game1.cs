@@ -23,7 +23,7 @@ namespace Sprint0
         public LinkItems linkItems;
         public LinkHP linkHealth;
 
-        GameManager gameManager;
+        public GameManager gameManager;
 
         public IRoom currentRoom;
 
@@ -34,6 +34,7 @@ namespace Sprint0
             IsMouseVisible = true;
             linkItems = new LinkItems();
             linkHealth = new LinkHP(this);
+ 
         }
 
         protected override void Initialize()
@@ -57,6 +58,7 @@ namespace Sprint0
             LinkTextureStorage.Instance.Load(Content);
             ItemsTextureStorage.Instance.Load(Content);
             UITextureStorage.Instance.Load(Content);
+            InventoryTextureStorage.Instance.Load(Content);
 
             // audio setup
             backgroundAudio = new BackgroundAudio();

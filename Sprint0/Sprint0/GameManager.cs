@@ -76,7 +76,7 @@ namespace Sprint0
             testingText = new StaticText(game);
             testingHearts = new HpHearts(game);
             mainHUD = new MainHUD(game);
-            playerMap = new PlayerMap(game);
+            playerMap = new PlayerMap(game, this);
             HUDnumbers = new Counts(game, game.linkItems);
 
             startScreen = new StartScreen(this);
@@ -87,7 +87,7 @@ namespace Sprint0
 
             dropedItems = new List<ISprite>();
 
-            doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite);
+            doorCollision = new DoorCollisions(Kcontroller, game1, linkSprite, this);
             collisionManager = new CollisionManager(Kcontroller, game1, linkSprite);
             collisionManager.Create();
         }
@@ -118,7 +118,7 @@ namespace Sprint0
             // transition
             else if (state == 4)
             {
-                transition.MoveScreen();   
+                transition.MoveScreen();
             }
         }
 
@@ -134,6 +134,7 @@ namespace Sprint0
             {
                 spriteBatch.Draw(texture, target, source, Color.White);
                 game1.currentRoom = roomList[roomNum];
+
                 Mcontroller.Update(gameTime);
 
                 if (!game1.linkItems.triforce && game1.linkHealth.health > GameConstants.Zero)
@@ -160,9 +161,7 @@ namespace Sprint0
                 HUDnumbers.Update();
                 HUDnumbers.Draw(_spriteBatch);
 
-                doorCollision.UpdateCollisionBlocks();
                 collisionManager.Check();
-
                 dropedItems = collisionManager.DropedItems();
 
                 checkDoor = doorCollision.Check();
@@ -204,7 +203,6 @@ namespace Sprint0
         public void gameStart()
         {
             game1.currentRoom = roomList[roomNum];
-            doorCollision.UpdateCollisionBlocks();
         }
     }
 }
